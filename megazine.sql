@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 10, 2020 lúc 06:18 PM
+-- Thời gian đã tạo: Th4 12, 2020 lúc 05:13 AM
 -- Phiên bản máy phục vụ: 10.1.37-MariaDB
 -- Phiên bản PHP: 5.6.39
 
@@ -30,9 +30,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1);
 
 -- --------------------------------------------------------
 
@@ -228,6 +236,25 @@ INSERT INTO `news` (`id`, `id_topic`, `id_creator`, `hot_news`, `image`, `tag`, 
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('haitran23031999@gmail.com', '$2y$10$bifakQn/WF5ERmvW899/Wex/SVE4k8wvrexW1OGat3tMXjS7dVKHu', '2020-04-11 18:59:20');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `rule`
 --
 
@@ -346,9 +373,9 @@ CREATE TABLE `user` (
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -359,7 +386,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'hai', 'haitran23031999@gmail.com', '$2y$10$Xj2OyFhK6W0DQBUyD7JeaOfl9VohuYLHCM9xbd3typRpPGLWHKheC', NULL, '2020-04-10 08:54:02', '2020-04-10 08:54:02');
+(4, 'it', 'tranvietthanhhaiit@gmail.com', '$2y$10$5OPwHrNtABIMS.TtUcp51OjuGrGgxoFflvKu9ThmI/dOWJXG5W1qO', 'yH8IyOBrwvjR54YPENXhOOR0JR0VaaK9T4f31F0JYUF6itRHY0HDgGtZluSR', '2020-04-11 19:12:22', '2020-04-11 19:28:30');
 
 -- --------------------------------------------------------
 
@@ -449,6 +476,12 @@ ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
 -- Chỉ mục cho bảng `rule`
 --
 ALTER TABLE `rule`
@@ -482,7 +515,8 @@ ALTER TABLE `user`
 -- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
 -- Chỉ mục cho bảng `video`
@@ -498,7 +532,7 @@ ALTER TABLE `video`
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `news`
@@ -528,7 +562,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `video`
