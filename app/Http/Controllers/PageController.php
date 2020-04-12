@@ -1,0 +1,95 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use App\Slide;
+use App\Topic;
+use App\News;
+use App\Video;
+
+
+class PageController extends Controller
+{
+    public function getHome() {
+        $slides = Slide::join('topic', 'slide.id_topic', '=', 'topic.id')
+                        ->select('slide.image', 'slide.heading_primary', 'slide.heading_secondary', 'topic.name')
+                        ->get();
+
+        $news = News::orderBy('created_at', 'desc')->limit(14)->get();
+
+        return view('page.home',[
+            'slides' => $slides,
+            'news' => $news
+        ]);
+    }
+
+    public function getStyle() {
+        $newsNewests = News::where('id_topic', 1)->orderBy('created_at', 'desc')->limit(2)->get();
+        $newsStyles = News::where('id_topic', 1)->orderBy('created_at', 'desc')->offset(2)->limit(11)->get();
+        $video = Video::where('id_topic', 1)->orderBy('created_at', 'desc')->limit(1)->get();
+
+        return view('page.style', [
+            'newsNewests' => $newsNewests,
+            'newsStyles' => $newsStyles,
+            'video' => $video
+        ]);
+    }
+
+    public function getFashion() {
+        $newsNewests = News::where('id_topic', 2)->orderBy('created_at', 'desc')->limit(6)->get();
+        $newsFashions = News::where('id_topic', 2)->orderBy('created_at', 'desc')->offset(6)->limit(6)->get();
+        $newsFashionRecents = News::where('id_topic', 2)->orderBy('created_at', 'desc')->offset(12)->limit(3)->get();
+        $video = Video::where('id_topic', 2)->orderBy('created_at', 'desc')->limit(1)->get();
+
+        return view('page.fashion',[
+            'newsNewests' => $newsNewests,
+            'newsFashions' => $newsFashions,
+            'newsFashionRecents' => $newsFashionRecents,
+            'video' => $video
+        ]);
+    }
+
+    public function getTravel() {
+        $newsTravels = News::where('id_topic', 3)->orderBy('created_at', 'desc')->limit(8)->get();
+        $newsTravelRecents = News::where('id_topic', 3)->orderBy('created_at', 'desc')->offset(8)->limit(3)->get();
+
+        return view('page.travel',[
+            'newsTravels' => $newsTravels,
+            'newsTravelRecents' => $newsTravelRecents
+        ]);
+    }
+
+    public function getSports() {
+        $hotNewsSports = News::where('id_topic', 4)->where('hot_news', 1)->orderBy('created_at', 'desc')->limit(4)->get();
+        $newsNewests = News::where('id_topic', 4)->where('hot_news', 0)->orderBy('created_at', 'desc')->limit(12)->get();
+        return view('page.sports',[
+            'hotNewsSports' => $hotNewsSports,
+            'newsNewests' => $newsNewests
+        ]);
+    }
+
+    public function getVideo() {
+        $videos = Video::orderBy('created_at', 'desc')->limit(5)->get();
+        return view('page.video',[
+            'videos' => $videos
+        ]);
+    }
+
+    public function getArchives() {
+        $news = News::orderBy('created_at', 'desc')->paginate(7);
+        return view('page.archives', [
+            'news' => $news
+        ]);
+    }    
+
+    public function getSingle($id = null) {
+        if (!(is_null($id))) {
+            $newsDetails = News::where('id', $id)->get();
+            return view("page.single", [                
+                'newsDetails' => $newsDetails
+            ]);
+        };
+    }
+}
