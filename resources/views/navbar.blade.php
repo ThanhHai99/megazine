@@ -9,6 +9,17 @@
       <li class="{{ (Request::segment(1) == 'sports' ? 'colorlib-active': '')}}"><a href="{{route('sports')}}">Sports</a></li>
       <li class="{{ (Request::segment(1) == 'video' ? 'colorlib-active': '')}}"><a href="{{route('video')}}">Video</a></li>
       <li class="{{ (Request::segment(1) == 'archives' ? 'colorlib-active': '')}}"><a href="{{route('archives')}}">Archives</a></li>
+      <li>
+          <a href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+              Logout
+          </a>
+
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              {{ csrf_field() }}
+          </form>
+      </li>
     </ul>
   </nav>
 
