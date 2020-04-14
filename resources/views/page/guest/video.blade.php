@@ -1,34 +1,38 @@
-@extends('master')
+@extends('layouts.guest.guest')
 @section('content')
 
 <div id="colorlib-main">
-		<div class="colorlib-blog">
-			<div class="container-wrap">
-				<div class="col-md-9">
-					<div class="content-wrap">
-						<div class="row">
-							@foreach ($news as $new)
-								<div class="col-md-12 animate-box">
-									<div class="archives">
-										<p class="tag"><span>{{ $new->tag }}</span></p>
-										<h2><a href="#">{{ $new->caption }} of <?= date('F Y', strtotime($new->created_at)); ?></a></h2>
+	<div class="colorlib-blog">
+		<div class="container-wrap">
+			<div class="col-md-9">
+				<div class="content-wrap">
+					<div class="row">
+						@foreach ($videos as $video)
+							<div class="col-md-12">
+								<div class="blog-entry-style animate-box">
+									<div class="blog-img">
+										<div class="video colorlib-video" style="background-image: url(images/{{ $video->link_image }}); height: 600px;">
+											<a href="videos/{{ $video->link_video }}" class="popup-vimeo"><i class="icon-play4"></i></a>
+											<div class="overlay"></div>
+										</div>
+									</div>
+									<div class="desc">
+										<p class="meta">
+											<span class="cat"><a href="#">Watch</a></span>
+											<span class="date">{{ $video->created_at }}</span>
+											<!-- <span class="pos">By <a href="#">Walter</a></span> -->
+										</p>
+										<h2><a href="blog.html">{{ $video->caption }}</a></h2>
+										<p>{{ $video->subtitle }}</p>
 									</div>
 								</div>
-							@endforeach
-						</div>
-
-						<div class="row mt-5">
-							<div class="col text-center" style="text-align: center;">
-								<div class="block-27">
-									{{$news->links()}}
-								</div>
 							</div>
-						</div>
-
+						@endforeach
 					</div>
 				</div>
+			</div>
 
-				<div class="col-md-3 sticky-parent">
+			<div class="col-md-3 sticky-parent">
 					<div class="sidebar" id="sticky_item">
 						<div class="side animate-box">
 							<div class="form-group">
@@ -106,8 +110,21 @@
 						</div>
 					</div>
 				</div>
+
+			<div class="row">
+				<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+					<ul class="pagination">
+						<li class="disabled"><a href="#">&laquo;</a></li>
+						<li class="active"><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">&raquo;</a></li>
+					</ul>
+				</div>
 			</div>
-		</div>			
+		</div>
+	</div>			
 </div>
 
 @endsection

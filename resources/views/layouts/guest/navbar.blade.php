@@ -29,6 +29,6 @@
     </ul>
   </nav>
 
-  @include('footer')
+  @include('layouts.guest.footer')
 
 </aside>

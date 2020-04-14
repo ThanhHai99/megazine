@@ -2,17 +2,17 @@
 <html>
 
 <head>
-	@include('head')
+	@include('layouts.guest.head')
 </head>
 	<body>
 	<div id="colorlib-page">
 		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
-		@include('navbar')
+		@include('layouts.guest.navbar')
 
 		@yield('content')
 	</div>
 
-	@include('script')
+	@include('layouts.guest.script')
 
 	</body>
 </html>

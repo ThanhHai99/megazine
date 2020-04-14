@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Http\Request;
+use App\User;
+
 class LoginController extends Controller
 {
     /*
@@ -26,7 +29,15 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+
+    protected function authenticated(Request $request, $user) {
+        if ($user->id_role == 1) {
+            return redirect("dashboard/index");
+        }
+        return redirect("home");
+    }
+    
+    // protected $redirectTo = "/home";
 
     /**
      * Create a new controller instance.
@@ -35,12 +46,12 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware("guest")->except("logout");
     }
 
     public function logout() {
         Auth::logout();
 
-        return redirect('/home');
+        return redirect("/home");
     }
 }

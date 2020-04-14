@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layouts.guest.guest')
 @section('content')
 
 <div id="colorlib-main">
