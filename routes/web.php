@@ -68,12 +68,56 @@ Route::group(["namespace" => "Admin"], function() {
             "uses" => "AdminController@getIndex"
         ]);
 
+        Route::get("_table", [
+            "as" => "admin-table",
+            "uses" => "AdminController@get_Table"
+        ]);
+
         Route::group(["prefix" => "topic"], function () {
             Route::get("style", [
                 "as" => "topic-style",
                 "uses" => "AdminController@getTopicStyle"
             ]);
+
+            Route::get("fashion", [
+                "as" => "topic-fashion",
+                "uses" => "AdminController@getTopicFashion"
+            ]);
+
+            Route::get("travel", [
+                "as" => "topic-travel",
+                "uses" => "AdminController@getTopicTravel"
+            ]);
+
+            Route::get("sports", [
+                "as" => "topic-sports",
+                "uses" => "AdminController@getTopicSports"
+            ]);
+
+            Route::get("video", [
+                "as" => "topic-video",
+                "uses" => "AdminController@getTopicVideo"
+            ]);
+
+            Route::get("archives", [
+                "as" => "topic-archives",
+                "uses" => "AdminController@getTopicArchives"
+            ]);
         });
+
+        Route::group(["prefix" => "employee"], function () {
+            Route::get("staff", [
+                "as" => "employee.staff",
+                "uses" => "AdminController@getEmpoyeeStaff"
+            ]);
+
+            Route::get("normal_user", [
+                "as" => "employee.normal_user",
+                "uses" => "AdminController@getNormalUser"
+            ]);
+        });
+
+        
     });
 
 });

@@ -9,8 +9,6 @@
 <script src="js/sb-admin-2.min.js"></script>
 
 
-
-
-<script src="{{asset('js/js.js')}}"></script>
+<!-- <script src="{{asset('js/js.js')}}"></script> -->
 
 

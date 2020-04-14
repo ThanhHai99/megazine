@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard/index">
     <div class="sidebar-brand-icon rotate-n-15">
       <i class="fas fa-laugh-wink"></i>
     </div>
@@ -13,7 +13,7 @@
 
   <!-- Nav Item - Dashboard -->
   <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="dashboard/index">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
   </li>
@@ -109,8 +109,8 @@
     </a>
     <div id="collapseEmployees" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="#">Staff</a>
-        <a class="collapse-item" href="#">Normal Users</a>
+        <a class="collapse-item" href="dashboard/employee/staff">Staff</a>
+        <a class="collapse-item" href="dashboard/employee/normal_user">Normal Users</a>
       </div>
     </div>
   </li> 
@@ -124,7 +124,7 @@
       <div class="bg-white py-2 collapse-inner rounded">
         @foreach ($topics as $topic)
           <!-- <a href="dashboard/table" class="collapse-item" style="text-transform: capitalize">{{ $topic->name }}</a> -->
-          <a class="collapse-item" id="topic-{{ $topic->name }}" style="text-transform: capitalize">{{ $topic->name }}</a>
+          <a href="dashboard/topic/{{ $topic->name }}" class="collapse-item" id="topic-{{ $topic->name }}" style="text-transform: capitalize">{{ $topic->name }}</a>
         @endforeach
       </div>
     </div>
