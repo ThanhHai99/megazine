@@ -35,8 +35,8 @@
               <th>Caption</th>
               <th>Subtitle</th>
               <th>Created At</th>
-              <th class="text-center" width="150px">
-                <a href="#" class="create-modal btn btn-success btn-sm">
+              <th class="text-center">
+                <a href="#" class="create-modal btn btn-success btn-lg">
                   <i class="glyphicon glyphicon-plus"></i>
                 </a>
               </th>
@@ -52,8 +52,8 @@
               <th>Caption</th>
               <th>Subtitle</th>
               <th>Created At</th>
-              <th class="text-center" width="150px">
-                <a href="#" class="create-modal btn btn-success btn-sm">
+              <th class="text-center">
+                <a href="#" class="create-modal btn btn-success btn-lg">
                   <i class="glyphicon glyphicon-plus"></i>
                 </a>
               </th>
@@ -71,14 +71,13 @@
                 <td>{{ $data->subtitle }}</td>
                 <td>{{ $data->created_at }}</td>
                 <td class="text-center">
-                  <a href="#" class="show-modal btn btn-info btn-sm">
+                  <a class="show-modal btn btn-info btn-lg">
                     <i class="fa fa-eye"></i>
                   </a>
-                  <a href="#" class="edit-modal btn btn-warning btn-sm">
+                  <a class="edit-modal btn btn-warning btn-lg edit">
                     <i class="glyphicon glyphicon-pencil"></i>
-                    <i class="fas fa-pencil"></i>
                   </a>
-                  <a href="#" class="delete-modal btn btn-danger btn-sm">
+                  <a class="delete-modal btn btn-danger btn-lg">
                     <i class="glyphicon glyphicon-trash"></i>
                   </a>
                 </td>
@@ -93,6 +92,62 @@
 
 @endsection
 
+<!-- Start Edit Modal  -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button"class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!-- <form id="editForm" action="/topic" method="POST"> -->
+        {{ csrf_field() }}
+        {{ method_field('PUT') }}
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Hot News</label>
+            <input type="text" name="hot_news" id="hot_news" class="form-control" placeholder="Hot News">
+          </div>
+
+          <div class="form-group">
+            <label>Image</label>
+            <input type="text" name="image" id="image" class="form-control" placeholder="Image">
+          </div>
+
+          <div class="form-group">
+            <label>Tag</label>
+            <input type="text" name="tag" id="tag" class="form-control" placeholder="Tag">
+          </div>
+
+          <div class="form-group">
+            <label>Caption</label>
+            <input type="text" name="caption" id="caption" class="form-control" placeholder="Caption">
+          </div>
+
+          <div class="form-group">
+            <label>Subtitle</label>
+            <input type="text" name="subtitle" id="subtitle" class="form-control" placeholder="Subtitle">
+          </div>
+        </div>
+
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary update">Update data</button>
+        </div>
+
+      <!-- </form> -->
+
+    </div>
+  </div>
+</div>
+
+<!-- End Edit Modal -->
+
 @section('script-table')
 
 <!-- Page level plugins -->
@@ -103,5 +158,33 @@
 <!-- <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script> -->
 <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
 
+<script>
+  var table = $('#dataTable').DataTable();
+  //Start Edit Record
+  table.on('click', 'a.edit', function() {
+    $tr = $(this).closest('tr');
+    if($($tr).hasClass('chlid')) {
+      $tr = $tr.prev('.parent');
+    }
+    
+    var data = table.row($tr).data();
+    console.log(data);
+    $("input#hot_news").val(data[2]);
+    $("input#image").val(data[3]);
+    $("input#tag").val(data[4]);
+    $("input#caption").val(data[5]);
+    $("input#subtitle").val(data[6]);
+    
+    // $("#editForm").attr('action', '/topic'+data[0]);
+    $("#editModal").modal('show');
+
+  });
+  //End Edit Record
+
+  //If click button update
+  $("button.update").click(function() {
+    alertify.success('Success message');
+  });
+</script>
 
 @endsection

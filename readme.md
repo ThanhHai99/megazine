@@ -1,6 +1,6 @@
 Author: ThanhHai99<tranvietthanhhaiit@gmail.com>
 0: Clone this repository to your device
-1: composer install (Run by git.exe or cmd)
+1: composer install && composer update (Run by git.exe or cmd)
 2: Create a new DB on your PC, name is megazine, format is utf8_general_ci
 3: Import file megazine.sql into DB
 4: Rename file .env.example to .env

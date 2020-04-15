@@ -12,3 +12,6 @@
 <!-- <script src="{{asset('js/js.js')}}"></script> -->
 
 
+<script src="{{asset('js/alertify.min.js')}}"></script>
+
+

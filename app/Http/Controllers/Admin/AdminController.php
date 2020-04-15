@@ -9,6 +9,8 @@ use App\Topic;
 use App\News;
 use App\User;
 
+use Yajra\Datatables\Datatables;
+
 class AdminController extends Controller
 {
   public function getIndex(Request $request) {
@@ -16,7 +18,15 @@ class AdminController extends Controller
     return view('page.admin.home',[
       'topics' => $topics
     ]);
-  }  
+  }
+
+  public function getTable() {
+    return view('page.admin._topic');
+  }
+
+  public function getTopic(Request $request) {
+    return Datatables::of(News::query())->make(true);
+  }
 
   public function getTopicStyle() {
     $datas = News::select('id', 'id_creator', 'hot_news', 'image', 'tag', 'caption', 'subtitle', 'created_at', 'updated_at')->where("id_topic", 1)->get();
@@ -82,5 +92,31 @@ class AdminController extends Controller
     ]);
   }
 
-  
+  public function updateTopic(Request $request, $id) {
+    // $this->validate($request, [
+    //   'hot_news' => 'required',
+    //   'image' => 'required',
+    //   'tag' => 'required',
+    //   'caption' => 'required',
+    //   'subtitle' => 'required'
+    // ]);
+    $tmp = News::find($id);
+    $tmp->hot_news = $request->input('hot_news');
+    $tmp->image = $request->input('image');
+    $tmp->tag = $request->input('tag');
+    $tmp->caption = $request->input('caption');
+    $tmp->subtitle = $request->input('subtitle');
+    $tmp->save();
+    // return redirect('dashboard/topic/style')->with('success', 'Data updated');
+  }
+
+  public function updateHotNews() {
+
+  }
+
+  public function deleteTopic() {
+
+  }
+
+
 }
