@@ -27,37 +27,42 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>id</th>
-              <th>id_topic</th>
-              <th>id_creator</th>
-              <th>hot_news</th>
-              <th>image</th>
-              <th>tag</th>
-              <th>caption</th>
-              <th>subtitle</th>
-              <th>created_at</th>
-              <th>updated_at</th>
+              <th>ID</th>
+              <th>Creator</th>
+              <th>Hot News</th>
+              <th>Image</th>
+              <th>Tag</th>
+              <th>Caption</th>
+              <th>Subtitle</th>
+              <th>Created At</th>
+              <th class="text-center" width="150px">
+                <a href="#" class="create-modal btn btn-success btn-sm">
+                  <i class="glyphicon glyphicon-plus"></i>
+                </a>
+              </th>
             </tr>
           </thead>
           <tfoot>
             <tr>
-              <th>id</th>
-              <th>id_topic</th>
-              <th>id_creator</th>
-              <th>hot_news</th>
-              <th>image</th>
-              <th>tag</th>
-              <th>caption</th>
-              <th>subtitle</th>
-              <th>created_at</th>
-              <th>updated_at</th>
+              <th>ID</th>
+              <th>Creator</th>
+              <th>Hot News</th>
+              <th>Image</th>
+              <th>Tag</th>
+              <th>Caption</th>
+              <th>Subtitle</th>
+              <th>Created At</th>
+              <th class="text-center" width="150px">
+                <a href="#" class="create-modal btn btn-success btn-sm">
+                  <i class="glyphicon glyphicon-plus"></i>
+                </a>
+              </th>
             </tr>
           </tfoot>
           <tbody>
             @foreach($datas as $data)
               <tr>
                 <td>{{ $data->id }}</td>
-                <td>{{ $data->id_topic }}</td>
                 <td>{{ $data->id_creator }}</td>
                 <td>{{ $data->hot_news }}</td>
                 <td>{{ $data->image }}</td>
@@ -65,7 +70,18 @@
                 <td>{{ $data->caption }}</td>
                 <td>{{ $data->subtitle }}</td>
                 <td>{{ $data->created_at }}</td>
-                <td>{{ $data->updated_at }}</td>
+                <td class="text-center">
+                  <a href="#" class="show-modal btn btn-info btn-sm">
+                    <i class="fa fa-eye"></i>
+                  </a>
+                  <a href="#" class="edit-modal btn btn-warning btn-sm">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <i class="fas fa-pencil"></i>
+                  </a>
+                  <a href="#" class="delete-modal btn btn-danger btn-sm">
+                    <i class="glyphicon glyphicon-trash"></i>
+                  </a>
+                </td>
               </tr>
             @endforeach
           </tbody>

@@ -19,7 +19,7 @@ class AdminController extends Controller
   }  
 
   public function getTopicStyle() {
-    $datas = News::where("id_topic", 1)->get();
+    $datas = News::select('id', 'id_creator', 'hot_news', 'image', 'tag', 'caption', 'subtitle', 'created_at', 'updated_at')->where("id_topic", 1)->get();
     return view('page.admin._topic',[
       'topic'  => 'Style',
       'datas' => $datas

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 12, 2020 lúc 05:13 AM
+-- Thời gian đã tạo: Th4 15, 2020 lúc 02:53 AM
 -- Phiên bản máy phục vụ: 10.1.37-MariaDB
 -- Phiên bản PHP: 5.6.39
 
@@ -255,10 +255,10 @@ INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `rule`
+-- Cấu trúc bảng cho bảng `role`
 --
 
-CREATE TABLE `rule` (
+CREATE TABLE `role` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -266,10 +266,10 @@ CREATE TABLE `rule` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `rule`
+-- Đang đổ dữ liệu cho bảng `role`
 --
 
-INSERT INTO `rule` (`id`, `name`, `created_at`, `updated_at`) VALUES
+INSERT INTO `role` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (0, 'admin', '2020-04-08 12:31:16', NULL),
 (1, 'staff', '2020-04-08 12:31:16', NULL),
 (2, 'guest', '2020-04-08 12:31:16', NULL);
@@ -353,7 +353,7 @@ INSERT INTO `topic` (`id`, `name`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `user` (
   `id` int(10) UNSIGNED NOT NULL,
-  `id_rule` int(11) NOT NULL DEFAULT '2',
+  `id_role` int(11) NOT NULL DEFAULT '2',
   `id_status` int(11) NOT NULL DEFAULT '1',
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -373,6 +373,8 @@ CREATE TABLE `user` (
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
+  `id_role` int(11) NOT NULL DEFAULT '2',
+  `id_status` int(11) NOT NULL DEFAULT '1',
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -385,8 +387,14 @@ CREATE TABLE `users` (
 -- Đang đổ dữ liệu cho bảng `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(4, 'it', 'tranvietthanhhaiit@gmail.com', '$2y$10$5OPwHrNtABIMS.TtUcp51OjuGrGgxoFflvKu9ThmI/dOWJXG5W1qO', 'yH8IyOBrwvjR54YPENXhOOR0JR0VaaK9T4f31F0JYUF6itRHY0HDgGtZluSR', '2020-04-11 19:12:22', '2020-04-11 19:28:30');
+INSERT INTO `users` (`id`, `id_role`, `id_status`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(4, 2, 1, 'it0', 'tranvietthanhhaiit@gmail.com', '$2y$10$5OPwHrNtABIMS.TtUcp51OjuGrGgxoFflvKu9ThmI/dOWJXG5W1qO', 'cBodvv0avT1Aturb2sd8gweZKCST6U5UDhYcKJ1X317os36dtkviqA2qINZZ', '2020-04-11 19:12:22', '2020-04-11 19:28:30'),
+(5, 1, 1, 'it1', 'tranvietthanhhaiit1@gmail.com', '$2y$10$5OPwHrNtABIMS.TtUcp51OjuGrGgxoFflvKu9ThmI/dOWJXG5W1qO', '0Xk7ihZxuPXeHhw65z4T7sv2bDVO8dmEi91Psc7sEeGSCM2CHJHdFgNsFjWL', NULL, NULL),
+(6, 2, 1, 'it2', 'tranvietthanhhaiit2@gmail.com', '$2y$10$5OPwHrNtABIMS.TtUcp51OjuGrGgxoFflvKu9ThmI/dOWJXG5W1qO', 'kxCQDBQSOcYfYOEAuYA523G7XqzqBs2llJvrQ5iILMhamwECYOkOEJdz3Uxl', NULL, NULL),
+(7, 2, 1, 'it3', 'tranvietthanhhaiit3@gmail.com', '$2y$10$5OPwHrNtABIMS.TtUcp51OjuGrGgxoFflvKu9ThmI/dOWJXG5W1qO', 'kxCQDBQSOcYfYOEAuYA523G7XqzqBs2llJvrQ5iILMhamwECYOkOEJdz3Uxl', NULL, NULL),
+(8, 2, 1, 'it4', 'tranvietthanhhaiit4@gmail.com', '$2y$10$5OPwHrNtABIMS.TtUcp51OjuGrGgxoFflvKu9ThmI/dOWJXG5W1qO', 'kxCQDBQSOcYfYOEAuYA523G7XqzqBs2llJvrQ5iILMhamwECYOkOEJdz3Uxl', NULL, NULL),
+(9, 2, 1, 'it5', 'tranvietthanhhaiit5@gmail.com', '$2y$10$5OPwHrNtABIMS.TtUcp51OjuGrGgxoFflvKu9ThmI/dOWJXG5W1qO', 'kxCQDBQSOcYfYOEAuYA523G7XqzqBs2llJvrQ5iILMhamwECYOkOEJdz3Uxl', NULL, NULL),
+(10, 2, 1, 'it6', 'tranvietthanhhaiit6@gmail.com', '$2y$10$5OPwHrNtABIMS.TtUcp51OjuGrGgxoFflvKu9ThmI/dOWJXG5W1qO', 'kxCQDBQSOcYfYOEAuYA523G7XqzqBs2llJvrQ5iILMhamwECYOkOEJdz3Uxl', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -482,9 +490,9 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Chỉ mục cho bảng `rule`
+-- Chỉ mục cho bảng `role`
 --
-ALTER TABLE `rule`
+ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -562,7 +570,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `video`
