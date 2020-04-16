@@ -28,6 +28,23 @@ class AdminController extends Controller
     return Datatables::of(News::query())->make(true);
   }
 
+  public function topicUpdate(Request $request) {
+    // return Datatables::of(News::query())->make(true);
+    $input = $request->all();
+    $tmp = News::find($input['id']);
+    $tmp->hot_news = $input['hot_news'];
+    $tmp->image = $input['image'];
+    $tmp->tag = $input['tag'];
+    $tmp->caption = $input['caption'];
+    $tmp->subtitle = $input['subtitle'];
+    $tmp->save();
+
+    return response()->json([
+        'error' => false,
+        // 'task'  => $tmp,
+    ], 200);
+  }
+
   public function getTopicStyle() {
     $datas = News::select('id', 'id_creator', 'hot_news', 'image', 'tag', 'caption', 'subtitle', 'created_at', 'updated_at')->where("id_topic", 1)->get();
     return view('page.admin._topic',[

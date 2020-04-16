@@ -74,6 +74,12 @@ Route::group(["namespace" => "Admin"], function() {
         ]);
 
         Route::group(["prefix" => "topic"], function () {
+
+            Route::put("update", [
+                "as" => "topic.update",
+                "uses" => "AdminController@topicUpdate"
+            ]);
+
             Route::get("style", [
                 "as" => "topic-style",
                 "uses" => "AdminController@getTopicStyle"

@@ -5,7 +5,7 @@
 <!-- Custom styles for this page -->
 <link href="{{asset('datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 <!-- <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css"> -->
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 @endsection
 
@@ -61,27 +61,27 @@
           </tfoot>
           <tbody>
             @foreach($datas as $data)
-              <tr>
-                <td>{{ $data->id }}</td>
-                <td>{{ $data->id_creator }}</td>
-                <td>{{ $data->hot_news }}</td>
-                <td>{{ $data->image }}</td>
-                <td>{{ $data->tag }}</td>
-                <td>{{ $data->caption }}</td>
-                <td>{{ $data->subtitle }}</td>
-                <td>{{ $data->created_at }}</td>
-                <td class="text-center">
-                  <a class="show-modal btn btn-info btn-lg">
-                    <i class="fa fa-eye"></i>
-                  </a>
-                  <a class="edit-modal btn btn-warning btn-lg edit">
-                    <i class="glyphicon glyphicon-pencil"></i>
-                  </a>
-                  <a class="delete-modal btn btn-danger btn-lg">
-                    <i class="glyphicon glyphicon-trash"></i>
-                  </a>
-                </td>
-              </tr>
+            <tr>
+              <td>{{ $data->id }}</td>
+              <td>{{ $data->id_creator }}</td>
+              <td>{{ $data->hot_news }}</td>
+              <td>{{ $data->image }}</td>
+              <td>{{ $data->tag }}</td>
+              <td>{{ $data->caption }}</td>
+              <td>{{ $data->subtitle }}</td>
+              <td>{{ $data->created_at }}</td>
+              <td class="text-center">
+                <a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
+                  <i class="fa fa-eye"></i>
+                </a>
+                <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg edit">
+                  <i class="glyphicon glyphicon-pencil"></i>
+                </a>
+                <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg">
+                  <i class="glyphicon glyphicon-trash"></i>
+                </a>
+              </td>
+            </tr>
             @endforeach
           </tbody>
         </table>
@@ -98,47 +98,47 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button"class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
       <!-- <form id="editForm" action="/topic" method="POST"> -->
-        {{ csrf_field() }}
-        {{ method_field('PUT') }}
+      {{ csrf_field() }}
+      {{ method_field('PUT') }}
 
-        <div class="modal-body">
-          <div class="form-group">
-            <label>Hot News</label>
-            <input type="text" name="hot_news" id="hot_news" class="form-control" placeholder="Hot News">
-          </div>
-
-          <div class="form-group">
-            <label>Image</label>
-            <input type="text" name="image" id="image" class="form-control" placeholder="Image">
-          </div>
-
-          <div class="form-group">
-            <label>Tag</label>
-            <input type="text" name="tag" id="tag" class="form-control" placeholder="Tag">
-          </div>
-
-          <div class="form-group">
-            <label>Caption</label>
-            <input type="text" name="caption" id="caption" class="form-control" placeholder="Caption">
-          </div>
-
-          <div class="form-group">
-            <label>Subtitle</label>
-            <input type="text" name="subtitle" id="subtitle" class="form-control" placeholder="Subtitle">
-          </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Hot News</label>
+          <input type="text" name="hot_news" id="hot_news" class="form-control" placeholder="Hot News">
         </div>
 
-
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary update">Update data</button>
+        <div class="form-group">
+          <label>Image</label>
+          <input type="text" name="image" id="image" class="form-control" placeholder="Image">
         </div>
+
+        <div class="form-group">
+          <label>Tag</label>
+          <input type="text" name="tag" id="tag" class="form-control" placeholder="Tag">
+        </div>
+
+        <div class="form-group">
+          <label>Caption</label>
+          <input type="text" name="caption" id="caption" class="form-control" placeholder="Caption">
+        </div>
+
+        <div class="form-group">
+          <label>Subtitle</label>
+          <input type="text" name="subtitle" id="subtitle" class="form-control" placeholder="Subtitle">
+        </div>
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary update">Update data</button>
+      </div>
 
       <!-- </form> -->
 
@@ -163,27 +163,81 @@
   //Start Edit Record
   table.on('click', 'a.edit', function() {
     $tr = $(this).closest('tr');
-    if($($tr).hasClass('chlid')) {
+    if ($($tr).hasClass('chlid')) {
       $tr = $tr.prev('.parent');
-    }
-    
+    };
+
     var data = table.row($tr).data();
-    console.log(data);
     $("input#hot_news").val(data[2]);
     $("input#image").val(data[3]);
     $("input#tag").val(data[4]);
     $("input#caption").val(data[5]);
     $("input#subtitle").val(data[6]);
-    
+
     // $("#editForm").attr('action', '/topic'+data[0]);
     $("#editModal").modal('show');
 
   });
   //End Edit Record
 
+  //Start Setup ajax
+  $(document).ready(function() {
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('[name=csrf-token]').attr('content')
+      }
+    });
+  });
+  //End Setup ajax
+
   //If click button update
-  $("button.update").click(function() {
-    alertify.success('Success message');
+  $("button.update").click(function(event) {
+    event.preventDefault();
+    var data = table.row($tr).data();
+    let id = data[0];
+    let hot_news = $("input#hot_news").val();
+    let image = $("input#image").val();
+    let tag = $("input#tag").val();
+    let caption = $("input#caption").val();
+    let subtitle = $("input#subtitle").val();
+
+    $.ajax({
+      url: `{{route('topic.update')}}`,
+      method: 'PUT',
+      data: {
+        id: id,
+        hot_news: hot_news,
+        image: image,
+        tag: tag,
+        caption: caption,
+        subtitle: subtitle
+      },
+      success: function(response) {
+        if (response.error == false) {
+          $("#editModal").modal('hide');
+          alertify.notify('Update successfully', 'success', 7);
+        }
+
+        /**
+         * Kiểu mặc định trả về là dạng String, bạn dùng hàm parseJSON để phân tích dữ liệu trả về
+         * có 2 cách parse JSON là : JSON.parse() và $.parseJSON();
+         * 1. var getData = JSON.parse(string);
+         * 2. var getData = $.parseJSON(string);
+         **/
+        // console.log(string);
+        // var getData = $.parseJSON(string);
+        //input dữ liệu lấy về từ server vào textbox
+        // $('#txt_username').val(getData.username);
+        // $('#txt_password').val(getData.password);
+        // $('#txt_email').val(getData.email);
+
+        //Trả loading về trạng thái ban đầu
+        // $('#loading').html('');
+      },
+      error: function() {
+
+      }
+    });
   });
 </script>
 
