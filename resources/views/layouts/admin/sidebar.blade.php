@@ -45,7 +45,7 @@
       <div class="bg-white py-2 collapse-inner rounded">
         @foreach ($topics as $topic)
           <!-- <a href="dashboard/table" class="collapse-item" style="text-transform: capitalize">{{ $topic->name }}</a> -->
-          <a href="dashboard/topic/{{ $topic->name }}" class="collapse-item" id="topic-{{ $topic->name }}" style="text-transform: capitalize">{{ $topic->name }}</a>
+          <a href="dashboard/news/{{ $topic->name }}" class="collapse-item" id="topic-{{ $topic->name }}" style="text-transform: capitalize">{{ $topic->name }}</a>
         @endforeach
       </div>
     </div>

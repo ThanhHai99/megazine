@@ -19,3 +19,4 @@
 
 <link rel="stylesheet" href="{{asset('css/alertify.min.css')}}" />
 <link rel="stylesheet" href="{{asset('css/themes/default.min.css')}}" />
+

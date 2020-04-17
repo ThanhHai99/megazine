@@ -28,8 +28,16 @@ class AdminController extends Controller
     return Datatables::of(News::query())->make(true);
   }
 
-  public function topicUpdate(Request $request) {
+  public function newsUpdate(Request $request) {
     // return Datatables::of(News::query())->make(true);
+    $this->validate($request, [
+      'hot_news' => 'required',
+      'image' => 'required',
+      'tag' => 'required',
+      'caption' => 'required',
+      'subtitle' => 'required'
+    ]);
+
     $input = $request->all();
     $tmp = News::find($input['id']);
     $tmp->hot_news = $input['hot_news'];
@@ -45,9 +53,45 @@ class AdminController extends Controller
     ], 200);
   }
 
+
+  public function newsInsert(Request $request) {
+    $this->validate($request, [
+      'id_creator' => 'required',
+      'hot_news' => 'required',
+      'image' => 'required',
+      'tag' => 'required',
+      'caption' => 'required',
+      'subtitle' => 'required'
+    ]);
+    $new = new News();
+    $input = $request->all();
+
+    $new->id_creator = $input['id_creator'];
+    $new->hot_news = $input['hot_news'];
+    $new->image = $input['image'];
+    $new->tag = $input['tag'];
+    $new->caption = $input['caption'];
+    $new->subtitle = $input['subtitle'];
+    $new->save();
+
+    return response()->json([
+      'error' => false,
+      'new'  => $new,
+    ], 200);
+  }
+
+  public function newsRemove(Request $request) {
+    $input = $request->all();
+    News::where('id', $input['id'])->delete();
+    return response()->json([
+      'error' => false,
+      // 'id'  => id,
+    ], 200);
+  }
+
   public function getTopicStyle() {
     $datas = News::select('id', 'id_creator', 'hot_news', 'image', 'tag', 'caption', 'subtitle', 'created_at', 'updated_at')->where("id_topic", 1)->get();
-    return view('page.admin._topic',[
+    return view('page.admin._news',[
       'topic'  => 'Style',
       'datas' => $datas
     ]);
@@ -55,7 +99,7 @@ class AdminController extends Controller
 
   public function getTopicFashion() {
     $datas = News::where("id_topic", 2)->get();
-    return view('page.admin._topic',[
+    return view('page.admin._news',[
       'topic'  => 'Fashion',
       'datas' => $datas
     ]);
@@ -63,7 +107,7 @@ class AdminController extends Controller
 
   public function getTopicTravel() {
     $datas = News::where("id_topic", 3)->get();
-    return view('page.admin._topic',[
+    return view('page.admin._news',[
       'topic'  => 'Travel',
       'datas' => $datas
     ]);
@@ -71,7 +115,7 @@ class AdminController extends Controller
 
   public function getTopicSports() {
     $datas = News::where("id_topic", 4)->get();
-    return view('page.admin._topic',[
+    return view('page.admin._news',[
       'topic'  => 'Sports',
       'datas' => $datas
     ]);
@@ -79,7 +123,7 @@ class AdminController extends Controller
 
   public function getTopicVideo() {
     $datas = News::where("id_topic", 5)->get();
-    return view('page.admin._topic',[
+    return view('page.admin._news',[
       'topic'  => 'Video',
       'datas' => $datas
     ]);
@@ -87,7 +131,7 @@ class AdminController extends Controller
 
   public function getTopicArchives() {
     $datas = News::where("id_topic", 6)->get();
-    return view('page.admin._topic',[
+    return view('page.admin._news',[
       'topic'  => 'Archives',
       'datas' => $datas
     ]);
