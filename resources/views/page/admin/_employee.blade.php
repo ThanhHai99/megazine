@@ -1,15 +1,4 @@
 @extends('layouts.admin.admin')
-
-@section('head-table')
-
-<!-- Custom styles for this page -->
-<link href="{{asset('datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-<!-- <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css"> -->
-<meta name="csrf-token" content="{{ csrf_token() }}"> <!--pass ajax -->
-
-
-@endsection
-
 @section('content')
 
 <div class="container-fluid">
@@ -110,17 +99,6 @@
 <!-- End Edit Modal -->
 
 @section('script-table')
-
-<!-- Page level plugins -->
-<script src="{{asset('datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('datatables/dataTables.bootstrap4.min.js')}}"></script>
-
-<!-- Page level custom scripts -->
-<!-- <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script> -->
-<script src="{{asset('js/demo/datatables-demo.js')}}"></script>
-
-
-
 <script>
   let table = $('#dataTable').DataTable(); //Global env
   //Start Edit Record

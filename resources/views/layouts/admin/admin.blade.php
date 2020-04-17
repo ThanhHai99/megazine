@@ -3,7 +3,7 @@
 
 <head>
   @include('layouts.admin.head')
-  @yield('head-table')
+  <meta name="csrf-token" content="{{ csrf_token() }}"> <!--pass ajax -->
 </head>
 
 <body id="page-top">
@@ -66,6 +66,6 @@
 
   @include('layouts.admin.script')
   @yield('script-home')
-  @yield('script-table')
+  @stack('script-table')
 </body>
 </html>

@@ -15,3 +15,9 @@
 <script src="{{asset('js/alertify.min.js')}}"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+
+<!-- Page level plugins -->
+<script src="{{asset('datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('datatables/dataTables.bootstrap4.min.js')}}"></script>

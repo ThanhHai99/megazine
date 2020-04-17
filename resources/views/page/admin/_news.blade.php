@@ -1,13 +1,4 @@
 @extends('layouts.admin.admin')
-
-@section('head-table')
-
-<!-- Custom styles for this page -->
-<link href="{{asset('datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-<meta name="csrf-token" content="{{ csrf_token() }}"> <!--pass ajax -->
-
-@endsection
-
 @section('content')
 
 <div class="container-fluid">
@@ -184,14 +175,7 @@
 </div>
 <!-- End Insert Modal -->
 
-@section('script-table')
-
-<!-- Page level plugins -->
-<script src="{{asset('datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('datatables/dataTables.bootstrap4.min.js')}}"></script>
-
-<!-- Page level custom scripts -->
-<script src="{{asset('js/demo/datatables-demo.js')}}"></script>
+@push('script-table')
 
 <script>
   let table = $('#dataTable').DataTable(); //Global env
@@ -354,4 +338,4 @@
 
 </script>
 
-@endsection
+@endpush
