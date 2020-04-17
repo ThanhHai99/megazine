@@ -20,10 +20,6 @@ class AdminController extends Controller
     ]);
   }
 
-  public function getTable() {
-    return view('page.admin._topic');
-  }
-
   public function getTopic(Request $request) {
     return Datatables::of(News::query())->make(true);
   }
@@ -56,6 +52,7 @@ class AdminController extends Controller
 
   public function newsInsert(Request $request) {
     $this->validate($request, [
+      'id_topic' => 'required',
       'id_creator' => 'required',
       'hot_news' => 'required',
       'image' => 'required',
@@ -63,20 +60,23 @@ class AdminController extends Controller
       'caption' => 'required',
       'subtitle' => 'required'
     ]);
-    $new = new News();
+    
     $input = $request->all();
-
-    $new->id_creator = $input['id_creator'];
-    $new->hot_news = $input['hot_news'];
-    $new->image = $input['image'];
-    $new->tag = $input['tag'];
-    $new->caption = $input['caption'];
-    $new->subtitle = $input['subtitle'];
-    $new->save();
+    
+    $tmp = new News;
+    $tmp->id_topic = $input['id_topic'];
+    $tmp->id_topic = $input['id_topic'];
+    $tmp->id_creator = $input['id_creator'];
+    $tmp->hot_news = $input['hot_news'];
+    $tmp->image = $input['image'];
+    $tmp->tag = $input['tag'];
+    $tmp->caption = $input['caption'];
+    $tmp->subtitle = $input['subtitle'];
+    $tmp->save();
 
     return response()->json([
       'error' => false,
-      'new'  => $new,
+      // 'new'  => $tmp
     ], 200);
   }
 
@@ -89,7 +89,43 @@ class AdminController extends Controller
     ], 200);
   }
 
-  public function getTopicStyle() {
+  public function employeeUpdate(Request $request) {
+    $this->validate($request, [
+      'name' => 'required',
+      'email' => 'required'
+    ]);
+
+    $input = $request->all();
+    $tmp = User::find($input['id']);
+    $tmp->name = $input['name'];
+    $tmp->email = $input['email'];
+    $tmp->save();
+
+    return response()->json([
+        'error' => false,
+        // 'task'  => $tmp,
+    ], 200);
+  }
+
+  public function employeeUpdateRole(Request $request) {
+
+  }
+
+  public function employeeUpdateStatus(Request $request) {
+
+  }
+
+  public function employeeRemove(Request $request) {
+    $input = $request->all();
+    User::where('id', $input['id'])->delete();
+    return response()->json([
+      'error' => false,
+      // 'id'  => id,
+    ], 200);
+  }
+
+
+  public function getTopicStyle(Request $request) {
     $datas = News::select('id', 'id_creator', 'hot_news', 'image', 'tag', 'caption', 'subtitle', 'created_at', 'updated_at')->where("id_topic", 1)->get();
     return view('page.admin._news',[
       'topic'  => 'Style',
@@ -97,7 +133,7 @@ class AdminController extends Controller
     ]);
   }
 
-  public function getTopicFashion() {
+  public function getTopicFashion(Request $request) {
     $datas = News::where("id_topic", 2)->get();
     return view('page.admin._news',[
       'topic'  => 'Fashion',
@@ -105,7 +141,7 @@ class AdminController extends Controller
     ]);
   }
 
-  public function getTopicTravel() {
+  public function getTopicTravel(Request $request) {
     $datas = News::where("id_topic", 3)->get();
     return view('page.admin._news',[
       'topic'  => 'Travel',
@@ -113,7 +149,7 @@ class AdminController extends Controller
     ]);
   }
 
-  public function getTopicSports() {
+  public function getTopicSports(Request $request) {
     $datas = News::where("id_topic", 4)->get();
     return view('page.admin._news',[
       'topic'  => 'Sports',
@@ -121,7 +157,7 @@ class AdminController extends Controller
     ]);
   }
 
-  public function getTopicVideo() {
+  public function getTopicVideo(Request $request) {
     $datas = News::where("id_topic", 5)->get();
     return view('page.admin._news',[
       'topic'  => 'Video',
@@ -129,7 +165,7 @@ class AdminController extends Controller
     ]);
   }
 
-  public function getTopicArchives() {
+  public function getTopicArchives(Request $request) {
     $datas = News::where("id_topic", 6)->get();
     return view('page.admin._news',[
       'topic'  => 'Archives',
@@ -137,7 +173,7 @@ class AdminController extends Controller
     ]);
   }
 
-  public function getEmpoyeeStaff() {
+  public function getEmpoyeeStaff(Request $request) {
     $datas = User::where("id_role", 1)->get();
     return view('page.admin._employee',[
       'text'  => 'Staff',
@@ -145,7 +181,7 @@ class AdminController extends Controller
     ]);
   }
 
-  public function getNormalUser() {
+  public function getNormalUser(Request $request) {
     $datas = User::where("id_role", 2)->get();
     return view('page.admin._employee',[
       'text'  => 'Normal Users',
@@ -171,11 +207,11 @@ class AdminController extends Controller
     // return redirect('dashboard/topic/style')->with('success', 'Data updated');
   }
 
-  public function updateHotNews() {
+  public function updateHotNews(Request $request) {
 
   }
 
-  public function deleteTopic() {
+  public function deleteTopic(Request $request) {
 
   }
 

@@ -28,34 +28,22 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>id</th>
-              <th>id_role</th>
-              <th>id_status</th>
-              <th>name</th>
-              <th>email</th>
-              <th>created_at</th>
-              <th>updated_at</th>
-              <th class="text-center">
-                <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg insert">
-                  <i class="glyphicon glyphicon-plus"></i>
-                </a>
-              </th>
+              <th>ID</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
-              <th>id</th>
-              <th>id_role</th>
-              <th>id_status</th>
-              <th>name</th>
-              <th>email</th>
-              <th>created_at</th>
-              <th>updated_at</th>
-              <th class="text-center">
-                <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg insert">
-                  <i class="glyphicon glyphicon-plus"></i>
-                </a>
-              </th>
+              <th>ID</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Action</th>
             </tr>
           </tfoot>
           <tbody>
@@ -66,8 +54,6 @@
                 <td>{{ $data->id_status }}</td>
                 <td>{{ $data->name }}</td>
                 <td>{{ $data->email }}</td>
-                <td>{{ $data->created_at }}</td>
-                <td>{{ $data->updated_at }}</td>
                 <td class="text-center">
                   <a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
                     <i class="fa fa-eye"></i>
@@ -123,39 +109,6 @@
 </div>
 <!-- End Edit Modal -->
 
-<!-- Start Insert Modal  -->
-<div class="modal fade" id="insertModalEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add employee</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      <div class="modal-body">
-        <div class="form-group">
-          <label>Name</label>
-          <input type="text" name="name" id="insert_name" class="form-control" placeholder="Name">
-        </div>
-
-        <div class="form-group">
-          <label>Email</label>
-          <input type="text" name="email" id="insert_email" class="form-control" placeholder="Email">
-        </div>
-      </div>      
-
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-success update">Create</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- End Insert Modal -->
-
 @section('script-table')
 
 <!-- Page level plugins -->
@@ -169,7 +122,7 @@
 
 
 <script>
-  var table = $('#dataTable').DataTable(); //Global env
+  let table = $('#dataTable').DataTable(); //Global env
   //Start Edit Record
   table.on('click', 'a.edit', function() {
     $tr = $(this).closest('tr');
@@ -184,12 +137,6 @@
 
   });
   //End Edit Record
-
-  //Start Insert Record
-  $("a.insert").on('click', function() {
-    $("#insertModalEmployee").modal('show');
-  });
-  //End Insert Record
 
   //Start Setup ajax
   $(document).ready(function() {
@@ -206,22 +153,16 @@
     event.preventDefault();
     let data = table.row($tr).data();
     let id = data[0];
-    let hot_news = $("#editModalEmployee").find("#update_hot_news").val();
-    let image = $("#editModalEmployee").find("#update_image").val();
-    let tag = $("#editModalEmployee").find("#update_tag").val();
-    let caption = $("#editModalEmployee").find("#update_caption").val();
-    let subtitle = $("#editModalEmployee").find("#update_subtitle").val();
-
+    let name = $("#editModalEmployee").find("#update_name").val();
+    let email = $("#editModalEmployee").find("#update_email").val();
+    
     $.ajax({
-      url: `{{route('news.update')}}`,
+      url: `{{route('employee.update')}}`,
       method: 'PUT',
       data: {
         id: id,
-        hot_news: hot_news,
-        image: image,
-        tag: tag,
-        caption: caption,
-        subtitle: subtitle
+        name: name,
+        email: email
       },
       success: function(response) {
         if (response.error == false) {
@@ -235,40 +176,6 @@
     });
   });
   //End click button update
-
-  //Click button create
-  $("button.insert").click(function(event) {
-    event.preventDefault();
-    let id_creator = 0;
-    let hot_news = $("#insertModalEmployee").find("#insert_hot_news").val();
-    let image = $("#insertModalEmployee").find("#insert_image").val();
-    let tag = $("#insertModalEmployee").find("#insert_tag").val();
-    let caption = $("#insertModalEmployee").find("#insert_caption").val();
-    let subtitle = $("#insertModalEmployee").find("#insert_subtitle").val();
-
-    $.ajax({
-      url: `{{route('news.insert')}}`,
-      method: 'PUT',
-      data: {
-        id_creator: id_creator,
-        hot_news: hot_news,
-        image: image,
-        tag: tag,
-        caption: caption,
-        subtitle: subtitle
-      },
-      success: function(response) {
-        if (response.error == false) {
-          $("#insertModalEmployee").modal('hide');
-          alertify.notify('Create successfully', 'success', 7);
-        }
-      },
-      error: function() {
-        alertify.notify('An error occurred', 'error', 7);
-      }
-    });
-  });
-  //End click button create
 
   //Click remove button
   table.on('click', 'a.remove', function(event) {
@@ -291,7 +198,7 @@
         let data = table.row($tr).data();
         let id = data[0];
         $.ajax({
-          url: `{{route('news.remove')}}`,
+          url: `{{route('employee.remove')}}`,
           method: 'PUT',
           data: {
             id: id

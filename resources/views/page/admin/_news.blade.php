@@ -33,7 +33,6 @@
               <th>Tag</th>
               <th>Caption</th>
               <th>Subtitle</th>
-              <th>Created At</th>
               <th class="text-center">
                 <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg insert">
                   <i class="glyphicon glyphicon-plus"></i>
@@ -50,7 +49,6 @@
               <th>Tag</th>
               <th>Caption</th>
               <th>Subtitle</th>
-              <th>Created At</th>
               <th class="text-center">
                 <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg insert">
                   <i class="glyphicon glyphicon-plus"></i>
@@ -68,7 +66,6 @@
               <td>{{ $data->tag }}</td>
               <td>{{ $data->caption }}</td>
               <td>{{ $data->subtitle }}</td>
-              <td>{{ $data->created_at }}</td>
               <td class="text-center">
                 <a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
                   <i class="fa fa-eye"></i>
@@ -180,7 +177,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-success update">Create</button>
+        <button type="submit" class="btn btn-success insert">Create</button>
       </div>
     </div>
   </div>
@@ -197,7 +194,7 @@
 <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
 
 <script>
-  var table = $('#dataTable').DataTable(); //Global env
+  let table = $('#dataTable').DataTable(); //Global env
   //Start Edit Record
   table.on('click', 'a.edit', function() {
     $tr = $(this).closest('tr');
@@ -271,6 +268,7 @@
   //Click button create
   $("button.insert").click(function(event) {
     event.preventDefault();
+    let id_topic = 0;
     let id_creator = 0;
     let hot_news = $("#insertModalNews").find("#insert_hot_news").val();
     let image = $("#insertModalNews").find("#insert_image").val();
@@ -282,6 +280,7 @@
       url: `{{route('news.insert')}}`,
       method: 'PUT',
       data: {
+        id_topic: id_topic,
         id_creator: id_creator,
         hot_news: hot_news,
         image: image,
@@ -294,9 +293,11 @@
           $("#insertModalNews").modal('hide');
           alertify.notify('Create successfully', 'success', 7);
         }
+        console.log(response);
       },
-      error: function() {
-        alertify.notify('An error occurred', 'error', 7);
+      error: function(error) {
+        // alertify.notify('An error occurred', 'error', 7);
+        console.log(error);
       }
     });
   });

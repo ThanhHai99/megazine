@@ -131,27 +131,27 @@ Route::group(["namespace" => "Admin"], function() {
         Route::group(["prefix" => "employee"], function () {
             Route::put("update", [
                 "as" => "employee.update",
-                "uses" => "AdminController@newsUpdate"
+                "uses" => "AdminController@employeeUpdate"
             ]);
 
             Route::put("update_hot_news", [
                 "as" => "employee.update_hot_news",
-                "uses" => "AdminController@newsUpdateHotNews"
+                "uses" => "AdminController@employeeUpdateRole"
             ]);
 
             Route::put("update_status", [
                 "as" => "employee.update_status",
-                "uses" => "AdminController@newsUpdateStatus"
+                "uses" => "AdminController@employeeUpdateStatus"
             ]);            
 
             Route::put("insert", [
                 "as" => "employee.insert",
-                "uses" => "AdminController@newsInsert"
+                "uses" => "AdminController@employeeInsert"
             ]);
 
             Route::put("remove", [
                 "as" => "employee.remove",
-                "uses" => "AdminController@newsRemove"
+                "uses" => "AdminController@employeeRemove"
             ]);
 
             Route::get("staff", [
