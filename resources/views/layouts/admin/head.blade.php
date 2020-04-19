@@ -17,10 +17,16 @@
 <!-- Custom styles for this template-->
 <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
 
+<!-- Newest -->
+<script src="{{asset('js/app.js')}}"></script>
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"> 
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 <link rel="stylesheet" href="{{asset('css/alertify.min.css')}}" />
 <link rel="stylesheet" href="{{asset('css/themes/default.min.css')}}" />
 
 <!-- temp -->
-<link href="{{asset('datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+<!-- <link href="{{asset('datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet"> -->
 <!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css"> -->
+
+

@@ -14,13 +14,62 @@ use Yajra\Datatables\Datatables;
 class AdminController extends Controller
 {
   public function getIndex(Request $request) {
-    $topics = Topic::all();
-    return view('page.admin.home',[
-      'topics' => $topics
-    ]);
+    // $topics = Topic::all();
+    return view('page.admin._table',[
+      // 'topics' => $topics
+    ]);    
+  }
+
+  public function getEmployeeStaff(Request $request) {
+    $query=User::where('id_role', 1);
+    return Datatables::of($query)->make(true);
+  }
+
+  public function getEmployeeNormalUser(Request $request) {
+    $query=User::where('id_role', 2);
+    return Datatables::of($query)->make(true);
+  }
+
+  public function getNewsStyle(Request $request) {
+    $query=News::where('id_topic', 1);
+    return Datatables::of($query)->make(true);
+  }
+
+  public function getNewsFashion(Request $request) {
+    $query=News::where('id_topic', 2);
+    return Datatables::of($query)->make(true);
+  }
+
+  public function getNewsTravel(Request $request) {
+    $query=News::where('id_topic', 3);
+    return Datatables::of($query)->make(true);
+  }
+
+  public function getNewsSports(Request $request) {
+    $query=News::where('id_topic', 4);
+    return Datatables::of($query)->make(true);
+  }
+
+  public function getNewsVideo(Request $request) {
+    $query=News::where('id_topic', 5);
+    return Datatables::of($query)->make(true);
+  }
+
+  public function getNewsArchives(Request $request) {
+    $query=News::where('id_topic', 6);
+    return Datatables::of($query)->make(true);
   }
 
   public function getTopic(Request $request) {
+    return Datatables::of(News::query())->make(true);
+  }
+
+
+
+  public function newsFetch(Request $request) {
+    // $input = $request->all();
+    // $class = ucfirst($input['class']);
+    // $query = News::query();
     return Datatables::of(News::query())->make(true);
   }
 

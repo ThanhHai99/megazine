@@ -63,109 +63,162 @@ Route::group(["namespace" => "Guest"], function() {
 Route::group(["namespace" => "Admin"], function() {
     Route::group(["prefix" => "dashboard"], function () {
 
+        // Start get
         Route::get("index", [
-            "as" => "admin-index",
+            "as" => "dashboard.index",
             "uses" => "AdminController@getIndex"
         ]);
 
-        Route::group(["prefix" => "news"], function () {
+        Route::get("employee/staff", [
+            "as" => "employee.staff",
+            "uses" => "AdminController@getEmployeeStaff"
+        ]);
 
-            Route::put("update", [
-                "as" => "news.update",
-                "uses" => "AdminController@newsUpdate"
-            ]);
+        Route::get("employee/normal_user", [
+            "as" => "employee.normal_user",
+            "uses" => "AdminController@getEmployeeNormalUser"
+        ]);
 
-            Route::put("update_hot_news", [
-                "as" => "news.update_hot_news",
-                "uses" => "AdminController@newsUpdateHotNews"
-            ]);
+        Route::get("news/style", [
+            "as" => "news.style",
+            "uses" => "AdminController@getNewsStyle"
+        ]);
+        
+        Route::get("news/fashion", [
+            "as" => "news.fashion",
+            "uses" => "AdminController@getNewsFashion"
+        ]);
 
-            Route::put("update_status", [
-                "as" => "news.update_status",
-                "uses" => "AdminController@newsUpdateStatus"
-            ]);            
+        Route::get("news/travel", [
+            "as" => "news.travel",
+            "uses" => "AdminController@getNewsTravel"
+        ]);
 
-            Route::put("insert", [
-                "as" => "news.insert",
-                "uses" => "AdminController@newsInsert"
-            ]);
+        Route::get("news/sports", [
+            "as" => "news.sports",
+            "uses" => "AdminController@getNewsSports"
+        ]);
 
-            Route::put("remove", [
-                "as" => "news.remove",
-                "uses" => "AdminController@newsRemove"
-            ]);
+        Route::get("news/video", [
+            "as" => "news.video",
+            "uses" => "AdminController@getNewsVideo"
+        ]);
+
+        Route::get("news/archives", [
+            "as" => "news.archives",
+            "uses" => "AdminController@getNewsArchives"
+        ]);
+        // End get
+
+        // Start CRUD
+
+        // Route::group(["prefix" => "news"], function () {
+
+        //     Route::get("fetch", [
+        //         "as" => "news.fetch",
+        //         "uses" => "AdminController@newsFetch"
+        //     ]);
+
+        //     Route::put("update", [
+        //         "as" => "news.update",
+        //         "uses" => "AdminController@newsUpdate"
+        //     ]);
+
+        //     Route::put("update_hot_news", [
+        //         "as" => "news.update_hot_news",
+        //         "uses" => "AdminController@newsUpdateHotNews"
+        //     ]);
+
+        //     Route::put("update_status", [
+        //         "as" => "news.update_status",
+        //         "uses" => "AdminController@newsUpdateStatus"
+        //     ]);            
+
+        //     Route::put("insert", [
+        //         "as" => "news.insert",
+        //         "uses" => "AdminController@newsInsert"
+        //     ]);
+
+        //     Route::put("remove", [
+        //         "as" => "news.remove",
+        //         "uses" => "AdminController@newsRemove"
+        //     ]);
 
 
 
-            Route::get("style", [
-                "as" => "topic-style",
-                "uses" => "AdminController@getTopicStyle"
-            ]);
+        //     Route::get("style", [
+        //         "as" => "topic-style",
+        //         "uses" => "AdminController@getTopicStyle"
+        //     ]);
 
-            Route::get("fashion", [
-                "as" => "topic-fashion",
-                "uses" => "AdminController@getTopicFashion"
-            ]);
+        //     Route::get("fashion", [
+        //         "as" => "topic-fashion",
+        //         "uses" => "AdminController@getTopicFashion"
+        //     ]);
 
-            Route::get("travel", [
-                "as" => "topic-travel",
-                "uses" => "AdminController@getTopicTravel"
-            ]);
+        //     Route::get("travel", [
+        //         "as" => "topic-travel",
+        //         "uses" => "AdminController@getTopicTravel"
+        //     ]);
 
-            Route::get("sports", [
-                "as" => "topic-sports",
-                "uses" => "AdminController@getTopicSports"
-            ]);
+        //     Route::get("sports", [
+        //         "as" => "topic-sports",
+        //         "uses" => "AdminController@getTopicSports"
+        //     ]);
 
-            Route::get("video", [
-                "as" => "topic-video",
-                "uses" => "AdminController@getTopicVideo"
-            ]);
+        //     Route::get("video", [
+        //         "as" => "topic-video",
+        //         "uses" => "AdminController@getTopicVideo"
+        //     ]);
 
-            Route::get("archives", [
-                "as" => "topic-archives",
-                "uses" => "AdminController@getTopicArchives"
-            ]);
-        });
+        //     Route::get("archives", [
+        //         "as" => "topic-archives",
+        //         "uses" => "AdminController@getTopicArchives"
+        //     ]);
+        // });
 
-        Route::group(["prefix" => "employee"], function () {
-            Route::put("update", [
-                "as" => "employee.update",
-                "uses" => "AdminController@employeeUpdate"
-            ]);
+        // Route::group(["prefix" => "employee"], function () {
+        //     Route::put("update", [
+        //         "as" => "employee.update",
+        //         "uses" => "AdminController@employeeUpdate"
+        //     ]);
 
-            Route::put("update_hot_news", [
-                "as" => "employee.update_hot_news",
-                "uses" => "AdminController@employeeUpdateRole"
-            ]);
+        //     Route::put("update_hot_news", [
+        //         "as" => "employee.update_hot_news",
+        //         "uses" => "AdminController@employeeUpdateRole"
+        //     ]);
 
-            Route::put("update_status", [
-                "as" => "employee.update_status",
-                "uses" => "AdminController@employeeUpdateStatus"
-            ]);            
+        //     Route::put("update_status", [
+        //         "as" => "employee.update_status",
+        //         "uses" => "AdminController@employeeUpdateStatus"
+        //     ]);            
 
-            Route::put("insert", [
-                "as" => "employee.insert",
-                "uses" => "AdminController@employeeInsert"
-            ]);
+        //     Route::put("insert", [
+        //         "as" => "employee.insert",
+        //         "uses" => "AdminController@employeeInsert"
+        //     ]);
 
-            Route::put("remove", [
-                "as" => "employee.remove",
-                "uses" => "AdminController@employeeRemove"
-            ]);
+        //     Route::put("remove", [
+        //         "as" => "employee.remove",
+        //         "uses" => "AdminController@employeeRemove"
+        //     ]);
 
-            Route::get("staff", [
-                "as" => "employee.staff",
-                "uses" => "AdminController@getEmpoyeeStaff"
-            ]);
+        //     Route::get("staff", [
+        //         "as" => "employee.staffnot",
+        //         "uses" => "AdminController@getEmpoyeeStaff"
+        //     ]);
 
-            Route::get("normal_user", [
-                "as" => "employee.normal_user",
-                "uses" => "AdminController@getNormalUser"
-            ]);
-        });
+        //     Route::get("normal_user", [
+        //         "as" => "employee.normal_user",
+        //         "uses" => "AdminController@getNormalUser"
+        //     ]);
+        // });
 
 
     });
 
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -13,31 +13,31 @@
   <hr class="sidebar-divider my-0">
 
   <!-- Nav Item - Dashboard -->
-  <li class="nav-item active">
+  <!-- <li class="nav-item active">
     <a class="nav-link" href="dashboard/index">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
-  </li>
+  </li> -->
 
   <!-- Divider -->
   <hr class="sidebar-divider">
   
-  
   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEmployees" aria-expanded="true" aria-controls="collapseEmployees">
+    <!-- <a click="index" class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#collapseEmployees" aria-expanded="true" aria-controls="collapseEmployees"> -->
+    <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
       <i class="fas fa-fw fa-folder"></i>
       <span>Employees Manager</span>
     </a>
-    <div id="collapseEmployees" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="dashboard/employee/staff">Staff</a>
-        <a class="collapse-item" href="dashboard/employee/normal_user">Normal Users</a>
+        <a id="employee-staff" class="collapse-item" href="javascript:void(0)">Staff</a>
+        <a id="employee-normal_user" class="collapse-item" href="javascript:void(0)">Normal Users</a>
       </div>
     </div>
   </li> 
   
   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNews" aria-expanded="true" aria-controls="collapseNews">
+    <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#collapseNews" aria-expanded="true" aria-controls="collapseNews">
       <i class="fas fa-fw fa-folder"></i>
       <span>News Manager</span>
     </a>
@@ -45,15 +45,11 @@
       <div class="bg-white py-2 collapse-inner rounded">
         @foreach ($topics as $topic)
           <!-- <a href="dashboard/table" class="collapse-item" style="text-transform: capitalize">{{ $topic->name }}</a> -->
-          <a href="dashboard/news/{{ $topic->name }}" class="collapse-item" id="topic-{{ $topic->name }}" style="text-transform: capitalize">{{ $topic->name }}</a>
+          <a href="javascript:void(0)" class="collapse-item" id="topic-{{ $topic->name }}" style="text-transform: capitalize">{{ $topic->name }}</a>
         @endforeach
       </div>
     </div>
-  </li>
-  
-  
-  
-  
+  </li> 
   
   
   <!-- Divider -->
