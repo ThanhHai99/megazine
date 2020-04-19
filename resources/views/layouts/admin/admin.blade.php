@@ -4,6 +4,7 @@
 <head>
   @include('layouts.admin.head')
   <meta name="csrf-token" content="{{ csrf_token() }}"> <!--pass ajax -->
+  <meta name="type-news" content=""> <!--set type news -->
 </head>
 
 <body id="page-top">
