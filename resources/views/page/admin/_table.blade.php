@@ -190,7 +190,7 @@
           {
             data: null,
             defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
-                              <i class="fa fa-eye" id="edit_employee"></i>
+                              <i class="fa fa-eye"></i>
                             </a>
                             <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_employee">
                               <i class="glyphicon glyphicon-pencil"></i>
@@ -223,10 +223,10 @@
             defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
                               <i class="fa fa-eye"></i>
                             </a>
-                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg edit">
+                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_employee">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
-                            <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg remove">
+                            <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_employee">
                               <i class="glyphicon glyphicon-trash"></i>
                             </a>`
           }
@@ -254,10 +254,10 @@
             defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
                               <i class="fa fa-eye"></i>
                             </a>
-                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg edit">
+                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_employee">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
-                            <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg remove">
+                            <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_employee">
                               <i class="glyphicon glyphicon-trash"></i>
                             </a>`
           }
@@ -505,7 +505,7 @@
 
   // Start CRUD
   //Start Edit Record
-  $("#edit_employee").click(function() {
+  $("#edit_employee").on("click", function() {
     alert("ok");
     // $tr = $(this).closest('tr');
     // if ($($tr).hasClass('child')) {

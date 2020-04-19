@@ -20,7 +20,6 @@
 <!-- Newest -->
 <script src="{{asset('js/app.js')}}"></script>
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"> 
-<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 <link rel="stylesheet" href="{{asset('css/alertify.min.css')}}" />
 <link rel="stylesheet" href="{{asset('css/themes/default.min.css')}}" />
