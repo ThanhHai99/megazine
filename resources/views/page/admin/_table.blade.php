@@ -315,19 +315,7 @@
           }
         ]
     });
-    // setTimeout(function(){
-    //   $("tbody").each(function() {
-    //   $(this).find("tr").each(function() {
-    //     if($(this).find("td:eq(2)").text() == "1"){
-    //       $(this).find("td:eq(2)").html(`<i class="fa fa-check-circle" style="font-size:24px;color:green"></i>`);
-    //     };
-    //     if($(this).find("td:eq(2)").text() == "0"){
-    //       // alert("ok")
-    //       $(this).find("td:eq(2)").html(`<i class="fa fa-times-circle" style="font-size:24px;color:red""></i>`);
-    //     };
-    //   });
-    //   });
-    // }, 100);
+    
   };
 
   let loadNewsFashion = () => {
@@ -345,10 +333,10 @@
           { data: "id_creator", name: "id_creator" },
           { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
               if (data == 1) {
-                return '<i class="fa fa-check-circle" style="font-size:24px;color:green"></i>';
+                return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green"></i>';
               }
               else {
-                return '<i class="fa fa-times-circle" style="font-size:24px;color:red"></i>';
+                return '<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color:red"></i></a>';
               }
             },
             targets: "no-sort", orderable: false
@@ -389,10 +377,10 @@
           { data: "id_creator", name: "id_creator" },
           { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
               if (data == 1) {
-                return '<i class="fa fa-check-circle" style="font-size:24px;color:green"></i>';
+                return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green"></i>';
               }
               else {
-                return '<i class="fa fa-times-circle" style="font-size:24px;color:red"></i>';
+                return '<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color:red"></i></a>';
               }
             },
             targets: "no-sort", orderable: false
@@ -433,10 +421,10 @@
           { data: "id_creator", name: "id_creator" },
           { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
               if (data == 1) {
-                return '<i class="fa fa-check-circle" style="font-size:24px;color:green"></i>';
+                return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green"></i>';
               }
               else {
-                return '<i class="fa fa-times-circle" style="font-size:24px;color:red"></i>';
+                return '<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color:red"></i></a>';
               }
             },
             targets: "no-sort", orderable: false
@@ -477,10 +465,10 @@
           { data: "id_creator", name: "id_creator" },
           { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
               if (data == 1) {
-                return '<i class="fa fa-check-circle" style="font-size:24px;color:green"></i>';
+                return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green"></i>';
               }
               else {
-                return '<i class="fa fa-times-circle" style="font-size:24px;color:red"></i>';
+                return '<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color:red"></i></a>';
               }
             },
             targets: "no-sort", orderable: false
@@ -521,10 +509,10 @@
           { data: "id_creator", name: "id_creator" },
           { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
               if (data == 1) {
-                return '<i class="fa fa-check-circle" style="font-size:24px;color:green"></i>';
+                return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green"></i>';
               }
               else {
-                return '<i class="fa fa-times-circle" style="font-size:24px;color:red"></i>';
+                return '<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color:red"></i></a>';
               }
             },
             targets: "no-sort", orderable: false
@@ -548,39 +536,6 @@
           }
         ]
     });
-  };
-
-  let updateHotNewsYes = () => {
-    //Click button update hot new yes
-    $("#hot_news_yes").click(function(event) {
-      alert("yes");
-      event.preventDefault();
-      console.log($(this).parent("tr").html());
-      // alert(id);
-      // let table = ('#dataTable').DataTable();
-      // let data = table.row(tr).data();
-      // let id = data['id'];    
-      // .ajax({
-      //   url: `{{route('news.updateHotNewsYes')}}`,
-      //   method: 'PUT',
-      //   data: {
-      //     id: id
-      //   },
-      //   success: function(response) {
-      //     (this).parent("td").html(`<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`);
-      //   },
-      //   error: function(error) {
-      //     alertify.notify('An error occurred', 'error', 7);
-      //     // console.log(error.imput);
-      //   }
-      // });
-    });
-    //End click button update hot new yes
-  };
-
-  let updateHotNewsNo = () => {
-    
-    
   };
 
   $( window ).on("load", function() {
@@ -732,34 +687,70 @@
 
   //Click update hot_news
   //Yes
-  $("body").delegate("#hot_news_yes", "click", function() {
-    //Click button update hot new no
-      alert("no");
-      event.preventDefault();
-      let table = $('#dataTable').DataTable();
-      let data = table.row($tr).data();
-      let id = data['id'];      
-      $.ajax({
-        url: `{{route('news.updateHotNewsNo')}}`,
-        method: 'PUT',
-        data: {
-          id: id
-        },
-        success: function(response) {
-          $(this).parent("td").html(`<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color: red;"></i></a>`);
-        },
-        error: function(error) {
-          alertify.notify('An error occurred', 'error', 7);
-          // console.log(error.imput);
+  $("body").delegate("#hot_news_yes", "click", function(event) {
+    //Click button update hot new yes
+    event.preventDefault();
+    let table = $('#dataTable').DataTable();
+    $tr = $(this).closest('tr');
+    if ($($tr).hasClass('child')) {
+      $tr = $tr.prev('.parent');
+    };
+    let data = table.row($tr).data();
+    let id = data['id'];
+    $('meta[name=row-index]').attr('content', id);
+    $.ajax({
+      url: `{{route('news.updateHotNewsNo')}}`,
+      method: 'PUT',
+      data: {
+        id: id
+      },
+      success: function(response) {
+        if(response.error == false) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(3)").html(`<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color: red;"></i></a>`);
+            }
+          });
         }
-      });
+      },
+      error: function(error) {
+        alertify.notify('An error occurred', 'error', 7);
+      }
     });
-    //End click button update hot new no
+    //End click button update hot new yes
   });
   //No
-  $("body").delegate("#hot_news_no", "click", function() {
-    updateHotNewsYes();
-    // $(this).parent("td").html(`<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`);
+  $("body").delegate("#hot_news_no", "click", function(event) {
+    //Click button update hot new yes
+    event.preventDefault();
+    let table = $('#dataTable').DataTable();
+    $tr = $(this).closest('tr');
+    if ($($tr).hasClass('child')) {
+      $tr = $tr.prev('.parent');
+    };
+    let data = table.row($tr).data();
+    let id = data['id'];
+    $('meta[name=row-index]').attr('content', id);
+    $.ajax({
+      url: `{{route('news.updateHotNewsYes')}}`,
+      method: 'PUT',
+      data: {
+        id: id
+      },
+      success: function(response) {
+        if(response.error == false) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(3)").html(`<a href="javascript:void(0)" id="hot_news_yes"><a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`);
+            }
+          });
+        }
+      },
+      error: function(error) {
+        alertify.notify('An error occurred', 'error', 7);
+      }
+    });
+    //End click button update hot new yes
   });
   
   
