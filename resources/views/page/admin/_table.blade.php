@@ -286,7 +286,16 @@
         columns: [
           { data: "id", name: "id" },
           { data: "id_creator", name: "id_creator" },
-          { data: "hot_news", name: "hot_news", targets: "no-sort", orderable: false },
+          { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
+              if (data == 1) {
+                return '<i class="fa fa-check-circle" style="font-size:24px;color:green"></i>';
+              }
+              else {
+                return '<i class="fa fa-times-circle" style="font-size:24px;color:red"></i>';
+              }
+            },
+            targets: "no-sort", orderable: false
+          },
           { data: "image", name: "image" },
           { data: "tag", name: "tag" },
           { data: "caption", name: "caption" },
@@ -334,7 +343,16 @@
         columns: [
           { data: "id", name: "id" },
           { data: "id_creator", name: "id_creator" },
-          { data: "hot_news", name: "hot_news" },
+          { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
+              if (data == 1) {
+                return '<i class="fa fa-check-circle" style="font-size:24px;color:green"></i>';
+              }
+              else {
+                return '<i class="fa fa-times-circle" style="font-size:24px;color:red"></i>';
+              }
+            },
+            targets: "no-sort", orderable: false
+          },
           { data: "image", name: "image" },
           { data: "tag", name: "tag" },
           { data: "caption", name: "caption" },
@@ -369,7 +387,16 @@
         columns: [
           { data: "id", name: "id" },
           { data: "id_creator", name: "id_creator" },
-          { data: "hot_news", name: "hot_news" },
+          { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
+              if (data == 1) {
+                return '<i class="fa fa-check-circle" style="font-size:24px;color:green"></i>';
+              }
+              else {
+                return '<i class="fa fa-times-circle" style="font-size:24px;color:red"></i>';
+              }
+            },
+            targets: "no-sort", orderable: false
+          },
           { data: "image", name: "image" },
           { data: "tag", name: "tag" },
           { data: "caption", name: "caption" },
@@ -404,7 +431,16 @@
         columns: [
           { data: "id", name: "id" },
           { data: "id_creator", name: "id_creator" },
-          { data: "hot_news", name: "hot_news" },
+          { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
+              if (data == 1) {
+                return '<i class="fa fa-check-circle" style="font-size:24px;color:green"></i>';
+              }
+              else {
+                return '<i class="fa fa-times-circle" style="font-size:24px;color:red"></i>';
+              }
+            },
+            targets: "no-sort", orderable: false
+          },
           { data: "image", name: "image" },
           { data: "tag", name: "tag" },
           { data: "caption", name: "caption" },
@@ -439,7 +475,16 @@
         columns: [
           { data: "id", name: "id" },
           { data: "id_creator", name: "id_creator" },
-          { data: "hot_news", name: "hot_news" },
+          { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
+              if (data == 1) {
+                return '<i class="fa fa-check-circle" style="font-size:24px;color:green"></i>';
+              }
+              else {
+                return '<i class="fa fa-times-circle" style="font-size:24px;color:red"></i>';
+              }
+            },
+            targets: "no-sort", orderable: false
+          },
           { data: "image", name: "image" },
           { data: "tag", name: "tag" },
           { data: "caption", name: "caption" },
@@ -474,7 +519,16 @@
         columns: [
           { data: "id", name: "id" },
           { data: "id_creator", name: "id_creator" },
-          { data: "hot_news", name: "hot_news" },
+          { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
+              if (data == 1) {
+                return '<i class="fa fa-check-circle" style="font-size:24px;color:green"></i>';
+              }
+              else {
+                return '<i class="fa fa-times-circle" style="font-size:24px;color:red"></i>';
+              }
+            },
+            targets: "no-sort", orderable: false
+          },
           { data: "image", name: "image" },
           { data: "tag", name: "tag" },
           { data: "caption", name: "caption" },
@@ -488,7 +542,7 @@
                             <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
-                            <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
+                            <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove">
                               <i class="glyphicon glyphicon-trash"></i>
                             </a>`
           }

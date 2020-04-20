@@ -22,7 +22,10 @@ class AdminController extends Controller
 
   public function getEmployeeStaff(Request $request) {
     $query=User::where('id_role', 1);
-    return Datatables::of($query)->make(true);
+    return Datatables::of($query)
+    ->setRowAttr(['align'=>'center'])
+    // ->make(true);
+    ->toJson();
   }
 
   public function getEmployeeNormalUser(Request $request) {
@@ -32,7 +35,12 @@ class AdminController extends Controller
 
   public function getNewsStyle(Request $request) {
     $query=News::where('id_topic', 1);
-    return Datatables::of($query)->make(true);
+    return Datatables::of($query)
+    // ->editColumn('hot_news', function(News $news) {
+      // return $news->hot_news == 1 ? '<i class="fa fa-check-circle"></i>' : '<i class="fa fa-times-circle"></i>' ;
+    // })
+    // ->setRowClass('{{ $hot_news == 1 ? "fa fa-check-circle" : "fa fa-times-circle" }}')
+    ->make(true);
   }
 
   public function getNewsFashion(Request $request) {
