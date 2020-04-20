@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+
 use App\Topic;
 use App\News;
 use App\User;
@@ -13,6 +16,13 @@ use Yajra\Datatables\Datatables;
 
 class AdminController extends Controller
 {
+  use AuthenticatesUsers;
+
+  public function getLogout() {
+    Auth::logout();
+    return redirect("/home");
+}
+
   public function getIndex(Request $request) {
     // $topics = Topic::all();
     return view('page.admin._table',[
