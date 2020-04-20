@@ -345,10 +345,10 @@
             defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
                               <i class="fa fa-eye"></i>
                             </a>
-                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg edit">
+                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
-                            <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg remove">
+                            <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
                               <i class="glyphicon glyphicon-trash"></i>
                             </a>`
           }
@@ -380,10 +380,10 @@
             defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
                               <i class="fa fa-eye"></i>
                             </a>
-                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg edit">
+                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
-                            <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg remove">
+                            <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
                               <i class="glyphicon glyphicon-trash"></i>
                             </a>`
           }
@@ -415,10 +415,10 @@
             defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
                               <i class="fa fa-eye"></i>
                             </a>
-                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg edit">
+                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
-                            <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg remove">
+                            <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
                               <i class="glyphicon glyphicon-trash"></i>
                             </a>`
           }
@@ -450,10 +450,10 @@
             defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
                               <i class="fa fa-eye"></i>
                             </a>
-                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg edit">
+                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
-                            <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg remove">
+                            <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
                               <i class="glyphicon glyphicon-trash"></i>
                             </a>`
           }
@@ -485,10 +485,10 @@
             defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
                               <i class="fa fa-eye"></i>
                             </a>
-                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg edit">
+                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
-                            <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg remove">
+                            <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
                               <i class="glyphicon glyphicon-trash"></i>
                             </a>`
           }
