@@ -72,17 +72,7 @@ class AdminController extends Controller
     return Datatables::of(News::query())->make(true);
   }
 
-
-
-  public function newsFetch(Request $request) {
-    // $input = $request->all();
-    // $class = ucfirst($input['class']);
-    // $query = News::query();
-    return Datatables::of(News::query())->make(true);
-  }
-
   public function newsUpdate(Request $request) {
-    // return Datatables::of(News::query())->make(true);
     $this->validate($request, [
       'hot_news' => 'required',
       'image' => 'required',
