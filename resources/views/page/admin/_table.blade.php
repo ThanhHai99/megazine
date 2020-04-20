@@ -288,10 +288,10 @@
           { data: "id_creator", name: "id_creator" },
           { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
               if (data == 1) {
-                return '<i class="fa fa-check-circle" style="font-size:24px;color:green"></i>';
+                return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>';
               }
               else {
-                return '<i class="fa fa-times-circle" style="font-size:24px;color:red"></i>';
+                return '<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color: red;"></i></a>';
               }
             },
             targets: "no-sort", orderable: false
@@ -550,6 +550,39 @@
     });
   };
 
+  let updateHotNewsYes = () => {
+    //Click button update hot new yes
+    $("#hot_news_yes").click(function(event) {
+      alert("yes");
+      event.preventDefault();
+      console.log($(this).parent("tr").html());
+      // alert(id);
+      // let table = ('#dataTable').DataTable();
+      // let data = table.row(tr).data();
+      // let id = data['id'];    
+      // .ajax({
+      //   url: `{{route('news.updateHotNewsYes')}}`,
+      //   method: 'PUT',
+      //   data: {
+      //     id: id
+      //   },
+      //   success: function(response) {
+      //     (this).parent("td").html(`<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`);
+      //   },
+      //   error: function(error) {
+      //     alertify.notify('An error occurred', 'error', 7);
+      //     // console.log(error.imput);
+      //   }
+      // });
+    });
+    //End click button update hot new yes
+  };
+
+  let updateHotNewsNo = () => {
+    
+    
+  };
+
   $( window ).on("load", function() {
     loadEmployeeStaff_onLoad();
   });
@@ -696,6 +729,41 @@
     });
   });
   //End click remove employee button
+
+  //Click update hot_news
+  //Yes
+  $("body").delegate("#hot_news_yes", "click", function() {
+    //Click button update hot new no
+      alert("no");
+      event.preventDefault();
+      let table = $('#dataTable').DataTable();
+      let data = table.row($tr).data();
+      let id = data['id'];      
+      $.ajax({
+        url: `{{route('news.updateHotNewsNo')}}`,
+        method: 'PUT',
+        data: {
+          id: id
+        },
+        success: function(response) {
+          $(this).parent("td").html(`<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color: red;"></i></a>`);
+        },
+        error: function(error) {
+          alertify.notify('An error occurred', 'error', 7);
+          // console.log(error.imput);
+        }
+      });
+    });
+    //End click button update hot new no
+  });
+  //No
+  $("body").delegate("#hot_news_no", "click", function() {
+    updateHotNewsYes();
+    // $(this).parent("td").html(`<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`);
+  });
+  
+  
+  //End click update hot_news
   
   //Start Edit News Record
   $("body").delegate("#edit_news", "click", function(){

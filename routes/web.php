@@ -122,10 +122,15 @@ Route::group(["namespace" => "Admin"], function() {
                 "uses" => "AdminController@newsUpdate"
             ]);
 
-        //     Route::put("update_hot_news", [
-        //         "as" => "news.update_hot_news",
-        //         "uses" => "AdminController@newsUpdateHotNews"
-        //     ]);
+            Route::put("update_hot_news_yes", [
+                "as" => "news.updateHotNewsYes",
+                "uses" => "AdminController@newsUpdateHotNewsYes"
+            ]);
+
+            Route::put("update_hot_news_no", [
+                "as" => "news.updateHotNewsNo",
+                "uses" => "AdminController@newsUpdateHotNewsNo"
+            ]);
 
         //     Route::put("update_status", [
         //         "as" => "news.update_status",

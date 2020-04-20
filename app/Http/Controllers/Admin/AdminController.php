@@ -264,8 +264,36 @@ class AdminController extends Controller
     // return redirect('dashboard/topic/style')->with('success', 'Data updated');
   }
 
-  public function updateHotNews(Request $request) {
+  public function newsUpdateHotNewsYes(Request $request) {
+    $this->validate($request, [
+      'id' => 'required'
+    ]);
 
+    $input = $request->all();
+    $tmp = News::find($input['id']);
+    $tmp->hot_news = 1;
+    $tmp->save();
+
+    return response()->json([
+        'error' => false,
+        // 'task'  => $tmp,
+    ], 200);
+  }
+
+  public function newsUpdateHotNewsNo(Request $request) {
+    $this->validate($request, [
+      'id' => 'required'
+    ]);
+
+    $input = $request->all();
+    $tmp = News::find($input['id']);
+    $tmp->hot_news = 0;
+    $tmp->save();
+
+    return response()->json([
+        'error' => false,
+        // 'task'  => $tmp,
+    ], 200);
   }
 
   public function deleteTopic(Request $request) {

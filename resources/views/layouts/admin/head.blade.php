@@ -24,6 +24,9 @@
 <link rel="stylesheet" href="{{asset('css/alertify.min.css')}}" />
 <link rel="stylesheet" href="{{asset('css/themes/default.min.css')}}" />
 
+<link rel="stylesheet" href="{{asset('css/css.css')}}" />
+
+
 <!-- temp -->
 <!-- <link href="{{asset('datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet"> -->
 <!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css"> -->
