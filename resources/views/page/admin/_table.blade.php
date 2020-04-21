@@ -109,7 +109,7 @@
         </button>
       </div>
 
-      <form id="form-insert-news" method="post" enctype="multipart/form-data">
+      <form id="form-insert-news" method="PUT" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="modal-body">
           <div class="form-group">
@@ -119,7 +119,7 @@
 
           <div class="form-group">
             <label>Image</label>
-            <input type="text" name="image" id="insert_image" class="form-control" placeholder="Image">
+            <input type="file" name="image" id="insert_image" class="form-control" placeholder="Image">
           </div>
 
           <div class="form-group">
@@ -614,7 +614,7 @@
       
       $.ajax({
         url: `{{route('employee.update')}}`,
-        method: "POST",
+        method: "PUT",
         data: {
           id: id,
           name: name,
@@ -659,7 +659,7 @@
         let id = data['id'];
         $.ajax({
           url: `{{route('employee.remove')}}`,
-          method: "POST",
+          method: "PUT",
           data: {
             id: id
           },
@@ -701,7 +701,7 @@
     $('meta[name=row-index]').attr('content', id);
     $.ajax({
       url: `{{route('news.updateHotNewsNo')}}`,
-      method: "POST",
+      method: "PUT",
       data: {
         id: id
       },
@@ -734,7 +734,7 @@
     $('meta[name=row-index]').attr('content', id);
     $.ajax({
       url: `{{route('news.updateHotNewsYes')}}`,
-      method: "POST",
+      method: "PUT",
       data: {
         id: id
       },
@@ -787,7 +787,7 @@
       
       $.ajax({
         url: `{{route('news.update')}}`,
-        method: "POST",
+        method: "PUT",
         data: {
           id: id,
           hot_news: hot_news,
@@ -801,10 +801,11 @@
             $("#editModalNews").modal('hide');
             alertify.notify('Update successfully', 'success', 7);
           }
+          console.log(response.input);
         },
         error: function(error) {
           alertify.notify('An error occurred', 'error', 7);
-          console.log(error.imput);
+          console.log(error.input);
         }
       });
     });
@@ -819,35 +820,41 @@
     $("form#form-insert-news").on("submit", function(event) {
       event.preventDefault();
       let id_topic = $('meta[name=type-news]').attr('content');
-      let id_creator = 0;
-      let hot_news = $("#insertModalNews").find("#insert_hot_news").val();
-      let image = $("#insertModalNews").find("#insert_image").val();
-      let tag = $("#insertModalNews").find("#insert_tag").val();
-      let caption = $("#insertModalNews").find("#insert_caption").val();
-      let subtitle = $("#insertModalNews").find("#insert_subtitle").val();
+      // let id_creator = 0;
+      // let hot_news = $("#insertModalNews").find("#insert_hot_news").val();
+      // let image = $("#insertModalNews").find("#insert_image");
+      // let tag = $("#insertModalNews").find("#insert_tag").val();
+      // let caption = $("#insertModalNews").find("#insert_caption").val();
+      // let subtitle = $("#insertModalNews").find("#insert_subtitle").val();
 
       $.ajax({
         url: `{{route('news.insert')}}`,
         method: 'POST',
-        data: {
-          id_topic: id_topic,
-          id_creator: id_creator,
-          hot_news: hot_news,
-          image: image,
-          tag: tag,
-          caption: caption,
-          subtitle: subtitle
-        },
+        data: new FormData(this),
+        // dataType:'JSON',
+        contentType: false,
+        cache: false,
+        processData: false,
+        // data: {
+        //   id_topic: id_topic,
+        //   id_creator: id_creator,
+        //   hot_news: hot_news,
+        //   image: image,
+        //   tag: tag,
+        //   caption: caption,
+        //   subtitle: subtitle
+        // },
         success: function(response) {
           if (response.error == false) {
             $("#insertModalNews").modal('hide');
             alertify.notify('Create successfully', 'success', 7);
           }
-          console.log(response);
+          console.log(response.input);
+          console.log(response.tmp);
         },
         error: function(error) {
-          // alertify.notify('An error occurred', 'error', 7);
-          console.log(error);
+          alertify.notify('An error occurred', 'error', 7);
+          // console.log(error);
         }
       });
     });
@@ -878,7 +885,7 @@
         let id = data['id'];
         $.ajax({
           url: `{{route('news.remove')}}`,
-          method: "POST",
+          method: "PUT",
           data: {
             id: id
           },

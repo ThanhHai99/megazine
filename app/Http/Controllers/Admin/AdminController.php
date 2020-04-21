@@ -108,24 +108,31 @@ class AdminController extends Controller
 
 
   public function newsInsert(Request $request) {
-    $this->validate($request, [
-      'id_topic' => 'required',
-      'id_creator' => 'required',
-      'hot_news' => 'required',
-      'image' => 'required',
-      'tag' => 'required',
-      'caption' => 'required',
-      'subtitle' => 'required'
-    ]);
+    // $this->validate($request, [
+    //   'id_topic' => 'required',
+    //   'id_creator' => 'required',
+    //   'hot_news' => 'required',
+    //   // 'image' => 'required',
+    //   'tag' => 'required',
+    //   'caption' => 'required',
+    //   'subtitle' => 'required'
+    // ]);
     
     $input = $request->all();
     
     $tmp = new News;
-    $tmp->id_topic = $input['id_topic'];
-    $tmp->id_topic = $input['id_topic'];
-    $tmp->id_creator = $input['id_creator'];
+
+    if ($request->hasFile('image')) {
+      $file = $request->file('image');
+      $extension = $file->getClientOriginalExtension();
+      $filename = time() . '.' . $extension;
+      $file->move("images", $filename);
+      $tmp->image = $filename;
+    }
+
+    // $tmp->id_topic = $input['id_topic'];
+    // $tmp->id_creator = $input['id_creator'];
     $tmp->hot_news = $input['hot_news'];
-    $tmp->image = $input['image'];
     $tmp->tag = $input['tag'];
     $tmp->caption = $input['caption'];
     $tmp->subtitle = $input['subtitle'];
@@ -133,7 +140,7 @@ class AdminController extends Controller
 
     return response()->json([
       'error' => false,
-      // 'new'  => $tmp
+      'input'  => $input
     ], 200);
   }
 
