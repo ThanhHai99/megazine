@@ -122,32 +122,32 @@ Route::group(["namespace" => "Admin"], function() {
         //         "uses" => "AdminController@newsFetch"
         //     ]);
 
-            Route::put("update", [
+            Route::post("update", [
                 "as" => "news.update",
                 "uses" => "AdminController@newsUpdate"
             ]);
 
-            Route::put("update_hot_news_yes", [
+            Route::post("update_hot_news_yes", [
                 "as" => "news.updateHotNewsYes",
                 "uses" => "AdminController@newsUpdateHotNewsYes"
             ]);
 
-            Route::put("update_hot_news_no", [
+            Route::post("update_hot_news_no", [
                 "as" => "news.updateHotNewsNo",
                 "uses" => "AdminController@newsUpdateHotNewsNo"
             ]);
 
-        //     Route::put("update_status", [
+        //     Route::post("update_status", [
         //         "as" => "news.update_status",
         //         "uses" => "AdminController@newsUpdateStatus"
         //     ]);            
 
-            Route::put("insert", [
+            Route::post("insert", [
                 "as" => "news.insert",
                 "uses" => "AdminController@newsInsert"
             ]);
 
-            Route::put("remove", [
+            Route::post("remove", [
                 "as" => "news.remove",
                 "uses" => "AdminController@newsRemove"
             ]);
@@ -186,27 +186,27 @@ Route::group(["namespace" => "Admin"], function() {
         });
 
         Route::group(["prefix" => "employee"], function () {
-            Route::put("update", [
+            Route::post("update", [
                 "as" => "employee.update",
                 "uses" => "AdminController@employeeUpdate"
             ]);
 
-            // Route::put("update_hot_news", [
+            // Route::post("update_hot_news", [
             //     "as" => "employee.update_hot_news",
             //     "uses" => "AdminController@employeeUpdateRole"
             // ]);
 
-            // Route::put("update_status", [
+            // Route::post("update_status", [
             //     "as" => "employee.update_status",
             //     "uses" => "AdminController@employeeUpdateStatus"
             // ]);            
 
-            // Route::put("insert", [
+            // Route::post("insert", [
             //     "as" => "employee.insert",
             //     "uses" => "AdminController@employeeInsert"
             // ]);
 
-            Route::put("remove", [
+            Route::post("remove", [
                 "as" => "employee.remove",
                 "uses" => "AdminController@employeeRemove"
             ]);

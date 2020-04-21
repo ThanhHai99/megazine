@@ -612,7 +612,7 @@
       
       $.ajax({
         url: `{{route('employee.update')}}`,
-        method: 'PUT',
+        method: "POST",
         data: {
           id: id,
           name: name,
@@ -657,7 +657,7 @@
         let id = data['id'];
         $.ajax({
           url: `{{route('employee.remove')}}`,
-          method: 'PUT',
+          method: "POST",
           data: {
             id: id
           },
@@ -699,7 +699,7 @@
     $('meta[name=row-index]').attr('content', id);
     $.ajax({
       url: `{{route('news.updateHotNewsNo')}}`,
-      method: 'PUT',
+      method: "POST",
       data: {
         id: id
       },
@@ -732,7 +732,7 @@
     $('meta[name=row-index]').attr('content', id);
     $.ajax({
       url: `{{route('news.updateHotNewsYes')}}`,
-      method: 'PUT',
+      method: "POST",
       data: {
         id: id
       },
@@ -785,7 +785,7 @@
       
       $.ajax({
         url: `{{route('news.update')}}`,
-        method: 'PUT',
+        method: "POST",
         data: {
           id: id,
           hot_news: hot_news,
@@ -810,7 +810,7 @@
   //End Edit News Record
 
   //Start Insert Record
-  $("body").delegate("#insert_news", "click", function() {
+  $("body").delegate("a#insert_news", "click", function() {
     $("#insertModalNews").modal('show');
   });
     //Start click button create
@@ -826,7 +826,7 @@
 
       $.ajax({
         url: `{{route('news.insert')}}`,
-        method: 'PUT',
+        method: 'POST',
         data: {
           id_topic: id_topic,
           id_creator: id_creator,
@@ -876,7 +876,7 @@
         let id = data['id'];
         $.ajax({
           url: `{{route('news.remove')}}`,
-          method: 'PUT',
+          method: "POST",
           data: {
             id: id
           },
