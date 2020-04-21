@@ -109,38 +109,40 @@
         </button>
       </div>
 
-      <div class="modal-body">
-        <div class="form-group">
-          <label>Hot News</label>
-          <input type="text" name="hot_news" id="insert_hot_news" class="form-control" placeholder="Hot News">
+      <form id="form-insert-news" method="post" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Hot News</label>
+            <input type="text" name="hot_news" id="insert_hot_news" class="form-control" placeholder="Hot News">
+          </div>
+
+          <div class="form-group">
+            <label>Image</label>
+            <input type="text" name="image" id="insert_image" class="form-control" placeholder="Image">
+          </div>
+
+          <div class="form-group">
+            <label>Tag</label>
+            <input type="text" name="tag" id="insert_tag" class="form-control" placeholder="Tag">
+          </div>
+
+          <div class="form-group">
+            <label>Caption</label>
+            <input type="text" name="caption" id="insert_caption" class="form-control" placeholder="Caption">
+          </div>
+
+          <div class="form-group">
+            <label>Subtitle</label>
+            <input type="text" name="subtitle" id="insert_subtitle" class="form-control" placeholder="Subtitle">
+          </div>
         </div>
 
-        <div class="form-group">
-          <label>Image</label>
-          <input type="text" name="image" id="insert_image" class="form-control" placeholder="Image">
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success insert_news">Create</button>
         </div>
-
-        <div class="form-group">
-          <label>Tag</label>
-          <input type="text" name="tag" id="insert_tag" class="form-control" placeholder="Tag">
-        </div>
-
-        <div class="form-group">
-          <label>Caption</label>
-          <input type="text" name="caption" id="insert_caption" class="form-control" placeholder="Caption">
-        </div>
-
-        <div class="form-group">
-          <label>Subtitle</label>
-          <input type="text" name="subtitle" id="insert_subtitle" class="form-control" placeholder="Subtitle">
-        </div>
-      </div>
-
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-success insert_news">Create</button>
-      </div>
+      </form>
     </div>
   </div>
 </div>
@@ -814,7 +816,7 @@
     $("#insertModalNews").modal('show');
   });
     //Start click button create
-    $("button.insert_news").on("click", function(event) {
+    $("form#form-insert-news").on("submit", function(event) {
       event.preventDefault();
       let id_topic = $('meta[name=type-news]').attr('content');
       let id_creator = 0;
