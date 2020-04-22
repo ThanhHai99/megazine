@@ -9,6 +9,7 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "realrashid/sweet-alert": "^3.1",
+        "webpatser/laravel-uuid": "^2.0",
         "yajra/laravel-datatables-oracle": "^8.0"
     },
     "require-dev": {

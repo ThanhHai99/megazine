@@ -136,6 +136,15 @@
             <label>Subtitle</label>
             <input type="text" name="subtitle" id="insert_subtitle" class="form-control" placeholder="Subtitle">
           </div>
+
+          <div class="form-group">
+            <input type="hidden" name="id_topic" value="">
+          </div>
+
+          <div class="form-group">
+            <input type="hidden" name="id_creator" value="">
+          </div>
+
         </div>
 
         <div class="modal-footer">
@@ -277,6 +286,7 @@
 
   let loadNewsStyle = () => {
     $('meta[name=type-news]').attr('content', '1');
+    $('input[name=id_topic]').attr('value', 1);
     var table = $("#dataTable").DataTable();
     table.destroy();
     $("#dataTable").empty();
@@ -321,6 +331,7 @@
 
   let loadNewsFashion = () => {
     $("meta[name=type-news]").attr("content", "2");
+    $('input[name=id_topic]').attr('value', 2);
     var table = $("#dataTable").DataTable();
     table.destroy();
     $("#dataTable").empty();
@@ -365,6 +376,7 @@
 
   let loadNewsTravel = () => {
     $('meta[name=type-news]').attr('content', '3');
+    $('input[name=id_topic]').attr('value', 3);
     var table = $("#dataTable").DataTable();
     table.destroy();
     $("#dataTable").empty();
@@ -409,6 +421,7 @@
 
   let loadNewsSports = () => {
     $('meta[name=type-news]').attr('content', '4');
+    $('input[name=id_topic]').attr('value', 4);
     var table = $("#dataTable").DataTable();
     table.destroy();
     $("#dataTable").empty();
@@ -453,6 +466,7 @@
 
   let loadNewsVideo = () => {
     $('meta[name=type-news]').attr('content', '5');
+    $('input[name=id_topic]').attr('value', 5);
     var table = $("#dataTable").DataTable();
     table.destroy();
     $("#dataTable").empty();
@@ -497,6 +511,7 @@
 
   let loadNewsArchives = () => {
     $('meta[name=type-news]').attr('content', '6');
+    $('input[name=id_topic]').attr('value', 6);
     var table = $("#dataTable").DataTable();
     table.destroy();
     $("#dataTable").empty();
@@ -815,35 +830,18 @@
   //Start Insert Record
   $("body").delegate("a#insert_news", "click", function() {
     $("#insertModalNews").modal('show');
+    $('input[name=id_creator]').attr('value', 0);
   });
     //Start click button create
     $("form#form-insert-news").on("submit", function(event) {
       event.preventDefault();
-      let id_topic = $('meta[name=type-news]').attr('content');
-      // let id_creator = 0;
-      // let hot_news = $("#insertModalNews").find("#insert_hot_news").val();
-      // let image = $("#insertModalNews").find("#insert_image");
-      // let tag = $("#insertModalNews").find("#insert_tag").val();
-      // let caption = $("#insertModalNews").find("#insert_caption").val();
-      // let subtitle = $("#insertModalNews").find("#insert_subtitle").val();
-
       $.ajax({
         url: `{{route('news.insert')}}`,
         method: 'POST',
         data: new FormData(this),
-        // dataType:'JSON',
         contentType: false,
         cache: false,
         processData: false,
-        // data: {
-        //   id_topic: id_topic,
-        //   id_creator: id_creator,
-        //   hot_news: hot_news,
-        //   image: image,
-        //   tag: tag,
-        //   caption: caption,
-        //   subtitle: subtitle
-        // },
         success: function(response) {
           if (response.error == false) {
             $("#insertModalNews").modal('hide');
@@ -854,7 +852,6 @@
         },
         error: function(error) {
           alertify.notify('An error occurred', 'error', 7);
-          // console.log(error);
         }
       });
     });

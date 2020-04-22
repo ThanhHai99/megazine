@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
+// use Illuminate\Support\Str;
+
 use App\Topic;
 use App\News;
 use App\User;
@@ -21,7 +23,7 @@ class AdminController extends Controller
   public function getLogout() {
     Auth::logout();
     return redirect("/home");
-}
+  }
 
   public function getIndex(Request $request) {
     // $topics = Topic::all();
@@ -108,15 +110,15 @@ class AdminController extends Controller
 
 
   public function newsInsert(Request $request) {
-    // $this->validate($request, [
-    //   'id_topic' => 'required',
-    //   'id_creator' => 'required',
-    //   'hot_news' => 'required',
-    //   // 'image' => 'required',
-    //   'tag' => 'required',
-    //   'caption' => 'required',
-    //   'subtitle' => 'required'
-    // ]);
+    $this->validate($request, [
+      'id_topic' => 'required',
+      'id_creator' => 'required',
+      'hot_news' => 'required',
+      'image' => 'required',
+      'tag' => 'required',
+      'caption' => 'required',
+      'subtitle' => 'required'
+    ]);
     
     $input = $request->all();
     
@@ -125,13 +127,13 @@ class AdminController extends Controller
     if ($request->hasFile('image')) {
       $file = $request->file('image');
       $extension = $file->getClientOriginalExtension();
-      $filename = time() . '.' . $extension;
+      $filename = time() . '_'. uniqid() . '.' . $extension;
       $file->move("images", $filename);
       $tmp->image = $filename;
     }
 
-    // $tmp->id_topic = $input['id_topic'];
-    // $tmp->id_creator = $input['id_creator'];
+    $tmp->id_topic = $input['id_topic'];
+    $tmp->id_creator = $input['id_creator'];
     $tmp->hot_news = $input['hot_news'];
     $tmp->tag = $input['tag'];
     $tmp->caption = $input['caption'];
