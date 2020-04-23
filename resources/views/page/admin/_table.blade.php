@@ -236,7 +236,18 @@
                           <th>Email</th>
                           <th>Action</th>
                         </tr>
-                      </thead>`;
+                      </thead>
+                      
+                      <tfoot>
+                        <tr>
+                          <th>ID</th>
+                          <th>Role</th>
+                          <th>Status</th>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Action</th>
+                        </tr>
+                      </tfoot>`;
 
   let htmlNews = `<thead>
                     <tr>
@@ -253,12 +264,11 @@
                         </a>
                       </th>
                     </tr>
-                  </thead>`;
-  
-  let htmlAllNews = `<thead>
+                  </thead>
+                  
+                  <tfoot>
                     <tr>
                       <th>ID</th>
-                      <th>ID_Topic</th>
                       <th>ID_Creator</th>
                       <th>Hot News</th>
                       <th>Image</th>
@@ -266,12 +276,48 @@
                       <th>Caption</th>
                       <th>Subtitle</th>
                       <th class="text-center">
-                        <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg" id="insert_news_all">
+                        <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg" id="insert_news">
                           <i class="glyphicon glyphicon-plus"></i>
                         </a>
                       </th>
                     </tr>
-                  </thead>`;
+                  </tfoot>`;
+  
+  let htmlAllNews =`<thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>ID_Topic</th>
+                        <th>ID_Creator</th>
+                        <th>Hot News</th>
+                        <th>Image</th>
+                        <th>Tag</th>
+                        <th>Caption</th>
+                        <th>Subtitle</th>
+                        <th class="text-center">
+                          <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg" id="insert_news_all">
+                            <i class="glyphicon glyphicon-plus"></i>
+                          </a>
+                        </th>
+                      </tr>
+                    </thead>
+                    
+                    <tfoot>
+                      <tr>
+                        <th>ID</th>
+                        <th>ID_Topic</th>
+                        <th>ID_Creator</th>
+                        <th>Hot News</th>
+                        <th>Image</th>
+                        <th>Tag</th>
+                        <th>Caption</th>
+                        <th>Subtitle</th>
+                        <th class="text-center">
+                          <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg" id="insert_news_all">
+                            <i class="glyphicon glyphicon-plus"></i>
+                          </a>
+                        </th>
+                      </tr>
+                    </tfoot>`;
 
   let loadEmployeeStaff_onLoad = () => {
     $("#dataTable").append(htmlEmployee);
@@ -389,9 +435,14 @@
                 return '<a href="javascript:void(0)" id="hot_news_no-all"><i class="fa fa-times-circle" style="color: red;"></i></a>';
               }
             },
-            targets: "no-sort", orderable: false
+            targets: "no-sort", orderable: false, searchable: false
           },
-          { data: "image", name: "image" },
+          // { data: "image", name: "image" },
+          { data: "image", name: "image", render: function(data, type, row) { 
+              return `<img src='images/` + data + `' class="img-responsive">`;
+            },
+            targets: "no-sort", orderable: false, searchable: false
+          },
           { data: "tag", name: "tag" },
           { data: "caption", name: "caption" },
           { data: "subtitle", name: "subtitle" },
@@ -734,104 +785,107 @@
   //End Setup ajax
 
   // Start CRUD
-
-  //Start Edit Employee Record
-  $("body").delegate("#edit_employee", "click", function(){
-    let table = $('#dataTable').DataTable();
-    $tr = $(this).closest('tr');
-    if ($($tr).hasClass('child')) {
-      $tr = $tr.prev('.parent');
-    };
-
-    let data = table.row($tr).data();
-    $("#editModalEmployee").find("#update_name").val(data['name']);
-    $("#editModalEmployee").find("#update_email").val(data['email']);
-    $("#editModalEmployee").modal('show');
-  });
-    //Click button update employee
-    $("button.update_employee").click(function(event) {
-      event.preventDefault();
+  //Start Employee
+    //Start Edit Employee Record
+    $("body").delegate("#edit_employee", "click", function(){
       let table = $('#dataTable').DataTable();
-      let data = table.row($tr).data();
-      console.log(data);
-      let id = data['id'];
-      let name = $("#editModalEmployee").find("#update_name").val();
-      let email = $("#editModalEmployee").find("#update_email").val();
-      
-      $.ajax({
-        url: `{{route('employee.update')}}`,
-        method: "PUT",
-        data: {
-          id: id,
-          name: name,
-          email: email
-        },
-        success: function(response) {
-          if (response.error == false) {
-            $("#editModalEmployee").modal('hide');
-            alertify.notify('Update successfully', 'success', 7);
-          }
-          console.log(response.imput);
-        },
-        error: function(error) {
-          alertify.notify('An error occurred', 'error', 7);
-          console.log(error.imput);
-        }
-      });
-    });
-    //End click button update employee
-  //End Edit Employee Record
+      $tr = $(this).closest('tr');
+      if ($($tr).hasClass('child')) {
+        $tr = $tr.prev('.parent');
+      };
 
-  //Click remove employee button
-  $("body").delegate("#remove_employee", "click", function(){
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result.value) {
+      let data = table.row($tr).data();
+      $("#editModalEmployee").find("#update_name").val(data['name']);
+      $("#editModalEmployee").find("#update_email").val(data['email']);
+      $("#editModalEmployee").modal('show');
+    });
+      //Click button update employee
+      $("button.update_employee").click(function(event) {
         event.preventDefault();
         let table = $('#dataTable').DataTable();
-        $tr = $(this).closest('tr');
-        if ($($tr).hasClass('child')) {
-          $tr = $tr.prev('.parent');
-        };
-
         let data = table.row($tr).data();
+        console.log(data);
         let id = data['id'];
+        let name = $("#editModalEmployee").find("#update_name").val();
+        let email = $("#editModalEmployee").find("#update_email").val();
+        
         $.ajax({
-          url: `{{route('employee.remove')}}`,
+          url: `{{route('employee.update')}}`,
           method: "PUT",
           data: {
-            id: id
+            id: id,
+            name: name,
+            email: email
           },
           success: function(response) {
             if (response.error == false) {
-              Swal.fire(
-                'Deleted!',
-                'Element has been deleted.',
-                'success'
-              )
+              $("#editModalEmployee").modal('hide');
+              alertify.notify('Update successfully', 'success', 7);
             }
+            console.log(response.imput);
           },
-          error: function() {
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Something went wrong!',
-              // footer: '<a href>Why do I have this issue?</a>'
-            })
+          error: function(error) {
+            alertify.notify('An error occurred', 'error', 7);
+            console.log(error.imput);
           }
         });
-      }
-    });
-  });
-  //End click remove employee button
+      });
+      //End click button update employee
+    //End Edit Employee Record
 
+    //Click remove employee button
+    $("body").delegate("#remove_employee", "click", function(){
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.value) {
+          event.preventDefault();
+          let table = $('#dataTable').DataTable();
+          $tr = $(this).closest('tr');
+          if ($($tr).hasClass('child')) {
+            $tr = $tr.prev('.parent');
+          };
+
+          let data = table.row($tr).data();
+          let id = data['id'];
+          $.ajax({
+            url: `{{route('employee.remove')}}`,
+            method: "PUT",
+            data: {
+              id: id
+            },
+            success: function(response) {
+              if (response.error == false) {
+                Swal.fire(
+                  'Deleted!',
+                  'Element has been deleted.',
+                  'success'
+                )
+                table.row( $(this).parents('tr') ).remove().draw();
+              }
+            },
+            error: function() {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                // footer: '<a href>Why do I have this issue?</a>'
+              })
+            }
+          });
+        }
+      });
+    });
+    //End click remove employee button
+  // End Employee
+  
+  //Start News
   //Click update hot_news
   //Yes
   $("body").delegate("#hot_news_yes", "click", function(event) {
@@ -1024,13 +1078,14 @@
   //End Edit News Record
 
   //Start Insert News Record
-  $("body").delegate("a#insert_news_all", "click", function() {
-    $("#insertModalNews_all").modal('show');
+  $("body").delegate("a#insert_news", "click", function() {
+    $("#insertModalNews").modal('show');
     $('input[name=id_creator]').attr('value', 0);
   });
     //Start click button create
     $("form#form-insert-news").on("submit", function(event) {
       event.preventDefault();
+      let table = $('#dataTable').DataTable();
       $.ajax({
         url: `{{route('news.insert')}}`,
         method: 'POST',
@@ -1042,9 +1097,18 @@
           if (response.error == false) {
             $("#insertModalNews").modal('hide');
             alertify.notify('Create successfully', 'success', 7);
-          }
-          console.log(response.input);
-          console.log(response.tmp);
+          }   
+          table.rows.add( [{
+            "id" : "",
+            "id_topic" : "",
+            "id_creator" : "",
+            "hot_news" : "",
+            "image" : "",
+            "tag" : "",
+            "caption" : "",
+            "subtitle" : "",
+            "action": ""
+          }] ).draw();       
         },
         error: function(error) {
           alertify.notify('An error occurred', 'error', 7);
@@ -1058,15 +1122,12 @@
   $("body").delegate("a#insert_news_all", "click", function() {
     $("#insertModalNews_all").modal("show");
     $("#form-insert-news_all").find("input[name=id_creator]").attr("value", 0);
-    // $("#form-insert-news_all").find("input[name=id_topic]").attr("value", 0);
     $("form#form-insert-news_all").find("input[name=id_topic]").attr("value", $("select#topic_option").children("option:selected").val());
   });
     //Start click button create
-    // alert($('select#topic_option').children("option:selected").val());
-    // let topic = $("select#topic_option").children("option:selected").val();
-    
     $("form#form-insert-news_all").on("submit", function(event) {
       event.preventDefault();
+      let table = $('#dataTable').DataTable();
       $.ajax({
         url: `{{route('news.insert_all')}}`,
         method: 'POST',
@@ -1079,18 +1140,27 @@
             $("#insertModalNews_all").modal('hide');
             alertify.notify('Create successfully', 'success', 7);
           }
-          alert($("select#topic_option").children("option:selected").val());
+          table.rows.add( [{
+            "id" : "",
+            "id_topic" : "",
+            "id_creator" : "",
+            "hot_news" : "",
+            "image" : "",
+            "tag" : "",
+            "caption" : "",
+            "subtitle" : "",
+            "action": ""
+          }] ).draw();
         },
         error: function(error) {
           alertify.notify('An error occurred', 'error', 7);
-          alert($("select#topic_option").children("option:selected").val());
         }
       });
     });
     //End click button create
   //End Insert News (All) Record
 
-  //Click remove button
+  //Click remove news button
   $("body").delegate("#remove_news", "click", function(event) {
     Swal.fire({
       title: 'Are you sure?',
@@ -1125,6 +1195,7 @@
                 'Element has been deleted.',
                 'success'
               )
+              table.row( $(this).parents('tr') ).remove().draw();
             }
           },
           error: function() {
@@ -1139,8 +1210,8 @@
       }
     });
   });
-  //End click remove button
-  
+  //End click remove news button
+  //End News
   // End CRUD
 </script>
 @endpush
