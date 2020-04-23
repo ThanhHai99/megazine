@@ -62,10 +62,6 @@
       </div>
 
       <div class="modal-body">
-        <div class="form-group">
-          <label>Hot News</label>
-          <input type="text" name="hot_news" id="update_hot_news" class="form-control" placeholder="Hot News">
-        </div>
 
         <div class="form-group">
           <label>Image</label>
@@ -157,6 +153,76 @@
 </div>
 <!-- End Insert News Modal -->
 
+<!-- Start Insert News Modal - All -->
+<div class="modal fade" id="insertModalNews_all" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form id="form-insert-news_all" method="PUT" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label>Topic</label>
+            <!-- <input type="text" name="id_topic" id="insert_topic_all" class="form-control" placeholder="Topic"> -->
+            <select class="form-control" id="topic_option">
+              @foreach($topics as $topic)
+                <option value="{{ $topic->id }}">{{ $topic->name }}</option>
+              @endforeach              
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Hot News</label>
+            <input type="text" name="hot_news" id="insert_hot_news_all" class="form-control" placeholder="Hot News">
+          </div>
+
+          <div class="form-group">
+            <label>Image</label>
+            <input type="file" name="image" id="insert_image_all" class="form-control" placeholder="Image">
+          </div>
+
+          <div class="form-group">
+            <label>Tag</label>
+            <input type="text" name="tag" id="insert_tag_all" class="form-control" placeholder="Tag">
+          </div>
+
+          <div class="form-group">
+            <label>Caption</label>
+            <input type="text" name="caption" id="insert_caption_all" class="form-control" placeholder="Caption">
+          </div>
+
+          <div class="form-group">
+            <label>Subtitle</label>
+            <input type="text" name="subtitle" id="insert_subtitle_all" class="form-control" placeholder="Subtitle">
+          </div>
+
+          <div class="form-group">
+            <input type="hidden" name="id_creator" value="">
+          </div>
+
+          <div class="form-group">
+            <input type="hidden" name="id_topic" value="">
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success insert_news_all">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- End Insert News Modal - All-->
+
 @push("script-table")
 
 <script>
@@ -183,6 +249,24 @@
                       <th>Subtitle</th>
                       <th class="text-center">
                         <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg" id="insert_news">
+                          <i class="glyphicon glyphicon-plus"></i>
+                        </a>
+                      </th>
+                    </tr>
+                  </thead>`;
+  
+  let htmlAllNews = `<thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>ID_Topic</th>
+                      <th>ID_Creator</th>
+                      <th>Hot News</th>
+                      <th>Image</th>
+                      <th>Tag</th>
+                      <th>Caption</th>
+                      <th>Subtitle</th>
+                      <th class="text-center">
+                        <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg" id="insert_news_all">
                           <i class="glyphicon glyphicon-plus"></i>
                         </a>
                       </th>
@@ -282,6 +366,50 @@
         ]
     });
     $("#dataTable").DataTable();
+  };
+
+  let loadAllNews = () => {
+    var table = $("#dataTable").DataTable();
+    table.destroy();
+    $("#dataTable").empty();
+    $("#dataTable").append(htmlAllNews);
+    $("#dataTable").DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{!! route("news.all") !!}",
+        columns: [
+          { data: "id", name: "id" },
+          { data: "id_topic", name: "id_topic" },
+          { data: "id_creator", name: "id_creator" },
+          { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
+              if (data == 1) {
+                return '<a href="javascript:void(0)" id="hot_news_yes-all"><i class="fa fa-check-circle" style="color:green;"></i></a>';
+              }
+              else {
+                return '<a href="javascript:void(0)" id="hot_news_no-all"><i class="fa fa-times-circle" style="color: red;"></i></a>';
+              }
+            },
+            targets: "no-sort", orderable: false
+          },
+          { data: "image", name: "image" },
+          { data: "tag", name: "tag" },
+          { data: "caption", name: "caption" },
+          { data: "subtitle", name: "subtitle" },
+          {
+            data: null,
+            targets: "no-sort", orderable: false,
+            defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
+                              <i class="fa fa-eye"></i>
+                            </a>
+                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
+                              <i class="glyphicon glyphicon-pencil"></i>
+                            </a>
+                            <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
+                              <i class="glyphicon glyphicon-trash"></i>
+                            </a>`
+          }
+        ]
+    });
   };
 
   let loadNewsStyle = () => {
@@ -566,6 +694,9 @@
     loadEmployeeNormalUser();
   });
 
+  $("#news-all").on("click", function() {
+    loadAllNews();
+  });
 
   $("#topic-style").on("click", function() {
     loadNewsStyle();
@@ -768,9 +899,76 @@
     });
     //End click button update hot new yes
   });
-  
-  
   //End click update hot_news
+
+  //Click update hot_news (all)
+  //Yes
+  $("body").delegate("#hot_news_yes-all", "click", function(event) {
+    //Click button update hot new yes
+    event.preventDefault();
+    let table = $('#dataTable').DataTable();
+    $tr = $(this).closest('tr');
+    if ($($tr).hasClass('child')) {
+      $tr = $tr.prev('.parent');
+    };
+    let data = table.row($tr).data();
+    let id = data['id'];
+    $('meta[name=row-index]').attr('content', id);
+    $.ajax({
+      url: `{{route('news.updateHotNewsNo')}}`,
+      method: "PUT",
+      data: {
+        id: id
+      },
+      success: function(response) {
+        if(response.error == false) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(4)").html(`<a href="javascript:void(0)" id="hot_news_no-all"><i class="fa fa-times-circle" style="color: red;"></i></a>`);
+            }
+          });
+        }
+      },
+      error: function(error) {
+        alertify.notify('An error occurred', 'error', 7);
+      }
+    });
+    //End click button update hot new yes
+  });
+  //No
+  $("body").delegate("#hot_news_no-all", "click", function(event) {
+    //Click button update hot new yes
+    event.preventDefault();
+    let table = $('#dataTable').DataTable();
+    $tr = $(this).closest('tr');
+    if ($($tr).hasClass('child')) {
+      $tr = $tr.prev('.parent');
+    };
+    let data = table.row($tr).data();
+    let id = data['id'];
+    $('meta[name=row-index]').attr('content', id);
+    $.ajax({
+      url: `{{route('news.updateHotNewsYes')}}`,
+      method: "PUT",
+      data: {
+        id: id
+      },
+      success: function(response) {
+        if(response.error == false) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(4)").html(`<a href="javascript:void(0)" id="hot_news_yes-all"><a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`);
+            }
+          });
+        }
+      },
+      error: function(error) {
+        alertify.notify('An error occurred', 'error', 7);
+      }
+    });
+    //End click button update hot new yes
+  });
+  //End click update hot_news (all)
   
   //Start Edit News Record
   $("body").delegate("#edit_news", "click", function(){
@@ -781,7 +979,6 @@
     };
 
     let data = table.row($tr).data();
-    $("#editModalNews").find("#update_hot_news").val(data['hot_news']);
     $("#editModalNews").find("#update_image").val(data['image']);
     $("#editModalNews").find("#update_tag").val(data['tag']);
     $("#editModalNews").find("#update_caption").val(data['caption']);
@@ -794,7 +991,6 @@
       let table = $('#dataTable').DataTable();
       let data = table.row($tr).data();
       let id = data['id'];
-      let hot_news = $("#editModalNews").find("#update_hot_news").val();
       let image = $("#editModalNews").find("#update_image").val();
       let tag = $("#editModalNews").find("#update_tag").val();
       let caption = $("#editModalNews").find("#update_caption").val();
@@ -827,9 +1023,9 @@
     //End click button update News
   //End Edit News Record
 
-  //Start Insert Record
-  $("body").delegate("a#insert_news", "click", function() {
-    $("#insertModalNews").modal('show');
+  //Start Insert News Record
+  $("body").delegate("a#insert_news_all", "click", function() {
+    $("#insertModalNews_all").modal('show');
     $('input[name=id_creator]').attr('value', 0);
   });
     //Start click button create
@@ -856,7 +1052,43 @@
       });
     });
     //End click button create
-  //End Insert Record
+  //End Insert News Record
+
+  //Start Insert News (All) Record
+  $("body").delegate("a#insert_news_all", "click", function() {
+    $("#insertModalNews_all").modal("show");
+    $("#form-insert-news_all").find("input[name=id_creator]").attr("value", 0);
+    // $("#form-insert-news_all").find("input[name=id_topic]").attr("value", 0);
+    $("form#form-insert-news_all").find("input[name=id_topic]").attr("value", $("select#topic_option").children("option:selected").val());
+  });
+    //Start click button create
+    // alert($('select#topic_option').children("option:selected").val());
+    // let topic = $("select#topic_option").children("option:selected").val();
+    
+    $("form#form-insert-news_all").on("submit", function(event) {
+      event.preventDefault();
+      $.ajax({
+        url: `{{route('news.insert_all')}}`,
+        method: 'POST',
+        data: new FormData(this),
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(response) {
+          if (response.error == false) {
+            $("#insertModalNews_all").modal('hide');
+            alertify.notify('Create successfully', 'success', 7);
+          }
+          alert($("select#topic_option").children("option:selected").val());
+        },
+        error: function(error) {
+          alertify.notify('An error occurred', 'error', 7);
+          alert($("select#topic_option").children("option:selected").val());
+        }
+      });
+    });
+    //End click button create
+  //End Insert News (All) Record
 
   //Click remove button
   $("body").delegate("#remove_news", "click", function(event) {

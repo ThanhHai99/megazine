@@ -84,10 +84,15 @@ Route::group(["namespace" => "Admin"], function() {
             "uses" => "AdminController@getEmployeeNormalUser"
         ]);
 
+        Route::get("news/all", [
+            "as" => "news.all",
+            "uses" => "AdminController@getNewsAll"
+        ]);
+
         Route::get("news/style", [
             "as" => "news.style",
             "uses" => "AdminController@getNewsStyle"
-        ]);
+        ]);        
         
         Route::get("news/fashion", [
             "as" => "news.fashion",
@@ -140,7 +145,12 @@ Route::group(["namespace" => "Admin"], function() {
         //     Route::put("update_status", [
         //         "as" => "news.update_status",
         //         "uses" => "AdminController@newsUpdateStatus"
-        //     ]);            
+        //     ]);  
+            
+            Route::post("insert_all", [
+                "as" => "news.insert_all",
+                "uses" => "AdminController@newsInsert_all"
+            ]);
 
             Route::post("insert", [
                 "as" => "news.insert",

@@ -22,6 +22,11 @@ class AppServiceProvider extends ServiceProvider
             $topics = Topic::all();
             $view->with('topics', $topics);
         });
+
+        view()->composer('page.admin._table', function($view) {
+            $topics = Topic::all();
+            $view->with('topics', $topics);
+        });
     }
 
     /**

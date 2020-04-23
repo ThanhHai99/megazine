@@ -45,6 +45,16 @@ class AdminController extends Controller
     return Datatables::of($query)->make(true);
   }
 
+  public function getNewsAll(Request $request) {
+    $query=News::all();
+    return Datatables::of($query)
+    // ->editColumn('hot_news', function(News $news) {
+      // return $news->hot_news == 1 ? '<i class="fa fa-check-circle"></i>' : '<i class="fa fa-times-circle"></i>' ;
+    // })
+    // ->setRowClass('{{ $hot_news == 1 ? "fa fa-check-circle" : "fa fa-times-circle" }}')
+    ->make(true);
+  }
+
   public function getNewsStyle(Request $request) {
     $query=News::where('id_topic', 1);
     return Datatables::of($query)
@@ -53,7 +63,7 @@ class AdminController extends Controller
     // })
     // ->setRowClass('{{ $hot_news == 1 ? "fa fa-check-circle" : "fa fa-times-circle" }}')
     ->make(true);
-  }
+  } 
 
   public function getNewsFashion(Request $request) {
     $query=News::where('id_topic', 2);
@@ -86,7 +96,6 @@ class AdminController extends Controller
 
   public function newsUpdate(Request $request) {
     $this->validate($request, [
-      'hot_news' => 'required',
       'image' => 'required',
       'tag' => 'required',
       'caption' => 'required',
@@ -95,7 +104,6 @@ class AdminController extends Controller
 
     $input = $request->all();
     $tmp = News::find($input['id']);
-    $tmp->hot_news = $input['hot_news'];
     $tmp->image = $input['image'];
     $tmp->tag = $input['tag'];
     $tmp->caption = $input['caption'];
@@ -108,6 +116,43 @@ class AdminController extends Controller
     ], 200);
   }
 
+
+  public function newsInsert_all(Request $request) {
+    $this->validate($request, [
+      'id_topic' => 'required',
+      'id_creator' => 'required',
+      'hot_news' => 'required',
+      'image' => 'required',
+      'tag' => 'required',
+      'caption' => 'required',
+      'subtitle' => 'required'
+    ]);
+    
+    $input = $request->all();
+    
+    $tmp = new News;
+
+    if ($request->hasFile('image')) {
+      $file = $request->file('image');
+      $extension = $file->getClientOriginalExtension();
+      $filename = time() . '_'. uniqid() . '.' . $extension;
+      $file->move("images", $filename);
+      $tmp->image = $filename;
+    }
+
+    $tmp->id_topic = $input['id_topic'];
+    $tmp->id_creator = $input['id_creator'];
+    $tmp->hot_news = $input['hot_news'];
+    $tmp->tag = $input['tag'];
+    $tmp->caption = $input['caption'];
+    $tmp->subtitle = $input['subtitle'];
+    $tmp->save();
+
+    return response()->json([
+      'error' => false,
+      'input'  => $input
+    ], 200);
+  }
 
   public function newsInsert(Request $request) {
     $this->validate($request, [
@@ -144,7 +189,7 @@ class AdminController extends Controller
       'error' => false,
       'input'  => $input
     ], 200);
-  }
+  }  
 
   public function newsRemove(Request $request) {
     $input = $request->all();

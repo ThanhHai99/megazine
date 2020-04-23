@@ -43,6 +43,7 @@
     </a>
     <div id="collapseNews" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
+      <a href="javascript:void(0)" class="collapse-item" id="news-all" style="text-transform: capitalize">All</a>
         @foreach ($topics as $topic)
           <!-- <a href="dashboard/table" class="collapse-item" style="text-transform: capitalize">{{ $topic->name }}</a> -->
           <a href="javascript:void(0)" class="collapse-item" id="topic-{{ $topic->name }}" style="text-transform: capitalize">{{ $topic->name }}</a>
