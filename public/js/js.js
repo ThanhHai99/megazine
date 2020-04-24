@@ -1,21 +1,19 @@
-let callAjaxTopic = (keyword) => {
-    $.ajax({
-      url:`dashboard/topic/${keyword}`,
-      method:"GET",
-      data: {keyword: keyword},
-      success:function(response) {
-        $("div#content-ajax").html(response);
-        console.log(response);
-     }
-  });
-};
+$("input#image_news").change(function() {
+  if ($("button#update_image_news").length == false) {
+    $("div#image-modal-foot").append(`<button id="update_image_news" type="button" class="btn btn-outline-success btn-rounded btn-md ml-4">Update</button>`);
+  }
+});
 
+function previewImage(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();    
+    reader.onload = function(e) {
+      $('img#show-image-news').attr('src', e.target.result);
+    }    
+    reader.readAsDataURL(input.files[0]); // convert to base64 string
+  }
+}
 
-$(() => {
-  $("#topic-style").unbind("click").on("click", function() { callAjaxTopic("style"); });  
-  $("#topic-fashion").unbind("click").on("click", function() { callAjaxTopic("fashion"); });  
-  $("#topic-travel").unbind("click").on("click", function() { callAjaxTopic("travel"); });  
-  $("#topic-sports").unbind("click").on("click", function() { callAjaxTopic("sports"); });  
-  $("#topic-video").unbind("click").on("click", function() { callAjaxTopic("video"); });  
-  $("#topic-archives").unbind("click").on("click", function() { callAjaxTopic("archives"); });  
+$("#image_news").change(function() {
+  previewImage(this);
 });

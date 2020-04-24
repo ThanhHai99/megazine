@@ -1,3 +1,14 @@
+<!-- MDB 4.16.0 -->
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/css/mdb.min.css" rel="stylesheet">
+<!-- End MDB 4.16.0 -->
+
 <meta charset="utf-8">
 <base href="/megazine/public/">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,5 +41,3 @@
 <!-- temp -->
 <!-- <link href="{{asset('datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet"> -->
 <!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css"> -->
-
-

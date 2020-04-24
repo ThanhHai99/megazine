@@ -1,3 +1,14 @@
+<!-- MDB 4.16.0 -->
+<!-- JQuery -->
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+<!-- Bootstrap tooltips -->
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script> -->
+<!-- Bootstrap core JavaScript -->
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
+<!-- MDB core JavaScript -->
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script> -->
+<!--End MDB 4.16.0 -->
+
 <!-- Bootstrap core JavaScript-->
 <script src="{{asset('jquery/jquery.min.js')}}"></script>
 <script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -24,3 +35,5 @@
 
 <!-- <script src="//code.jquery.com/jquery-1.10.2.min.js"></script> -->
 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+<script src="js/js.js"></script>

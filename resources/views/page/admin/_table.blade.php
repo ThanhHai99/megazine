@@ -1,6 +1,5 @@
 @extends("layouts.admin.admin")
 @section("content")
-
 <div class="container-fluid">
   <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -223,6 +222,39 @@
 </div>
 <!-- End Insert News Modal - All-->
 
+<!-- Start Image Modal -->
+<div class="modal fade" id="editImageNews" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <button type="button" class="btn btn-rounded btn-md ml-4" data-dismiss="modal">
+      <i class="fa fa-times-circle" style="font-size:20px;color:#2b2626; width:100%; height:100%"></i>
+    </button>
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> -->
+
+      <form id="form-image-news" method="PUT" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <div class="modal-body">
+          <div class="form-group">
+            <img id="show-image-news" class="img-fluid" src="" alt="" srcset="">
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center" id="image-modal-foot">
+          <label class="btn btn-outline-primary btn-rounded btn-md ml-4" for="image_news">Change image</label>
+          <input style="visibility:hidden;" type="file" id="image_news" name="image_news">
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+<!-- End Image Modal -->
+
+
 @push("script-table")
 
 <script>
@@ -439,7 +471,7 @@
           },
           // { data: "image", name: "image" },
           { data: "image", name: "image", render: function(data, type, row) { 
-              return `<img src='images/` + data + `' class="img-responsive">`;
+              return `<a data-toggle="modal"><img id="image-news" src='images/` + data + `' class="img-responsive"></a>`;
             },
             targets: "no-sort", orderable: false, searchable: false
           },
@@ -1011,7 +1043,7 @@
         if(response.error == false) {
           $('tbody > tr > td:first-child').each(function() {
             if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-              $(this).parent("tr").find("td:nth-child(4)").html(`<a href="javascript:void(0)" id="hot_news_yes-all"><a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`);
+              $(this).parent("tr").find("td:nth-child(4)").html(`<a href="javascript:void(0)" id="hot_news_yes-all"><i class="fa fa-check-circle" style="color:green;"></i></a>`);
             }
           });
         }
@@ -1211,6 +1243,32 @@
     });
   });
   //End click remove news button
+
+  //Start click image news
+  $("body").delegate("img#image-news", "click", function() {
+    let table = $('#dataTable').DataTable();
+    $tr = $(this).closest('tr');
+    if ($($tr).hasClass('child')) {
+      $tr = $tr.prev('.parent');
+    };
+
+    let data = table.row($tr).data();
+    console.log(data);
+    $("img#show-image-news").attr("src", '');
+    let linkImage = 'images/' + data['image'];
+    $("img#show-image-news").attr("src", linkImage);
+    $("button#update_image_news").remove();
+    $("#editImageNews").modal('show');
+  });
+    // Start click change image
+    $("body").delegate("button#update_image_news", "click", function() {
+    // $("button#update_image_news").on("click", function() {
+      alert("ok");
+    });
+    // End click change image
+  //End click image news
+
+
   //End News
   // End CRUD
 </script>
