@@ -96,7 +96,6 @@ class AdminController extends Controller
 
   public function newsUpdate(Request $request) {
     $this->validate($request, [
-      'image' => 'required',
       'tag' => 'required',
       'caption' => 'required',
       'subtitle' => 'required'
@@ -104,7 +103,6 @@ class AdminController extends Controller
 
     $input = $request->all();
     $tmp = News::find($input['id']);
-    $tmp->image = $input['image'];
     $tmp->tag = $input['tag'];
     $tmp->caption = $input['caption'];
     $tmp->subtitle = $input['subtitle'];

@@ -63,11 +63,6 @@
       <div class="modal-body">
 
         <div class="form-group">
-          <label>Image</label>
-          <input type="text" name="image" id="update_image" class="form-control" placeholder="Image">
-        </div>
-
-        <div class="form-group">
           <label>Tag</label>
           <input type="text" name="tag" id="update_tag" class="form-control" placeholder="Tag">
         </div>
@@ -1077,7 +1072,6 @@
       let table = $('#dataTable').DataTable();
       let data = table.row($tr).data();
       let id = data['id'];
-      let image = $("#editModalNews").find("#update_image").val();
       let tag = $("#editModalNews").find("#update_tag").val();
       let caption = $("#editModalNews").find("#update_caption").val();
       let subtitle = $("#editModalNews").find("#update_subtitle").val();
@@ -1087,8 +1081,6 @@
         method: "PUT",
         data: {
           id: id,
-          hot_news: hot_news,
-          image: image,
           tag: tag,
           caption: caption,
           subtitle: subtitle
