@@ -855,13 +855,13 @@
           success: function(response) {
             if (response.error == false) {
               $("#editModalEmployee").modal('hide');
-              alertify.notify('Update successfully', 'success', 7);
+              alertify.notify('Update successfully', 'success', 3);
             }
             var d = table.row( this ).data();     
             table.row( this ).data( d ).draw();
           },
           error: function(error) {
-            alertify.notify('An error occurred', 'error', 7);
+            alertify.notify('An error occurred', 'error', 3);
           }
         });
       });
@@ -950,7 +950,7 @@
         }
       },
       error: function(error) {
-        alertify.notify('An error occurred', 'error', 7);
+        alertify.notify('An error occurred', 'error', 3);
       }
     });
     //End click button update hot new yes
@@ -983,7 +983,7 @@
         }
       },
       error: function(error) {
-        alertify.notify('An error occurred', 'error', 7);
+        alertify.notify('An error occurred', 'error', 3);
       }
     });
     //End click button update hot new yes
@@ -1019,7 +1019,7 @@
         }
       },
       error: function(error) {
-        alertify.notify('An error occurred', 'error', 7);
+        alertify.notify('An error occurred', 'error', 3);
       }
     });
     //End click button update hot new yes
@@ -1052,7 +1052,7 @@
         }
       },
       error: function(error) {
-        alertify.notify('An error occurred', 'error', 7);
+        alertify.notify('An error occurred', 'error', 3);
       }
     });
     //End click button update hot new yes
@@ -1096,13 +1096,13 @@
         success: function(response) {
           if (response.error == false) {
             $("#editModalNews").modal('hide');
-            alertify.notify('Update successfully', 'success', 7);
+            alertify.notify('Update successfully', 'success', 3);
           }
           var d = table.row( this ).data();     
           table.row( this ).data( d ).draw();
         },
         error: function(error) {
-          alertify.notify('An error occurred', 'error', 7);
+          alertify.notify('An error occurred', 'error', 3);
         }
       });
     });
@@ -1128,7 +1128,7 @@
         success: function(response) {
           if (response.error == false) {
             $("#insertModalNews").modal('hide');
-            alertify.notify('Create successfully', 'success', 7);
+            alertify.notify('Create successfully', 'success', 3);
           }   
           table.rows.add( [{
             "id" : "",
@@ -1143,7 +1143,7 @@
           }] ).draw();       
         },
         error: function(error) {
-          alertify.notify('An error occurred', 'error', 7);
+          alertify.notify('An error occurred', 'error', 3);
         }
       });
     });
@@ -1170,7 +1170,7 @@
         success: function(response) {
           if (response.error == false) {
             $("#insertModalNews_all").modal('hide');
-            alertify.notify('Create successfully', 'success', 7);
+            alertify.notify('Create successfully', 'success', 3);
           }
           table.rows.add( [{
             "id" : "",
@@ -1185,7 +1185,7 @@
           }] ).draw();
         },
         error: function(error) {
-          alertify.notify('An error occurred', 'error', 7);
+          alertify.notify('An error occurred', 'error', 3);
         }
       });
     });
@@ -1281,13 +1281,13 @@
             success: function(response) {
               if (response.error == false) {
                 $("#editImageNews").modal('hide');
-                alertify.notify('Update successfully', 'success', 7);
+                alertify.notify('Update successfully', 'success', 3);
               }
               var d = table.row( this ).data();     
               table.row( this ).data( d ).draw();
             },
             error: function(error) {
-              alertify.notify('An error occurred', 'error', 7);
+              alertify.notify('An error occurred', 'error', 3);
             }
           });
         });
