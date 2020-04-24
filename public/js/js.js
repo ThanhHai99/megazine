@@ -1,6 +1,6 @@
 $("input#image_news").change(function() {
   if ($("button#update_image_news").length == false) {
-    $("div#image-modal-foot").append(`<button id="update_image_news" type="button" class="btn btn-outline-success btn-rounded btn-md ml-4">Update</button>`);
+    $("div#image-modal-foot").append(`<button id="update_image_news" type="submit" class="btn btn-outline-success btn-rounded btn-md ml-4">Update</button>`);
   }
 });
 

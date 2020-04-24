@@ -152,6 +152,11 @@ Route::group(["namespace" => "Admin"], function() {
                 "uses" => "AdminController@newsInsert_all"
             ]);
 
+            Route::post("update_image", [
+                "as" => "news.update_image",
+                "uses" => "AdminController@newsUpdateImage"
+            ]);
+
             Route::post("insert", [
                 "as" => "news.insert",
                 "uses" => "AdminController@newsInsert"

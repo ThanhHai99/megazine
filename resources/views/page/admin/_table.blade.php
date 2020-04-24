@@ -231,13 +231,18 @@
         </button>
       </div> -->
 
-      <form id="form-image-news" method="PUT" enctype="multipart/form-data">
+      <form id="form-image-news" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="modal-body">
           <div class="form-group">
             <img id="show-image-news" class="img-fluid" src="" alt="" srcset="">
           </div>
         </div>
+
+        <div>
+          <input type="hidden" name="id_news_hide" value="">
+        </div>
+
         <div class="modal-footer justify-content-center" id="image-modal-foot">
           <label class="btn btn-outline-primary btn-rounded btn-md ml-4" for="image_news">Change image</label>
           <input style="visibility:hidden;" type="file" id="image_news" name="image_news">
@@ -830,8 +835,11 @@
       $("button.update_employee").click(function(event) {
         event.preventDefault();
         let table = $('#dataTable').DataTable();
+        $tr = $(this).closest('tr');
+        if ($($tr).hasClass('child')) {
+          $tr = $tr.prev('.parent');
+        };
         let data = table.row($tr).data();
-        console.log(data);
         let id = data['id'];
         let name = $("#editModalEmployee").find("#update_name").val();
         let email = $("#editModalEmployee").find("#update_email").val();
@@ -849,11 +857,11 @@
               $("#editModalEmployee").modal('hide');
               alertify.notify('Update successfully', 'success', 7);
             }
-            console.log(response.imput);
+            var d = table.row( this ).data();     
+            table.row( this ).data( d ).draw();
           },
           error: function(error) {
             alertify.notify('An error occurred', 'error', 7);
-            console.log(error.imput);
           }
         });
       });
@@ -1090,11 +1098,11 @@
             $("#editModalNews").modal('hide');
             alertify.notify('Update successfully', 'success', 7);
           }
-          console.log(response.input);
+          var d = table.row( this ).data();     
+          table.row( this ).data( d ).draw();
         },
         error: function(error) {
           alertify.notify('An error occurred', 'error', 7);
-          console.log(error.input);
         }
       });
     });
@@ -1245,7 +1253,7 @@
     };
 
     let data = table.row($tr).data();
-    console.log(data);
+    $("input[name=id_news_hide]").attr('value', data['id']);
     $("img#show-image-news").attr("src", '');
     let linkImage = 'images/' + data['image'];
     $("img#show-image-news").attr("src", linkImage);
@@ -1253,9 +1261,37 @@
     $("#editImageNews").modal('show');
   });
     // Start click change image
-    $("body").delegate("button#update_image_news", "click", function() {
-    // $("button#update_image_news").on("click", function() {
-      alert("ok");
+    $("form#form-image-news").delegate("button#update_image_news", "click", function() {
+      //Start click button create
+      $("form#form-image-news").on("submit", function(event) {
+        event.preventDefault();
+        let table = $('#dataTable').DataTable();
+        $tr = $(this).closest('tr');
+        if ($($tr).hasClass('child')) {
+          $tr = $tr.prev('.parent');
+        };
+        let data = table.row($tr).data();
+        $.ajax({
+            url: `{{route('news.update_image')}}`,
+            method: 'POST',
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(response) {
+              if (response.error == false) {
+                $("#editImageNews").modal('hide');
+                alertify.notify('Update successfully', 'success', 7);
+              }
+              var d = table.row( this ).data();     
+              table.row( this ).data( d ).draw();
+            },
+            error: function(error) {
+              alertify.notify('An error occurred', 'error', 7);
+            }
+          });
+        });
+      //End click button create
     });
     // End click change image
   //End click image news

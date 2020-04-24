@@ -114,6 +114,21 @@ class AdminController extends Controller
     ], 200);
   }
 
+  public function newsUpdateImage(Request $request) {
+    $input = $request->all();
+    $tmp = News::find($input['id_news_hide']);
+    $file = $request->file('image_news');
+    $extension = $file->getClientOriginalExtension();
+    $filename = time() . '_'. uniqid() . '.' . $extension;
+    $file->move("images", $filename);
+    $tmp->image = $filename;
+    $tmp->save();
+
+    return response()->json([
+      'error' => false,
+    ], 200);
+  }
+
 
   public function newsInsert_all(Request $request) {
     $this->validate($request, [
