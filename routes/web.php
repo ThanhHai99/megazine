@@ -122,11 +122,6 @@ Route::group(["namespace" => "Admin"], function() {
 
         // Start CRUD
         Route::group(["prefix" => "news"], function () {
-        //     Route::get("fetch", [
-        //         "as" => "news.fetch",
-        //         "uses" => "AdminController@newsFetch"
-        //     ]);
-
             Route::put("update", [
                 "as" => "news.update",
                 "uses" => "AdminController@newsUpdate"
@@ -166,38 +161,6 @@ Route::group(["namespace" => "Admin"], function() {
                 "as" => "news.remove",
                 "uses" => "AdminController@newsRemove"
             ]);
-
-
-
-        //     Route::get("style", [
-        //         "as" => "topic-style",
-        //         "uses" => "AdminController@getTopicStyle"
-        //     ]);
-
-        //     Route::get("fashion", [
-        //         "as" => "topic-fashion",
-        //         "uses" => "AdminController@getTopicFashion"
-        //     ]);
-
-        //     Route::get("travel", [
-        //         "as" => "topic-travel",
-        //         "uses" => "AdminController@getTopicTravel"
-        //     ]);
-
-        //     Route::get("sports", [
-        //         "as" => "topic-sports",
-        //         "uses" => "AdminController@getTopicSports"
-        //     ]);
-
-        //     Route::get("video", [
-        //         "as" => "topic-video",
-        //         "uses" => "AdminController@getTopicVideo"
-        //     ]);
-
-        //     Route::get("archives", [
-        //         "as" => "topic-archives",
-        //         "uses" => "AdminController@getTopicArchives"
-        //     ]);
         });
 
         Route::group(["prefix" => "employee"], function () {
@@ -206,35 +169,10 @@ Route::group(["namespace" => "Admin"], function() {
                 "uses" => "AdminController@employeeUpdate"
             ]);
 
-            // Route::put("update_hot_news", [
-            //     "as" => "employee.update_hot_news",
-            //     "uses" => "AdminController@employeeUpdateRole"
-            // ]);
-
-            // Route::put("update_status", [
-            //     "as" => "employee.update_status",
-            //     "uses" => "AdminController@employeeUpdateStatus"
-            // ]);            
-
-            // Route::put("insert", [
-            //     "as" => "employee.insert",
-            //     "uses" => "AdminController@employeeInsert"
-            // ]);
-
             Route::put("remove", [
                 "as" => "employee.remove",
                 "uses" => "AdminController@employeeRemove"
             ]);
-
-            // Route::get("staff", [
-            //     "as" => "employee.staffnot",
-            //     "uses" => "AdminController@getEmpoyeeStaff"
-            // ]);
-
-            // Route::get("normal_user", [
-            //     "as" => "employee.normal_user",
-            //     "uses" => "AdminController@getNormalUser"
-            // ]);
         });
 
 

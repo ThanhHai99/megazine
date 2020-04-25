@@ -50,7 +50,13 @@
         @endforeach
       </div>
     </div>
-  </li> 
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="javascript:void(0)">
+      <i class="fas fa-fw fa-folder"></i>
+      <span>Slide</span></a>
+  </li>
   
   
   <!-- Divider -->
