@@ -1263,6 +1263,7 @@
     // Start click change image
     $("form#form-image-news").delegate("button#update_image_news", "click", function() {
       //Start click button create
+      // alert("Start call ajax");
       $("form#form-image-news").on("submit", function(event) {
         event.preventDefault();
         let table = $('#dataTable').DataTable();
