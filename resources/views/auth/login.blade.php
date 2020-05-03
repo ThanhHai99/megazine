@@ -21,20 +21,15 @@
                 <form class="user" action="{{route('login')}}" method="post">
                   {{ csrf_field() }}
                   <div class="form-group">
-                    <input type="email" class="form-control form-control-user form-group{{ $errors->has('email') ? ' has-error' : '' }}" id="exampleInputEmail email" name="email" aria-describedby="emailHelp" placeholder="Enter Email Address...">
-                    @if ($errors->has('email'))
+                    @if ($errors->has('email') || $errors->has('password'))
                         <span class="help-block">
                             <strong>{{ $errors->first('email') }}</strong>
                         </span>
                     @endif
+                    <input type="email" class="form-control form-control-user form-group{{ $errors->has('email') ? ' has-error' : '' }}" id="exampleInputEmail email" name="email" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                   </div>
                   <div class="form-group">
                     <input type="password" class="form-control form-control-user form-group{{ $errors->has('password') ? ' has-error' : '' }}" id="exampleInputPassword password" name="password" placeholder="Password">
-                    @if ($errors->has('password'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
-                    @endif
                   </div>
                   <div class="form-group">
                     <div class="custom-control custom-checkbox small">
