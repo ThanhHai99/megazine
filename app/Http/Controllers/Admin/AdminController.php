@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Topic;
 use App\News;
 use App\User;
+use App\Slide;
 
 use Yajra\Datatables\Datatables;
 
@@ -92,6 +93,11 @@ class AdminController extends Controller
 
   public function getTopic(Request $request) {
     return Datatables::of(News::query())->make(true);
+  }
+
+  public function getSlideAll(Request $request) {
+    $query=Slide::all();
+    return Datatables::of($query)->make(true);
   }
 
   public function newsUpdate(Request $request) {
@@ -365,6 +371,39 @@ class AdminController extends Controller
 
   public function deleteTopic(Request $request) {
 
+  }
+
+  public function slideUpdate(Request $request) {
+    $this->validate($request, [
+      'heading_primary' => 'required',
+      'heading_secondary' => 'required'
+    ]);
+
+    $input = $request->all();
+    $tmp = Slide::find($input['id']);
+    $tmp->heading_primary = $input['heading_primary'];
+    $tmp->subtitle = $input['heading_secondary'];
+    $tmp->save();
+
+    return response()->json([
+        'error' => false,
+        // 'task'  => $tmp,
+    ], 200);
+  }
+
+  public function slideUpdateImage(Request $request) {
+    $input = $request->all();
+    $tmp = Slide::find($input['id_slide_hide']);
+    $file = $request->file('image_slide');
+    $extension = $file->getClientOriginalExtension();
+    $filename = time() . '_'. uniqid() . '.' . $extension;
+    $file->move("images", $filename);
+    $tmp->image = $filename;
+    $tmp->save();
+
+    return response()->json([
+      'error' => false,
+    ], 200);
   }
 
 

@@ -118,6 +118,12 @@ Route::group(["namespace" => "Admin"], function() {
             "as" => "news.archives",
             "uses" => "AdminController@getNewsArchives"
         ]);
+
+        Route::get("slide/all", [
+            "as" => "slide.all",
+            "uses" => "AdminController@getSlideAll"
+        ]);
+
         // End get
 
         // Start CRUD
@@ -136,11 +142,6 @@ Route::group(["namespace" => "Admin"], function() {
                 "as" => "news.updateHotNewsNo",
                 "uses" => "AdminController@newsUpdateHotNewsNo"
             ]);
-
-        //     Route::put("update_status", [
-        //         "as" => "news.update_status",
-        //         "uses" => "AdminController@newsUpdateStatus"
-        //     ]);  
             
             Route::post("insert_all", [
                 "as" => "news.insert_all",
@@ -172,6 +173,18 @@ Route::group(["namespace" => "Admin"], function() {
             Route::put("remove", [
                 "as" => "employee.remove",
                 "uses" => "AdminController@employeeRemove"
+            ]);
+        });
+
+        Route::group(["prefix" => "slide"], function () {
+            Route::put("update", [
+                "as" => "slide.update",
+                "uses" => "AdminController@slideUpdate"
+            ]);
+
+            Route::post("update_image", [
+                "as" => "slide.update_image",
+                "uses" => "AdminController@slideUpdateImage"
             ]);
         });
 

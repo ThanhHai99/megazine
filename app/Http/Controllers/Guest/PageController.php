@@ -27,11 +27,13 @@ class PageController extends Controller
     }
 
     public function getStyle(Request $request) {
+        $slides = Slide::where("id_topic", 1)->orderBy("created_at", "desc")->limit(3)->get();
         $newsNewests = News::where("id_topic", 1)->orderBy("created_at", "desc")->limit(2)->get();
         $newsStyles = News::where("id_topic", 1)->orderBy("created_at", "desc")->offset(2)->limit(11)->get();
         $video = Video::where("id_topic", 1)->orderBy("created_at", "desc")->limit(1)->get();
 
         return view("page.guest.style", [
+            "slides" => $slides,
             "newsNewests" => $newsNewests,
             "newsStyles" => $newsStyles,
             "video" => $video
