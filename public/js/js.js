@@ -4,7 +4,7 @@ $("input#image_news").change(function() {
   }
 });
 
-function previewImage(input) {
+function previewImageNews(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();    
     reader.onload = function(e) {
@@ -15,7 +15,7 @@ function previewImage(input) {
 }
 
 $("#image_news").change(function() {
-  previewImage(this);
+  previewImageNews(this);
 });
 
 
@@ -28,7 +28,7 @@ $("input#image_slide").change(function() {
   }
 });
 
-function previewImage(input) {
+function previewImageSlide(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();    
     reader.onload = function(e) {
@@ -39,5 +39,5 @@ function previewImage(input) {
 }
 
 $("#image_slide").change(function() {
-  previewImage(this);
+  previewImageSlide(this);
 });

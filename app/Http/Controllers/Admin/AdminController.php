@@ -21,6 +21,10 @@ class AdminController extends Controller
 {
   use AuthenticatesUsers;
 
+  public function __construct() {
+    $this->middleware('auth');
+  }
+
   public function getLogout() {
     Auth::logout();
     return redirect("/home");
