@@ -189,6 +189,17 @@ Route::group(["namespace" => "Admin"], function() {
                 "as" => "employee.remove",
                 "uses" => "AdminController@employeeRemove"
             ]);
+
+            Route::put("update_status_employee_yes", [
+                "as" => "employee.updateEmployeeStatusYes",
+                "uses" => "AdminController@employeeUpdateStatusYes"
+            ]);
+
+            Route::put("update_status_employee_no", [
+                "as" => "employee.updateEmployeeStatusNo",
+                "uses" => "AdminController@employeeUpdateStatusNo"
+            ]);
+
         });
 
         Route::group(["prefix" => "slide"], function () {

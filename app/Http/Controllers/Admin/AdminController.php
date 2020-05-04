@@ -60,6 +60,10 @@ class AdminController extends Controller
 
   public function getNewsAll(Request $request) {
     $query=News::all();
+    // $query=News::join("users", "1", "=", "1")
+    //               ->select("news.id", "news.id_topic", "news.id_creator", "news.hot_news", "news.status", "news.image", "news.tag", "news.caption", "news.subtitle")
+    //               ->get();
+
     return Datatables::of($query)
     // ->editColumn('hot_news', function(News $news) {
       // return $news->hot_news == 1 ? '<i class="fa fa-check-circle"></i>' : '<i class="fa fa-times-circle"></i>' ;
@@ -263,6 +267,38 @@ class AdminController extends Controller
     return response()->json([
       'error' => false,
       // 'id'  => id,
+    ], 200);
+  }
+
+  public function employeeUpdateStatusYes(Request $request) {
+    $this->validate($request, [
+      'id' => 'required'
+    ]);
+
+    $input = $request->all();
+    $tmp = User::find($input['id']);
+    $tmp->id_status = 1;
+    $tmp->save();
+
+    return response()->json([
+        'error' => false,
+        // 'task'  => $tmp,
+    ], 200);
+  }
+
+  public function employeeUpdateStatusNo(Request $request) {
+    $this->validate($request, [
+      'id' => 'required'
+    ]);
+
+    $input = $request->all();
+    $tmp = User::find($input['id']);
+    $tmp->id_status = 0;
+    $tmp->save();
+
+    return response()->json([
+        'error' => false,
+        // 'task'  => $tmp,
     ], 200);
   }
 

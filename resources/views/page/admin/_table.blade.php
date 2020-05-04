@@ -211,10 +211,10 @@
           // { data: "id_status", name: "id_status" },
           { data: "id_status", name: "id_status", render: function(data, type, row) { 
               if (data == 1) {
-                return '<a href="javascript:void(0)" id="id_status_yes-all"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+                return '<a href="javascript:void(0)" id="status_employee_yes-all"><i class="fas fa-lock-open" style="color:green;"></i></a>';
               }
               else {
-                return '<a href="javascript:void(0)" id="id_status_no-all"><i class="fas fa-lock" style="color: red;"></i></a>';
+                return '<a href="javascript:void(0)" id="status_employee_no-all"><i class="fas fa-lock" style="color: red;"></i></a>';
               }
             },
             searchable: false
@@ -246,7 +246,16 @@
         ajax: "{!! route("employee.staff") !!}",
         columns: [
           { data: "id", name: "id" },
-          { data: "id_status", name: "id_status" },
+          { data: "id_status", name: "id_status", render: function(data, type, row) { 
+              if (data == 1) {
+                return '<a href="javascript:void(0)" id="status_employee_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              }
+              else {
+                return '<a href="javascript:void(0)" id="status_employee_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              }
+            },
+            searchable: false
+          },
           { data: "name", name: "name" },
           { data: "email", name: "email"},
           {
@@ -274,7 +283,16 @@
         ajax: "{!! route("employee.normal_user") !!}",
         columns: [
           { data: "id", name: "id" },
-          { data: "id_status", name: "id_status" },
+          { data: "id_status", name: "id_status", render: function(data, type, row) { 
+              if (data == 1) {
+                return '<a href="javascript:void(0)" id="status_employee_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              }
+              else {
+                return '<a href="javascript:void(0)" id="status_employee_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              }
+            },
+            searchable: false
+          },
           { data: "name", name: "name" },
           { data: "email", name: "email" },
           {
@@ -888,6 +906,147 @@
       });
     });
     //End click remove employee button
+
+  //Click update status (all)
+  //Yes
+  $("body").delegate("#status_employee_yes-all", "click", function(event) {
+    //Click button update hot new yes
+    event.preventDefault();
+    let table = $('#dataTable').DataTable();
+    $tr = $(this).closest('tr');
+    if ($($tr).hasClass('child')) {
+      $tr = $tr.prev('.parent');
+    };
+    let data = table.row($tr).data();
+    let id = data['id'];
+    $('meta[name=row-index]').attr('content', id);
+    $.ajax({
+      url: `{{route('employee.updateEmployeeStatusNo')}}`,
+      method: "PUT",
+      data: {
+        id: id
+      },
+      success: function(response) {
+        if(response.error == false) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(3)").html(`<a href="javascript:void(0)" id="status_employee_no-all"><i class="fas fa-lock" style="color: red;"></i></a>`);
+            }
+          });
+        }
+      },
+      error: function(error) {
+        alertify.notify('An error occurred', 'error', 3);
+      }
+    });
+    //End click button update hot new yes
+  });
+  //No
+  $("body").delegate("#status_employee_no-all", "click", function(event) {
+    //Click button update hot new yes
+    event.preventDefault();
+    let table = $('#dataTable').DataTable();
+    $tr = $(this).closest('tr');
+    if ($($tr).hasClass('child')) {
+      $tr = $tr.prev('.parent');
+    };
+    let data = table.row($tr).data();
+    let id = data['id'];
+    $('meta[name=row-index]').attr('content', id);
+    $.ajax({
+      url: `{{route('employee.updateEmployeeStatusYes')}}`,
+      method: "PUT",
+      data: {
+        id: id
+      },
+      success: function(response) {
+        if(response.error == false) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(3)").html(`<a href="javascript:void(0)" id="status_employee_yes-all"><i class="fas fa-lock-open" style="color:green;"></i></a>`);
+            }
+          });
+        }
+      },
+      error: function(error) {
+        alertify.notify('An error occurred', 'error', 3);
+      }
+    });
+    //End click button update hot new yes
+  });
+  //End click update status (all)
+
+  //Click update status
+  //Yes
+  $("body").delegate("#status_employee_yes", "click", function(event) {
+    //Click button update hot new yes
+    event.preventDefault();
+    let table = $('#dataTable').DataTable();
+    $tr = $(this).closest('tr');
+    if ($($tr).hasClass('child')) {
+      $tr = $tr.prev('.parent');
+    };
+    let data = table.row($tr).data();
+    let id = data['id'];
+    $('meta[name=row-index]').attr('content', id);
+    $.ajax({
+      url: `{{route('employee.updateEmployeeStatusNo')}}`,
+      method: "PUT",
+      data: {
+        id: id
+      },
+      success: function(response) {
+        if(response.error == false) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(2)").html(`<a href="javascript:void(0)" id="status_employee_no"><i class="fas fa-lock" style="color: red;"></i></a>`);
+            }
+          });
+        }
+      },
+      error: function(error) {
+        alertify.notify('An error occurred', 'error', 3);
+      }
+    });
+    //End click button update hot new yes
+  });
+  //No
+  $("body").delegate("#status_employee_no", "click", function(event) {
+    //Click button update hot new yes
+    event.preventDefault();
+    let table = $('#dataTable').DataTable();
+    $tr = $(this).closest('tr');
+    if ($($tr).hasClass('child')) {
+      $tr = $tr.prev('.parent');
+    };
+    let data = table.row($tr).data();
+    let id = data['id'];
+    $('meta[name=row-index]').attr('content', id);
+    $.ajax({
+      url: `{{route('employee.updateEmployeeStatusYes')}}`,
+      method: "PUT",
+      data: {
+        id: id
+      },
+      success: function(response) {
+        if(response.error == false) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(2)").html(`<a href="javascript:void(0)" id="status_employee_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>`);
+            }
+          });
+        }
+      },
+      error: function(error) {
+        alertify.notify('An error occurred', 'error', 3);
+      }
+    });
+    //End click button update hot new yes
+  });
+  //End click update status
+
+
+
   // End Employee
   
   //Start News
@@ -1096,7 +1255,7 @@
     });
     //End click button update hot new yes
   });
-  //End click update hot_news (all)
+  //End click update status (all)
 
   //Click update status
   //Yes
@@ -1165,7 +1324,7 @@
     });
     //End click button update hot new yes
   });
-  //End click update hot_news
+  //End click update status
   
   //Start Edit News Record
   $("body").delegate("#edit_news", "click", function(){
