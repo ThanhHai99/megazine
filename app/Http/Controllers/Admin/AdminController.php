@@ -380,6 +380,38 @@ class AdminController extends Controller
         // 'task'  => $tmp,
     ], 200);
   }
+  
+  public function newsUpdateStatusNewsYes(Request $request) {
+    $this->validate($request, [
+      'id' => 'required'
+    ]);
+
+    $input = $request->all();
+    $tmp = News::find($input['id']);
+    $tmp->id_status = 1;
+    $tmp->save();
+
+    return response()->json([
+        'error' => false,
+        // 'task'  => $tmp,
+    ], 200);
+  }
+
+  public function newsUpdateStatusNewsNo(Request $request) {
+    $this->validate($request, [
+      'id' => 'required'
+    ]);
+
+    $input = $request->all();
+    $tmp = News::find($input['id']);
+    $tmp->id_status = 0;
+    $tmp->save();
+
+    return response()->json([
+        'error' => false,
+        // 'task'  => $tmp,
+    ], 200);
+  }
 
   public function deleteTopic(Request $request) {
 

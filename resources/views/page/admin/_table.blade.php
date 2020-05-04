@@ -16,313 +16,7 @@
 
 @endsection
 
-<!-- Start Edit Employee Modal  -->
-<div class="modal fade" id="editModalEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Modal</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      <div class="modal-body">
-        <div class="form-group">
-          <label>Name</label>
-          <input type="text" name="name" id="update_name" class="form-control" placeholder="Name">
-        </div>
-
-        <div class="form-group">
-          <label>Email</label>
-          <input type="text" name="email" id="update_email" class="form-control" placeholder="Email">
-        </div>
-      </div>
-        
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary update_employee">Update data</button>
-      </div>
-
-    </div>
-  </div>
-</div>
-<!-- End Edit Employee Modal -->
-
-<!-- Start Edit News Modal  -->
-<div class="modal fade" id="editModalNews" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Modal</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      <div class="modal-body">
-
-        <div class="form-group">
-          <label>Tag</label>
-          <input type="text" name="tag" id="update_tag" class="form-control" placeholder="Tag">
-        </div>
-
-        <div class="form-group">
-          <label>Caption</label>
-          <input type="text" name="caption" id="update_caption" class="form-control" placeholder="Caption">
-        </div>
-
-        <div class="form-group">
-          <label>Subtitle</label>
-          <input type="text" name="subtitle" id="update_subtitle" class="form-control" placeholder="Subtitle">
-        </div>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary update_news">Update data</button>
-      </div>
-
-    </div>
-  </div>
-</div>
-<!-- End Edit News Modal -->
-
-<!-- Start Insert News Modal  -->
-<div class="modal fade" id="insertModalNews" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      <form id="form-insert-news" method="PUT" enctype="multipart/form-data">
-        {{ csrf_field() }}
-        <div class="modal-body">
-          <div class="form-group">
-            <label>Hot News</label>
-            <input type="text" name="hot_news" id="insert_hot_news" class="form-control" placeholder="Hot News">
-          </div>
-
-          <div class="form-group">
-            <label>Image</label>
-            <input type="file" name="image" id="insert_image" class="form-control" placeholder="Image">
-          </div>
-
-          <div class="form-group">
-            <label>Tag</label>
-            <input type="text" name="tag" id="insert_tag" class="form-control" placeholder="Tag">
-          </div>
-
-          <div class="form-group">
-            <label>Caption</label>
-            <input type="text" name="caption" id="insert_caption" class="form-control" placeholder="Caption">
-          </div>
-
-          <div class="form-group">
-            <label>Subtitle</label>
-            <input type="text" name="subtitle" id="insert_subtitle" class="form-control" placeholder="Subtitle">
-          </div>
-
-          <div class="form-group">
-            <input type="hidden" name="id_topic" value="">
-          </div>
-
-          <div class="form-group">
-            <input type="hidden" name="id_creator" value="">
-          </div>
-
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-success insert_news">Create</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-<!-- End Insert News Modal -->
-
-<!-- Start Insert News Modal - All -->
-<div class="modal fade" id="insertModalNews_all" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      <form id="form-insert-news_all" method="PUT" enctype="multipart/form-data">
-        {{ csrf_field() }}
-        <div class="modal-body">
-
-          <div class="form-group">
-            <label>Topic</label>
-            <!-- <input type="text" name="id_topic" id="insert_topic_all" class="form-control" placeholder="Topic"> -->
-            <select class="form-control" id="topic_option">
-              @foreach($topics as $topic)
-                <option value="{{ $topic->id }}">{{ $topic->name }}</option>
-              @endforeach              
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Hot News</label>
-            <input type="text" name="hot_news" id="insert_hot_news_all" class="form-control" placeholder="Hot News">
-          </div>
-
-          <div class="form-group">
-            <label>Image</label>
-            <input type="file" name="image" id="insert_image_all" class="form-control" placeholder="Image">
-          </div>
-
-          <div class="form-group">
-            <label>Tag</label>
-            <input type="text" name="tag" id="insert_tag_all" class="form-control" placeholder="Tag">
-          </div>
-
-          <div class="form-group">
-            <label>Caption</label>
-            <input type="text" name="caption" id="insert_caption_all" class="form-control" placeholder="Caption">
-          </div>
-
-          <div class="form-group">
-            <label>Subtitle</label>
-            <input type="text" name="subtitle" id="insert_subtitle_all" class="form-control" placeholder="Subtitle">
-          </div>
-
-          <div class="form-group">
-            <input type="hidden" name="id_creator" value="">
-          </div>
-
-          <div class="form-group">
-            <input type="hidden" name="id_topic" value="">
-          </div>
-
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-success insert_news_all">Create</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-<!-- End Insert News Modal - All-->
-
-<!-- Start Image News Modal -->
-<div class="modal fade" id="editImageNews" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-    <button type="button" class="btn btn-rounded btn-md ml-4" data-dismiss="modal">
-      <i class="fa fa-times-circle" style="font-size:20px;color:#2b2626; width:100%; height:100%"></i>
-    </button>
-      <!-- <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div> -->
-
-      <form id="form-image-news" method="POST" enctype="multipart/form-data">
-        {{ csrf_field() }}
-        <div class="modal-body">
-          <div class="form-group">
-            <img id="show-image-news" class="img-fluid" src="" alt="" srcset="">
-          </div>
-        </div>
-
-        <div>
-          <input type="hidden" name="id_news_hide" value="">
-        </div>
-
-        <div class="modal-footer justify-content-center" id="news-image-modal-foot">
-          <label class="btn btn-outline-primary btn-rounded btn-md ml-4" for="image_news">Change image</label>
-          <input style="visibility:hidden;" type="file" id="image_news" name="image_news">
-        </div>
-      </form>
-
-    </div>
-  </div>
-</div>
-<!-- End Image News Modal -->
-
-<!-- Start Edit Slide Modal  -->
-<div class="modal fade" id="editModalSlide" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Slide Modal</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      <div class="modal-body">
-
-        <!-- <div class="form-group">
-          <label>Tag</label>
-          <input type="text" name="tag" id="update_tag" class="form-control" placeholder="Tag">
-        </div> -->
-
-        <div class="form-group">
-          <label>Heading Primary</label>
-          <input type="text" name="heading_primary" id="update_heading_primary" class="form-control" placeholder="Heading Primary">
-        </div>
-
-        <div class="form-group">
-          <label>Heading Secondary</label>
-          <input type="text" name="heading_secondary" id="update_heading_secondary" class="form-control" placeholder="Heading Secondary">
-        </div>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary update_slide">Update data</button>
-      </div>
-
-    </div>
-  </div>
-</div>
-<!-- End Edit Slide Modal -->
-
-<!-- Start Image Slide Modal -->
-<div class="modal fade" id="editImageSlide" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-    <button type="button" class="btn btn-rounded btn-md ml-4" data-dismiss="modal">
-      <i class="fa fa-times-circle" style="font-size:20px;color:#2b2626; width:100%; height:100%"></i>
-    </button>
-
-      <form id="form-image-slide" method="POST" enctype="multipart/form-data">
-        {{ csrf_field() }}
-        <div class="modal-body">
-          <div class="form-group">
-            <img id="show-image-slide" class="img-fluid" src="" alt="" srcset="">
-          </div>
-        </div>
-
-        <div>
-          <input type="hidden" name="id_slide_hide" value="">
-        </div>
-
-        <div class="modal-footer justify-content-center" id="slide-image-modal-foot">
-          <label class="btn btn-outline-primary btn-rounded btn-md ml-4" for="image_slide">Change image</label>
-          <input style="visibility:hidden;" type="file" id="image_slide" name="image_slide">
-        </div>
-      </form>
-
-    </div>
-  </div>
-</div>
-<!-- End Image Slide Modal -->
+@include("layouts.admin.modal")
 
 @push("script-table")
 
@@ -375,6 +69,7 @@
                       <th>ID</th>
                       <th>ID_Creator</th>
                       <th>Hot News</th>
+                      <th>Status</th>
                       <th>Image</th>
                       <th>Tag</th>
                       <th>Caption</th>
@@ -392,6 +87,7 @@
                       <th>ID</th>
                       <th>ID_Creator</th>
                       <th>Hot News</th>
+                      <th>Status</th>
                       <th>Image</th>
                       <th>Tag</th>
                       <th>Caption</th>
@@ -410,6 +106,7 @@
                         <th>ID_Topic</th>
                         <th>ID_Creator</th>
                         <th>Hot News</th>
+                        <th>Status</th>
                         <th>Image</th>
                         <th>Tag</th>
                         <th>Caption</th>
@@ -428,6 +125,7 @@
                         <th>ID_Topic</th>
                         <th>ID_Creator</th>
                         <th>Hot News</th>
+                        <th>Status</th>
                         <th>Image</th>
                         <th>Tag</th>
                         <th>Caption</th>
@@ -487,10 +185,7 @@
           {
             data: null,
             targets: "no-sort", orderable: false,
-            defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
-                              <i class="fa fa-eye"></i>
-                            </a>
-                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_employee">
+            defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_employee">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
                             <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_employee">
@@ -513,16 +208,23 @@
         columns: [
           { data: "id", name: "id" },
           { data: "id_role", name: "id_role" },
-          { data: "id_status", name: "id_status" },
+          // { data: "id_status", name: "id_status" },
+          { data: "id_status", name: "id_status", render: function(data, type, row) { 
+              if (data == 1) {
+                return '<a href="javascript:void(0)" id="id_status_yes-all"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              }
+              else {
+                return '<a href="javascript:void(0)" id="id_status_no-all"><i class="fas fa-lock" style="color: red;"></i></a>';
+              }
+            },
+            searchable: false
+          },
           { data: "name", name: "name" },
           { data: "email", name: "email"},
           {
             data: null,
             targets: "no-sort", orderable: false,
-            defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
-                              <i class="fa fa-eye"></i>
-                            </a>
-                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_employee">
+            defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_employee">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
                             <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_employee">
@@ -550,10 +252,7 @@
           {
             data: null,
             targets: "no-sort", orderable: false,
-            defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
-                              <i class="fa fa-eye"></i>
-                            </a>
-                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_employee">
+            defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_employee">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
                             <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_employee">
@@ -581,10 +280,7 @@
           {
             data: null,
             targets: "no-sort", orderable: false,
-            defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
-                              <i class="fa fa-eye"></i>
-                            </a>
-                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_employee">
+            defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_employee">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
                             <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_employee">
@@ -617,7 +313,17 @@
                 return '<a href="javascript:void(0)" id="hot_news_no-all"><i class="fa fa-times-circle" style="color: red;"></i></a>';
               }
             },
-            targets: "no-sort", orderable: false, searchable: false
+            searchable: false
+          },
+          { data: "id_status", name: "id_status", render: function(data, type, row) { 
+              if (data == 1) {
+                return '<a href="javascript:void(0)" id="status_news_yes-all"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              }
+              else {
+                return '<a href="javascript:void(0)" id="status_news_no-all"><i class="fas fa-lock" style="color: red;"></i></a>';
+              }
+            },
+            searchable: false
           },
           // { data: "image", name: "image" },
           { data: "image", name: "image", render: function(data, type, row) { 
@@ -631,10 +337,7 @@
           {
             data: null,
             targets: "no-sort", orderable: false,
-            defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
-                              <i class="fa fa-eye"></i>
-                            </a>
-                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
+            defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
                             <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
@@ -667,7 +370,17 @@
                 return '<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color: red;"></i></a>';
               }
             },
-            targets: "no-sort", orderable: false
+            searchable: false
+          },
+          { data: "id_status", name: "id_status", render: function(data, type, row) { 
+              if (data == 1) {
+                return '<a href="javascript:void(0)" id="status_news_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              }
+              else {
+                return '<a href="javascript:void(0)" id="status_news_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              }
+            },
+            searchable: false
           },
           // { data: "image", name: "image" },
           { data: "image", name: "image", render: function(data, type, row) { 
@@ -681,10 +394,7 @@
           {
             data: null,
             targets: "no-sort", orderable: false,
-            defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
-                              <i class="fa fa-eye"></i>
-                            </a>
-                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
+            defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
                             <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
@@ -717,7 +427,17 @@
                 return '<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color:red"></i></a>';
               }
             },
-            targets: "no-sort", orderable: false
+            searchable: false
+          },
+          { data: "id_status", name: "id_status", render: function(data, type, row) { 
+              if (data == 1) {
+                return '<a href="javascript:void(0)" id="status_news_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              }
+              else {
+                return '<a href="javascript:void(0)" id="status_news_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              }
+            },
+            searchable: false
           },
           // { data: "image", name: "image" },
           { data: "image", name: "image", render: function(data, type, row) { 
@@ -731,10 +451,7 @@
           {
             data: null,
             targets: "no-sort", orderable: false,
-            defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
-                              <i class="fa fa-eye"></i>
-                            </a>
-                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
+            defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
                             <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
@@ -767,7 +484,17 @@
                 return '<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color:red"></i></a>';
               }
             },
-            targets: "no-sort", orderable: false
+            searchable: false
+          },
+          { data: "id_status", name: "id_status", render: function(data, type, row) { 
+              if (data == 1) {
+                return '<a href="javascript:void(0)" id="status_news_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              }
+              else {
+                return '<a href="javascript:void(0)" id="status_news_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              }
+            },
+            searchable: false
           },
           // { data: "image", name: "image" },
           { data: "image", name: "image", render: function(data, type, row) { 
@@ -781,10 +508,7 @@
           {
             data: null,
             targets: "no-sort", orderable: false,
-            defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
-                              <i class="fa fa-eye"></i>
-                            </a>
-                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
+            defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
                             <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
@@ -817,7 +541,17 @@
                 return '<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color:red"></i></a>';
               }
             },
-            targets: "no-sort", orderable: false
+            searchable: false
+          },
+          { data: "id_status", name: "id_status", render: function(data, type, row) { 
+              if (data == 1) {
+                return '<a href="javascript:void(0)" id="status_news_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              }
+              else {
+                return '<a href="javascript:void(0)" id="status_news_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              }
+            },
+            searchable: false
           },
           // { data: "image", name: "image" },
           { data: "image", name: "image", render: function(data, type, row) { 
@@ -831,10 +565,7 @@
           {
             data: null,
             targets: "no-sort", orderable: false,
-            defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
-                              <i class="fa fa-eye"></i>
-                            </a>
-                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
+            defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
                             <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
@@ -867,7 +598,17 @@
                 return '<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color:red"></i></a>';
               }
             },
-            targets: "no-sort", orderable: false
+            searchable: false
+          },
+          { data: "id_status", name: "id_status", render: function(data, type, row) { 
+              if (data == 1) {
+                return '<a href="javascript:void(0)" id="status_news_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              }
+              else {
+                return '<a href="javascript:void(0)" id="status_news_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              }
+            },
+            searchable: false
           },
           // { data: "image", name: "image" },
           { data: "image", name: "image", render: function(data, type, row) { 
@@ -881,10 +622,7 @@
           {
             data: null,
             targets: "no-sort", orderable: false,
-            defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
-                              <i class="fa fa-eye"></i>
-                            </a>
-                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
+            defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
                             <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
@@ -917,7 +655,17 @@
                 return '<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color:red"></i></a>';
               }
             },
-            targets: "no-sort", orderable: false
+            searchable: false
+          },
+          { data: "id_status", name: "id_status", render: function(data, type, row) { 
+              if (data == 1) {
+                return '<a href="javascript:void(0)" id="status_news_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              }
+              else {
+                return '<a href="javascript:void(0)" id="status_news_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              }
+            },
+            searchable: false
           },
           // { data: "image", name: "image" },
           { data: "image", name: "image", render: function(data, type, row) { 
@@ -931,10 +679,7 @@
           {
             data: null,
             targets: "no-sort", orderable: false,
-            defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
-                              <i class="fa fa-eye"></i>
-                            </a>
-                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
+            defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
                             <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove">
@@ -969,10 +714,7 @@
           {
             data: null,
             targets: "no-sort", orderable: false,
-            defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
-                              <i class="fa fa-eye"></i>
-                            </a>
-                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_slide">
+            defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_slide">
                               <i class="glyphicon glyphicon-pencil"></i>
                             </a>
                             <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_slide">
@@ -1052,7 +794,9 @@
         $tr = $tr.prev('.parent');
       };
 
-      let data = table.row($tr).data();
+      var data = table.row($tr).data();
+      // console.log(data);
+      $("#editModalEmployee").find("#id").val(data['id']);
       $("#editModalEmployee").find("#update_name").val(data['name']);
       $("#editModalEmployee").find("#update_email").val(data['email']);
       $("#editModalEmployee").modal('show');
@@ -1065,8 +809,8 @@
         if ($($tr).hasClass('child')) {
           $tr = $tr.prev('.parent');
         };
-        let data = table.row($tr).data();
-        let id = data['id'];
+
+        let id = $("#editModalEmployee").find("#id").val();
         let name = $("#editModalEmployee").find("#update_name").val();
         let email = $("#editModalEmployee").find("#update_email").val();
         
@@ -1284,6 +1028,144 @@
     //End click button update hot new yes
   });
   //End click update hot_news (all)
+
+  //Click update status (all)
+  //Yes
+  $("body").delegate("#status_news_yes-all", "click", function(event) {
+    //Click button update hot new yes
+    event.preventDefault();
+    let table = $('#dataTable').DataTable();
+    $tr = $(this).closest('tr');
+    if ($($tr).hasClass('child')) {
+      $tr = $tr.prev('.parent');
+    };
+    let data = table.row($tr).data();
+    let id = data['id'];
+    $('meta[name=row-index]').attr('content', id);
+    $.ajax({
+      url: `{{route('news.updateStatusNewsNo')}}`,
+      method: "PUT",
+      data: {
+        id: id
+      },
+      success: function(response) {
+        if(response.error == false) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(5)").html(`<a href="javascript:void(0)" id="status_news_no-all"><i class="fas fa-lock" style="color: red;"></i></a>`);
+            }
+          });
+        }
+      },
+      error: function(error) {
+        alertify.notify('An error occurred', 'error', 3);
+      }
+    });
+    //End click button update hot new yes
+  });
+  //No
+  $("body").delegate("#status_news_no-all", "click", function(event) {
+    //Click button update hot new yes
+    event.preventDefault();
+    let table = $('#dataTable').DataTable();
+    $tr = $(this).closest('tr');
+    if ($($tr).hasClass('child')) {
+      $tr = $tr.prev('.parent');
+    };
+    let data = table.row($tr).data();
+    let id = data['id'];
+    $('meta[name=row-index]').attr('content', id);
+    $.ajax({
+      url: `{{route('news.updateStatusNewsYes')}}`,
+      method: "PUT",
+      data: {
+        id: id
+      },
+      success: function(response) {
+        if(response.error == false) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(5)").html(`<a href="javascript:void(0)" id="status_news_yes-all"><i class="fas fa-lock-open" style="color:green;"></i></a>`);
+            }
+          });
+        }
+      },
+      error: function(error) {
+        alertify.notify('An error occurred', 'error', 3);
+      }
+    });
+    //End click button update hot new yes
+  });
+  //End click update hot_news (all)
+
+  //Click update status
+  //Yes
+  $("body").delegate("#status_news_yes", "click", function(event) {
+    //Click button update hot new yes
+    event.preventDefault();
+    let table = $('#dataTable').DataTable();
+    $tr = $(this).closest('tr');
+    if ($($tr).hasClass('child')) {
+      $tr = $tr.prev('.parent');
+    };
+    let data = table.row($tr).data();
+    let id = data['id'];
+    $('meta[name=row-index]').attr('content', id);
+    $.ajax({
+      url: `{{route('news.updateStatusNewsNo')}}`,
+      method: "PUT",
+      data: {
+        id: id
+      },
+      success: function(response) {
+        if(response.error == false) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(4)").html(`<a href="javascript:void(0)" id="status_news_no"><i class="fas fa-lock" style="color: red;"></i></a>`);
+            }
+          });
+        }
+      },
+      error: function(error) {
+        alertify.notify('An error occurred', 'error', 3);
+      }
+    });
+    //End click button update hot new yes
+  });
+  //No
+  $("body").delegate("#status_news_no", "click", function(event) {
+    //Click button update hot new yes
+    event.preventDefault();
+    let table = $('#dataTable').DataTable();
+    $tr = $(this).closest('tr');
+    if ($($tr).hasClass('child')) {
+      $tr = $tr.prev('.parent');
+    };
+    let data = table.row($tr).data();
+    let id = data['id'];
+    $('meta[name=row-index]').attr('content', id);
+    $.ajax({
+      url: `{{route('news.updateStatusNewsYes')}}`,
+      method: "PUT",
+      data: {
+        id: id
+      },
+      success: function(response) {
+        if(response.error == false) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(4)").html(`<a href="javascript:void(0)" id="status_news_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>`);
+            }
+          });
+        }
+      },
+      error: function(error) {
+        alertify.notify('An error occurred', 'error', 3);
+      }
+    });
+    //End click button update hot new yes
+  });
+  //End click update hot_news
   
   //Start Edit News Record
   $("body").delegate("#edit_news", "click", function(){
