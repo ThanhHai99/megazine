@@ -74,6 +74,11 @@ Route::group(["namespace" => "Admin"], function() {
             "uses" => "AdminController@getIndex"
         ]);
 
+        Route::get("employee/all", [
+            "as" => "employee.all",
+            "uses" => "AdminController@getEmployeeAll"
+        ]);
+
         Route::get("employee/staff", [
             "as" => "employee.staff",
             "uses" => "AdminController@getEmployeeStaff"

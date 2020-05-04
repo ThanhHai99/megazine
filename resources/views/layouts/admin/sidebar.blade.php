@@ -30,6 +30,7 @@
     </a>
     <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
+        <a id="employee-all" class="collapse-item" href="javascript:void(0)">All</a>
         <a id="employee-staff" class="collapse-item" href="javascript:void(0)">Staff</a>
         <a id="employee-normal_user" class="collapse-item" href="javascript:void(0)">Normal Users</a>
       </div>

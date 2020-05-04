@@ -331,6 +331,26 @@
   let htmlEmployee = `<thead>
                         <tr>
                           <th>ID</th>
+                          <th>Status</th>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      
+                      <tfoot>
+                        <tr>
+                          <th>ID</th>
+                          <th>Status</th>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Action</th>
+                        </tr>
+                      </tfoot>`;
+
+  let htmlEmployeeAll = `<thead>
+                        <tr>
+                          <th>ID</th>
                           <th>Role</th>
                           <th>Status</th>
                           <th>Name</th>
@@ -451,19 +471,51 @@
                       </tr>
                     </tfoot>`;
 
-  let loadEmployeeStaff_onLoad = () => {
-    $("#dataTable").append(htmlEmployee);
+  let loadEmployeeAll_onLoad = () => {
+    $("#dataTable").append(htmlEmployeeAll);
     // $("a[click=index]").click();
     $("#dataTable").DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{!! route("employee.staff") !!}",
+        ajax: "{!! route("employee.all") !!}",
         columns: [
           { data: "id", name: "id" },
           { data: "id_role", name: "id_role" },
           { data: "id_status", name: "id_status" },
           { data: "name", name: "name" },
           { data: "email", name: "email" },
+          {
+            data: null,
+            targets: "no-sort", orderable: false,
+            defaultContent: `<a href="javascript:void(0)" class="show-modal btn btn-info btn-lg">
+                              <i class="fa fa-eye"></i>
+                            </a>
+                            <a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_employee">
+                              <i class="glyphicon glyphicon-pencil"></i>
+                            </a>
+                            <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_employee">
+                              <i class="glyphicon glyphicon-trash"></i>
+                            </a>`
+          }
+        ]
+    });
+  };
+
+  let loadEmployeeAll = () => {
+    var table = $("#dataTable").DataTable();
+    table.destroy();
+    $("#dataTable").empty();
+    $("#dataTable").append(htmlEmployeeAll);
+    $("#dataTable").DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{!! route("employee.all") !!}",
+        columns: [
+          { data: "id", name: "id" },
+          { data: "id_role", name: "id_role" },
+          { data: "id_status", name: "id_status" },
+          { data: "name", name: "name" },
+          { data: "email", name: "email"},
           {
             data: null,
             targets: "no-sort", orderable: false,
@@ -492,7 +544,6 @@
         ajax: "{!! route("employee.staff") !!}",
         columns: [
           { data: "id", name: "id" },
-          { data: "id_role", name: "id_role" },
           { data: "id_status", name: "id_status" },
           { data: "name", name: "name" },
           { data: "email", name: "email"},
@@ -524,7 +575,6 @@
         ajax: "{!! route("employee.normal_user") !!}",
         columns: [
           { data: "id", name: "id" },
-          { data: "id_role", name: "id_role" },
           { data: "id_status", name: "id_status" },
           { data: "name", name: "name" },
           { data: "email", name: "email" },
@@ -934,7 +984,11 @@
   };
 
   $( window ).on("load", function() {
-    loadEmployeeStaff_onLoad();
+    loadEmployeeAll_onLoad();
+  });
+
+  $("#employee-all").on("click", function() {
+    loadEmployeeAll();
   });
 
   $("#employee-staff").on("click", function() {

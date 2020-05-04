@@ -37,6 +37,14 @@ class AdminController extends Controller
     ]);    
   }
 
+  public function getEmployeeAll(Request $request) {
+    $query=User::all();
+    return Datatables::of($query)
+    ->setRowAttr(['align'=>'center'])
+    // ->make(true);
+    ->toJson();
+  }
+  
   public function getEmployeeStaff(Request $request) {
     $query=User::where('id_role', 1);
     return Datatables::of($query)
