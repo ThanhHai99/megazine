@@ -1550,12 +1550,14 @@
               if (response.error == false) {
                 $("#editImageNews").modal('hide');
                 // alertify.notify('Update successfully', 'success', 3);
+                // console.log(response.tmp);
               }
               var d = table.row( this ).data();     
               table.row( this ).data( d ).draw();
             },
             error: function(error) {
               alertify.notify('An error occurred', 'error', 3);
+              // console.log(error.tmp);
             }
           });
         });

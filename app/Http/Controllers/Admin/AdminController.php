@@ -16,6 +16,7 @@ use App\User;
 use App\Slide;
 
 use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -152,7 +153,9 @@ class AdminController extends Controller
 
   public function newsUpdateImage(Request $request) {
     $input = $request->all();
-    $tmp = News::find($input['id_news_hide']);
+    $tmp = News::find($input['id_news_hide']);    
+    // $img_old = $tmp->image;
+    // Storage::delete($tmp->image); //delete image
     $file = $request->file('image_news');
     $extension = $file->getClientOriginalExtension();
     $filename = time() . '_'. uniqid() . '.' . $extension;
@@ -162,6 +165,7 @@ class AdminController extends Controller
 
     return response()->json([
       'error' => false,
+      // 'tmp' => $img_old
     ], 200);
   }
 
