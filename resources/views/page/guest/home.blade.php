@@ -13,8 +13,8 @@
                   <div class="slider-text-inner">
                     <div class="desc">
                       <p class="tag"><span>{{ $slide->name }}</span></p>
-                      <h1><a href="#">{{ $slide->caption }}</a></h1>
-                      <p>{{ $slide->subtitle }}</p>
+                      <h1><a href="#">{{ $slide->heading_primary }}</a></h1>
+                      <p>{{ $slide->heading_secondary }}</p>
                     </div>
                   </div>
                 </div>

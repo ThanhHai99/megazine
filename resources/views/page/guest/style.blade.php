@@ -13,9 +13,9 @@
                 <div class="col-md-6 col-md-offset-3 col-md-pull-3 col-xs-12 js-fullheight slider-text">
                   <div class="slider-text-inner">
                     <div class="desc desc2">
-                      <p class="tag"><span>Style</span></p>
-                      <h1><a href="#">Strategic Design for Brands</a></h1>
-                      <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
+                      <p class="tag"><span>{{ $slide->tag }}</span></p>
+                      <h1><a href="#">{{ $slide->heading_primary }}</a></h1>
+                      <p>{{ $slide->heading_secondary }}</p>
                       <p><a href="#" class="btn btn-primary btn-outline">Read more</a></p>
                     </div>
                   </div>
