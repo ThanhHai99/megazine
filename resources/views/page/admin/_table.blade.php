@@ -320,10 +320,10 @@
         serverSide: true,
         ajax: "{!! route("news.all") !!}",
         columns: [
-          { data: "id", name: "news.id" },
-          { data: "topicname", name: "topic.name" },
-          { data: "username", name: "user.name" },
-          { data: "hot_news", name: "news.hot_news", render: function(data, type, row) { 
+          { data: "id", name: "id" },
+          { data: "id_topic", name: "id_topic" },
+          { data: "id_creator", name: "id_creator" },
+          { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
               if (data == 1) {
                 return '<a href="javascript:void(0)" id="hot_news_yes-all"><i class="fa fa-check-circle" style="color:green;"></i></a>';
               }
@@ -333,7 +333,7 @@
             },
             searchable: false
           },
-          { data: "id_status", name: "news.id_status", render: function(data, type, row) { 
+          { data: "id_status", name: "id_status", render: function(data, type, row) { 
               if (data == 1) {
                 return '<a href="javascript:void(0)" id="status_news_yes-all"><i class="fas fa-lock-open" style="color:green;"></i></a>';
               }
@@ -343,15 +343,14 @@
             },
             searchable: false
           },
-          // { data: "image", name: "news.image" },
-          { data: "image", name: "news.image", render: function(data, type, row) { 
+          { data: "image", name: "image", render: function(data, type, row) { 
               return `<a data-toggle="modal"><img id="image-news" src='images/` + data + `' class="img-responsive"></a>`;
             },
             targets: "no-sort", orderable: false, searchable: false
           },
-          { data: "tag", name: "news.tag" },
-          { data: "caption", name: "news.caption" },
-          { data: "subtitle", name: "news.subtitle" },
+          { data: "tag", name: "tag" },
+          { data: "caption", name: "caption" },
+          { data: "subtitle", name: "subtitle" },
           {
             data: null,
             targets: "no-sort", orderable: false,
@@ -379,7 +378,7 @@
         ajax: "{!! route("news.style") !!}",
         columns: [
           { data: "id", name: "id" },
-          { data: "name", name: "user.name" },
+          { data: "id_creator", name: "id_creator" },
           { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
               if (data == 1) {
                 return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>';
@@ -436,7 +435,7 @@
         ajax: "{!! route("news.fashion") !!}",
         columns: [
           { data: "id", name: "id" },
-          { data: "name", name: "user.name" },
+          { data: "id_creator", name: "id_creator" },
           { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
               if (data == 1) {
                 return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green"></i>';
@@ -493,7 +492,7 @@
         ajax: "{!! route("news.travel") !!}",
         columns: [
           { data: "id", name: "id" },
-          { data: "name", name: "user.name" },
+          { data: "id_creator", name: "id_creator" },
           { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
               if (data == 1) {
                 return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green"></i>';
@@ -550,7 +549,7 @@
         ajax: "{!! route("news.sports") !!}",
         columns: [
           { data: "id", name: "id" },
-          { data: "name", name: "user.name" },
+          { data: "id_creator", name: "id_creator" },
           { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
               if (data == 1) {
                 return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green"></i>';
@@ -607,7 +606,7 @@
         ajax: "{!! route("news.video") !!}",
         columns: [
           { data: "id", name: "id" },
-          { data: "name", name: "user.name" },
+          { data: "id_creator", name: "id_creator" },
           { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
               if (data == 1) {
                 return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green"></i>';
@@ -664,7 +663,7 @@
         ajax: "{!! route("news.archives") !!}",
         columns: [
           { data: "id", name: "id" },
-          { data: "name", name: "user.name" },
+          { data: "id_creator", name: "id_creator" },
           { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
               if (data == 1) {
                 return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green"></i>';
@@ -1379,7 +1378,7 @@
   //Start Insert News Record
   $("body").delegate("a#insert_news", "click", function() {
     $("#insertModalNews").modal('show');
-    $('input[name=id_creator]').attr('value', 0);
+    // $('input[name=id_creator]').attr('value', 0);
   });
     //Start click button create
     $("form#form-insert-news").on("submit", function(event) {
@@ -1420,7 +1419,7 @@
   //Start Insert News (All) Record
   $("body").delegate("a#insert_news_all", "click", function() {
     $("#insertModalNews_all").modal("show");
-    $("#form-insert-news_all").find("input[name=id_creator]").attr("value", 0);
+    // $("#form-insert-news_all").find("input[name=id_creator]").attr("value", 0);
     $("form#form-insert-news_all").find("input[name=id_topic]").attr("value", $("select#topic_option").children("option:selected").val());
   });
     //Start click button create

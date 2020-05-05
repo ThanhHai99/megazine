@@ -62,7 +62,7 @@ class AdminController extends Controller
     // $query=News::all();
     $query=News::join("users", "news.id_creator", "=", "users.id")
                   ->join("topic", "news.id_topic", "=", "topic.id")
-                  ->select("news.id", "topic.name as topicname", "users.name as username", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
+                  ->select("news.id", "topic.name as id_topic", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
 
     return Datatables::of($query)
     // ->editColumn('hot_news', function(News $news) {
@@ -77,7 +77,7 @@ class AdminController extends Controller
     $query=News::where('id_topic', 1)
                   ->join("users", "news.id_creator", "=", "users.id")
                   ->join("topic", "news.id_topic", "=", "topic.id")
-                  ->select("news.id", "users.name", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
+                  ->select("news.id", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
     return Datatables::of($query)->make(true);
   } 
 
@@ -85,7 +85,7 @@ class AdminController extends Controller
     $query=News::where('id_topic', 2)
                   ->join("users", "news.id_creator", "=", "users.id")
                   ->join("topic", "news.id_topic", "=", "topic.id")
-                  ->select("news.id", "users.name", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
+                  ->select("news.id", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
     return Datatables::of($query)->make(true);
   }
 
@@ -93,7 +93,7 @@ class AdminController extends Controller
     $query=News::where('id_topic', 3)
                   ->join("users", "news.id_creator", "=", "users.id")
                   ->join("topic", "news.id_topic", "=", "topic.id")
-                  ->select("news.id", "users.name", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
+                  ->select("news.id", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
     return Datatables::of($query)->make(true);
   }
 
@@ -101,7 +101,7 @@ class AdminController extends Controller
     $query=News::where('id_topic', 4)
                   ->join("users", "news.id_creator", "=", "users.id")
                   ->join("topic", "news.id_topic", "=", "topic.id")
-                  ->select("news.id", "users.name", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
+                  ->select("news.id", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
     return Datatables::of($query)->make(true);
   }
 
@@ -109,7 +109,7 @@ class AdminController extends Controller
     $query=News::where('id_topic', 5)
                   ->join("users", "news.id_creator", "=", "users.id")
                   ->join("topic", "news.id_topic", "=", "topic.id")
-                  ->select("news.id", "users.name", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
+                  ->select("news.id", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
     return Datatables::of($query)->make(true);
   }
 
@@ -117,7 +117,7 @@ class AdminController extends Controller
     $query=News::where('id_topic', 6)
                   ->join("users", "news.id_creator", "=", "users.id")
                   ->join("topic", "news.id_topic", "=", "topic.id")
-                  ->select("news.id", "users.name", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
+                  ->select("news.id", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
     return Datatables::of($query)->make(true);
   }
 
@@ -169,7 +169,6 @@ class AdminController extends Controller
   public function newsInsert_all(Request $request) {
     $this->validate($request, [
       'id_topic' => 'required',
-      'id_creator' => 'required',
       'hot_news' => 'required',
       'image' => 'required',
       'tag' => 'required',
@@ -190,7 +189,7 @@ class AdminController extends Controller
     }
 
     $tmp->id_topic = $input['id_topic'];
-    $tmp->id_creator = $input['id_creator'];
+    $tmp->id_creator = session('userid');
     $tmp->hot_news = $input['hot_news'];
     $tmp->tag = $input['tag'];
     $tmp->caption = $input['caption'];
@@ -206,7 +205,6 @@ class AdminController extends Controller
   public function newsInsert(Request $request) {
     $this->validate($request, [
       'id_topic' => 'required',
-      'id_creator' => 'required',
       'hot_news' => 'required',
       'image' => 'required',
       'tag' => 'required',
@@ -227,7 +225,7 @@ class AdminController extends Controller
     }
 
     $tmp->id_topic = $input['id_topic'];
-    $tmp->id_creator = $input['id_creator'];
+    $tmp->id_creator = session('userid');
     $tmp->hot_news = $input['hot_news'];
     $tmp->tag = $input['tag'];
     $tmp->caption = $input['caption'];

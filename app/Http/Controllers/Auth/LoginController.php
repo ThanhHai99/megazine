@@ -39,6 +39,8 @@ class LoginController extends Controller
                 'message' => 'This account is locked.'
             ]);
             exit();
+        } else {
+            session(['userid' => $user->id]);
         }
 
         if ($user->id_role == 1) {
