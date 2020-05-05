@@ -41,3 +41,4 @@ function previewImageSlide(input) {
 $("#image_slide").change(function() {
   previewImageSlide(this);
 });
+
