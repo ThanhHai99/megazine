@@ -69,4 +69,10 @@
 
 </div>
 
+<?php if (isset($message)) { ?>
+        <script>
+          alertify.notify("{{ $message }}", "success", 4);
+        </script>
+<?php } ?>
+
 @endsection

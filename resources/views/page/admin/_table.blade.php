@@ -67,7 +67,7 @@
   let htmlNews = `<thead>
                     <tr>
                       <th>ID</th>
-                      <th>ID_Creator</th>
+                      <th>Creator</th>
                       <th>Hot News</th>
                       <th>Status</th>
                       <th>Image</th>
@@ -85,7 +85,7 @@
                   <tfoot>
                     <tr>
                       <th>ID</th>
-                      <th>ID_Creator</th>
+                      <th>Creator</th>
                       <th>Hot News</th>
                       <th>Status</th>
                       <th>Image</th>
@@ -103,8 +103,8 @@
   let htmlAllNews =`<thead>
                       <tr>
                         <th>ID</th>
-                        <th>ID_Topic</th>
-                        <th>ID_Creator</th>
+                        <th>Topic</th>
+                        <th>Creator</th>
                         <th>Hot News</th>
                         <th>Status</th>
                         <th>Image</th>
@@ -122,8 +122,8 @@
                     <tfoot>
                       <tr>
                         <th>ID</th>
-                        <th>ID_Topic</th>
-                        <th>ID_Creator</th>
+                        <th>Topic</th>
+                        <th>Creator</th>
                         <th>Hot News</th>
                         <th>Status</th>
                         <th>Image</th>
@@ -320,10 +320,10 @@
         serverSide: true,
         ajax: "{!! route("news.all") !!}",
         columns: [
-          { data: "id", name: "id" },
-          { data: "id_topic", name: "id_topic" },
-          { data: "id_creator", name: "id_creator" },
-          { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
+          { data: "id", name: "news.id" },
+          { data: "topicname", name: "topic.name" },
+          { data: "username", name: "user.name" },
+          { data: "hot_news", name: "news.hot_news", render: function(data, type, row) { 
               if (data == 1) {
                 return '<a href="javascript:void(0)" id="hot_news_yes-all"><i class="fa fa-check-circle" style="color:green;"></i></a>';
               }
@@ -333,7 +333,7 @@
             },
             searchable: false
           },
-          { data: "id_status", name: "id_status", render: function(data, type, row) { 
+          { data: "id_status", name: "news.id_status", render: function(data, type, row) { 
               if (data == 1) {
                 return '<a href="javascript:void(0)" id="status_news_yes-all"><i class="fas fa-lock-open" style="color:green;"></i></a>';
               }
@@ -343,15 +343,15 @@
             },
             searchable: false
           },
-          // { data: "image", name: "image" },
-          { data: "image", name: "image", render: function(data, type, row) { 
+          // { data: "image", name: "news.image" },
+          { data: "image", name: "news.image", render: function(data, type, row) { 
               return `<a data-toggle="modal"><img id="image-news" src='images/` + data + `' class="img-responsive"></a>`;
             },
             targets: "no-sort", orderable: false, searchable: false
           },
-          { data: "tag", name: "tag" },
-          { data: "caption", name: "caption" },
-          { data: "subtitle", name: "subtitle" },
+          { data: "tag", name: "news.tag" },
+          { data: "caption", name: "news.caption" },
+          { data: "subtitle", name: "news.subtitle" },
           {
             data: null,
             targets: "no-sort", orderable: false,
@@ -379,7 +379,7 @@
         ajax: "{!! route("news.style") !!}",
         columns: [
           { data: "id", name: "id" },
-          { data: "id_creator", name: "id_creator" },
+          { data: "name", name: "user.name" },
           { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
               if (data == 1) {
                 return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>';
@@ -436,7 +436,7 @@
         ajax: "{!! route("news.fashion") !!}",
         columns: [
           { data: "id", name: "id" },
-          { data: "id_creator", name: "id_creator" },
+          { data: "name", name: "user.name" },
           { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
               if (data == 1) {
                 return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green"></i>';
@@ -493,7 +493,7 @@
         ajax: "{!! route("news.travel") !!}",
         columns: [
           { data: "id", name: "id" },
-          { data: "id_creator", name: "id_creator" },
+          { data: "name", name: "user.name" },
           { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
               if (data == 1) {
                 return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green"></i>';
@@ -550,7 +550,7 @@
         ajax: "{!! route("news.sports") !!}",
         columns: [
           { data: "id", name: "id" },
-          { data: "id_creator", name: "id_creator" },
+          { data: "name", name: "user.name" },
           { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
               if (data == 1) {
                 return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green"></i>';
@@ -607,7 +607,7 @@
         ajax: "{!! route("news.video") !!}",
         columns: [
           { data: "id", name: "id" },
-          { data: "id_creator", name: "id_creator" },
+          { data: "name", name: "user.name" },
           { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
               if (data == 1) {
                 return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green"></i>';
@@ -664,7 +664,7 @@
         ajax: "{!! route("news.archives") !!}",
         columns: [
           { data: "id", name: "id" },
-          { data: "id_creator", name: "id_creator" },
+          { data: "name", name: "user.name" },
           { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
               if (data == 1) {
                 return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green"></i>';

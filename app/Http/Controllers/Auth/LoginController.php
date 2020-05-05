@@ -33,10 +33,21 @@ class LoginController extends Controller
      */
 
     protected function authenticated(Request $request, $user) {
+        if ($user->id_status == 0) {
+            Auth::logout();
+            return view('auth.login', [
+                'message' => 'This account is locked.'
+            ]);
+            exit();
+        }
+
         if ($user->id_role == 1) {
             return redirect("dashboard/index");
         }
-        return redirect("home");
+
+        if ($user->id_status == 1) {
+            return redirect("home");
+        }
     }
     
     // protected $redirectTo = "/home";

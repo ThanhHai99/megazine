@@ -59,10 +59,10 @@ class AdminController extends Controller
   }
 
   public function getNewsAll(Request $request) {
-    $query=News::all();
-    // $query=News::join("users", "1", "=", "1")
-    //               ->select("news.id", "news.id_topic", "news.id_creator", "news.hot_news", "news.status", "news.image", "news.tag", "news.caption", "news.subtitle")
-    //               ->get();
+    // $query=News::all();
+    $query=News::join("users", "news.id_creator", "=", "users.id")
+                  ->join("topic", "news.id_topic", "=", "topic.id")
+                  ->select("news.id", "topic.name as topicname", "users.name as username", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
 
     return Datatables::of($query)
     // ->editColumn('hot_news', function(News $news) {
@@ -73,37 +73,51 @@ class AdminController extends Controller
   }
 
   public function getNewsStyle(Request $request) {
-    $query=News::where('id_topic', 1);
-    return Datatables::of($query)
-    // ->editColumn('hot_news', function(News $news) {
-      // return $news->hot_news == 1 ? '<i class="fa fa-check-circle"></i>' : '<i class="fa fa-times-circle"></i>' ;
-    // })
-    // ->setRowClass('{{ $hot_news == 1 ? "fa fa-check-circle" : "fa fa-times-circle" }}')
-    ->make(true);
+    // $query=News::where('id_topic', 1);
+    $query=News::where('id_topic', 1)
+                  ->join("users", "news.id_creator", "=", "users.id")
+                  ->join("topic", "news.id_topic", "=", "topic.id")
+                  ->select("news.id", "users.name", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
+    return Datatables::of($query)->make(true);
   } 
 
   public function getNewsFashion(Request $request) {
-    $query=News::where('id_topic', 2);
+    $query=News::where('id_topic', 2)
+                  ->join("users", "news.id_creator", "=", "users.id")
+                  ->join("topic", "news.id_topic", "=", "topic.id")
+                  ->select("news.id", "users.name", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
     return Datatables::of($query)->make(true);
   }
 
   public function getNewsTravel(Request $request) {
-    $query=News::where('id_topic', 3);
+    $query=News::where('id_topic', 3)
+                  ->join("users", "news.id_creator", "=", "users.id")
+                  ->join("topic", "news.id_topic", "=", "topic.id")
+                  ->select("news.id", "users.name", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
     return Datatables::of($query)->make(true);
   }
 
   public function getNewsSports(Request $request) {
-    $query=News::where('id_topic', 4);
+    $query=News::where('id_topic', 4)
+                  ->join("users", "news.id_creator", "=", "users.id")
+                  ->join("topic", "news.id_topic", "=", "topic.id")
+                  ->select("news.id", "users.name", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
     return Datatables::of($query)->make(true);
   }
 
   public function getNewsVideo(Request $request) {
-    $query=News::where('id_topic', 5);
+    $query=News::where('id_topic', 5)
+                  ->join("users", "news.id_creator", "=", "users.id")
+                  ->join("topic", "news.id_topic", "=", "topic.id")
+                  ->select("news.id", "users.name", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
     return Datatables::of($query)->make(true);
   }
 
   public function getNewsArchives(Request $request) {
-    $query=News::where('id_topic', 6);
+    $query=News::where('id_topic', 6)
+                  ->join("users", "news.id_creator", "=", "users.id")
+                  ->join("topic", "news.id_topic", "=", "topic.id")
+                  ->select("news.id", "users.name", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
     return Datatables::of($query)->make(true);
   }
 
