@@ -17,6 +17,7 @@ use App\Slide;
 
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class AdminController extends Controller
 {
@@ -156,6 +157,13 @@ class AdminController extends Controller
     $tmp = News::find($input['id_news_hide']);    
     // $img_old = $tmp->image;
     // Storage::delete($tmp->image); //delete image
+
+    // $image_path = '/images/1588666558_5eb120bed8acc.jpg';  // Value is not URL but directory file path
+    $image_path = "images/".$tmp->image;  // Value is not URL but directory file path
+    if(File::exists($image_path)) {
+      File::delete($image_path);
+    }
+
     $file = $request->file('image_news');
     $extension = $file->getClientOriginalExtension();
     $filename = time() . '_'. uniqid() . '.' . $extension;
