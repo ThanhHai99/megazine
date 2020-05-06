@@ -11,8 +11,8 @@
 							<div class="col-md-12">
 								<div class="blog-entry-style animate-box">
 									<div class="blog-img">
-										<div class="video colorlib-video" style="background-image: url(images/{{ $video->link_image }}); height: 600px;">
-											<a href="videos/{{ $video->link_video }}" class="popup-vimeo"><i class="icon-play4"></i></a>
+										<div class="video colorlib-video" style="background-image: url(images/{{ $video->image }}); height: 600px;">
+											<a href="videos/{{ $video->video }}" class="popup-vimeo"><i class="icon-play4"></i></a>
 											<div class="overlay"></div>
 										</div>
 									</div>

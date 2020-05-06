@@ -14,6 +14,7 @@ use App\Topic;
 use App\News;
 use App\User;
 use App\Slide;
+use App\Video;
 
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Storage;
@@ -108,21 +109,13 @@ class AdminController extends Controller
   }
 
   public function getNewsVideo(Request $request) {
-    $query=News::where('id_topic', 5)
-                  ->join("users", "news.id_creator", "=", "users.id")
-                  ->join("topic", "news.id_topic", "=", "topic.id")
-                  ->select("news.id", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
+    $query=Video::where('id_topic', 5)
+                  ->join("users", "video.id_creator", "=", "users.id")
+                  ->join("topic", "video.id_topic", "=", "topic.id")
+                  ->select("video.id", "users.name as id_creator", "video.hot_news", "video.id_status", "video.image", "video.tag", "video.caption", "video.subtitle");
     return Datatables::of($query)->make(true);
   }
-
-  public function getNewsArchives(Request $request) {
-    $query=News::where('id_topic', 6)
-                  ->join("users", "news.id_creator", "=", "users.id")
-                  ->join("topic", "news.id_topic", "=", "topic.id")
-                  ->select("news.id", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
-    return Datatables::of($query)->make(true);
-  }
-
+  
   public function getTopic(Request $request) {
     return Datatables::of(News::query())->make(true);
   }
@@ -440,6 +433,38 @@ class AdminController extends Controller
         // 'task'  => $tmp,
     ], 200);
   }
+
+  public function newsUpdateHotVideoYes(Request $request) {
+    $this->validate($request, [
+      'id' => 'required'
+    ]);
+
+    $input = $request->all();
+    $tmp = Video::find($input['id']);
+    $tmp->hot_news = 1;
+    $tmp->save();
+
+    return response()->json([
+        'error' => false,
+        // 'task'  => $tmp,
+    ], 200);
+  }
+
+  public function newsUpdateHotVideoNo(Request $request) {
+    $this->validate($request, [
+      'id' => 'required'
+    ]);
+
+    $input = $request->all();
+    $tmp = Video::find($input['id']);
+    $tmp->hot_news = 0;
+    $tmp->save();
+
+    return response()->json([
+        'error' => false,
+        // 'task'  => $tmp,
+    ], 200);
+  }
   
   public function newsUpdateStatusNewsYes(Request $request) {
     $this->validate($request, [
@@ -464,6 +489,38 @@ class AdminController extends Controller
 
     $input = $request->all();
     $tmp = News::find($input['id']);
+    $tmp->id_status = 0;
+    $tmp->save();
+
+    return response()->json([
+        'error' => false,
+        // 'task'  => $tmp,
+    ], 200);
+  }
+
+  public function newsUpdateStatusVideoYes(Request $request) {
+    $this->validate($request, [
+      'id' => 'required'
+    ]);
+
+    $input = $request->all();
+    $tmp = Video::find($input['id']);
+    $tmp->id_status = 1;
+    $tmp->save();
+
+    return response()->json([
+        'error' => false,
+        // 'task'  => $tmp,
+    ], 200);
+  }
+
+  public function newsUpdateStatusVideoNo(Request $request) {
+    $this->validate($request, [
+      'id' => 'required'
+    ]);
+
+    $input = $request->all();
+    $tmp = Video::find($input['id']);
     $tmp->id_status = 0;
     $tmp->save();
 

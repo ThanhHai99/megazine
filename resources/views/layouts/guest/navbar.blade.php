@@ -2,13 +2,9 @@
   <h1 id="colorlib-logo"><a href="home">Megazine</a></h1>
   <nav id="colorlib-main-menu" role="navigation">
     <ul>
-      <li class="{{ (Request::segment(1) == 'home' ? 'colorlib-active': '')}}"><a href="{{route('home')}}">Home</a></li>
-      <li class="{{ (Request::segment(1) == 'style' ? 'colorlib-active': '')}}"><a href="{{route('style')}}">Style</a></li>
-      <li class="{{ (Request::segment(1) == 'fashion' ? 'colorlib-active': '')}}"><a href="{{route('fashion')}}">Fashion</a></li>
-      <li class="{{ (Request::segment(1) == 'travel' ? 'colorlib-active': '')}}"><a href="{{route('travel')}}">Travel</a></li>
-      <li class="{{ (Request::segment(1) == 'sports' ? 'colorlib-active': '')}}"><a href="{{route('sports')}}">Sports</a></li>
-      <li class="{{ (Request::segment(1) == 'video' ? 'colorlib-active': '')}}"><a href="{{route('video')}}">Video</a></li>
-      <li class="{{ (Request::segment(1) == 'archives' ? 'colorlib-active': '')}}"><a href="{{route('archives')}}">Archives</a></li>
+      @foreach ($topics as $topic)
+        <li class="{{ (Request::segment(1) == $topic->name ? 'colorlib-active': '')}}"><a href="{{route($topic->name)}}">{{$topic->name}}</a></li>        
+      @endforeach
    
       @if (Auth::check())
         <li>

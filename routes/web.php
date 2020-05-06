@@ -148,6 +148,16 @@ Route::group(["namespace" => "Admin"], function() {
                 "uses" => "AdminController@newsUpdateHotNewsNo"
             ]);
 
+            Route::put("update_hot_video_yes", [
+                "as" => "news.updateHotVideoYes",
+                "uses" => "AdminController@newsUpdateHotVideoYes"
+            ]);
+
+            Route::put("update_hot_video_no", [
+                "as" => "news.updateHotVideoNo",
+                "uses" => "AdminController@newsUpdateHotVideoNo"
+            ]);
+
             Route::put("update_status_news_yes", [
                 "as" => "news.updateStatusNewsYes",
                 "uses" => "AdminController@newsUpdateStatusNewsYes"
@@ -156,6 +166,16 @@ Route::group(["namespace" => "Admin"], function() {
             Route::put("update_status_news_no", [
                 "as" => "news.updateStatusNewsNo",
                 "uses" => "AdminController@newsUpdateStatusNewsNo"
+            ]);
+
+            Route::put("update_status_video_yes", [
+                "as" => "news.updateStatusVideoYes",
+                "uses" => "AdminController@newsUpdateStatusVideoYes"
+            ]);
+
+            Route::put("update_status_video_no", [
+                "as" => "news.updateStatusVideoNo",
+                "uses" => "AdminController@newsUpdateStatusVideoNo"
             ]);
             
             Route::post("insert_all", [

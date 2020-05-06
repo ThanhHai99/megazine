@@ -14,8 +14,10 @@
                     <div class="desc desc2 text-center">
                       <p class="tag"><span>{{ $newsNewest->tag }}</span></p>
                       <div class="desc-bottom">
-                        <h2 class="head-article"><a href="#">{{ $newsNewest->caption }}</a></h2>
-                        <p>{{ $newsNewest->subtitle }}</p>
+                        <!-- <h2 class="head-article"><a href="#">{{ $newsNewest->caption }}</a></h2> -->
+                        <h2><a href="single/{{ $newsNewest->id }}">{{ $newsNewest->caption }}</a></h2>
+                        <!-- <p>{{ $newsNewest->subtitle }}</p> -->
+                        <p><a href="single/{{ $newsNewest->id }}" class="btn btn-primary with-arrow">Read More <i class="icon-arrow-right22"></i></a></p>
                       </div>
                     </div>
                   </div>
@@ -92,7 +94,7 @@
                 <button type="submit" class="btn submit btn-primary"><i class="icon-search3"></i></button>
               </div>
             </div>
-            <div class="side animate-box">
+            <!-- <div class="side animate-box">
               <h2 class="sidebar-heading">Categories</h2>
               <p>
                 <ul class="category">
@@ -105,15 +107,15 @@
                   <li><a href="#"><i class="icon-check"></i> Health</a></li>
                 </ul>
               </p>
-            </div>
+            </div> -->
             <div class="side animate-box">
               <h2 class="sidebar-heading">Recent Blog</h2>
               @foreach ($newsFashionRecents as $newsFashionRecent)
                 <div class="f-blog">
-                  <a href="blog.html" class="blog-img" style="background-image: url(images/{{ $newsFashionRecent->image }});">
+                  <a href="single/{{ $newsFashionRecent->id }}" class="blog-img" style="background-image: url(images/{{ $newsFashionRecent->image }});">
                   </a>
                   <div class="desc">
-                    <h3><a href="blog.html">{{ $newsFashionRecent->caption }}r</a></h3>
+                    <h3><a href="single/{{ $newsFashionRecent->id }}">{{ $newsFashionRecent->caption }}r</a></h3>
                     <p class="admin"><span>{{ $newsFashionRecent->created_at }}</span></p>
                   </div>
                 </div>

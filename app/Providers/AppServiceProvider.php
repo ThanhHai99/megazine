@@ -23,6 +23,11 @@ class AppServiceProvider extends ServiceProvider
             $view->with('topics', $topics);
         });
 
+        view()->composer('layouts.guest.navbar', function($view) {
+            $topics = Topic::all();
+            $view->with('topics', $topics);
+        });
+
         view()->composer('page.admin._table', function($view) {
             $topics = Topic::all();
             $view->with('topics', $topics);

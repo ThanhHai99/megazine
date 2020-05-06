@@ -42,3 +42,13 @@ $("#image_slide").change(function() {
   previewImageSlide(this);
 });
 
+// let ok = () => {
+  
+  // $('#dataTable tbody').on( 'click', 'tr', function () {
+      // console.log( $('#dataTable').DataTable().row( this ).data() );
+  // } );
+// };
+
+$( function() {
+  // ok();
+});

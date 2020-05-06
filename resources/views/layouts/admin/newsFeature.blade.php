@@ -298,20 +298,20 @@ let loadNewsVideo = () => {
         { data: "id_creator", name: "id_creator" },
         { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green"></i>';
+              return '<a href="javascript:void(0)" id="hot_video_yes"><i class="fa fa-check-circle" style="color:green"></i>';
             }
             else {
-              return '<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color:red"></i></a>';
+              return '<a href="javascript:void(0)" id="hot_video_no"><i class="fa fa-times-circle" style="color:red"></i></a>';
             }
           },
           searchable: false
         },
         { data: "id_status", name: "id_status", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="status_news_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_video_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
             }
             else {
-              return '<a href="javascript:void(0)" id="status_news_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_video_no"><i class="fas fa-lock" style="color: red;"></i></a>';
             }
           },
           searchable: false
@@ -677,6 +677,144 @@ let loadNewsArchives = () => {
     //End click button update hot new yes
   });
   //End click update status
+
+  //Click update hot video
+  //Yes
+  $("body").delegate("#hot_video_yes", "click", function(event) {
+    //Click button update hot new yes
+    event.preventDefault();
+    let table = $('#dataTable').DataTable();
+    $tr = $(this).closest('tr');
+    if ($($tr).hasClass('child')) {
+      $tr = $tr.prev('.parent');
+    };
+    let data = table.row($tr).data();
+    let id = data['id'];
+    $('meta[name=row-index]').attr('content', id);
+    $.ajax({
+      url: `{{route('news.updateHotVideoNo')}}`,
+      method: "PUT",
+      data: {
+        id: id
+      },
+      success: function(response) {
+        if(response.error == false) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(3)").html(`<a href="javascript:void(0)" id="hot_video_no"><i class="fa fa-times-circle" style="color: red;"></i></a>`);
+            }
+          });
+        }
+      },
+      error: function(error) {
+        alertify.notify('An error occurred', 'error', 3);
+      }
+    });
+    //End click button update hot new yes
+  });
+  //No
+  $("body").delegate("#hot_video_no", "click", function(event) {
+    //Click button update hot new yes
+    event.preventDefault();
+    let table = $('#dataTable').DataTable();
+    $tr = $(this).closest('tr');
+    if ($($tr).hasClass('child')) {
+      $tr = $tr.prev('.parent');
+    };
+    let data = table.row($tr).data();
+    let id = data['id'];
+    $('meta[name=row-index]').attr('content', id);
+    $.ajax({
+      url: `{{route('news.updateHotVideoYes')}}`,
+      method: "PUT",
+      data: {
+        id: id
+      },
+      success: function(response) {
+        if(response.error == false) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(3)").html(`<a href="javascript:void(0)" id="hot_video_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`);
+            }
+          });
+        }
+      },
+      error: function(error) {
+        alertify.notify('An error occurred', 'error', 3);
+      }
+    });
+    //End click button update hot new yes
+  });
+  //End click update hot video
+
+  //Click update status video
+  //Yes
+  $("body").delegate("#status_video_yes", "click", function(event) {
+    //Click button update hot new yes
+    event.preventDefault();
+    let table = $('#dataTable').DataTable();
+    $tr = $(this).closest('tr');
+    if ($($tr).hasClass('child')) {
+      $tr = $tr.prev('.parent');
+    };
+    let data = table.row($tr).data();
+    let id = data['id'];
+    $('meta[name=row-index]').attr('content', id);
+    $.ajax({
+      url: `{{route('news.updateStatusVideoNo')}}`,
+      method: "PUT",
+      data: {
+        id: id
+      },
+      success: function(response) {
+        if(response.error == false) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(4)").html(`<a href="javascript:void(0)" id="status_video_no"><i class="fas fa-lock" style="color: red;"></i></a>`);
+            }
+          });
+        }
+      },
+      error: function(error) {
+        alertify.notify('An error occurred', 'error', 3);
+      }
+    });
+    //End click button update hot new yes
+  });
+  //No
+  $("body").delegate("#status_video_no", "click", function(event) {
+    //Click button update hot new yes
+    event.preventDefault();
+    let table = $('#dataTable').DataTable();
+    $tr = $(this).closest('tr');
+    if ($($tr).hasClass('child')) {
+      $tr = $tr.prev('.parent');
+    };
+    let data = table.row($tr).data();
+    let id = data['id'];
+    $('meta[name=row-index]').attr('content', id);
+    $.ajax({
+      url: `{{route('news.updateStatusVideoYes')}}`,
+      method: "PUT",
+      data: {
+        id: id
+      },
+      success: function(response) {
+        if(response.error == false) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(4)").html(`<a href="javascript:void(0)" id="status_video_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>`);
+            }
+          });
+        }
+      },
+      error: function(error) {
+        alertify.notify('An error occurred', 'error', 3);
+      }
+    });
+    //End click button update hot new yes
+  });
+  //End click update status video
   
   //Start Edit News Record
   $("body").delegate("#edit_news", "click", function(){
@@ -917,6 +1055,9 @@ let loadNewsArchives = () => {
       //End click button create
     });
     // End click change image
+
+    
+
   //End click image news
   //End News
 
