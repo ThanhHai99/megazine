@@ -40,7 +40,7 @@
 								<button type="submit" class="btn submit btn-primary"><i class="icon-search3"></i></button>
 							</div>
 						</div>
-						<div class="side animate-box">
+						<!-- <div class="side animate-box">
 							<h2 class="sidebar-heading">Categories</h2>
 							<p>
 								<ul class="category">
@@ -53,7 +53,7 @@
 									<li><a href="#"><i class="icon-check"></i> Health</a></li>
 								</ul>
 							</p>
-						</div>
+						</div> -->
 						<div class="side animate-box">
 							<h2 class="sidebar-heading">Recent Blog</h2>
 							<div class="f-blog">
@@ -111,7 +111,7 @@
 					</div>
 				</div>
 
-			<div class="row">
+			<!-- <div class="row">
 				<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
 					<ul class="pagination">
 						<li class="disabled"><a href="#">&laquo;</a></li>
@@ -122,7 +122,7 @@
 						<li><a href="#">&raquo;</a></li>
 					</ul>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>			
 </div>

@@ -38,14 +38,14 @@
               </a>
               <div class="desc">
                 <p class="tag"><span>{{ $newsNewest->tag }}</span></p>
-                <h2 class="head-article"><a href="#">{{ $newsNewest->caption }}</a></h2>
+                <h2 class="head-article"><a href="single/{{$newsNewest->id}}">{{ $newsNewest->caption }}</a></h2>
                 <p>{{ $newsNewest->subtitle }}</p>
               </div>
             </div>
           </div>
         @endforeach  
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
           <ul class="pagination">
             <li class="disabled"><a href="#">&laquo;</a></li>
@@ -56,7 +56,7 @@
             <li><a href="#">&raquo;</a></li>
           </ul>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>			
 </div>
