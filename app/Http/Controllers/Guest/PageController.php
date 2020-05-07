@@ -18,7 +18,9 @@ class PageController extends Controller
                         ->select("slide.image", "slide.heading_primary", "slide.heading_secondary", "topic.name")
                         ->get();
 
-        $news = News::orderBy("created_at", "desc")->limit(14)->get();
+        $news = News::orderBy("created_at", "desc")
+                    ->limit(14)
+                    ->get();
 
         return view("page.guest.home",[
             "slides" => $slides,
@@ -27,10 +29,23 @@ class PageController extends Controller
     }
 
     public function getStyle(Request $request) {
-        $slides = Slide::where("id_topic", 1)->orderBy("created_at", "desc")->limit(3)->get();
-        $newsNewests = News::where("id_topic", 1)->orderBy("created_at", "desc")->limit(2)->get();
-        $newsStyles = News::where("id_topic", 1)->orderBy("created_at", "desc")->offset(2)->limit(11)->get();
-        $video = Video::where("id_topic", 1)->orderBy("created_at", "desc")->limit(1)->get();
+        $slides = Slide::where("id_topic", 1)
+                        ->orderBy("created_at", "desc")
+                        ->limit(3)
+                        ->get();
+        $newsNewests = News::where("id_topic", 1)
+                        ->orderBy("created_at", "desc")
+                        ->limit(2)
+                        ->get();
+        $newsStyles = News::where("id_topic", 1)
+                        ->orderBy("created_at", "desc")
+                        ->offset(2)
+                        ->limit(11)
+                        ->get();
+        $video = Video::where("id_topic", 1)
+                        ->orderBy("created_at", "desc")
+                        ->limit(1)
+                        ->get();
 
         return view("page.guest.style", [
             "slides" => $slides,
@@ -41,10 +56,23 @@ class PageController extends Controller
     }
 
     public function getFashion(Request $request) {
-        $newsNewests = News::where("id_topic", 2)->orderBy("created_at", "desc")->limit(6)->get();
-        $newsFashions = News::where("id_topic", 2)->orderBy("created_at", "desc")->offset(6)->limit(6)->get();
-        $newsFashionRecents = News::where("id_topic", 2)->orderBy("created_at", "desc")->offset(12)->limit(3)->get();
-        $video = Video::where("id_topic", 2)->orderBy("created_at", "desc")->limit(1)->get();
+        $newsNewests = News::where("id_topic", 2)
+                            ->orderBy("created_at", "desc")
+                            ->limit(6)
+                            ->get();
+        $newsFashions = News::where("id_topic", 2)
+                            ->orderBy("created_at", "desc")
+                            ->offset(6)
+                            ->limit(6)
+                            ->get();
+        $newsFashionRecents = News::where("id_topic", 2)
+                                    ->inRandomOrder()
+                                    ->limit(3)
+                                    ->get();
+        $video = Video::where("id_topic", 2)
+                    ->orderBy("created_at", "desc")
+                    ->limit(1)
+                    ->get();
 
         return view("page.guest.fashion",[
             "newsNewests" => $newsNewests,
@@ -55,8 +83,14 @@ class PageController extends Controller
     }
 
     public function getTravel(Request $request) {
-        $newsTravels = News::where("id_topic", 3)->orderBy("created_at", "desc")->limit(8)->get();
-        $newsTravelRecents = News::where("id_topic", 3)->orderBy("created_at", "desc")->offset(8)->limit(3)->get();
+        $newsTravels = News::where("id_topic", 3)
+                            ->orderBy("created_at", "desc")
+                            ->limit(8)
+                            ->get();
+        $newsTravelRecents = News::where("id_topic", 3)
+                                ->inRandomOrder()
+                                ->limit(6)
+                                ->get();
 
         return view("page.guest.travel",[
             "newsTravels" => $newsTravels,
@@ -65,8 +99,16 @@ class PageController extends Controller
     }
 
     public function getSports(Request $request) {
-        $hotNewsSports = News::where("id_topic", 4)->where("hot_news", 1)->orderBy("created_at", "desc")->limit(4)->get();
-        $newsNewests = News::where("id_topic", 4)->where("hot_news", 0)->orderBy("created_at", "desc")->limit(12)->get();
+        $hotNewsSports = News::where("id_topic", 4)
+                            ->where("hot_news", 1)
+                            ->orderBy("created_at", "desc")
+                            ->limit(4)
+                            ->get();
+        $newsNewests = News::where("id_topic", 4)
+                            ->where("hot_news", 0)
+                            ->orderBy("created_at", "desc")
+                            ->limit(12)
+                            ->get();
         return view("page.guest.sports",[
             "hotNewsSports" => $hotNewsSports,
             "newsNewests" => $newsNewests
@@ -92,15 +134,12 @@ class PageController extends Controller
             $newsDetails = News::join("users", "news.id_creator", "=", "users.id")
                                 ->select("news.id", "news.id_topic", "users.name", "news.hot_news", "news.id_status", "news.image", "news.caption", "news.subtitle", "news.created_at")
                                 ->where("news.id", "=", $id)
-                                ->get();
-            
-            // dd($newsDetails);
+                                ->get();            
             $id_topic = News::find($id)->id_topic;
             $newsRecents = News::where("id_topic", "=", $id_topic)
                                 ->where("id", "<>", $id)
                                 ->inRandomOrder()
-                                // ->orderBy("created_at", "desc")
-                                ->limit(3)->get();
+                                ->limit(6)->get();
 
             // dd($newsRecent);
             return view("page.guest.single", [                

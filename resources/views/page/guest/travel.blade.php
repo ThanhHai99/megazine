@@ -32,7 +32,7 @@
                 <button type="submit" class="btn submit btn-primary"><i class="icon-search3"></i></button>
               </div>
             </div>
-            <div class="side animate-box">
+            <!-- <div class="side animate-box">
               <h2 class="sidebar-heading">Categories</h2>
               <p>
                 <ul class="category">
@@ -45,7 +45,7 @@
                   <li><a href="#"><i class="icon-check"></i> Health</a></li>
                 </ul>
               </p>
-            </div>
+            </div> -->
             <div class="side animate-box">
               <h2 class="sidebar-heading">Recent Blog</h2>
               @foreach ($newsTravelRecents as $newsTravelRecent)
