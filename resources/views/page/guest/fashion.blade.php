@@ -33,8 +33,8 @@
           <div class="content-wrap">
             <article class="animate-box">
               <div class="blog-img">
-                <div class="video colorlib-video" style="background-image: url(images/{{ $video[0]->link_image }});">
-                  <a href="videos/{{ $video[0]->link_video }}" class="popup-vimeo"><i class="icon-play4"></i></a>
+                <div class="video colorlib-video" style="background-image: url(images/{{ $video[0]->image }});">
+                  <a href="videos/{{ $video[0]->video }}" class="popup-vimeo"><i class="icon-play4"></i></a>
                   <div class="overlay"></div>
                 </div>
               </div>

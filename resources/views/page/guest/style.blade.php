@@ -16,7 +16,8 @@
                       <p class="tag"><span>{{ $slide->tag }}</span></p>
                       <h1><a href="#">{{ $slide->heading_primary }}</a></h1>
                       <p>{{ $slide->heading_secondary }}</p>
-                      <p><a href="#" class="btn btn-primary btn-outline">Read more</a></p>
+                      <p><a href="javascript:void(0)" class="btn btn-primary btn-outline">Read more</a></p>
+                      
                     </div>
                   </div>
                 </div>
@@ -130,8 +131,8 @@
         <div class="col-md-8">
           <div class="blog-entry-style animate-box">
             <div class="blog-img">
-              <div class="video colorlib-video" style="background-image: url(images/{{ $video[0]->link_image }});">
-                <a href="videos/{{ $video[0]->link_video }}" class="popup-vimeo"><i class="icon-play4"></i></a>
+              <div class="video colorlib-video" style="background-image: url(images/{{ $video[0]->image }});">
+                <a href="videos/{{ $video[0]->video }}" class="popup-vimeo"><i class="icon-play4"></i></a>
                 <div class="overlay"></div>
               </div>
             </div>
