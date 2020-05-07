@@ -238,6 +238,37 @@
 </div>
 <!-- End Image News Modal -->
 
+<!-- Start Image Video Modal -->
+<div class="modal fade" id="editImageVideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <button type="button" class="btn btn-rounded btn-md ml-4" data-dismiss="modal">
+      <i class="fa fa-times-circle" style="font-size:20px;color:#2b2626; width:100%; height:100%"></i>
+    </button>
+
+      <form id="form-image-video" method="POST" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <div class="modal-body">
+          <div class="form-group">
+            <img id="show-image-video" class="img-fluid" src="" alt="" srcset="">
+          </div>
+        </div>
+
+        <div>
+          <input type="hidden" name="id_video_hide" value="">
+        </div>
+
+        <div class="modal-footer justify-content-center" id="video-image-modal-foot">
+          <label class="btn btn-outline-primary btn-rounded btn-md ml-4" for="image_video">Change image</label>
+          <input style="visibility:hidden;" type="file" id="image_video" name="image_video">
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+<!-- End Image Video Modal -->
+
 <!-- Start Edit Slide Modal  -->
 <div class="modal fade" id="editModalSlide" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

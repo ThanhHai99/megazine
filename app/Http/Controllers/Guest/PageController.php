@@ -74,7 +74,7 @@ class PageController extends Controller
     }
 
     public function getVideo(Request $request) {
-        $videos = Video::orderBy("created_at", "desc")->limit(5)->get();
+        $videos = Video::orderBy("created_at", "desc")->limit(10)->get();
         return view("page.guest.video",[
             "videos" => $videos
         ]);

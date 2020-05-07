@@ -109,10 +109,9 @@ class AdminController extends Controller
   }
 
   public function getNewsVideo(Request $request) {
-    $query=Video::where('id_topic', 5)
-                  ->join("users", "video.id_creator", "=", "users.id")
+    $query=Video::join("users", "video.id_creator", "=", "users.id")
                   ->join("topic", "video.id_topic", "=", "topic.id")
-                  ->select("video.id", "users.name as id_creator", "video.hot_news", "video.id_status", "video.image", "video.tag", "video.caption", "video.subtitle");
+                  ->select("video.id", "topic.name as id_topic", "users.name as id_creator", "video.hot_news", "video.id_status", "video.image", "video.tag", "video.caption", "video.subtitle");
     return Datatables::of($query)->make(true);
   }
   
@@ -145,7 +144,7 @@ class AdminController extends Controller
     ], 200);
   }
 
-  public function newsUpdateImage(Request $request) {
+  public function newsUpdateImageNews(Request $request) {
     $input = $request->all();
     $tmp = News::find($input['id_news_hide']);    
     // $img_old = $tmp->image;
@@ -170,6 +169,27 @@ class AdminController extends Controller
     ], 200);
   }
 
+  public function newsUpdateImageVideo(Request $request) {
+    $input = $request->all();
+    $tmp = Video::find($input['id_video_hide']);    
+    
+    $image_path = "images/".$tmp->image;  // Value is not URL but directory file path
+    if(File::exists($image_path)) {
+      File::delete($image_path);
+    }
+
+    $file = $request->file('image_video');
+    $extension = $file->getClientOriginalExtension();
+    $filename = time() . '_'. uniqid() . '.' . $extension;
+    $file->move("images", $filename);
+    $tmp->image = $filename;
+    $tmp->save();
+
+    return response()->json([
+      'error' => false,
+      // 'tmp' => $img_old
+    ], 200);
+  }
 
   public function newsInsert_all(Request $request) {
     $this->validate($request, [

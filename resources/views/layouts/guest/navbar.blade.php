@@ -3,7 +3,7 @@
   <nav id="colorlib-main-menu" role="navigation">
     <ul>
       @foreach ($topics as $topic)
-        <li class="{{ (Request::segment(1) == $topic->name ? 'colorlib-active': '')}}"><a href="{{route($topic->name)}}">{{$topic->name}}</a></li>        
+        <li class="{{ (Request::segment(1) == $topic->name ? 'colorlib-active': '')}}"><a href="{{route($topic->name)}}">{{$topic->name}}</a></li>
       @endforeach
    
       @if (Auth::check())

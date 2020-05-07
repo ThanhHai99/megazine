@@ -288,13 +288,14 @@ let loadNewsVideo = () => {
   var table = $("#dataTable").DataTable();
   table.destroy();
   $("#dataTable").empty();
-  $("#dataTable").append(htmlNews);
+  $("#dataTable").append(htmlAllNews);
   $("#dataTable").DataTable({
       processing: true,
       serverSide: true,
       ajax: "{!! route("news.video") !!}",
       columns: [
         { data: "id", name: "id" },
+        { data: "id_topic", name: "id_topic" },
         { data: "id_creator", name: "id_creator" },
         { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
             if (data == 1) {
@@ -318,7 +319,7 @@ let loadNewsVideo = () => {
         },
         // { data: "image", name: "image" },
         { data: "image", name: "image", render: function(data, type, row) { 
-            return `<a data-toggle="modal"><img id="image-news" src='images/` + data + `' class="img-responsive"></a>`;
+            return `<a data-toggle="modal"><img id="image-video" src='images/` + data + `' class="img-responsive"></a>`;
           },
           targets: "no-sort", orderable: false, searchable: false
         },
@@ -1031,7 +1032,7 @@ let loadNewsArchives = () => {
         let data = table.row($tr).data();
         // alert("Start call ajax");
         $.ajax({
-            url: `{{route('news.update_image')}}`,
+            url: `{{route('news.update_image_news')}}`,
             method: 'POST',
             data: new FormData(this),
             contentType: false,
@@ -1055,10 +1056,64 @@ let loadNewsArchives = () => {
       //End click button create
     });
     // End click change image
-
-    
-
   //End click image news
+
+  //Start click image video
+  $("body").delegate("img#image-video", "click", function() {
+    let table = $('#dataTable').DataTable();
+    $tr = $(this).closest('tr');
+    if ($($tr).hasClass('child')) {
+      $tr = $tr.prev('.parent');
+    };
+
+    let data = table.row($tr).data();
+    $("input[name=id_video_hide]").attr('value', data['id']);
+    $("img#show-image-video").attr("src", '');
+    let linkImage = 'images/' + data['image'];
+    $("img#show-image-video").attr("src", linkImage);
+    $("button#update_image_video").remove();
+    $("#editImageVideo").modal('show');
+  });
+    // Start click change image
+    $("form#form-image-video").delegate("button#update_image_video", "click", function() {
+      //Start click button create
+      
+      $("form#form-image-video").on("submit", function(event) {
+        event.preventDefault();
+        let table = $('#dataTable').DataTable();
+        $tr = $(this).closest('tr');
+        if ($($tr).hasClass('child')) {
+          $tr = $tr.prev('.parent');
+        };
+        let data = table.row($tr).data();
+        // alert("Start call ajax");
+        $.ajax({
+            url: `{{route('news.update_image_video')}}`,
+            method: 'POST',
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(response) {
+              if (response.error == false) {
+                $("#editImageVideo").modal('hide');
+                // alertify.notify('Update successfully', 'success', 3);
+                // console.log(response.tmp);
+              }
+              var d = table.row( this ).data();     
+              table.row( this ).data( d ).draw();
+            },
+            error: function(error) {
+              alertify.notify('An error occurred', 'error', 3);
+              // console.log(error.tmp);
+            }
+          });
+        });
+      //End click button create
+    });
+    // End click change image
+  //End click image video
+
   //End News
 
 </script>

@@ -18,7 +18,25 @@ $("#image_news").change(function() {
   previewImageNews(this);
 });
 
+$("input#image_video").change(function() {
+  if ($("button#update_image_video").length == false) {
+    $("div#video-image-modal-foot").append(`<button id="update_image_video" type="submit" class="btn btn-outline-success btn-rounded btn-md ml-4">Update</button>`);
+  }
+});
 
+function previewImageVideo(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();    
+    reader.onload = function(e) {
+      $('img#show-image-video').attr('src', e.target.result);
+    }    
+    reader.readAsDataURL(input.files[0]); // convert to base64 string
+  }
+}
+
+$("#image_video").change(function() {
+  previewImageVideo(this);
+});
 
 
 
