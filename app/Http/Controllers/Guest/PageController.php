@@ -89,9 +89,23 @@ class PageController extends Controller
 
     public function getSingle(Request $request, $id = null) {
         if (!(is_null($id))) {
-            $newsDetails = News::where("id", $id)->get();
+            $newsDetails = News::join("users", "news.id_creator", "=", "users.id")
+                                ->select("news.id", "news.id_topic", "users.name", "news.hot_news", "news.id_status", "news.image", "news.caption", "news.subtitle", "news.created_at")
+                                ->where("news.id", "=", $id)
+                                ->get();
+            
+            // dd($newsDetails);
+            $id_topic = News::find($id)->id_topic;
+            $newsRecents = News::where("id_topic", "=", $id_topic)
+                                ->where("id", "<>", $id)
+                                ->inRandomOrder()
+                                // ->orderBy("created_at", "desc")
+                                ->limit(3)->get();
+
+            // dd($newsRecent);
             return view("page.guest.single", [                
-                "newsDetails" => $newsDetails
+                "newsDetails" => $newsDetails,
+                "newsRecents" => $newsRecents
             ]);
         };
     }

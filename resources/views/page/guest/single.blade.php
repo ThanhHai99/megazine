@@ -14,7 +14,7 @@
 									<p>
 										<span>{{$newsDetails[0]->tag}}</span>
 										<span><?= date('d F Y', strtotime($newsDetails[0]->created_at)); ?></span>
-										<span> admin </span>
+										<span> {{$newsDetails[0]->name}} </span>
 										<span><a href="#">999 Comments</a></span>
 									</p>
 								</div>
@@ -136,30 +136,16 @@
 						</div>
 						<div class="side animate-box">
 							<h2 class="sidebar-heading">Recent Blog</h2>
-							<div class="f-blog">
-								<a href="blog.html" class="blog-img" style="background-image: url(images/blog-1.jpg);">
-								</a>
-								<div class="desc">
-									<h3><a href="blog.html">Be a designer</a></h3>
-									<p class="admin"><span>25 March 2018</span></p>
+							@foreach ($newsRecents as $newsRecent)
+								<div class="f-blog">
+									<a href="single/{{ $newsRecent->id }}" class="blog-img" style="background-image: url(images/{{ $newsRecent->image }});">
+									</a>
+									<div class="desc">
+										<h3><a href="single/{{ $newsRecent->id }}">{{ $newsRecent->caption }}</a></h3>
+										<p class="admin"><span>{{ $newsRecent->created_at }}</span></p>
+									</div>
 								</div>
-							</div>
-							<div class="f-blog">
-								<a href="blog.html" class="blog-img" style="background-image: url(images/blog-2.jpg);">
-								</a>
-								<div class="desc">
-									<h3><a href="blog.html">How to build website</a></h3>
-									<p class="admin"><span>24 March 2018</span></p>
-								</div>
-							</div>
-							<div class="f-blog">
-								<a href="blog.html" class="blog-img" style="background-image: url(images/blog-3.jpg);">
-								</a>
-								<div class="desc">
-									<h3><a href="blog.html">Create website</a></h3>
-									<p class="admin"><span>23 March 2018</span></p>
-								</div>
-							</div>
+							@endforeach
 						</div>
 						<div class="side animate-box">
 							<h2 class="sidebar-heading">Instagram</h2>
