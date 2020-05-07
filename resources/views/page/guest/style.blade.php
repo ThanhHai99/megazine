@@ -72,7 +72,8 @@
               <div class="owl-carousel">
                 @foreach ($newsNewests as $newsNewest)
                   <div class="item">
-                    <a href="single/{{ $newsNewest->id }}" class="image-popup-link"><img src="images/{{ $newsNewest->image }}" class="img-responsive" alt="html5 bootstrap template"></a>
+                    <!-- <a href="single/{{ $newsNewest->id }}" class="image-popup-link"><img src="images/{{ $newsNewest->image }}" class="img-responsive" alt="html5 bootstrap template"></a> -->
+                    <a href="single/{{ $newsNewest->id }}"><img src="images/{{ $newsNewest->image }}" class="img-responsive" alt="html5 bootstrap template"></a>
                   </div>
                 @endforeach
               </div>

@@ -50,10 +50,10 @@
               <h2 class="sidebar-heading">Recent Blog</h2>
               @foreach ($newsTravelRecents as $newsTravelRecent)
                 <div class="f-blog">
-                  <a href="blog.html" class="blog-img" style="background-image: url(images/{{ $newsTravelRecent->image }});">
+                  <a href="single/{{ $newsTravelRecent->id }}" class="blog-img" style="background-image: url(images/{{ $newsTravelRecent->image }});">
                   </a>
                   <div class="desc">
-                    <h3><a href="blog.html">{{ $newsTravelRecent->caption }}r</a></h3>
+                    <h3><a href="single/{{ $newsTravelRecent->id }}">{{ $newsTravelRecent->caption }}r</a></h3>
                     <p class="admin"><span>{{ $newsTravelRecent->created_at }}</span></p>
                   </div>
                 </div>
