@@ -28,6 +28,11 @@ Route::group(["namespace" => "Guest"], function() {
         "as" => "style",
         "uses" => "PageController@getStyle"
     ]);
+    
+    Route::get("style/more", [
+        "as" => "style.more",
+        "uses" => "PageController@getStyleMore"
+    ]);
 
     Route::get("fashion", [
         "as" => "fashion",
@@ -97,8 +102,8 @@ Route::group(["namespace" => "Admin"], function() {
         Route::get("news/style", [
             "as" => "news.style",
             "uses" => "AdminController@getNewsStyle"
-        ]);        
-        
+        ]);
+
         Route::get("news/fashion", [
             "as" => "news.fashion",
             "uses" => "AdminController@getNewsFashion"

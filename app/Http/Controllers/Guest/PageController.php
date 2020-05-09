@@ -55,6 +55,44 @@ class PageController extends Controller
         ]);
     }
 
+    public function getStyleMore(Request $request) {
+        $newsStylesMore = News::where("id_topic", 1)
+                        ->orderBy("created_at", "desc")
+                        ->offset(15)
+                        ->limit(6)
+                        ->get();
+        
+        // dd($newsStyles);
+        return $newsStylesMore;
+
+        if(!$newsStyles->isEmpty()) {
+            foreach ($newsStyles as $newsStyle) {
+                $output .= `
+                <div class="row row-bottom-padded-md">
+                    <div class="col-md-4">
+                        <div class="blog-entry-style animate-box">
+                        <div class="blog-img">
+                            <a href="single/{{ $newsStyle->id }}"><img src="images/{{ $newsStyle->image }}" class="img-responsive" alt="html5 bootstrap template"></a>
+                        </div>
+                        <div class="desc">
+                            <p class="meta">
+                                <span class="cat"><a href="#">{{ $newsStyle->tag }}</a></span>
+                                <span class="date"><?= date('d F Y', strtotime($newsStyle->created_at)); ?></span>
+                                <!-- <span class="pos">By <a href="#">Walter</a></span> -->
+                            </p>
+                            <h2><a href="single/{{ $newsStyle->id }}">{{ $newsStyle->caption }}</a></h2>
+                            <p>{{ $newsStyle->subtitle }}</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>`;
+            }
+            // echo $output;
+        }
+    }
+
+    
+
     public function getFashion(Request $request) {
         $newsNewests = News::where("id_topic", 2)
                             ->orderBy("created_at", "desc")

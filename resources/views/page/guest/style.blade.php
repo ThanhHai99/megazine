@@ -220,7 +220,21 @@
         </div>
       </div>
 
-      <div class="row">
+      @if (!isset($newsStylesMore))
+        <script>
+          alert("exists $newsStylesMore");
+        </script>
+      @endif
+
+      <div class="row text-center">
+        <div class="col-xs-3 center-block">
+          <button type="button" class="btn btn-info btn-outline" id="loadMore">Load more</button>
+        </div>
+      </div>
+
+      {{ csrf_field() }}
+
+      <!-- <div class="row">
         <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
           <ul class="pagination">
             <li class="disabled"><a href="#">&laquo;</a></li>
@@ -231,7 +245,7 @@
             <li><a href="#">&raquo;</a></li>
           </ul>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>			
 </div>

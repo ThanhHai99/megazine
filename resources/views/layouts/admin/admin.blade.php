@@ -70,9 +70,15 @@
   @yield('script-home')
 
   @include("layouts.admin.htmlAppend")
+
   @include("layouts.admin.slideFeature")
+  @include("layouts.admin.handleSlide")
+
   @include("layouts.admin.userFeature")
+  @include("layouts.admin.handleUser")
+
   @include("layouts.admin.newsFeature")
+  @include("layouts.admin.handleNews")
 
   @stack('script-table')
 </body>

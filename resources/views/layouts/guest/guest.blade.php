@@ -13,6 +13,8 @@
 	</div>
 
 	@include('layouts.guest.script')
+	
+	@include('layouts.guest.processNews')
 
 	</body>
 </html>

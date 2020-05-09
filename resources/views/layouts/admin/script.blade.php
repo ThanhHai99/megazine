@@ -36,4 +36,4 @@
 <!-- <script src="//code.jquery.com/jquery-1.10.2.min.js"></script> -->
 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
-<script src="js/js.js"></script>
+<script src="js/admin.js"></script>
