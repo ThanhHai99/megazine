@@ -4,7 +4,7 @@
 <div id="colorlib-main">
   <aside id="colorlib-hero" class="js-fullheight">
     <div class="flexslider js-fullheight">
-      <ul class="slides">
+      <ul class="slides item-style">
         @foreach ($slides as $slide)
           <li style="background-image: url(images/{{ $slide->image }});">
             <div class="overlay"></div>
@@ -90,7 +90,7 @@
           </div>
         </div>
         @for ($i=0; $i <=1; $i++)
-          <div class="col-md-4">
+          <div class="col-md-4 item-style">
             <div class="blog-entry-style animate-box">
               <div class="blog-img">
                 <a href="single/{{ $newsStyles[$i]->id }}"><img src="images/{{ $newsStyles[$i]->image }}" class="img-responsive" alt="html5 bootstrap template"></a>
@@ -110,7 +110,7 @@
       </div>
       <div class="row row-bottom-padded-md">
         @for ($i=2; $i <=4; $i++)
-          <div class="col-md-4">
+          <div class="col-md-4 item-style">
             <div class="blog-entry-style animate-box">
               <div class="blog-img">
                 <a href="single/{{ $newsStyles[$i]->id }}"><img src="images/{{ $newsStyles[$i]->image }}" class="img-responsive" alt="html5 bootstrap template"></a>
@@ -148,7 +148,7 @@
             </div>
           </div>
         </div>
-          <div class="col-md-4">
+          <div class="col-md-4 item-style">
             <div class="blog-entry-style animate-box">
               <div class="blog-img">
                 <a href="single/{{ $newsStyles[5]->id }}"><img src="images/{{ $newsStyles[5]->image }}" class="img-responsive" alt="html5 bootstrap template"></a>
@@ -167,7 +167,7 @@
       </div>
       <div class="row row-bottom-padded-md">
         @for ($i=6; $i <=8; $i++)
-          <div class="col-md-4">
+          <div class="col-md-4 item-style">
             <div class="blog-entry-style animate-box">
               <div class="blog-img">
                 <a href="single/{{ $newsStyles[$i]->id }}"><img src="images/{{ $newsStyles[$i]->image }}" class="img-responsive" alt="html5 bootstrap template"></a>
@@ -186,7 +186,7 @@
         @endfor
       </div>
       <div class="row row-bottom-padded-md">
-        <div class="col-md-4">
+        <div class="col-md-4 item-style">
           <div class="blog-entry-style animate-box">
             <div class="blog-img">
               <a href="single/{{ $newsStyles[9]->id }}"><img src="images/{{ $newsStyles[9]->image }}" class="img-responsive" alt="html5 bootstrap template"></a>
@@ -202,7 +202,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 item-style">
           <div class="blog-entry-style animate-box">
             <div class="blog-img">
               <a href="single/{{ $newsStyles[10]->id }}"><img src="images/{{ $newsStyles[10]->image }}" class="img-responsive" alt="html5 bootstrap template"></a>
@@ -220,13 +220,7 @@
         </div>
       </div>
 
-      @if (!isset($newsStylesMore))
-        <script>
-          alert("exists $newsStylesMore");
-        </script>
-      @endif
-
-      <div class="row text-center">
+      <div class="row text-center" id="div-load-more">
         <div class="col-xs-3 center-block">
           <button type="button" class="btn btn-info btn-outline" id="loadMore">Load more</button>
         </div>

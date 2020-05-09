@@ -1,20 +1,28 @@
 <script>
 // Start click load more
-$("button#loadMore").on("click", function() {
-  alert("clicked");
-  var _token = $('input[name="_token"]').val();
+$("body").delegate("button#loadMore", "click", function() {
+  // alert("clicked");
+  let _token = $('input[name="_token"]').val();
+  let totalItem = $(".item-style").length;
+  alert(totalItem);
+  load_data(totalItem, _token);
 
-  load_data(_token);
-
-  function load_data(_token) {
+  function load_data(totalItem="", _token) {
     $.ajax({
       url:"{{ route('style.more') }}",
       method:"GET",
-      data:{_token:_token},
+      data:{totalItem:totalItem, _token:_token},
       success:function(data) {
-        // $('div#load-more').remove();
-        $('div.container-wrap').append(data);
-        // $('div.container-wrap').append('<p>rfvhddddddhvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv</p>');
+        $('div#div-load-more').remove();    
+        $('div.container-wrap').append(`<div class="row row-bottom-padded-md append-more"> </div>`);
+        $('div.append-more').append(data);
+        $('div.container-wrap').append(`
+          <div class="row text-center" id="div-load-more">
+            <div class="col-xs-3 center-block">
+              <button type="button" class="btn btn-info btn-outline" id="loadMore">Load more</button>
+            </div>
+          </div>`
+        );
       },
       error:function(error) {
         alert('error');
