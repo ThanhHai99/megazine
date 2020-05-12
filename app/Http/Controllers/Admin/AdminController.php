@@ -222,7 +222,10 @@ class AdminController extends Controller
 
     return response()->json([
         'error' => false,
-        // 'task'  => $tmp,
+        'id' => $tmp->id,
+        'tag' => $tmp->tag,
+        'caption' => $tmp->caption,
+        'subtitle' => $tmp->subtitle
     ], 200);
   }
 

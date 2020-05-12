@@ -487,9 +487,24 @@
           if (response.error == false) {
             $("#editModalNews").modal('hide');
             alertify.notify('Update successfully', 'success', 3);
+
+            $('tbody > tr > td:first-child').each(function() {
+              console.log($(this).html());
+              if ($(this).html() == response.id) {
+                if ($(this).parent("tr").find("td:nth-child(5) > a > img").hasClass("img-responsive")) {
+                  $(this).parent("tr").find("td:nth-child(6)").html(response.tag);
+                  $(this).parent("tr").find("td:nth-child(7)").html(response.caption);
+                  $(this).parent("tr").find("td:nth-child(8)").html(response.subtitle);
+                }
+                if ($(this).parent("tr").find("td:nth-child(6) > a > img").hasClass("img-responsive")) {
+                  $(this).parent("tr").find("td:nth-child(7)").html(response.tag);
+                  $(this).parent("tr").find("td:nth-child(8)").html(response.caption);
+                  $(this).parent("tr").find("td:nth-child(9)").html(response.subtitle);
+                }
+                
+              }
+            });
           }
-          var d = table.row( this ).data();     
-          table.row( this ).data( d ).draw();
         },
         error: function(error) {
           if (error.responseText.error = "Unauthenticated.") {
