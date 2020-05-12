@@ -204,7 +204,6 @@ class AdminController extends Controller
   public function newsUpdate(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -230,7 +229,6 @@ class AdminController extends Controller
   public function newsUpdateImageNews(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -261,7 +259,6 @@ class AdminController extends Controller
   public function newsUpdateImageVideo(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -289,7 +286,6 @@ class AdminController extends Controller
   public function newsInsert_all(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -331,7 +327,6 @@ class AdminController extends Controller
   public function newsInsert(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -373,7 +368,6 @@ class AdminController extends Controller
   public function newsRemove(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -388,7 +382,6 @@ class AdminController extends Controller
   public function employeeUpdate(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
     
@@ -412,7 +405,6 @@ class AdminController extends Controller
   public function employeeUpdateRole(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -422,7 +414,6 @@ class AdminController extends Controller
   public function employeeUpdateStatus(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -432,7 +423,6 @@ class AdminController extends Controller
   public function employeeRemove(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -447,7 +437,6 @@ class AdminController extends Controller
   public function employeeUpdateStatusYes(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -469,7 +458,6 @@ class AdminController extends Controller
   public function employeeUpdateStatusNo(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -604,7 +592,6 @@ class AdminController extends Controller
   public function updateTopic(Request $request, $id) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -628,7 +615,6 @@ class AdminController extends Controller
   public function newsUpdateHotNewsYes(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -650,7 +636,6 @@ class AdminController extends Controller
   public function newsUpdateHotNewsNo(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -672,7 +657,6 @@ class AdminController extends Controller
   public function newsUpdateHotVideoYes(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -694,7 +678,6 @@ class AdminController extends Controller
   public function newsUpdateHotVideoNo(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -716,7 +699,6 @@ class AdminController extends Controller
   public function newsUpdateStatusNewsYes(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -738,7 +720,6 @@ class AdminController extends Controller
   public function newsUpdateStatusNewsNo(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -760,7 +741,6 @@ class AdminController extends Controller
   public function newsUpdateStatusVideoYes(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -782,7 +762,6 @@ class AdminController extends Controller
   public function newsUpdateStatusVideoNo(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -804,7 +783,6 @@ class AdminController extends Controller
   public function deleteTopic(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -814,7 +792,6 @@ class AdminController extends Controller
   public function slideUpdate(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
@@ -838,7 +815,6 @@ class AdminController extends Controller
   public function slideUpdateImage(Request $request) {
     if (!Auth::check()) {
       Auth::logout();
-      return view('auth.login');
       exit();
     }
 
