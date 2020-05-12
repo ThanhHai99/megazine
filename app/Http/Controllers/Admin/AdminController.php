@@ -40,6 +40,12 @@ class AdminController extends Controller
   }
 
   public function getIndex(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+    
     // $topics = Topic::all();
     return view('page.admin._table',[
       // 'topics' => $topics
@@ -47,6 +53,12 @@ class AdminController extends Controller
   }
 
   public function getEmployeeAll(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $query=User::all();
     return Datatables::of($query)
     ->setRowAttr(['align'=>'center'])
@@ -55,6 +67,12 @@ class AdminController extends Controller
   }
   
   public function getEmployeeStaff(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $query=User::where('id_role', 1);
     return Datatables::of($query)
     ->setRowAttr(['align'=>'center'])
@@ -63,11 +81,23 @@ class AdminController extends Controller
   }
 
   public function getEmployeeNormalUser(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $query=User::where('id_role', 2);
     return Datatables::of($query)->make(true);
   }
 
   public function getNewsAll(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     // $query=News::all();
     $query=News::join("users", "news.id_creator", "=", "users.id")
                   ->join("topic", "news.id_topic", "=", "topic.id")
@@ -82,6 +112,12 @@ class AdminController extends Controller
   }
 
   public function getNewsStyle(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $query=News::where('id_topic', 1)
                   ->join("users", "news.id_creator", "=", "users.id")
                   ->join("topic", "news.id_topic", "=", "topic.id")
@@ -90,6 +126,12 @@ class AdminController extends Controller
   } 
 
   public function getNewsFashion(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $query=News::where('id_topic', 2)
                   ->join("users", "news.id_creator", "=", "users.id")
                   ->join("topic", "news.id_topic", "=", "topic.id")
@@ -98,6 +140,12 @@ class AdminController extends Controller
   }
 
   public function getNewsTravel(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $query=News::where('id_topic', 3)
                   ->join("users", "news.id_creator", "=", "users.id")
                   ->join("topic", "news.id_topic", "=", "topic.id")
@@ -106,6 +154,12 @@ class AdminController extends Controller
   }
 
   public function getNewsSports(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $query=News::where('id_topic', 4)
                   ->join("users", "news.id_creator", "=", "users.id")
                   ->join("topic", "news.id_topic", "=", "topic.id")
@@ -114,6 +168,12 @@ class AdminController extends Controller
   }
 
   public function getNewsVideo(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $query=Video::join("users", "video.id_creator", "=", "users.id")
                   ->join("topic", "video.id_topic", "=", "topic.id")
                   ->select("video.id", "topic.name as id_topic", "users.name as id_creator", "video.hot_news", "video.id_status", "video.image", "video.tag", "video.caption", "video.subtitle");
@@ -121,10 +181,22 @@ class AdminController extends Controller
   }
   
   public function getTopic(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     return Datatables::of(News::query())->make(true);
   }
 
   public function getSlideAll(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $query=Slide::all();
     return Datatables::of($query)->make(true);
   }
@@ -278,7 +350,7 @@ class AdminController extends Controller
   }
 
   public function employeeUpdate(Request $request) {
-    $this->validate($request, [
+        $this->validate($request, [
       'name' => 'required',
       'email' => 'required'
     ]);
@@ -297,11 +369,15 @@ class AdminController extends Controller
 
   public function employeeUpdateRole(Request $request) {
 
+
   }
+    
 
   public function employeeUpdateStatus(Request $request) {
 
+
   }
+    
 
   public function employeeRemove(Request $request) {
     $input = $request->all();
@@ -346,6 +422,12 @@ class AdminController extends Controller
 
 
   public function getTopicStyle(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $datas = News::select('id', 'id_creator', 'hot_news', 'image', 'tag', 'caption', 'subtitle', 'created_at', 'updated_at')->where("id_topic", 1)->get();
     return view('page.admin._news',[
       'topic'  => 'Style',
@@ -354,6 +436,12 @@ class AdminController extends Controller
   }
 
   public function getTopicFashion(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $datas = News::where("id_topic", 2)->get();
     return view('page.admin._news',[
       'topic'  => 'Fashion',
@@ -362,6 +450,12 @@ class AdminController extends Controller
   }
 
   public function getTopicTravel(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $datas = News::where("id_topic", 3)->get();
     return view('page.admin._news',[
       'topic'  => 'Travel',
@@ -370,6 +464,12 @@ class AdminController extends Controller
   }
 
   public function getTopicSports(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $datas = News::where("id_topic", 4)->get();
     return view('page.admin._news',[
       'topic'  => 'Sports',
@@ -378,6 +478,12 @@ class AdminController extends Controller
   }
 
   public function getTopicVideo(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $datas = News::where("id_topic", 5)->get();
     return view('page.admin._news',[
       'topic'  => 'Video',
@@ -386,6 +492,12 @@ class AdminController extends Controller
   }
 
   public function getTopicArchives(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $datas = News::where("id_topic", 6)->get();
     return view('page.admin._news',[
       'topic'  => 'Archives',
@@ -394,6 +506,12 @@ class AdminController extends Controller
   }
 
   public function getEmpoyeeStaff(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $datas = User::where("id_role", 1)->get();
     return view('page.admin._employee',[
       'text'  => 'Staff',
@@ -402,6 +520,12 @@ class AdminController extends Controller
   }
 
   public function getNormalUser(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $datas = User::where("id_role", 2)->get();
     return view('page.admin._employee',[
       'text'  => 'Normal Users',
@@ -556,7 +680,7 @@ class AdminController extends Controller
   }
 
   public function deleteTopic(Request $request) {
-
+    
   }
 
   public function slideUpdate(Request $request) {

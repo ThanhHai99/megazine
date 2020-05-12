@@ -7,7 +7,12 @@ let loadAllNews = () => {
   $("#dataTable").DataTable({
       processing: true,
       serverSide: true,
-      ajax: "{!! route("news.all") !!}",
+      ajax: {
+        url: "{!! route("news.all") !!}",
+        error: function(error) {
+          location.reload(true);
+        }
+      },      
       columns: [
         { data: "id", name: "id" },
         { data: "id_topic", name: "id_topic" },
@@ -64,7 +69,12 @@ let loadNewsStyle = () => {
   $("#dataTable").DataTable({
       processing: true,
       serverSide: true,
-      ajax: "{!! route("news.style") !!}",
+      ajax: {
+        url: "{!! route("news.style") !!}",
+        error: function(error) {
+          location.reload(true);
+        }
+      },
       columns: [
         { data: "id", name: "id" },
         { data: "id_creator", name: "id_creator" },
@@ -121,7 +131,12 @@ let loadNewsFashion = () => {
   $("#dataTable").DataTable({
       processing: true,
       serverSide: true,
-      ajax: "{!! route("news.fashion") !!}",
+      ajax: {
+        url: "{!! route("news.fashion") !!}",
+        error: function(error) {
+          location.reload(true);
+        }
+      },
       columns: [
         { data: "id", name: "id" },
         { data: "id_creator", name: "id_creator" },
@@ -178,7 +193,12 @@ let loadNewsTravel = () => {
   $("#dataTable").DataTable({
       processing: true,
       serverSide: true,
-      ajax: "{!! route("news.travel") !!}",
+      ajax: {
+        url: "{!! route("news.travel") !!}",
+        error: function(error) {
+          location.reload(true);
+        }
+      },
       columns: [
         { data: "id", name: "id" },
         { data: "id_creator", name: "id_creator" },
@@ -235,7 +255,12 @@ let loadNewsSports = () => {
   $("#dataTable").DataTable({
       processing: true,
       serverSide: true,
-      ajax: "{!! route("news.sports") !!}",
+      ajax: {
+        url: "{!! route("news.sports") !!}",
+        error: function(error) {
+          location.reload(true);
+        }
+      },
       columns: [
         { data: "id", name: "id" },
         { data: "id_creator", name: "id_creator" },
@@ -292,7 +317,12 @@ let loadNewsVideo = () => {
   $("#dataTable").DataTable({
       processing: true,
       serverSide: true,
-      ajax: "{!! route("news.video") !!}",
+      ajax: {
+        url: "{!! route("news.video") !!}",
+        error: function(error) {
+          location.reload(true);
+        }
+      },
       columns: [
         { data: "id", name: "id" },
         { data: "id_topic", name: "id_topic" },
@@ -333,63 +363,6 @@ let loadNewsVideo = () => {
                             <i class="glyphicon glyphicon-pencil"></i>
                           </a>
                           <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
-                            <i class="glyphicon glyphicon-trash"></i>
-                          </a>`
-        }
-      ]
-  });
-};
-
-let loadNewsArchives = () => {
-  $('meta[name=type-news]').attr('content', '6');
-  $('input[name=id_topic]').attr('value', 6);
-  var table = $("#dataTable").DataTable();
-  table.destroy();
-  $("#dataTable").empty();
-  $("#dataTable").append(htmlNews);
-  $("#dataTable").DataTable({
-      processing: true,
-      serverSide: true,
-      ajax: "{!! route("news.archives") !!}",
-      columns: [
-        { data: "id", name: "id" },
-        { data: "id_creator", name: "id_creator" },
-        { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
-            if (data == 1) {
-              return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green"></i>';
-            }
-            else {
-              return '<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color:red"></i></a>';
-            }
-          },
-          searchable: false
-        },
-        { data: "id_status", name: "id_status", render: function(data, type, row) { 
-            if (data == 1) {
-              return '<a href="javascript:void(0)" id="status_news_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
-            }
-            else {
-              return '<a href="javascript:void(0)" id="status_news_no"><i class="fas fa-lock" style="color: red;"></i></a>';
-            }
-          },
-          searchable: false
-        },
-        // { data: "image", name: "image" },
-        { data: "image", name: "image", render: function(data, type, row) { 
-            return `<a data-toggle="modal"><img id="image-news" src='images/` + data + `' class="img-responsive"></a>`;
-          },
-          targets: "no-sort", orderable: false, searchable: false
-        },
-        { data: "tag", name: "tag" },
-        { data: "caption", name: "caption" },
-        { data: "subtitle", name: "subtitle" },
-        {
-          data: null,
-          targets: "no-sort", orderable: false,
-          defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
-                            <i class="glyphicon glyphicon-pencil"></i>
-                          </a>
-                          <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove">
                             <i class="glyphicon glyphicon-trash"></i>
                           </a>`
         }

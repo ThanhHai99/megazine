@@ -6,7 +6,12 @@ let loadEmployeeAll_onLoad = () => {
   $("#dataTable").DataTable({
       processing: true,
       serverSide: true,
-      ajax: "{!! route("employee.all") !!}",
+      ajax: {
+        url: "{!! route("employee.all") !!}",
+        error: function(error) {
+          location.reload(true);
+        }
+      },  
       columns: [
         { data: "id", name: "id" },
         { data: "id_role", name: "id_role" },
@@ -35,7 +40,12 @@ let loadEmployeeAll = () => {
   $("#dataTable").DataTable({
       processing: true,
       serverSide: true,
-      ajax: "{!! route("employee.all") !!}",
+      ajax: {
+        url: "{!! route("employee.all") !!}",
+        error: function(error) {
+          location.reload(true);
+        }
+      },  
       columns: [
         { data: "id", name: "id" },
         { data: "id_role", name: "id_role" },
@@ -74,7 +84,12 @@ let loadEmployeeStaff = () => {
   $("#dataTable").DataTable({
       processing: true,
       serverSide: true,
-      ajax: "{!! route("employee.staff") !!}",
+      ajax: {
+        url: "{!! route("employee.staff") !!}",
+        error: function(error) {
+          location.reload(true);
+        }
+      },  
       columns: [
         { data: "id", name: "id" },
         { data: "id_status", name: "id_status", render: function(data, type, row) { 
@@ -111,7 +126,12 @@ let loadEmployeeNormalUser = () => {
   $("#dataTable").DataTable({
       processing: true,
       serverSide: true,
-      ajax: "{!! route("employee.normal_user") !!}",
+      ajax: {
+        url: "{!! route("employee.normal_user") !!}",
+        error: function(error) {
+          location.reload(true);
+        }
+      },  
       columns: [
         { data: "id", name: "id" },
         { data: "id_status", name: "id_status", render: function(data, type, row) { 

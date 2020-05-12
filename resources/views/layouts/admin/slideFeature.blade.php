@@ -7,7 +7,12 @@ let loadSlide = () => {
   $("#dataTable").DataTable({
       processing: true,
       serverSide: true,
-      ajax: "{!! route("slide.all") !!}",
+      ajax: {
+        url: "{!! route("slide.all") !!}",
+        error: function(error) {
+          location.reload(true);
+        }
+      },  
       columns: [
         { data: "id", name: "id" },
         { data: "id_topic", name: "id_topic" },

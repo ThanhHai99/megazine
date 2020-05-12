@@ -31,13 +31,13 @@
                   <div class="form-group">
                     <input type="password" class="form-control form-control-user form-group{{ $errors->has('password') ? ' has-error' : '' }}" id="exampleInputPassword password" name="password" placeholder="Password">
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <div class="custom-control custom-checkbox small">
                       <input type="checkbox" class="custom-control-input" id="customCheck">
-                      <!-- <label class="custom-control-label" for="customCheck">Remember Me</label> -->
+                      <label class="custom-control-label" for="customCheck">Remember Me</label>
                       <label><input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me</label>
                     </div>
-                  </div>
+                  </div> -->
                   <button type="submit" class="btn btn-primary btn-user btn-block">
                     Login
                   </button>
