@@ -252,7 +252,8 @@ class AdminController extends Controller
 
     return response()->json([
       'error' => false,
-      // 'tmp' => $img_old
+      'id' => $tmp->id,
+      'image' => $tmp->image
     ], 200);
   }
 
@@ -279,7 +280,8 @@ class AdminController extends Controller
 
     return response()->json([
       'error' => false,
-      // 'tmp' => $img_old
+      'id' => $tmp->id,
+      'image' => $tmp->image
     ], 200);
   }
 

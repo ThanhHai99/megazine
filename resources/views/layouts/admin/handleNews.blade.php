@@ -671,7 +671,7 @@
           $tr = $tr.prev('.parent');
         };
         let data = table.row($tr).data();
-        // alert("Start call ajax");
+
         $.ajax({
             url: `{{route('news.update_image_news')}}`,
             method: 'POST',
@@ -683,10 +683,21 @@
               if (response.error == false) {
                 $("#editImageNews").modal('hide');
                 // alertify.notify('Update successfully', 'success', 3);
-                // console.log(response.tmp);
+
+                $('tbody > tr > td:first-child').each(function() {
+                  if ($(this).html() == response.id) {
+                    if ($(this).parent("tr").find("td:nth-child(5) > a > img").hasClass("img-responsive")) {
+                      $(this).parent("tr").find("td:nth-child(5)").html(`<a data-toggle="modal"><img id="image-news" src="images/`+ response.image +`" class="img-responsive"></a>`);
+                    } else if ($(this).parent("tr").find("td:nth-child(6) > a > img").hasClass("img-responsive")) {
+                      $(this).parent("tr").find("td:nth-child(6)").html(`<a data-toggle="modal"><img id="image-news" src="images/`+ response.image +`" class="img-responsive"></a>`);
+                    }
+
+                  }
+                });
+
               }
-              var d = table.row( this ).data();     
-              table.row( this ).data( d ).draw();
+              // var d = table.row( this ).data();     
+              // table.row( this ).data( d ).draw();
             },
             error: function(error) {
               if (error.responseText.error = "Unauthenticated.") {
@@ -718,7 +729,7 @@
     $("button#update_image_video").remove();
     $("#editImageVideo").modal('show');
   });
-    // Start click change image
+    // Start click change image video
     $("form#form-image-video").delegate("button#update_image_video", "click", function() {
       //Start click button create
       
@@ -742,10 +753,15 @@
               if (response.error == false) {
                 $("#editImageVideo").modal('hide');
                 // alertify.notify('Update successfully', 'success', 3);
+                $('tbody > tr > td:first-child').each(function() {
+                  if ($(this).html() == response.id) {
+                    $(this).parent("tr").find("td:nth-child(6)").html(`<a data-toggle="modal"><img id="image-news" src="images/`+ response.image +`" class="img-responsive"></a>`);
+                  }
+                });
                 // console.log(response.tmp);
               }
-              var d = table.row( this ).data();     
-              table.row( this ).data( d ).draw();
+              // var d = table.row( this ).data();     
+              // table.row( this ).data( d ).draw();
             },
             error: function(error) {
               if (error.responseText.error = "Unauthenticated.") {
@@ -758,7 +774,7 @@
         });
       //End click button create
     });
-    // End click change image
+    // End click change image video
   //End click image video
 </script>
 
