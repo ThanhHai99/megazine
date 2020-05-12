@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Validator;
+use Session;
 // use Illuminate\Support\Str;
 
 use App\Topic;
@@ -28,9 +30,13 @@ class AdminController extends Controller
     $this->middleware('auth');
   }
 
+  public function getLogin() {
+    return view('auth.login');
+  }
+
   public function getLogout() {
     Auth::logout();
-    return redirect("/home");
+    return redirect("/login");
   }
 
   public function getIndex(Request $request) {
@@ -76,7 +82,6 @@ class AdminController extends Controller
   }
 
   public function getNewsStyle(Request $request) {
-    // $query=News::where('id_topic', 1);
     $query=News::where('id_topic', 1)
                   ->join("users", "news.id_creator", "=", "users.id")
                   ->join("topic", "news.id_topic", "=", "topic.id")

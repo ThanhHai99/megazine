@@ -39,7 +39,6 @@
 	// Animations
 
 	var contentWayPoint = function() {
-		alert('ready');
 		var i = 0;
 		$('.animate-box').waypoint( function( direction ) {
 

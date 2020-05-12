@@ -69,6 +69,11 @@ Route::group(["namespace" => "Admin"], function() {
     Route::group(["prefix" => "dashboard"], function () {
 
         // Start get
+        Route::get("login", [
+            "as" => "dashboard.login",
+            "uses" => "AdminController@getLogin"
+        ]);
+
         Route::get("logout", [
             "as" => "dashboard.logout",
             "uses" => "AdminController@getLogout"
