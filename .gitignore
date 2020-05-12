@@ -10,8 +10,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-.env
-deployGit.sh
 /template
 /template-admin
 sql.sql
