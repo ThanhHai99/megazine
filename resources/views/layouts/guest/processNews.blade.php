@@ -46,11 +46,8 @@ $("body").delegate("button#loadMoreFashion", "click", function() {
       data:{ totalItem: totalItem, _token:_token },
       success:function(data) {
         $('div#div-load-more-fashion').remove();    
-        if (!($('div.container-wrap > div').hasClass("append-more"))) {
-          $('div.container-wrap').append(`<div class="row row-bottom-padded-md append-more"> </div>`);
-        }
-        $('div.append-more').append(data);
-        $('div.container-wrap').append(`
+        $('div.content-wrap').append(data);
+        $('div.content-wrap').append(`
           <div class="row text-center" id="div-load-more-fashion">
             <div class="col-xs-3 center-block">
               <button type="button" class="btn btn-info btn-outline" id="loadMoreFashion">Load more</button>
@@ -78,13 +75,10 @@ $("body").delegate("button#loadMoreTravel", "click", function() {
       method:"GET",
       data:{ totalItem: totalItem, _token:_token },
       success:function(data) {
-        $('div#div-load-more-style').remove();    
-        if (!($('div.container-wrap > div').hasClass("append-more"))) {
-          $('div.container-wrap').append(`<div class="row row-bottom-padded-md append-more"> </div>`);
-        }
-        $('div.append-more').append(data);
-        $('div.container-wrap').append(`
-          <div class="row text-center" id="div-load-more-style">
+        $('div#div-load-more-travel').remove(); 
+        $('div.content-wrap').append(data);
+        $('div.content-wrap').append(`
+          <div class="row text-center" id="div-load-more-travel">
             <div class="col-xs-3 center-block">
               <button type="button" class="btn btn-info btn-outline" id="loadMoreTravel">Load more</button>
             </div>
@@ -111,13 +105,10 @@ $("body").delegate("button#loadMoreSports", "click", function() {
       method:"GET",
       data:{ totalItem: totalItem, _token:_token },
       success:function(data) {
-        $('div#div-load-more-style').remove();    
-        if (!($('div.container-wrap > div').hasClass("append-more"))) {
-          $('div.container-wrap').append(`<div class="row row-bottom-padded-md append-more"> </div>`);
-        }
-        $('div.append-more').append(data);
+        $('div#div-load-more-sports').remove();
+        $('div.container-wrap').find('div.content').append(data);
         $('div.container-wrap').append(`
-          <div class="row text-center" id="div-load-more-style">
+          <div class="row text-center" id="div-load-more-sports">
             <div class="col-xs-3 center-block">
               <button type="button" class="btn btn-info btn-outline" id="loadMoreSports">Load more</button>
             </div>

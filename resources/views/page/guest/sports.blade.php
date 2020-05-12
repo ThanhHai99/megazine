@@ -30,7 +30,7 @@
   </div>
   <div class="colorlib-blog">
     <div class="container-wrap">
-      <div class="row">
+      <div class="row content">
         @foreach ($newsNewests as $newsNewest)
           <div class="col-md-4 text-center item-sports">
             <div class="blog-entry-sports animate-box">
