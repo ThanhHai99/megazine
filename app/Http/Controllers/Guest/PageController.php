@@ -57,30 +57,28 @@ class PageController extends Controller
     }
 
     public function getStyleMore(Request $request) {
-        $newsStyleMores="";
+        $newsStyleMores = null;
         $newsStyleMores = News::where("id_topic", 1)
                         ->orderBy("created_at", "desc")
-                        ->offset($request->totalItem)
-                        ->limit(2)
+                        ->offset($request->totalItem + 1)
+                        ->limit(6)
                         ->get();
-        
-        dd($newsStyleMores);
+
         $output = '';
-        // foreach ($newsStyleMores as $newsStyleMore) {
-        for ($i=0; $i<=1; $i++) {
+        foreach ($newsStyleMores as $newsStyleMore) {
             $output .= '
                 <div class="col-md-4 item-style">
                     <div class="blog-entry-style animate-box fadeInUp animated">
                     <div class="blog-img">
-                        <a href="single/'.$newsStyleMores->id.'"><img src="images/'.$newsStyleMores->image.'" class="img-responsive" alt="html5 bootstrap template"></a>
+                        <a href="single/'.$newsStyleMore->id.'"><img src="images/'.$newsStyleMore->image.'" class="img-responsive" alt="html5 bootstrap template"></a>
                     </div>
                     <div class="desc">
                         <p class="meta">
-                            <span class="cat"><a href="#">'.$newsStyleMores->tag.'</a></span>
-                            <span class="date">'. date("d F Y", strtotime($newsStyleMores->created_at)) .'</span>
+                            <span class="cat"><a href="#">'.$newsStyleMore->tag.'</a></span>
+                            <span class="date">'. date("d F Y", strtotime($newsStyleMore->created_at)) .'</span>
                         </p>
-                        <h2><a href="single/'.$newsStyleMores->id.'">'.$newsStyleMores->caption.'</a></h2>
-                        <p>'.$newsStyleMores->subtitle.'</p>
+                        <h2><a href="single/'.$newsStyleMore->id.'">'.$newsStyleMore->caption.'</a></h2>
+                        <p>'.$newsStyleMore->subtitle.'</p>
                     </div>
                     </div>
                 </div>';

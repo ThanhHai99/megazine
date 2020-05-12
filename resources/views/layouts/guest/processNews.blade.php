@@ -4,17 +4,18 @@ $("body").delegate("button#loadMore", "click", function() {
   // alert("clicked");
   let _token = $('input[name="_token"]').val();
   let totalItem = $(".item-style").length;
-  alert(totalItem);
-  load_data(totalItem, _token);
+  loadMoreStyle(totalItem, _token);
 
-  function load_data(totalItem="", _token) {
+  function loadMoreStyle(totalItem="", _token) {
     $.ajax({
       url:"{{ route('style.more') }}",
       method:"GET",
-      data:{totalItem:totalItem, _token:_token},
+      data:{ totalItem: totalItem, _token:_token },
       success:function(data) {
         $('div#div-load-more').remove();    
-        $('div.container-wrap').append(`<div class="row row-bottom-padded-md append-more"> </div>`);
+        if (!($('div.container-wrap > div').hasClass("append-more"))) {
+          $('div.container-wrap').append(`<div class="row row-bottom-padded-md append-more"> </div>`);
+        }
         $('div.append-more').append(data);
         $('div.container-wrap').append(`
           <div class="row text-center" id="div-load-more">
