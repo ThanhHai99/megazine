@@ -57,30 +57,28 @@ class PageController extends Controller
     }
 
     public function getStyleMore(Request $request) {
-        $newsStyleMores="";
+        $newsStyleMores = null;
         $newsStyleMores = News::where("id_topic", 1)
                         ->orderBy("created_at", "desc")
-                        ->offset($request->totalItem)
-                        ->limit(2)
+                        ->offset($request->totalItem + 1)
+                        ->limit(6)
                         ->get();
-        
-        dd($newsStyleMores);
+
         $output = '';
-        // foreach ($newsStyleMores as $newsStyleMore) {
-        for ($i=0; $i<=1; $i++) {
+        foreach ($newsStyleMores as $newsStyleMore) {
             $output .= '
                 <div class="col-md-4 item-style">
                     <div class="blog-entry-style animate-box fadeInUp animated">
                     <div class="blog-img">
-                        <a href="single/'.$newsStyleMores->id.'"><img src="images/'.$newsStyleMores->image.'" class="img-responsive" alt="html5 bootstrap template"></a>
+                        <a href="single/'.$newsStyleMore->id.'"><img src="images/'.$newsStyleMore->image.'" class="img-responsive" alt="html5 bootstrap template"></a>
                     </div>
                     <div class="desc">
                         <p class="meta">
-                            <span class="cat"><a href="#">'.$newsStyleMores->tag.'</a></span>
-                            <span class="date">'. date("d F Y", strtotime($newsStyleMores->created_at)) .'</span>
+                            <span class="cat"><a href="#">'.$newsStyleMore->tag.'</a></span>
+                            <span class="date">'. date("d F Y", strtotime($newsStyleMore->created_at)) .'</span>
                         </p>
-                        <h2><a href="single/'.$newsStyleMores->id.'">'.$newsStyleMores->caption.'</a></h2>
-                        <p>'.$newsStyleMores->subtitle.'</p>
+                        <h2><a href="single/'.$newsStyleMore->id.'">'.$newsStyleMore->caption.'</a></h2>
+                        <p>'.$newsStyleMore->subtitle.'</p>
                     </div>
                     </div>
                 </div>';
@@ -117,6 +115,35 @@ class PageController extends Controller
         ]);
     }
 
+    public function getFashionMore(Request $request) {
+        $newsFashionMores = null;
+        $newsFashionMores = News::where("id_topic", 1)
+                        ->orderBy("created_at", "desc")
+                        ->offset($request->totalItem + 1)
+                        ->limit(6)
+                        ->get();
+
+        $output = '';
+        foreach ($newsFashionMores as $newsFashionMore) {
+            $output .= '
+                <article class="animate-box item-fashion">
+                    <div class="blog-img" style="background-image: url(images/'. $newsFashionMore->image .');"></div>
+                    <div class="desc">
+                    <div class="meta">
+                        <p>
+                        <span>'. $newsFashionMore->tag.' </span>
+                        <span>'. $newsFashionMore->created_at.' </span>
+                        </p>
+                    </div>
+                    <h2><a href="single/'. $newsFashionMore->id.' ">'. $newsFashionMore->caption.' </a></h2>
+                    <p>'. $newsFashionMore->subtitle.' </p>
+                    <p><a href="single/'. $newsFashionMore->id.' " class="btn btn-primary with-arrow">Read More <i class="icon-arrow-right22"></i></a></p>
+                    </div>
+                </article>';
+        }
+        echo $output;
+    }
+
     public function getTravel(Request $request) {
         $newsTravels = News::where("id_topic", 3)
                             ->orderBy("created_at", "desc")
@@ -131,6 +158,36 @@ class PageController extends Controller
             "newsTravels" => $newsTravels,
             "newsTravelRecents" => $newsTravelRecents
         ]);
+    }
+
+    public function getTravelMore(Request $request) {
+        $newsStyleMores = null;
+        $newsStyleMores = News::where("id_topic", 1)
+                        ->orderBy("created_at", "desc")
+                        ->offset($request->totalItem + 1)
+                        ->limit(6)
+                        ->get();
+
+        $output = '';
+        foreach ($newsStyleMores as $newsStyleMore) {
+            $output .= '
+                <div class="col-md-4 item-style">
+                    <div class="blog-entry-style animate-box fadeInUp animated">
+                    <div class="blog-img">
+                        <a href="single/'.$newsStyleMore->id.'"><img src="images/'.$newsStyleMore->image.'" class="img-responsive" alt="html5 bootstrap template"></a>
+                    </div>
+                    <div class="desc">
+                        <p class="meta">
+                            <span class="cat"><a href="#">'.$newsStyleMore->tag.'</a></span>
+                            <span class="date">'. date("d F Y", strtotime($newsStyleMore->created_at)) .'</span>
+                        </p>
+                        <h2><a href="single/'.$newsStyleMore->id.'">'.$newsStyleMore->caption.'</a></h2>
+                        <p>'.$newsStyleMore->subtitle.'</p>
+                    </div>
+                    </div>
+                </div>';
+        }
+        echo $output;
     }
 
     public function getSports(Request $request) {
@@ -150,11 +207,71 @@ class PageController extends Controller
         ]);
     }
 
+    public function getSportsMore(Request $request) {
+        $newsStyleMores = null;
+        $newsStyleMores = News::where("id_topic", 1)
+                        ->orderBy("created_at", "desc")
+                        ->offset($request->totalItem + 1)
+                        ->limit(6)
+                        ->get();
+
+        $output = '';
+        foreach ($newsStyleMores as $newsStyleMore) {
+            $output .= '
+                <div class="col-md-4 item-style">
+                    <div class="blog-entry-style animate-box fadeInUp animated">
+                    <div class="blog-img">
+                        <a href="single/'.$newsStyleMore->id.'"><img src="images/'.$newsStyleMore->image.'" class="img-responsive" alt="html5 bootstrap template"></a>
+                    </div>
+                    <div class="desc">
+                        <p class="meta">
+                            <span class="cat"><a href="#">'.$newsStyleMore->tag.'</a></span>
+                            <span class="date">'. date("d F Y", strtotime($newsStyleMore->created_at)) .'</span>
+                        </p>
+                        <h2><a href="single/'.$newsStyleMore->id.'">'.$newsStyleMore->caption.'</a></h2>
+                        <p>'.$newsStyleMore->subtitle.'</p>
+                    </div>
+                    </div>
+                </div>';
+        }
+        echo $output;
+    }
+
     public function getVideo(Request $request) {
         $videos = Video::orderBy("created_at", "desc")->limit(10)->get();
         return view("page.guest.video",[
             "videos" => $videos
         ]);
+    }
+
+    public function getVideoMore(Request $request) {
+        $newsStyleMores = null;
+        $newsStyleMores = News::where("id_topic", 1)
+                        ->orderBy("created_at", "desc")
+                        ->offset($request->totalItem + 1)
+                        ->limit(6)
+                        ->get();
+
+        $output = '';
+        foreach ($newsStyleMores as $newsStyleMore) {
+            $output .= '
+                <div class="col-md-4 item-style">
+                    <div class="blog-entry-style animate-box fadeInUp animated">
+                    <div class="blog-img">
+                        <a href="single/'.$newsStyleMore->id.'"><img src="images/'.$newsStyleMore->image.'" class="img-responsive" alt="html5 bootstrap template"></a>
+                    </div>
+                    <div class="desc">
+                        <p class="meta">
+                            <span class="cat"><a href="#">'.$newsStyleMore->tag.'</a></span>
+                            <span class="date">'. date("d F Y", strtotime($newsStyleMore->created_at)) .'</span>
+                        </p>
+                        <h2><a href="single/'.$newsStyleMore->id.'">'.$newsStyleMore->caption.'</a></h2>
+                        <p>'.$newsStyleMore->subtitle.'</p>
+                    </div>
+                    </div>
+                </div>';
+        }
+        echo $output;
     }
 
     public function getArchives(Request $request) {

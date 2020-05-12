@@ -39,9 +39,19 @@ Route::group(["namespace" => "Guest"], function() {
         "uses" => "PageController@getFashion"
     ]);
 
+    Route::get("fashion/more", [
+        "as" => "fashion.more",
+        "uses" => "PageController@getFashionMore"
+    ]);
+
     Route::get("travel", [
         "as" => "travel",
         "uses" => "PageController@getTravel"
+    ]);
+
+    Route::get("travel/more", [
+        "as" => "travel.more",
+        "uses" => "PageController@getTravelMore"
     ]);
 
     Route::get("sports", [
@@ -49,9 +59,19 @@ Route::group(["namespace" => "Guest"], function() {
         "uses" => "PageController@getSports"
     ]);
 
+    Route::get("sports/more", [
+        "as" => "sports.more",
+        "uses" => "PageController@getSportsMore"
+    ]);
+
     Route::get("video", [
         "as" => "video",
         "uses" => "PageController@getVideo"
+    ]);
+
+    Route::get("video/more", [
+        "as" => "video.more",
+        "uses" => "PageController@getVideoMore"
     ]);
 
     Route::get("archives", [

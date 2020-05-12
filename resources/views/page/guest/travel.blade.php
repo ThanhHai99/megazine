@@ -8,7 +8,7 @@
         <div class="col-md-9">
           <div class="content-wrap">
             @foreach ($newsTravels as $newsTravel)
-              <article class="blog-entry-travel animate-box">
+              <article class="blog-entry-travel animate-box item-travel">
                 <div class="blog-img" style="background-image: url(images/{{ $newsTravel->image }});"></div>
                 <div class="desc">
                   <p class="meta">
@@ -22,6 +22,15 @@
                 </div>
               </article>
             @endforeach
+
+            <div class="row text-center" id="div-load-more-travel">
+              <div class="col-xs-3 center-block">
+                <button type="button" class="btn btn-info btn-outline" id="loadMoreTravel">Load more</button>
+              </div>
+            </div>
+
+            {{ csrf_field() }}
+
           </div>
         </div>
         <div class="col-md-3">
@@ -31,7 +40,7 @@
                 <input type="text" class="form-control" id="search" placeholder="Enter to search...">
                 <button type="submit" class="btn submit btn-primary"><i class="icon-search3"></i></button>
               </div>
-            </div>
+            </div>            
             <!-- <div class="side animate-box">
               <h2 class="sidebar-heading">Categories</h2>
               <p>
