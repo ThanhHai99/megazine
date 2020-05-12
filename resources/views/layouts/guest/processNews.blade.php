@@ -135,17 +135,14 @@ $("body").delegate("button#loadMoreVideo", "click", function() {
       method:"GET",
       data:{ totalItem: totalItem, _token:_token },
       success:function(data) {
-        $('div#div-load-more-style').remove();    
-        if (!($('div.container-wrap > div').hasClass("append-more"))) {
-          $('div.container-wrap').append(`<div class="row row-bottom-padded-md append-more"> </div>`);
-        }
-        $('div.append-more').append(data);
-        $('div.container-wrap').append(`
-          <div class="row text-center" id="div-load-more-style">
-            <div class="col-xs-3 center-block">
-              <button type="button" class="btn btn-info btn-outline" id="loadMoreVideo">Load more</button>
-            </div>
-          </div>`
+        $('div#div-load-more-video').remove();
+        $('div.content').append(data);
+        $('div.content-wrap').append(`
+          <div class="row text-center" id="div-load-more-video">
+						<div class="col-xs-3 center-block">
+							<button type="button" class="btn btn-info btn-outline" id="loadMoreVideo">Load more</button>
+						</div>
+					</div>`
         );
       },
       error:function(error) {

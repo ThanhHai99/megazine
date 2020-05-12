@@ -238,31 +238,34 @@ class PageController extends Controller
     }
 
     public function getVideoMore(Request $request) {
-        $newsStyleMores = null;
-        $newsStyleMores = News::where("id_topic", 1)
-                        ->orderBy("created_at", "desc")
-                        ->offset($request->totalItem + 1)
+        $newsVideoMores = null;
+        $newsVideoMores = Video::orderBy("created_at", "desc")
+                        ->offset($request->totalItem)
                         ->limit(6)
                         ->get();
 
         $output = '';
-        foreach ($newsStyleMores as $newsStyleMore) {
+        foreach ($newsVideoMores as $newsVideoMore) {
             $output .= '
-                <div class="col-md-4 item-style">
-                    <div class="blog-entry-style animate-box fadeInUp animated">
-                    <div class="blog-img">
-                        <a href="single/'.$newsStyleMore->id.'"><img src="images/'.$newsStyleMore->image.'" class="img-responsive" alt="html5 bootstrap template"></a>
-                    </div>
-                    <div class="desc">
-                        <p class="meta">
-                            <span class="cat"><a href="#">'.$newsStyleMore->tag.'</a></span>
-                            <span class="date">'. date("d F Y", strtotime($newsStyleMore->created_at)) .'</span>
-                        </p>
-                        <h2><a href="single/'.$newsStyleMore->id.'">'.$newsStyleMore->caption.'</a></h2>
-                        <p>'.$newsStyleMore->subtitle.'</p>
-                    </div>
-                    </div>
-                </div>';
+                    <div class="col-md-12 item-video">
+                        <div class="blog-entry-style animate-box fadeInUp animated">
+                            <div class="blog-img">
+                                <div class="video colorlib-video" style="background-image: url(images/'. $newsVideoMore->image .'); height: 600px;">
+                                    <a href="videos/'. $newsVideoMore->video .'" class="popup-vimeo"><i class="icon-play4"></i></a>
+                                    <div class="overlay"></div>
+                                </div>
+                            </div>
+                            <div class="desc">
+                                <p class="meta">
+                                    <span class="cat"><a href="#">'. $newsVideoMore->tag .'</a></span>
+                                    <span class="date">'. date("d F Y", strtotime($newsVideoMore->created_at)) .'</span>
+                                    <!-- <span class="pos">By <a href="#">Walter</a></span> -->
+                                </p>
+                                <h2><a href="blog.html">'. $newsVideoMore->caption .'</a></h2>
+                                <p>'. $newsVideoMore->subtitle .'</p>
+                            </div>
+                        </div>
+                    </div>';
         }
         echo $output;
     }

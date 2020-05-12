@@ -6,7 +6,7 @@
 		<div class="container-wrap">
 			<div class="col-md-9">
 				<div class="content-wrap">
-					<div class="row">
+					<div class="row content">
 						@foreach ($videos as $video)
 							<div class="col-md-12 item-video">
 								<div class="blog-entry-style animate-box">
