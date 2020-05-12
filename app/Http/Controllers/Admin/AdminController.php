@@ -97,7 +97,7 @@ class AdminController extends Controller
       return view('auth.login');
       exit();
     }
-
+    
     // $query=News::all();
     $query=News::join("users", "news.id_creator", "=", "users.id")
                   ->join("topic", "news.id_topic", "=", "topic.id")
@@ -202,6 +202,12 @@ class AdminController extends Controller
   }
 
   public function newsUpdate(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $this->validate($request, [
       'tag' => 'required',
       'caption' => 'required',
@@ -222,6 +228,12 @@ class AdminController extends Controller
   }
 
   public function newsUpdateImageNews(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $input = $request->all();
     $tmp = News::find($input['id_news_hide']);    
     // $img_old = $tmp->image;
@@ -247,6 +259,12 @@ class AdminController extends Controller
   }
 
   public function newsUpdateImageVideo(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $input = $request->all();
     $tmp = Video::find($input['id_video_hide']);    
     
@@ -269,6 +287,12 @@ class AdminController extends Controller
   }
 
   public function newsInsert_all(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $this->validate($request, [
       'id_topic' => 'required',
       'hot_news' => 'required',
@@ -305,6 +329,12 @@ class AdminController extends Controller
   }
 
   public function newsInsert(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $this->validate($request, [
       'id_topic' => 'required',
       'hot_news' => 'required',
@@ -341,6 +371,12 @@ class AdminController extends Controller
   }  
 
   public function newsRemove(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $input = $request->all();
     News::where('id', $input['id'])->delete();
     return response()->json([
@@ -350,7 +386,13 @@ class AdminController extends Controller
   }
 
   public function employeeUpdate(Request $request) {
-        $this->validate($request, [
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+    
+    $this->validate($request, [
       'name' => 'required',
       'email' => 'required'
     ]);
@@ -368,18 +410,32 @@ class AdminController extends Controller
   }
 
   public function employeeUpdateRole(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
 
 
   }
-    
 
   public function employeeUpdateStatus(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
 
 
   }
-    
 
   public function employeeRemove(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $input = $request->all();
     User::where('id', $input['id'])->delete();
     return response()->json([
@@ -389,6 +445,12 @@ class AdminController extends Controller
   }
 
   public function employeeUpdateStatusYes(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $this->validate($request, [
       'id' => 'required'
     ]);
@@ -405,6 +467,12 @@ class AdminController extends Controller
   }
 
   public function employeeUpdateStatusNo(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $this->validate($request, [
       'id' => 'required'
     ]);
@@ -534,6 +602,12 @@ class AdminController extends Controller
   }
 
   public function updateTopic(Request $request, $id) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     // $this->validate($request, [
     //   'hot_news' => 'required',
     //   'image' => 'required',
@@ -552,6 +626,12 @@ class AdminController extends Controller
   }
 
   public function newsUpdateHotNewsYes(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $this->validate($request, [
       'id' => 'required'
     ]);
@@ -568,6 +648,12 @@ class AdminController extends Controller
   }
 
   public function newsUpdateHotNewsNo(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $this->validate($request, [
       'id' => 'required'
     ]);
@@ -584,6 +670,12 @@ class AdminController extends Controller
   }
 
   public function newsUpdateHotVideoYes(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $this->validate($request, [
       'id' => 'required'
     ]);
@@ -600,6 +692,12 @@ class AdminController extends Controller
   }
 
   public function newsUpdateHotVideoNo(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $this->validate($request, [
       'id' => 'required'
     ]);
@@ -616,6 +714,12 @@ class AdminController extends Controller
   }
   
   public function newsUpdateStatusNewsYes(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $this->validate($request, [
       'id' => 'required'
     ]);
@@ -632,6 +736,12 @@ class AdminController extends Controller
   }
 
   public function newsUpdateStatusNewsNo(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $this->validate($request, [
       'id' => 'required'
     ]);
@@ -648,6 +758,12 @@ class AdminController extends Controller
   }
 
   public function newsUpdateStatusVideoYes(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $this->validate($request, [
       'id' => 'required'
     ]);
@@ -664,6 +780,12 @@ class AdminController extends Controller
   }
 
   public function newsUpdateStatusVideoNo(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $this->validate($request, [
       'id' => 'required'
     ]);
@@ -680,10 +802,22 @@ class AdminController extends Controller
   }
 
   public function deleteTopic(Request $request) {
-    
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
+
   }
 
   public function slideUpdate(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $this->validate($request, [
       'heading_primary' => 'required',
       'heading_secondary' => 'required'
@@ -702,6 +836,12 @@ class AdminController extends Controller
   }
 
   public function slideUpdateImage(Request $request) {
+    if (!Auth::check()) {
+      Auth::logout();
+      return view('auth.login');
+      exit();
+    }
+
     $input = $request->all();
     $tmp = Slide::find($input['id_slide_hide']);
     $file = $request->file('image_slide');
