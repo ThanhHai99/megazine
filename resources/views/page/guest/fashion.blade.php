@@ -8,15 +8,13 @@
         <div class="col-md-12 blog-slider">
           <div class="owl-carousel1">
             @foreach ($newsNewests as $newsNewest)
-              <div class="item">
+              <div class="item slide-fashion">
                 <div class="blog-entry">
                   <div class="blog-img" style="background-image: url(images/{{ $newsNewest->image }});">
                     <div class="desc desc2 text-center">
                       <p class="tag"><span>{{ $newsNewest->tag }}</span></p>
                       <div class="desc-bottom">
-                        <!-- <h2 class="head-article"><a href="#">{{ $newsNewest->caption }}</a></h2> -->
                         <h2><a href="single/{{ $newsNewest->id }}">{{ $newsNewest->caption }}</a></h2>
-                        <!-- <p>{{ $newsNewest->subtitle }}</p> -->
                         <p><a href="single/{{ $newsNewest->id }}" class="btn btn-primary with-arrow">Read More <i class="icon-arrow-right22"></i></a></p>
                       </div>
                     </div>
@@ -53,7 +51,7 @@
               </div>
             </article>
             @foreach ($newsFashions as $newsFashion)
-              <article class="animate-box">
+              <article class="animate-box item-fashion">
                 <div class="blog-img" style="background-image: url(images/{{ $newsFashion->image }});"></div>
                 <div class="desc">
                   <div class="meta">
@@ -72,7 +70,14 @@
               </article>
             @endforeach
               
-            <div class="row">
+            <div class="row text-center" id="div-load-more-fashion">
+              <div class="col-xs-3 center-block">
+                <button type="button" class="btn btn-info btn-outline" id="loadMoreFashion">Load more</button>
+              </div>
+            </div>
+
+            {{ csrf_field() }}
+            <!-- <div class="row">
               <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
                 <ul class="pagination">
                   <li class="disabled"><a href="#">&laquo;</a></li>
@@ -83,7 +88,7 @@
                   <li><a href="#">&raquo;</a></li>
                 </ul>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="col-md-3 sticky-parent">

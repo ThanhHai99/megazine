@@ -8,7 +8,7 @@
 				<div class="content-wrap">
 					<div class="row">
 						@foreach ($videos as $video)
-							<div class="col-md-12">
+							<div class="col-md-12 item-video">
 								<div class="blog-entry-style animate-box">
 									<div class="blog-img">
 										<div class="video colorlib-video" style="background-image: url(images/{{ $video->image }}); height: 600px;">
@@ -29,6 +29,13 @@
 							</div>
 						@endforeach
 					</div>
+					<div class="row text-center" id="div-load-more-video">
+						<div class="col-xs-3 center-block">
+							<button type="button" class="btn btn-info btn-outline" id="loadMoreVideo">Load more</button>
+						</div>
+					</div>
+
+					{{ csrf_field() }}
 				</div>
 			</div>
 

@@ -220,9 +220,9 @@
         </div>
       </div>
 
-      <div class="row text-center" id="div-load-more">
+      <div class="row text-center" id="div-load-more-style">
         <div class="col-xs-3 center-block">
-          <button type="button" class="btn btn-info btn-outline" id="loadMore">Load more</button>
+          <button type="button" class="btn btn-info btn-outline" id="loadMoreStyle">Load more</button>
         </div>
       </div>
 
