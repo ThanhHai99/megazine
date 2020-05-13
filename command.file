@@ -1,0 +1,5 @@
+Check version laravel: php artisan --version
+Make authenticate: php artisan make:auth
+Create table: php artisan migrate
+https://markcell.github.io/jquery-tabledit/#examples
+https://editor.datatables.net/examples/inline-editing/submitData.html
