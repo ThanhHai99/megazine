@@ -7,19 +7,15 @@ use App\User;
 use Socialite;
 use Auth;
 
-// use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Validator;
-// Exception;
-
 class SocialAuthGoogleController extends Controller
 {
     public function redirect() {
-        return Socialite::drive("google")->redirect();
+        return Socialite::driver("google")->redirect();
     }
 
     public function callback() {
         try {
-            $googleUser = Socialite("google")->user();
+            $googleUser = Socialite::driver("google")->user();
             $existsUser = User::where("email", $googleUser->email)->first();
             if ($existsUser) {
                 Auth::loginUsingId($existsUser->id, true);
