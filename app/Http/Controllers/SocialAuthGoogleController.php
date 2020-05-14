@@ -7,6 +7,14 @@ use App\User;
 use Socialite;
 use Auth;
 
+// use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
+use Session;
+
+use Illuminate\Support\Facades\Validator;
+
 class SocialAuthGoogleController extends Controller
 {
     public function redirect() {
@@ -27,7 +35,13 @@ class SocialAuthGoogleController extends Controller
                 $user->save();
                 Auth::loginUsingId($user->id, true);
             }
-            return redirect("home");
+    
+            if ($existsUser->id_role == 1) {
+                return redirect("dashboard/index");
+            } else if ($existsUser->id_role == 2) {
+                return redirect("home");
+            }
+
         } catch (\Throwable $th) {
             return 'error';
         }
