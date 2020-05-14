@@ -43,6 +43,16 @@
                 <div class="text-center">
                   <a class="small" href="{{route('login')}}">Already have an account? Login!</a>
                 </div>
+
+                <?php if(isset($successSentMail)){ ?>
+                        <div class="text-center">
+                          <p>Gui mail thanh cong.</p>
+                        </div>
+                <?php } else if(isset($errorSentMail)) { ?>
+                        <div class="text-center">
+                          <p>Gui mail khong thanh cong.</p>
+                        </div>
+                <?php } ?>
               </div>
             </div>
           </div>
@@ -51,6 +61,7 @@
     </div>
   </div>
 </div>
+
 
 
 @endsection

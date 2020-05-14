@@ -13,6 +13,26 @@
 
 Auth::routes();
 
+
+
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
+// Route::get("password/reset/{token?}", [
+//     "as" => "password.reset",
+//     "uses" => "ResetPasswordController@resetPassword"
+// ]);
+
+// Route::get("/email", function() {
+//     Mail::to('tranvietthanhhaiit@gmail.com')
+//         ->send(new WelcomeMail());
+//     return new WelcomeMail();
+// });
+
+// Route::get("/email", function() {
+//     Mail::to('tranvietthanhhaiit@gmail.com')->send(new WelcomeMail());
+//     return new WelcomeMail();
+// });
+
 Route::get("auth/google", [
     "as" => "auth.google",
     "uses" => "SocialAuthGoogleController@redirect"
