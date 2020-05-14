@@ -13,6 +13,15 @@
 
 Auth::routes();
 
+Route::get("auth/google", [
+    "as" => "auth.google",
+    "uses" => "SocialAuthGoogleController@redirect"
+]);
+
+Route::get("auth/google/callback", [
+    "as" => "auth.google.callback",
+    "uses" => "SocialAuthGoogleController@callback"
+]);
 
 Route::group(["namespace" => "Guest"], function() {
     Route::get("/", function () {
@@ -274,6 +283,6 @@ Route::group(["namespace" => "Admin"], function() {
 
 });
 
-Auth::routes();
+// Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
