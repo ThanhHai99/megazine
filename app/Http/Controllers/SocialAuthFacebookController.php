@@ -15,7 +15,7 @@ use Session;
 
 use Illuminate\Support\Facades\Validator;
 
-class SocialAuthGoogleController extends Controller
+class SocialAuthFacebookController extends Controller
 {
     public function redirect() {
         return Socialite::driver("facebook")->redirect();
@@ -24,13 +24,14 @@ class SocialAuthGoogleController extends Controller
     public function callback() {
         try {
             $facebookUser = Socialite::driver("facebook")->user();
-            $existsUser = User::where("email", $facebookUser->email)->first();
+            $existsUser = User::where("email", $facebookUser->id)->first();
             if ($existsUser) {
                 Auth::loginUsingId($existsUser->id, true);
             } else {
+                // dd($facebookUser);
                 $user = new User;
+                $user->id = $facebookUser->id;
                 $user->name = $facebookUser->name;
-                $user->email = $facebookUser->email;
                 $user->facebook_id = $facebookUser->id;
                 $user->save();
                 Auth::loginUsingId($user->id, true);
