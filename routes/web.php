@@ -17,21 +17,7 @@ Auth::routes();
 
 use App\Mail\WelcomeMail;
 use Illuminate\Support\Facades\Mail;
-// Route::get("password/reset/{token?}", [
-//     "as" => "password.reset",
-//     "uses" => "ResetPasswordController@resetPassword"
-// ]);
 
-// Route::get("/email", function() {
-//     Mail::to('tranvietthanhhaiit@gmail.com')
-//         ->send(new WelcomeMail());
-//     return new WelcomeMail();
-// });
-
-// Route::get("/email", function() {
-//     Mail::to('tranvietthanhhaiit@gmail.com')->send(new WelcomeMail());
-//     return new WelcomeMail();
-// });
 
 Route::get("auth/google", [
     "as" => "auth.google",
@@ -41,6 +27,16 @@ Route::get("auth/google", [
 Route::get("auth/google/callback", [
     "as" => "auth.google.callback",
     "uses" => "SocialAuthGoogleController@callback"
+]);
+
+Route::get("auth/facebook", [
+    "as" => "auth.facebook",
+    "uses" => "SocialAuthFacebookController@redirect"
+]);
+
+Route::get("auth/facebook/callback", [
+    "as" => "auth.facebook.callback",
+    "uses" => "SocialAuthFacebookController@callback"
 ]);
 
 Route::group(["namespace" => "Guest"], function() {

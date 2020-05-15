@@ -3,3 +3,17 @@ Make authenticate: php artisan make:auth
 Create table: php artisan migrate
 https://markcell.github.io/jquery-tabledit/#examples
 https://editor.datatables.net/examples/inline-editing/submitData.html
+
+Change domain on XAMPP
+1. Add your_domain to C:\\Windows\System32\drivers\etc\hosts
+  127.0.0.1 your_domain
+
+2. Add text on bottom to file httpd-vhosts.conf
+
+  <VirtualHost *:80>
+    ServerAdmin webmaster@your_domain
+    DocumentRoot "C:/xampp/htdocs/your_domain"
+    ServerName your_domain
+    ErrorLog "logs/your_domain-error.log"
+    CustomLog "logs/your_domain-access.log" common
+  </VirtualHost>
