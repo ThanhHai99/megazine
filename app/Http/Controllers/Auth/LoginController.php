@@ -48,15 +48,13 @@ class LoginController extends Controller
 
         if ($user->id_role == 1) {
             User::where("id", $user->id)
-                  ->update(['remember_token' => Str::random(100)]);
-            
+                  ->update(['remember_token' => Str::random(100)]);            
             return redirect("dashboard/index");
         }
 
         if ($user->id_status == 1) {
             User::where("id", $user->id)
-                  ->update(['remember_token' => Str::random(100)]);
-            
+                  ->update(['remember_token' => Str::random(100)]);            
             return redirect("home");
         }
     }
