@@ -15,7 +15,18 @@
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-2">Forgot Your Password?</h1>
                   <p class="mb-4">We get it, stuff happens. Just enter your email address below and we'll send you a link to reset your password!</p>
-                </div>                
+                </div>
+
+                <?php if(isset($successSentMail)){ ?>
+                          <div class="alert alert-success" role="alert">
+                            <?= $successSentMail ?>
+                          </div>
+                <?php } else if(isset($errorSentMail)) { ?>
+                          <div class="alert alert-danger" role="alert">
+                          <?= $errorSentMail ?>
+                          </div>
+                <?php } ?>
+
                 <form class="user" method="POST" action="{{ route('password.email') }}">
                   {{ csrf_field() }}
                   <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -43,16 +54,6 @@
                 <div class="text-center">
                   <a class="small" href="{{route('login')}}">Already have an account? Login!</a>
                 </div>
-
-                <?php if(isset($successSentMail)){ ?>
-                        <div class="text-center">
-                          <p>Gui mail thanh cong.</p>
-                        </div>
-                <?php } else if(isset($errorSentMail)) { ?>
-                        <div class="text-center">
-                          <p>Gui mail khong thanh cong.</p>
-                        </div>
-                <?php } ?>
               </div>
             </div>
           </div>

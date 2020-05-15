@@ -12,34 +12,34 @@
             <div class="text-center">
               <h1 class="h4 text-gray-900 mb-4">Reset password</h1>
             </div>
-            <form class="user" method="POST" action="{{ route('password.request') }}">
-              {{ csrf_field() }}
-              <input type="hidden" name="token" value="{{ $token }}">
-              <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                <input type="email" class="form-control form-control-user" id="exampleInputEmail email" name="email" placeholder="Email Address" value="{{ $email or old('email') }}" required autofocus>
-                @if ($errors->has('email'))
-                  <span class="help-block">
-                      <strong>{{ $errors->first('email') }}</strong>
-                  </span>
-                @endif
-              </div>
-              <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
+
+            <?php if(isset($successUpdatePassword)){ ?>
+                      <div class="alert alert-success" role="alert">
+                        <?= $successUpdatePassword ?>
+                      </div>
+            <?php } else if(isset($errorPasswordConfirmation)) { ?>
+                      <div class="alert alert-danger" role="alert">
+                        <?= $errorPasswordConfirmation ?>
+                      </div>
+            <?php } ?>
+
+            <form class="user" method="POST" action="{{ route('password.update') }}">
+              {{ csrf_field() }}              
+              <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                   <input type="password" class="form-control form-control-user" id="exampleInputPassword" name="password" placeholder="Password">
                   @if ($errors->has('password'))
                     <span class="help-block">
                         <strong>{{ $errors->first('password') }}</strong>
                     </span>
                   @endif
-                </div>
-                <div class="col-sm-6">
+              </div>
+              <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                   <input type="password" class="form-control form-control-user" id="exampleRepeatPassword password-confirm" name="password_confirmation" placeholder="Repeat Password" name="password_confirmation" required>
                   @if ($errors->has('password_confirmation'))
                     <span class="help-block">
                         <strong>{{ $errors->first('password_confirmation') }}</strong>
                     </span>
                   @endif
-                </div>
               </div>
               <button type="submit" class="btn btn-primary btn-user btn-block">
                 Update password
