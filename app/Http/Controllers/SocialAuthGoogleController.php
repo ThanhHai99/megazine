@@ -7,7 +7,6 @@ use App\User;
 use Socialite;
 use Auth;
 
-// use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -26,16 +25,17 @@ class SocialAuthGoogleController extends Controller
             $googleUser = Socialite::driver("google")->user();
             $existsUser = User::where("email", $googleUser->email)->first();
             if ($existsUser) {
-                Auth::loginUsingId($existsUser->id, true);
+                Auth::loginUsingId($existsUser->id);
             } else {
                 $user = new User;
                 $user->name = $googleUser->name;
                 $user->email = $googleUser->email;
                 $user->google_id = $googleUser->id;
                 $user->save();
-                Auth::loginUsingId($user->id, true);
+                Auth::loginUsingId($user->id);
             }
-    
+            
+            $existsUser = User::where("email", $googleUser->email)->first();
             if ($existsUser->id_role == 1) {
                 return redirect("dashboard/index");
             } else if ($existsUser->id_role == 2) {

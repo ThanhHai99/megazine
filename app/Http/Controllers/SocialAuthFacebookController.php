@@ -7,7 +7,6 @@ use App\User;
 use Socialite;
 use Auth;
 
-// use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -24,19 +23,19 @@ class SocialAuthFacebookController extends Controller
     public function callback() {
         try {
             $facebookUser = Socialite::driver("facebook")->user();
-            $existsUser = User::where("email", $facebookUser->id)->first();
+            $existsUser = User::where("facebook_id", $facebookUser->id)->first();
             if ($existsUser) {
-                Auth::loginUsingId($existsUser->id, true);
+                Auth::loginUsingId($existsUser->id);
             } else {
                 // dd($facebookUser);
                 $user = new User;
-                $user->id = $facebookUser->id;
                 $user->name = $facebookUser->name;
                 $user->facebook_id = $facebookUser->id;
                 $user->save();
-                Auth::loginUsingId($user->id, true);
+                Auth::loginUsingId($user->id);
             }
-    
+            
+            $existsUser = User::where("facebook_id", $facebookUser->id)->first();
             if ($existsUser->id_role == 1) {
                 return redirect("dashboard/index");
             } else if ($existsUser->id_role == 2) {
