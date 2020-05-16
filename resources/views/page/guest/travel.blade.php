@@ -90,10 +90,13 @@
               </div>
             </div>
             <div class="side animate-box">
-              <div class="form-group">
-                <input type="text" class="form-control form-email text-center" id="email" placeholder="Enter your email">
-                <button type="submit" class="btn btn-primary btn-subscribe" id="subscribe-email">Subscribe</button>
-              </div>
+              <form method="PUT" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                <div class="form-group">
+                  <input type="text" class="form-control form-email text-center" id="email" placeholder="Enter your email">
+                  <button type="submit" class="btn btn-primary btn-subscribe" id="subscribe-email">Subscribe</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>

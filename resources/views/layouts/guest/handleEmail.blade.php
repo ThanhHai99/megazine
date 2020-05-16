@@ -1,5 +1,4 @@
 <script>
-  //Start Setup ajax
   $(document).ready(function() {
     $.ajaxSetup({
       headers: {
@@ -7,14 +6,13 @@
       }
     });
   });
-  //End Setup ajax
 </script>
 
 <script>
-$("body").delegate("button#subscribe-email", "click", function(event) {
-  alert("clicked");
+$("button#subscribe-email").on("click", function(event) {
   event.preventDefault();
   let email = $("input#email").val();
+
   $.ajax({
     url: `{{route('news.subcribe')}}`,
     method: "PUT",
@@ -22,10 +20,10 @@ $("body").delegate("button#subscribe-email", "click", function(event) {
       email: email
     },
     success: function(response) {
-      alert('success');
+
     },
     error: function(error) {
-      alert('error');
+
     }
   });
 });

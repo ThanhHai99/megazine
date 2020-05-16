@@ -229,27 +229,7 @@ class AdminController extends Controller
     ], 200);
   }
 
-  public function subcribe(Request $request) {
-    // $this->validate($request, [
-    //   'email' => 'required'
-    // ]);
-
-    $input = $request->all();
-    dd($input);
-    $tmp = News::find($input['id']);
-    $tmp->tag = $input['tag'];
-    $tmp->caption = $input['caption'];
-    $tmp->subtitle = $input['subtitle'];
-    $tmp->save();
-
-    return response()->json([
-        'error' => false,
-        'id' => $tmp->id,
-        'tag' => $tmp->tag,
-        'caption' => $tmp->caption,
-        'subtitle' => $tmp->subtitle
-    ], 200);
-  }
+  
 
   
 

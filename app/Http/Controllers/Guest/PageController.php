@@ -10,6 +10,7 @@ use App\Slide;
 use App\Topic;
 use App\News;
 use App\Video;
+use App\ReceiveNews;
 
 
 class PageController extends Controller
@@ -85,8 +86,6 @@ class PageController extends Controller
         }
         echo $output;
     }
-
-    
 
     public function getFashion(Request $request) {
         $newsNewests = News::where("id_topic", 2)
@@ -296,4 +295,19 @@ class PageController extends Controller
             ]);
         };
     }
+
+    public function subcribe(Request $request) {
+        $this->validate($request, [
+          'email' => 'required'
+        ]);
+    
+        $input = $request->all();
+        if (!(ReceiveNews::where('email', $input['email']))) {
+            ReceiveNews::insert(['email' => $input['email']]);
+        }
+    
+        return response()->json([
+            'error' => false
+        ], 200);
+      }
 }

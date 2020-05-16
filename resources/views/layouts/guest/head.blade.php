@@ -6,6 +6,7 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <meta name="author" content="" />
+<meta name="csrf-token" content="{{ csrf_token() }}"> <!--pass ajax -->
 
 <!-- Facebook and Twitter integration -->
 <meta property="og:title" content=""/>

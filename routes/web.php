@@ -108,6 +108,12 @@ Route::group(["namespace" => "Guest"], function() {
         "as" => "single",
         "uses" => "PageController@getSingle"
     ]);
+
+    Route::put("news/subcribe", [
+        "as" => "news.subcribe",
+        "uses" => "PageController@subcribe"
+    ]);
+    
 });
 
 Route::group(["namespace" => "Admin"], function() {
@@ -142,11 +148,6 @@ Route::group(["namespace" => "Admin"], function() {
         Route::get("employee/normal_user", [
             "as" => "employee.normal_user",
             "uses" => "AdminController@getEmployeeNormalUser"
-        ]);
-
-        Route::get("news/subcribe", [
-            "as" => "news.subcribe",
-            "uses" => "AdminController@subcribe"
         ]);
 
         Route::get("news/all", [
