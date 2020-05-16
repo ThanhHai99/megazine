@@ -20,10 +20,10 @@ $("button#subscribe-email").on("click", function(event) {
       email: email
     },
     success: function(response) {
-
+      alert('success');
     },
     error: function(error) {
-
+      alert('error');
     }
   });
 });

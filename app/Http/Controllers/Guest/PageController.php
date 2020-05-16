@@ -300,9 +300,9 @@ class PageController extends Controller
         $this->validate($request, [
           'email' => 'required'
         ]);
-    
         $input = $request->all();
-        if (!(ReceiveNews::where('email', $input['email']))) {
+    
+        if (!(ReceiveNews::where('email', $input['email'])->exists())) {
             ReceiveNews::insert(['email' => $input['email']]);
         }
     
