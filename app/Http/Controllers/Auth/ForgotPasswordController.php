@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 use Illuminate\Http\Request;
-use App\Mail\WelcomeMail;
+use App\Mail\ResetPasswordMail;
 use Illuminate\Support\Facades\Mail;
 use App\User;
 
@@ -33,7 +33,7 @@ class ForgotPasswordController extends Controller
         $user = User::where("email", $request->email)
                     ->first();
         if ($user != null) {
-            Mail::to($user['email'])->send(new WelcomeMail($user));
+            Mail::to($user['email'])->send(new ResetPasswordMail($user));
             return view("auth.passwords.email", [
                 'successSentMail' => 'Sent complety.'
             ]);

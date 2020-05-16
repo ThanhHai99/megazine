@@ -15,7 +15,7 @@ Auth::routes();
 
 
 
-use App\Mail\WelcomeMail;
+use App\Mail\ResetPasswordMail;
 use Illuminate\Support\Facades\Mail;
 
 
@@ -112,6 +112,11 @@ Route::group(["namespace" => "Guest"], function() {
     Route::put("news/subcribe", [
         "as" => "news.subcribe",
         "uses" => "PageController@subcribe"
+    ]);
+
+    Route::put("news/send", [
+        "as" => "news.send",
+        "uses" => "PageController@sendNews"
     ]);
     
 });

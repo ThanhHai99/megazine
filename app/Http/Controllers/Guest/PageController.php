@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Guest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\SendNewsMail;
+use Illuminate\Support\Facades\Mail;
 
 use App\Slide;
 use App\Topic;
@@ -309,5 +311,15 @@ class PageController extends Controller
         return response()->json([
             'error' => false
         ], 200);
-      }
+    }
+
+    public function sendNews(Request $request) {
+        echo "ok";
+        // $receiveNews = ReceiveNews::all();
+
+        // Mail::to($user['email'])->send(new SendNewsMail($user));
+            // return view("auth.passwords.email", [
+            //     'successSentMail' => 'Sent complety.'
+            // ]);
+    }
 }

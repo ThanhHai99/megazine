@@ -548,7 +548,7 @@
             "caption" : "",
             "subtitle" : "",
             "action": ""
-          }] ).draw();       
+          }] ).draw();
         },
         error: function(error) {
           if (error.responseText.error = "Unauthenticated.") {
