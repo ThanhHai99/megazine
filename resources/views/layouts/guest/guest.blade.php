@@ -13,6 +13,8 @@
 	</div>
 
 	@include('layouts.guest.script')
+
+	@include("layouts.guest.handleEmail")
 	
 	@include('layouts.guest.processNews')
 

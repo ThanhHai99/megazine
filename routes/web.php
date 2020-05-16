@@ -144,6 +144,11 @@ Route::group(["namespace" => "Admin"], function() {
             "uses" => "AdminController@getEmployeeNormalUser"
         ]);
 
+        Route::get("news/subcribe", [
+            "as" => "news.subcribe",
+            "uses" => "AdminController@subcribe"
+        ]);
+
         Route::get("news/all", [
             "as" => "news.all",
             "uses" => "AdminController@getNewsAll"
