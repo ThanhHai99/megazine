@@ -27,7 +27,6 @@ class SocialAuthFacebookController extends Controller
             if ($existsUser) {
                 Auth::loginUsingId($existsUser->id);
             } else {
-                // dd($facebookUser);
                 $user = new User;
                 $user->name = $facebookUser->name;
                 $user->facebook_id = $facebookUser->id;
