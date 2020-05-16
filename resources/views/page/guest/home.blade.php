@@ -165,4 +165,11 @@
     </div>
   </div>			
 </div>
+
+@if (session('notAdmin'))
+  <script>
+    alertify.notify("{{session('notAdmin')}}", "message", 4);
+  </script>
+@endif
+
 @endsection
