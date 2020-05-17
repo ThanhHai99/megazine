@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2020 at 07:27 AM
+-- Generation Time: May 17, 2020 at 08:45 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -84,7 +84,7 @@ CREATE TABLE `news` (
 INSERT INTO `news` (`id`, `id_topic`, `id_creator`, `hot_news`, `id_status`, `image`, `tag`, `caption`, `subtitle`, `created_at`, `updated_at`) VALUES
 (269, 1, 1, 1, 1, '1588717903_5eb1e94f09805.jpg', '1', '1', '1', '2020-05-05 02:30:42', '2020-05-05 22:31:43'),
 (270, 4, 1, 1, 1, '1588718023_5eb1e9c7b3439.jpg', '1', '1', '1', '2020-05-05 02:34:02', '2020-05-05 22:33:43'),
-(8, 1, 1, 1, 1, '1589387606_5ebc21561b285.jpg', 'Sports', 'Boxing Sports', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-08 12:14:50', '2020-05-13 16:33:26'),
+(8, 1, 1, 1, 1, '1589387606_5ebc21561b285.jpg', 'Sportss', 'Boxing Sports', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-08 12:14:50', '2020-05-16 16:03:34'),
 (10, 1, 1, 0, 1, 'blog-10.jpg', 'Place', 'Nature', 'Even the all-powerful Pointing has no control about', '2020-04-08 12:14:50', '2020-05-07 16:54:56'),
 (11, 1, 1, 1, 1, '1588713514_5eb1d82ae160a.jpg', 'auto', 'BMW i8', 'Even the all-powerful Pointing has no control about', '2020-04-08 12:14:50', '2020-05-05 21:18:34'),
 (12, 2, 1, 0, 1, 'blog-12.jpg', 'Sports', 'Boxing Sports', 'Even the all-powerful Pointing has no control about', '2020-04-08 12:14:50', '2020-05-07 16:55:07'),
@@ -209,7 +209,32 @@ INSERT INTO `news` (`id`, `id_topic`, `id_creator`, `hot_news`, `id_status`, `im
 (277, 1, 1, 1, 1, '1588667213_5eb1234d2afbf.jpg', '1', '1', '1', '2020-05-05 03:05:21', '2020-05-05 08:26:53'),
 (278, 1, 1, 1, 1, '1588667390_5eb123fee0253.jpg', 'y', '1', '1', '2020-05-05 03:05:37', '2020-05-05 08:29:50'),
 (279, 1, 1, 1, 1, '1589257819_5eba265b3820b.jpg', 'y', 'y', 'y', '2020-05-05 03:08:11', '2020-05-12 04:30:19'),
-(280, 1, 1, 1, 1, '1588667426_5eb1242299099.jpg', 'z', 'z', 'z', '2020-05-05 03:11:59', '2020-05-05 08:30:26');
+(280, 1, 1, 1, 1, '1588667426_5eb1242299099.jpg', 'z', 'z', 'z', '2020-05-05 03:11:59', '2020-05-05 08:30:26'),
+(283, 1, 2, 1, 1, '1589651426_5ec027e2dd0b3.jpg', '1', '1', '1', '2020-05-16 17:50:26', '2020-05-16 17:50:26'),
+(284, 1, 2, 1, 1, '1589651466_5ec0280ad75a9.jpg', '1', '1', '1', '2020-05-16 17:51:06', '2020-05-16 17:51:06'),
+(285, 1, 2, 1, 1, '1589651495_5ec028277e2bf.jpg', '1', '1', '1', '2020-05-16 17:51:35', '2020-05-16 17:51:35'),
+(286, 1, 2, 1, 1, '1589677452_5ec08d8c0d7c1.jpg', '1', '1', '1', '2020-05-17 01:04:12', '2020-05-17 01:04:12'),
+(287, 1, 2, 1, 1, '1589677543_5ec08de79de9f.jpg', '1', '1', '1', '2020-05-17 01:05:43', '2020-05-17 01:05:43'),
+(288, 1, 2, 1, 1, '1589677594_5ec08e1a54ed6.jpg', '1', '1', '1', '2020-05-17 01:06:34', '2020-05-17 01:06:34'),
+(289, 1, 2, 1, 1, '1589679198_5ec0945ee864d.jpg', '1', '1', '1', '2020-05-17 01:33:18', '2020-05-17 01:33:18'),
+(290, 1, 2, 1, 1, '1589679250_5ec0949295f2b.jpg', '1', '1', '1', '2020-05-17 01:34:10', '2020-05-17 01:34:10'),
+(291, 1, 2, 1, 1, '1589690855_5ec0c1e7c9970.jpg', '1', '1', '1', '2020-05-17 04:47:35', '2020-05-17 04:47:35'),
+(292, 1, 2, 1, 1, '1589690940_5ec0c23c359b8.jpg', '1', '1', '1', '2020-05-17 04:49:00', '2020-05-17 04:49:00'),
+(293, 1, 2, 1, 1, '1589690983_5ec0c2673f393.jpg', '1', '1', '1', '2020-05-17 04:49:43', '2020-05-17 04:49:43'),
+(294, 1, 2, 1, 1, '1589691268_5ec0c384795da.jpg', '1', '1', '1', '2020-05-17 04:54:28', '2020-05-17 04:54:28'),
+(295, 1, 2, 1, 1, '1589693466_5ec0cc1a9cbc1.jpg', '1', '1', '1', '2020-05-17 05:31:06', '2020-05-17 05:31:06'),
+(296, 1, 2, 1, 1, '1589693499_5ec0cc3b9a390.jpg', '1', '1', '1', '2020-05-17 05:31:39', '2020-05-17 05:31:39'),
+(297, 1, 2, 1, 1, '1589693573_5ec0cc8558d9d.jpg', '1', '1', '1', '2020-05-17 05:32:53', '2020-05-17 05:32:53'),
+(298, 1, 2, 1, 1, '1589693787_5ec0cd5b9ee45.jpg', '1', '1', '1', '2020-05-17 05:36:27', '2020-05-17 05:36:27'),
+(299, 1, 2, 1, 1, '1589695184_5ec0d2d091305.jpg', '1', '1', '1', '2020-05-17 05:59:44', '2020-05-17 05:59:44'),
+(300, 1, 2, 1, 1, '1589695450_5ec0d3da8109f.jpg', '1', '1', '1', '2020-05-17 06:04:10', '2020-05-17 06:04:10'),
+(301, 1, 2, 1, 1, '1589695571_5ec0d4530d4e8.jpg', '1', '1', '1', '2020-05-17 06:06:11', '2020-05-17 06:06:11'),
+(302, 1, 2, 1, 1, '1589696045_5ec0d62de3537.jpg', '1', '1', '1', '2020-05-17 06:14:05', '2020-05-17 06:14:05'),
+(303, 1, 2, 1, 1, '1589696273_5ec0d71153945.jpg', '1', '1', '1', '2020-05-17 06:17:53', '2020-05-17 06:17:53'),
+(304, 1, 2, 1, 1, '1589696519_5ec0d807456d9.jpg', '1', '1', '1', '2020-05-17 06:21:59', '2020-05-17 06:21:59'),
+(305, 1, 2, 1, 1, '1589696574_5ec0d83ed9e8f.jpg', '1', '1', '1', '2020-05-17 06:22:54', '2020-05-17 06:22:54'),
+(306, 1, 2, 1, 1, '1589696662_5ec0d8962ef94.jpg', '1', '1', '1', '2020-05-17 06:24:22', '2020-05-17 06:24:22'),
+(307, 1, 2, 1, 1, '1589696985_5ec0d9d9cce45.jpg', '1', '1', '1', '2020-05-17 06:29:45', '2020-05-17 06:29:45');
 
 -- --------------------------------------------------------
 
@@ -231,6 +256,26 @@ INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 ('tranvietthanhhaiit1@gmail.com', '$2y$10$2oZA7Ga75GqOGOJGldGFAuJ0zptTr60S0/AB2xSx7I8XOrLIuDJOm', '2020-05-13 19:18:16'),
 ('tranvietthanhhaiit2@gmail.com', '$2y$10$T/WL0vwXV/WpGui.IdXl/uAi/ZD3kkkB69B.k2E.7BpiViFGpdL.W', '2020-05-13 20:24:40'),
 ('haitran23031999@gmail.com', '$2y$10$nX24wJ4VLYQOoXtZ2o7Je.Xm0.ugk4.qU2nBTEnHLcyGr1cTMO5KG', '2020-05-13 20:32:17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `receive_news`
+--
+
+CREATE TABLE `receive_news` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `receive_news`
+--
+
+INSERT INTO `receive_news` (`id`, `email`, `created_at`, `updated_at`) VALUES
+(5, 'tranvietthanhhaiit@gmail.com', '2020-05-16 17:27:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -355,10 +400,11 @@ CREATE TABLE `user` (
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `google_id` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `id_role` int(11) NOT NULL DEFAULT 2,
   `id_status` int(11) NOT NULL DEFAULT 1,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -369,10 +415,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `google_id`, `id_role`, `id_status`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(3, NULL, 2, 1, 'haiit3', 'tranvietthanhhaiit3@gmail.com', '$2y$10$JNxtb1xsCx6.CjpkyEJca.WWHFt1PIkpE0ETrOB5t1OMc/jzAyQOa', 'Nxr8kcDnylLhlmMnZQVk4OGnr17g6sPwpKVl9Ib9qPmTJ951Bxw5imfOxBSD', '2020-04-20 07:18:55', '2020-05-05 17:48:47'),
-(2, NULL, 1, 1, 'haiit2', 'tranvietthanhhaiit2@gmail.com', '$2y$10$hzCaFe/3ADHHK99t/Lej5eRjtQjNyS4dXQkDTyedrQ0jqSewmKSvq', 'Ru4YTFBY8sIzPqQY4jjUt19nmdXB0PeHu6K55Uo0yRrEA402r37e73tnyRr3', '2020-04-20 07:17:22', '2020-05-10 17:46:35'),
-(1, NULL, 1, 1, 'haiit11', 'tranvietthanhhaiit1@gmail.com', '$2y$10$M6aUa.uVRu1988c91UxYnOzbRJmWoAo6fVsJHbroIkkML5azY/qbC', 'Yf0BKS8B3fTkGWAvo6yFdnCtlbXUWP7xnn8Ao4Ct6G6iwlIcvbZvNzX0qJvt', '2020-04-20 07:06:04', '2020-05-13 20:34:48');
+INSERT INTO `users` (`id`, `google_id`, `facebook_id`, `id_role`, `id_status`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(3, NULL, NULL, 2, 1, 'haiit3', 'tranvietthanhhaiit3@gmail.com', '$2y$10$JNxtb1xsCx6.CjpkyEJca.WWHFt1PIkpE0ETrOB5t1OMc/jzAyQOa', 'Af4E02I9tpewI6M0eYnYv1R0jNVdCmOCso17DZLV5e0uPXTtx77Q1Lzwyb7JZnnEGGUD6mMBS5ByAbkn9Ga3EKBVbbsFkWIJAv57', '2020-04-20 07:18:55', '2020-05-16 09:40:46'),
+(2, NULL, NULL, 1, 1, 'haiit2', 'tranvietthanhhaiit2@gmail.com', '$2y$10$hzCaFe/3ADHHK99t/Lej5eRjtQjNyS4dXQkDTyedrQ0jqSewmKSvq', 'PomddzI1cysREwGWxDJi8ddByLwkzYCPYKrBWQVAaaPib0thJOfyYQWvF9SAgeiQ9wTONSRHjyTRPtYIM14cq3bJIRWXNwyfmq4C', '2020-04-20 07:17:22', '2020-05-16 23:21:38'),
+(1, NULL, NULL, 1, 1, 'haiit11', 'tranvietthanhhaiit1@gmail.com', '$2y$10$M6aUa.uVRu1988c91UxYnOzbRJmWoAo6fVsJHbroIkkML5azY/qbC', 'N1p5t7cNP290uq4e8dEmQXVPo4LUAams5rHe7gkZe8UFGJW4SUYQErLPdpUp', '2020-04-20 07:06:04', '2020-05-16 08:10:01'),
+(48, NULL, '2658815037697318', 2, 1, 'Thanh Hải', NULL, NULL, NULL, '2020-05-16 06:29:50', '2020-05-16 06:29:50'),
+(49, NULL, NULL, 2, 1, 'haiit', 'tranvietthanhhaiit@gmail.com', '$2y$10$/bnSTM3IgHzlVzGZXmcEdujvQZu0nusyFqgRnWDbxxexP0ViS2enG', NULL, '2020-05-16 23:19:42', '2020-05-16 23:19:42');
 
 -- --------------------------------------------------------
 
@@ -470,6 +518,12 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
+-- Indexes for table `receive_news`
+--
+ALTER TABLE `receive_news`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `role`
 --
 ALTER TABLE `role`
@@ -526,7 +580,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=283;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=308;
+
+--
+-- AUTO_INCREMENT for table `receive_news`
+--
+ALTER TABLE `receive_news`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `slide`
@@ -550,7 +610,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `video`
