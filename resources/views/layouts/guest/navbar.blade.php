@@ -6,7 +6,7 @@
         <li class="{{ (Request::segment(1) == $topic->name ? 'colorlib-active': '')}}"><a href="{{route($topic->name)}}">{{$topic->name}}</a></li>
       @endforeach
    
-      @if (Auth::check())
+      @if (Auth::user())
         <li>
             <a href="{{ route('logout') }}"
                 onclick="event.preventDefault();
