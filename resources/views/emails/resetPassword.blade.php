@@ -1,5 +1,4 @@
 @component('mail::message')
-Hello motherfucker
 
 Welcome to our website.
 

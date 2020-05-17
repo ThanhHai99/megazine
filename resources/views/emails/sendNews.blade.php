@@ -1,13 +1,14 @@
 @component('mail::message')
-Hello motherfucker
 
 Welcome to our website.
 
 @component('mail::button', ['url' => ''])
 Button Text
-  <a href="http://localhost/megazine/public/password/reset">
-    http://localhost/megazine/public/password/reset
-  </a>
+  <p>{{ $news['id'] }}</p>
+  <p>{{ $news['image'] }}</p>
+  <p>{{ $news['tag'] }}</p>
+  <p>{{ $news['caption'] }}</p>
+  <p>{{ $news['subtitle'] }}</p>
 @endcomponent
 
 Thanks,<br>

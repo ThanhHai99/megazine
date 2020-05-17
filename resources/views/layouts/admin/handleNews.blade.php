@@ -1,4 +1,23 @@
 <script>
+  
+  let sendNews = () => {
+    alert('sending');
+    $.ajax({
+      url: `{{route('news.send')}}`,
+      method: 'POST',
+      data: {  },
+      contentType: false,
+      cache: false,
+      processData: false,
+      success: function(response) {
+        
+      },
+      error: function(error) {
+        
+      }
+    });
+  }
+  
   //Click update hot_news
   //Yes
   $("body").delegate("#hot_news_yes", "click", function(event) {
@@ -537,6 +556,7 @@
           if (response.error == false) {
             $("#insertModalNews").modal('hide');
             alertify.notify('Create successfully', 'success', 3);
+            sendNews();
           }   
           table.rows.add( [{
             "id" : "",

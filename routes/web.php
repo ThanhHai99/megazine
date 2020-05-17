@@ -114,7 +114,7 @@ Route::group(["namespace" => "Guest"], function() {
         "uses" => "PageController@subcribe"
     ]);
 
-    Route::put("news/send", [
+    Route::post("news/send", [
         "as" => "news.send",
         "uses" => "PageController@sendNews"
     ]);
