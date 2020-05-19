@@ -20,7 +20,7 @@ $("button#subscribe-email").on("click", function(event) {
       email: email
     },
     success: function(response) {
-      alert('success');
+      alertify.notify('success', 'success', 7);
     },
     error: function(error) {
       alert('error');

@@ -1,7 +1,7 @@
 <script>
   
   let sendNews = () => {
-    alert('sending');
+    // alert('sending');
     $.ajax({
       url: `{{route('news.send')}}`,
       method: 'POST',
