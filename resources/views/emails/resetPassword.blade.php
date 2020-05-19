@@ -1,11 +1,11 @@
-@component('mail::message')
+<!-- @component('mail::message') -->
 
 Welcome to our website.
 
-@component('mail::button', ['url' => ''])
+<!-- @component('mail::button', ['url' => '']) -->
 Button Text
-  <a href="http://localhost/megazine/public/password/reset/{{$user['remember_token']}}">
-    http://localhost/megazine/public/password/reset/{{$user['remember_token']}}
+  <a href="https://megazine.com/public/password/reset/{{$user['remember_token']}}">
+    https://megazine.com/public/password/reset/{{$user['remember_token']}}
   </a>
 @endcomponent
 
