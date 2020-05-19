@@ -200,7 +200,7 @@ class PageController extends Controller
                             ->limit(12)
                             ->get();
         return view("page.guest.sports",[
-            "hotNewsSports" => $hotNewsSports,
+            // "hotNewsSports" => $hotNewsSports,
             "newsNewests" => $newsNewests
         ]);
     }
@@ -315,7 +315,6 @@ class PageController extends Controller
 
     public function sendNews(Request $request) {
         $receiveNews = ReceiveNews::get();
-        // dd($receiveNews);
         foreach ($receiveNews as $receiveNew) {
             Mail::to($receiveNew['email'])->send(new SendNewsMail($receiveNew));
         }
