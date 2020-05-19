@@ -315,11 +315,9 @@ class PageController extends Controller
 
     public function sendNews(Request $request) {
         $receiveNews = ReceiveNews::get();
+        // dd($receiveNews);
         foreach ($receiveNews as $receiveNew) {
             Mail::to($receiveNew['email'])->send(new SendNewsMail($receiveNew));
-                return view("auth.passwords.email", [
-                    'successSentMail' => 'Sent complety.'
-                ]);            
         }
 
     }
