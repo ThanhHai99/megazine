@@ -11,7 +11,7 @@
 								<div class="col-md-12 animate-box">
 									<div class="archives">
 										<p class="tag"><span>{{ $new->tag }}</span></p>
-										<h2><a href="#">{{ $new->caption }} of <?= date('F Y', strtotime($new->created_at)); ?></a></h2>
+										<h2><a href="javascript:void(0)">{{ $new->caption }} of <?= date('F Y', strtotime($new->created_at)); ?></a></h2>
 									</div>
 								</div>
 							@endforeach
@@ -40,13 +40,13 @@
 							<h2 class="sidebar-heading">Categories</h2>
 							<p>
 								<ul class="category">
-									<li><a href="#"><i class="icon-check"></i> Home</a></li>
-									<li><a href="#"><i class="icon-check"></i> About Me</a></li>
-									<li><a href="#"><i class="icon-check"></i> Blog</a></li>
-									<li><a href="#"><i class="icon-check"></i> Travel</a></li>
-									<li><a href="#"><i class="icon-check"></i> Lifestyle</a></li>
-									<li><a href="#"><i class="icon-check"></i> Fashion</a></li>
-									<li><a href="#"><i class="icon-check"></i> Health</a></li>
+									<li><a href="javascript:void(0)"><i class="icon-check"></i> Home</a></li>
+									<li><a href="javascript:void(0)"><i class="icon-check"></i> About Me</a></li>
+									<li><a href="javascript:void(0)"><i class="icon-check"></i> Blog</a></li>
+									<li><a href="javascript:void(0)"><i class="icon-check"></i> Travel</a></li>
+									<li><a href="javascript:void(0)"><i class="icon-check"></i> Lifestyle</a></li>
+									<li><a href="javascript:void(0)"><i class="icon-check"></i> Fashion</a></li>
+									<li><a href="javascript:void(0)"><i class="icon-check"></i> Health</a></li>
 								</ul>
 							</p>
 						</div>
@@ -80,21 +80,21 @@
 						<div class="side animate-box">
 							<h2 class="sidebar-heading">Instagram</h2>
 							<div class="instagram-entry">
-								<a href="#" class="instagram text-center" style="background-image: url(images/gallery-1.jpg);">
+								<a href="javascript:void(0)" class="instagram text-center" style="background-image: url(images/gallery-1.jpg);">
 								</a>
-								<a href="#" class="instagram text-center" style="background-image: url(images/gallery-2.jpg);">
+								<a href="javascript:void(0)" class="instagram text-center" style="background-image: url(images/gallery-2.jpg);">
 								</a>
-								<a href="#" class="instagram text-center" style="background-image: url(images/gallery-3.jpg);">
+								<a href="javascript:void(0)" class="instagram text-center" style="background-image: url(images/gallery-3.jpg);">
 								</a>
-								<a href="#" class="instagram text-center" style="background-image: url(images/gallery-4.jpg);">
+								<a href="javascript:void(0)" class="instagram text-center" style="background-image: url(images/gallery-4.jpg);">
 								</a>
-								<a href="#" class="instagram text-center" style="background-image: url(images/gallery-5.jpg);">
+								<a href="javascript:void(0)" class="instagram text-center" style="background-image: url(images/gallery-5.jpg);">
 								</a>
-								<a href="#" class="instagram text-center" style="background-image: url(images/gallery-6.jpg);">
+								<a href="javascript:void(0)" class="instagram text-center" style="background-image: url(images/gallery-6.jpg);">
 								</a>
-								<a href="#" class="instagram text-center" style="background-image: url(images/gallery-7.jpg);">
+								<a href="javascript:void(0)" class="instagram text-center" style="background-image: url(images/gallery-7.jpg);">
 								</a>
-								<a href="#" class="instagram text-center" style="background-image: url(images/gallery-8.jpg);">
+								<a href="javascript:void(0)" class="instagram text-center" style="background-image: url(images/gallery-8.jpg);">
 								</a>
 							</div>
 						</div>

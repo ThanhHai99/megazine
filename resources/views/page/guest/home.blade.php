@@ -13,7 +13,7 @@
                   <div class="slider-text-inner">
                     <div class="desc">
                       <p class="tag"><span>{{ $slide->name }}</span></p>
-                      <h1><a href="#">{{ $slide->heading_primary }}</a></h1>
+                      <h1><a href="javascript:void(0)">{{ $slide->heading_primary }}</a></h1>
                       <p>{{ $slide->heading_secondary }}</p>
                     </div>
                   </div>
@@ -153,12 +153,12 @@
       <div class="row">
         <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
           <ul class="pagination">
-            <li class="disabled"><a href="#">&laquo;</a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">&raquo;</a></li>
+            <li class="disabled"><a href="javascript:void(0)">&laquo;</a></li>
+            <li class="active"><a href="javascript:void(0)">1</a></li>
+            <li><a href="javascript:void(0)">2</a></li>
+            <li><a href="javascript:void(0)">3</a></li>
+            <li><a href="javascript:void(0)">4</a></li>
+            <li><a href="javascript:void(0)">&raquo;</a></li>
           </ul>
         </div>
       </div>

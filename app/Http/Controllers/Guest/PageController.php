@@ -77,7 +77,7 @@ class PageController extends Controller
                     </div>
                     <div class="desc">
                         <p class="meta">
-                            <span class="cat"><a href="#">'.$newsStyleMore->tag.'</a></span>
+                            <span class="cat"><a href="javascript:void(0)">'.$newsStyleMore->tag.'</a></span>
                             <span class="date">'. date("d F Y", strtotime($newsStyleMore->created_at)) .'</span>
                         </p>
                         <h2><a href="single/'.$newsStyleMore->id.'">'.$newsStyleMore->caption.'</a></h2>
@@ -176,7 +176,7 @@ class PageController extends Controller
                     <div class="blog-img" style="background-image: url(images/'. $newsTravelMore->image .');"></div>
                     <div class="desc">
                     <p class="meta">
-                        <span class="cat"><a href="#">'. $newsTravelMore->tag .'</a></span>
+                        <span class="cat"><a href="javascript:void(0)">'. $newsTravelMore->tag .'</a></span>
                         <span class="date">'. date("d F Y", strtotime($newsTravelMore->created_at)) .'</span>
                     </p>
                     <h2><a href="single/63">'. $newsTravelMore->caption .'</a></h2>
@@ -258,9 +258,9 @@ class PageController extends Controller
                             </div>
                             <div class="desc">
                                 <p class="meta">
-                                    <span class="cat"><a href="#">'. $newsVideoMore->tag .'</a></span>
+                                    <span class="cat"><a href="javascript:void(0)">'. $newsVideoMore->tag .'</a></span>
                                     <span class="date">'. date("d F Y", strtotime($newsVideoMore->created_at)) .'</span>
-                                    <!-- <span class="pos">By <a href="#">Walter</a></span> -->
+                                    <!-- <span class="pos">By <a href="javascript:void(0)">Walter</a></span> -->
                                 </p>
                                 <h2><a href="blog.html">'. $newsVideoMore->caption .'</a></h2>
                                 <p>'. $newsVideoMore->subtitle .'</p>

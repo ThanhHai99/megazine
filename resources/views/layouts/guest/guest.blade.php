@@ -6,7 +6,7 @@
 </head>
 	<body>
 	<div id="colorlib-page">
-		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+		<a href="javascript:void(0)" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 		@include('layouts.guest.navbar')
 
 		@yield('content')

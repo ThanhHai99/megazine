@@ -14,7 +14,7 @@
                   <div class="slider-text-inner">
                     <div class="desc desc2">
                       <p class="tag"><span>{{ $slide->tag }}</span></p>
-                      <h1><a href="#">{{ $slide->heading_primary }}</a></h1>
+                      <h1><a href="javascript:void(0)">{{ $slide->heading_primary }}</a></h1>
                       <p>{{ $slide->heading_secondary }}</p>
                       <p><a href="javascript:void(0)" class="btn btn-primary btn-outline">Read more</a></p>
                       
@@ -32,9 +32,9 @@
                   <div class="slider-text-inner">
                     <div class="desc desc2">
                       <p class="tag"><span>Sports</span></p>
-                      <h1><a href="#">Creators of Brands Template</a></h1>
+                      <h1><a href="javascript:void(0)">Creators of Brands Template</a></h1>
                       <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-                      <p><a href="#" class="btn btn-primary btn-outline">Read more</a></p>
+                      <p><a href="javascript:void(0)" class="btn btn-primary btn-outline">Read more</a></p>
                     </div>
                   </div>
                 </div>
@@ -49,9 +49,9 @@
                   <div class="slider-text-inner">
                     <div class="desc desc2">
                       <p class="tag"><span>Fashion</span></p>
-                      <h1><a href="#">Design &amp; develop functional sites</a></h1>
+                      <h1><a href="javascript:void(0)">Design &amp; develop functional sites</a></h1>
                       <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-                      <p><a href="#" class="btn btn-primary btn-outline">Read more</a></p>
+                      <p><a href="javascript:void(0)" class="btn btn-primary btn-outline">Read more</a></p>
                     </div>
                   </div>
                 </div>
@@ -80,9 +80,9 @@
             </div>
             <div class="desc">
               <p class="meta">
-                <span class="cat"><a href="#">Style</a></span>
+                <span class="cat"><a href="javascript:void(0)">Style</a></span>
                 <span class="date"><?= date('d F Y', strtotime($newsNewests[1]->created_at)); ?></span>
-                <!-- <span class="pos">By <a href="#">Walter</a></span> -->
+                <!-- <span class="pos">By <a href="javascript:void(0)">Walter</a></span> -->
               </p>
               <h2><a href="single/{{ $newsNewests[1]->id }}">NEWS NEWEST</a></h2>
               <!-- <p>A small river named Duden flows by their place and supplies it with the necessary </p> -->
@@ -97,9 +97,9 @@
               </div>
               <div class="desc">
                 <p class="meta">
-                  <span class="cat"><a href="#">{{ $newsStyles[$i]->tag }}</a></span>
+                  <span class="cat"><a href="javascript:void(0)">{{ $newsStyles[$i]->tag }}</a></span>
                   <span class="date"><?= date('d F Y', strtotime($newsStyles[$i]->created_at)); ?></span>
-                  <!-- <span class="pos">By <a href="#">Walter</a></span> -->
+                  <!-- <span class="pos">By <a href="javascript:void(0)">Walter</a></span> -->
                 </p>
                 <h2><a href="single/{{ $newsStyles[$i]->id }}">{{ $newsStyles[$i]->caption }}</a></h2>
                 <p>{{ $newsStyles[$i]->subtitle }}</p>
@@ -117,9 +117,9 @@
               </div>
               <div class="desc">
                 <p class="meta">
-                  <span class="cat"><a href="#">{{ $newsStyles[$i]->tag }}</a></span>
+                  <span class="cat"><a href="javascript:void(0)">{{ $newsStyles[$i]->tag }}</a></span>
                   <span class="date"><?= date('d F Y', strtotime($newsStyles[$i]->created_at)); ?></span>
-                  <!-- <span class="pos">By <a href="#">Walter</a></span> -->
+                  <!-- <span class="pos">By <a href="javascript:void(0)">Walter</a></span> -->
                 </p>
                 <h2><a href="single/{{ $newsStyles[$i]->id }}">{{ $newsStyles[$i]->caption }}</a></h2>
                 <p>{{ $newsStyles[$i]->subtitle }}</p>
@@ -139,9 +139,9 @@
             </div>
             <div class="desc">
               <p class="meta">
-                <span class="cat"><a href="#">{{ $video[0]->tag }}</a></span>
+                <span class="cat"><a href="javascript:void(0)">{{ $video[0]->tag }}</a></span>
                 <span class="date"><?= date('d F Y', strtotime($video[0]->created_at)); ?></span>
-                <span class="pos">By <a href="#">Walter</a></span>
+                <span class="pos">By <a href="javascript:void(0)">Walter</a></span>
               </p>
               <h2><a href="blog.html">{{ $video[0]->caption }}</a></h2>
               <p>{{ $video[0]->subtitle }}</p>
@@ -155,9 +155,9 @@
               </div>
               <div class="desc">
                 <p class="meta">
-                  <span class="cat"><a href="#">{{ $newsStyles[5]->tag }}</a></span>
+                  <span class="cat"><a href="javascript:void(0)">{{ $newsStyles[5]->tag }}</a></span>
                   <span class="date"><?= date('d F Y', strtotime($newsStyles[5]->created_at)); ?></span>
-                  <!-- <span class="pos">By <a href="#">Walter</a></span> -->
+                  <!-- <span class="pos">By <a href="javascript:void(0)">Walter</a></span> -->
                 </p>
                 <h2><a href="single/{{ $newsStyles[5]->id }}">{{ $newsStyles[5]->caption }}</a></h2>
                 <p>{{ $newsStyles[5]->subtitle }}</p>
@@ -174,9 +174,9 @@
               </div>
               <div class="desc">
                 <p class="meta">
-                  <span class="cat"><a href="#">{{ $newsStyles[$i]->tag }}</a></span>
+                  <span class="cat"><a href="javascript:void(0)">{{ $newsStyles[$i]->tag }}</a></span>
                   <span class="date"><?= date('d F Y', strtotime($newsStyles[$i]->created_at)); ?></span>
-                  <!-- <span class="pos">By <a href="#">Walter</a></span> -->
+                  <!-- <span class="pos">By <a href="javascript:void(0)">Walter</a></span> -->
                 </p>
                 <h2><a href="single/{{ $newsStyles[$i]->id }}">{{ $newsStyles[$i]->caption }}</a></h2>
                 <p>{{ $newsStyles[$i]->subtitle }}</p>
@@ -193,9 +193,9 @@
             </div>
             <div class="desc">
               <p class="meta">
-                <span class="cat"><a href="#">{{ $newsStyles[9]->tag }}</a></span>
+                <span class="cat"><a href="javascript:void(0)">{{ $newsStyles[9]->tag }}</a></span>
                 <span class="date"><?= date('d F Y', strtotime($newsStyles[9]->created_at)); ?></span>
-                <!-- <span class="pos">By <a href="#">Walter</a></span> -->
+                <!-- <span class="pos">By <a href="javascript:void(0)">Walter</a></span> -->
               </p>
               <h2><a href="single/{{ $newsStyles[9]->id }}">{{ $newsStyles[9]->caption }}</a></h2>
               <p>{{ $newsStyles[9]->subtitle }}</p>
@@ -209,9 +209,9 @@
             </div>
             <div class="desc">
               <p class="meta">
-                <span class="cat"><a href="#">{{ $newsStyles[10]->tag }}</a></span>
+                <span class="cat"><a href="javascript:void(0)">{{ $newsStyles[10]->tag }}</a></span>
                 <span class="date"><?= date('d F Y', strtotime($newsStyles[10]->created_at)); ?></span>
-                <!-- <span class="pos">By <a href="#">Walter</a></span> -->
+                <!-- <span class="pos">By <a href="javascript:void(0)">Walter</a></span> -->
               </p>
               <h2><a href="single/{{ $newsStyles[10]->id }}">{{ $newsStyles[10]->caption }}</a></h2>
               <p>{{ $newsStyles[10]->subtitle }}</p>
@@ -231,12 +231,12 @@
       <!-- <div class="row">
         <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
           <ul class="pagination">
-            <li class="disabled"><a href="#">&laquo;</a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">&raquo;</a></li>
+            <li class="disabled"><a href="javascript:void(0)">&laquo;</a></li>
+            <li class="active"><a href="javascript:void(0)">1</a></li>
+            <li><a href="javascript:void(0)">2</a></li>
+            <li><a href="javascript:void(0)">3</a></li>
+            <li><a href="javascript:void(0)">4</a></li>
+            <li><a href="javascript:void(0)">&raquo;</a></li>
           </ul>
         </div>
       </div> -->
