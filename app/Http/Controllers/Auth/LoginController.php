@@ -48,7 +48,15 @@ class LoginController extends Controller
 
         if ($user->id_role == 1) {
             User::where("id", $user->id)
-                  ->update(['remember_token' => Str::random(100)]);            
+                  ->update(['remember_token' => Str::random(100)]);                        
+
+            $infos = $user->toArray();
+            $infos_keys = array_keys($infos);
+            $infos_values = array_values($infos);
+            for ($i=0; $i < count($infos); $i++) { 
+                session([ $infos_keys[$i] => $infos_values[$i] ]);
+            }
+            // dd(session('id'));
             return redirect("dashboard/index");
         }
 
