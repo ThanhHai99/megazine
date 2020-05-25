@@ -42,7 +42,7 @@
                     Login
                   </button>
 
-                  <a href="home" class="btn btn-success btn-user btn-block">
+                  <a href="{{ route('home') }}" class="btn btn-success btn-user btn-block">
                     <i>Go to home page without login</i>
                   </a>
                   

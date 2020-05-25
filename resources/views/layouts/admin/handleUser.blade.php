@@ -46,6 +46,9 @@
             table.row( this ).data( d ).draw();
           },
           error: function(error) {
+            if (error.responseText.error = "Unauthenticated.") {
+              location.reload(true);
+            }
             alertify.notify('An error occurred', 'error', 3);
           }
         });
@@ -90,7 +93,10 @@
                 table.row( $(this).parents('tr') ).remove().draw();
               }
             },
-            error: function() {
+            error: function(error) {
+              if (error.responseText.error = "Unauthenticated.") {
+                location.reload(true);
+              }
               Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -133,6 +139,9 @@
         }
       },
       error: function(error) {
+        if (error.responseText.error = "Unauthenticated.") {
+          location.reload(true);
+        }
         alertify.notify('An error occurred', 'error', 3);
       }
     });
@@ -166,6 +175,9 @@
         }
       },
       error: function(error) {
+        if (error.responseText.error = "Unauthenticated.") {
+          location.reload(true);
+        }
         alertify.notify('An error occurred', 'error', 3);
       }
     });
@@ -202,6 +214,9 @@
         }
       },
       error: function(error) {
+        if (error.responseText.error = "Unauthenticated.") {
+          location.reload(true);
+        }
         alertify.notify('An error occurred', 'error', 3);
       }
     });
@@ -235,6 +250,9 @@
         }
       },
       error: function(error) {
+        if (error.responseText.error = "Unauthenticated.") {
+          location.reload(true);
+        }
         alertify.notify('An error occurred', 'error', 3);
       }
     });

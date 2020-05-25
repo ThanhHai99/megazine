@@ -171,7 +171,6 @@
   //Click update status (all)
   //Yes
   $("body").delegate("#status_news_yes-all", "click", function(event) {
-    //Click button update hot new yes
     event.preventDefault();
     let table = $('#dataTable').DataTable();
     $tr = $(this).closest('tr');
@@ -664,7 +663,10 @@
               table.row( $(this).parents('tr') ).remove().draw();
             }
           },
-          error: function() {
+          error: function(error) {
+            if (error.responseText.error = "Unauthenticated.") {
+              location.reload(true);
+            }
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
