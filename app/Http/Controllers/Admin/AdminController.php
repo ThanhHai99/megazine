@@ -17,6 +17,7 @@ use App\News;
 use App\User;
 use App\Slide;
 use App\Video;
+use App\Role;
 
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Storage;
@@ -69,11 +70,11 @@ class AdminController extends Controller
         exit();
       }
   
-      $query=User::all();
+      $query=User::join("role", "users.id_role", "=", "role.id")
+                    ->select("users.id", "role.name as id_role", "users.id_status", "users.name", "users.email");
+
       return Datatables::of($query)
-      ->setRowAttr(['align'=>'center'])
-      // ->make(true);
-      ->toJson();
+      ->make(true);
     };
   }
   
@@ -132,10 +133,6 @@ class AdminController extends Controller
                     ->select("news.id", "topic.name as id_topic", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
   
       return Datatables::of($query)
-      // ->editColumn('hot_news', function(News $news) {
-        // return $news->hot_news == 1 ? '<i class="fa fa-check-circle"></i>' : '<i class="fa fa-times-circle"></i>' ;
-      // })
-      // ->setRowClass('{{ $hot_news == 1 ? "fa fa-check-circle" : "fa fa-times-circle" }}')
       ->make(true);
     };
   }

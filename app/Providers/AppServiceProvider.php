@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
 use App\Topic;
+use App\Role;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -42,5 +43,11 @@ class AppServiceProvider extends ServiceProvider
             $topics = Topic::all();
             $view->with('topics', $topics);
         });
+
+        view()->composer('page.admin._table', function($view) {
+            $roles = Role::all();
+            $view->with('roles', $roles);
+        });
+
     }
 }

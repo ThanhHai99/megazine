@@ -1,6 +1,66 @@
 <script>
 
 //Start Employee
+
+    //Start Edit Employee - All Record
+    $("body").delegate("#edit_employee-all", "click", function(){
+      let table = $('#dataTable').DataTable();
+      $tr = $(this).closest('tr');
+      if ($($tr).hasClass('child')) {
+        $tr = $tr.prev('.parent');
+      };
+
+      var data = table.row($tr).data();
+      // console.log(data);
+      $("#editModalEmployee-all #id").val(data['id']);
+      // let role = $("#editModalEmployee-all #update_name").val(data['id_role']);
+      $("#editModalEmployee-all #update_role option").val(data['id_role']).attr('selected',true);
+      $("#editModalEmployee-all #update_name").val(data['name']);
+      $("#editModalEmployee-all #update_email").val(data['email']);
+      $("#editModalEmployee-all").modal('show');
+    });
+      //Click button update employee
+      $("button.update_employee").click(function(event) {
+        event.preventDefault();
+        let table = $('#dataTable').DataTable();
+        $tr = $(this).closest('tr');
+        if ($($tr).hasClass('child')) {
+          $tr = $tr.prev('.parent');
+        };
+
+        let id = $("#editModalEmployee").find("#id").val();
+        let name = $("#editModalEmployee").find("#update_name").val();
+        let email = $("#editModalEmployee").find("#update_email").val();
+        
+        $.ajax({
+          url: `{{route('employee.update')}}`,
+          method: "PUT",
+          data: {
+            id: id,
+            name: name,
+            email: email
+          },
+          success: function(response) {
+            if (response.error == false) {
+              $("#editModalEmployee").modal('hide');
+              alertify.notify('Update successfully', 'success', 3);
+            }
+            var d = table.row( this ).data();     
+            table.row( this ).data( d ).draw();
+          },
+          error: function(error) {
+            if (error.responseText.error = "Unauthenticated.") {
+              location.reload(true);
+            }
+            alertify.notify('An error occurred', 'error', 3);
+          }
+        });
+      });
+      //End click button update employee
+    //End Edit Employee -All Record
+
+
+
     //Start Edit Employee Record
     $("body").delegate("#edit_employee", "click", function(){
       let table = $('#dataTable').DataTable();

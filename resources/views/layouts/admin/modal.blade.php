@@ -1,3 +1,49 @@
+<!-- Start Edit Employee Modal - All -->
+<div class="modal fade" id="editModalEmployee-all" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Employee - All</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+      <input type="hidden" id="id" value="">
+
+        <div class="form-group">
+          <label>Role</label>
+          <!-- <input type="text" name="id_topic" id="insert_topic_all" class="form-control" placeholder="Topic"> -->
+          <select class="form-control" id="update_role">
+            @foreach($roles as $role)
+              <option value="{{ $role->id }}">{{ $role->name }}</option>
+            @endforeach              
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="name" id="update_name" class="form-control" placeholder="Name">
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" name="email" id="update_email" class="form-control" placeholder="Email">
+        </div>
+      </div>
+        
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary update_employee">Update data</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- End Edit Employee Modal - All-->
+
+
 <!-- Start Edit Employee Modal  -->
 <div class="modal fade" id="editModalEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
