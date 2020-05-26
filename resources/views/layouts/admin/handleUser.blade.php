@@ -30,7 +30,6 @@
 
         let id = $("#editModalEmployee-all").find("#id").val();
         let id_role = $(`#editModalEmployee-all #update_role-all option:selected`).val();
-        alert(id_role);
         let name = $("#editModalEmployee-all").find("#update_name-all").val();
         let email = $("#editModalEmployee-all").find("#update_email-all").val();
         
@@ -75,6 +74,8 @@
       var data = table.row($tr).data();
       // console.log(data);
       $("#editModalEmployee").find("#id").val(data['id']);
+      // $(`#editModalEmployee #update_role option:selected`).removeAttr("selected");
+      // $(`#editModalEmployee #update_role option[name=`+ data['id_role'] +`]`).attr('selected', 'selected');
       $("#editModalEmployee").find("#update_name").val(data['name']);
       $("#editModalEmployee").find("#update_email").val(data['email']);
       $("#editModalEmployee").modal('show');
@@ -89,6 +90,7 @@
         };
 
         let id = $("#editModalEmployee").find("#id").val();
+        let id_role = $(`#editModalEmployee #update_role option:selected`).val();
         let name = $("#editModalEmployee").find("#update_name").val();
         let email = $("#editModalEmployee").find("#update_email").val();
         
@@ -97,6 +99,7 @@
           method: "PUT",
           data: {
             id: id,
+            id_role: id_role,
             name: name,
             email: email
           },
@@ -202,6 +205,11 @@
         }
       },
       error: function(error) {
+        if (error.responseJSON.admin == true) {
+          alertify.notify('This is super user', 'error', 3);
+          return;
+        }
+        
         if (error.responseText.error == "Unauthenticated.") {
           location.reload(true);
         }

@@ -14,8 +14,7 @@
 
         <div class="form-group">
           <label>Role</label>
-          <!-- <input type="text" name="id_topic" id="insert_topic_all" class="form-control" placeholder="Topic"> -->
-          <select class="form-control" id="update_role-all" name="employee-role">
+          <select class="form-control" id="update_role-all" name="employee-role-all">
             @foreach($roles as $role)
               <option value="{{ $role->id }}" name="{{ $role->name }}">{{ $role->name }}</option>
             @endforeach              
@@ -57,6 +56,16 @@
 
       <div class="modal-body">
       <input type="hidden" id="id" value="">
+
+        <div class="form-group">
+          <label>Role</label>
+          <select class="form-control" id="update_role" name="employee-role">
+            @foreach($roles as $role)
+              <option value="{{ $role->id }}" name="{{ $role->name }}">{{ $role->name }}</option>
+            @endforeach              
+          </select>
+        </div>
+
 
         <div class="form-group">
           <label>Name</label>

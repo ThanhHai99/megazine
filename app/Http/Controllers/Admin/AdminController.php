@@ -509,7 +509,6 @@ class AdminController extends Controller
       ]);
   
       $input = $request->all();
-      // dd($input);
       $tmp = User::find($input['id']);
       $tmp->id_role = $input['id_role'];
       $tmp->name = $input['name'];
@@ -518,7 +517,6 @@ class AdminController extends Controller
   
       return response()->json([
           'error' => false,
-          // 'imput'  => $input,
       ], 200);
 
     };
@@ -531,19 +529,20 @@ class AdminController extends Controller
 
     if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
+        'id_role' => 'required',
         'name' => 'required',
         'email' => 'required'
       ]);
   
       $input = $request->all();
       $tmp = User::find($input['id']);
+      $tmp->id_role = $input['id_role'];
       $tmp->name = $input['name'];
       $tmp->email = $input['email'];
       $tmp->save();
   
       return response()->json([
           'error' => false,
-          // 'imput'  => $input,
       ], 200);
 
     };
@@ -560,7 +559,6 @@ class AdminController extends Controller
       User::where('id', $input['id'])->delete();
       return response()->json([
         'error' => false,
-        // 'id'  => id,
       ], 200);
     };
   }
@@ -589,7 +587,6 @@ class AdminController extends Controller
   
       return response()->json([
           'error' => false,
-          // 'task'  => $tmp,
       ], 200);
     };
   }
@@ -618,7 +615,6 @@ class AdminController extends Controller
   
       return response()->json([
           'error' => false,
-          // 'task'  => $tmp,
       ], 200);
     };
   }
