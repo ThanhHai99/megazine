@@ -588,8 +588,7 @@
   //Start Insert News (All) Record
   $("body").delegate("a#insert_news_all", "click", function() {
     $("#insertModalNews_all").modal("show");
-    // $("#form-insert-news_all").find("input[name=id_creator]").attr("value", 0);
-    $("form#form-insert-news_all").find("input[name=id_topic]").attr("value", $("select#topic_option").children("option:selected").val());
+    // $("form#form-insert-news_all").find("input[name=id_topic]").attr("value", $("select#topic_option").children("option:selected").val());
   });
     //Start click button create
     $("form#form-insert-news_all").on("submit", function(event) {

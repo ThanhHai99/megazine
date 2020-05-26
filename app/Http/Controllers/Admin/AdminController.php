@@ -466,7 +466,7 @@ class AdminController extends Controller
       }
   
       $tmp->id_topic = $input['id_topic'];
-      $tmp->id_creator = session('userid');
+      $tmp->id_creator = session('id');
       $tmp->hot_news = $input['hot_news'];
       $tmp->tag = $input['tag'];
       $tmp->caption = $input['caption'];

@@ -24,14 +24,8 @@ class SocialAuthFacebookController extends Controller
         try {
             $facebookUser = Socialite::driver("facebook")->user();
             $existsUser = User::where("facebook_id", $facebookUser->id)->first();
-            
-            if ($existsUser->id_role == 1) {
-                return redirect("dashboard/index");
-            } else if ($existsUser->id_role == 2) {
-                return redirect("home");
-            }
 
-            if ($existsUser) {
+            if ($existsUser) {     
                 $infos = $existsUser->toArray();
                 $infos_keys = array_keys($infos);
                 $infos_values = array_values($infos);
@@ -53,6 +47,14 @@ class SocialAuthFacebookController extends Controller
                 }
                 Auth::loginUsingId($user->id);
             }
+
+            $existsUser = User::where("facebook_id", $facebookUser->id)->first();
+            if ($existsUser->id_role == 1) {
+                return redirect("dashboard/index");
+            } else if ($existsUser->id_role == 2) {
+                return redirect("home");
+            }
+
         } catch (\Throwable $th) {
             return 'error';
         }

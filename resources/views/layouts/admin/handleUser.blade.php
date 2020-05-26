@@ -11,7 +11,7 @@
       };
 
       var data = table.row($tr).data();
-      console.log(data);
+      // console.log(data);
       $("#editModalEmployee-all #id").val(data['id']);
       $(`#editModalEmployee-all #update_role-all option:selected`).removeAttr("selected");
       $(`#editModalEmployee-all #update_role-all option[name=`+ data['id_role'] +`]`).attr('selected', 'selected');
@@ -90,7 +90,7 @@
         };
 
         let id = $("#editModalEmployee").find("#id").val();
-        let id_topic = $(`#editModalEmployee #update_role option:selected`).val();
+        let id_role = $(`#editModalEmployee #update_role option:selected`).val();
         let name = $("#editModalEmployee").find("#update_name").val();
         let email = $("#editModalEmployee").find("#update_email").val();
         
@@ -99,7 +99,7 @@
           method: "PUT",
           data: {
             id: id,
-            id_topic: id_topic,
+            id_role: id_role,
             name: name,
             email: email
           },

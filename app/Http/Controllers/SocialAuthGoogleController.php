@@ -23,12 +23,11 @@ class SocialAuthGoogleController extends Controller
     public function callback() {
         try {
             $googleUser = Socialite::driver("google")->user();
-            $existsUser = User::where("email", $googleUser->email)
-                                ->where("google_id", "<>", NULL)
+            $existsUser = User::where("google_id", $googleUser->id)
                                 ->first();
             
             
-            // dd($googleUser);
+            // dd($existsUser);
 
             
             if ($existsUser) {
@@ -55,7 +54,7 @@ class SocialAuthGoogleController extends Controller
                 Auth::loginUsingId($user->id);
             }
             
-            $existsUser = User::where("email", $googleUser->email)->first();
+            $existsUser = User::where("google_id", $googleUser->id)->first();
             if ($existsUser->id_role == 1) {
                 return redirect("dashboard/index");
             } else if ($existsUser->id_role == 2) {

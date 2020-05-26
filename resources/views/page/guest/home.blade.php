@@ -150,7 +150,7 @@
           </div>
       </div>
 
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
           <ul class="pagination">
             <li class="disabled"><a href="javascript:void(0)">&laquo;</a></li>
@@ -161,7 +161,7 @@
             <li><a href="javascript:void(0)">&raquo;</a></li>
           </ul>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>			
 </div>
