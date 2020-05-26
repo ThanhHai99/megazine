@@ -26,6 +26,11 @@ class SocialAuthGoogleController extends Controller
             $existsUser = User::where("email", $googleUser->email)
                                 ->where("google_id", "<>", NULL)
                                 ->first();
+            
+            
+            // dd($googleUser);
+
+            
             if ($existsUser) {
                 $infos = $existsUser->toArray();
                 $infos_keys = array_keys($infos);
