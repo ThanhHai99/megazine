@@ -300,6 +300,7 @@ class AdminController extends Controller
 
     if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
+        'id_topic' => 'required',
         'tag' => 'required',
         'caption' => 'required',
         'subtitle' => 'required'
@@ -307,6 +308,7 @@ class AdminController extends Controller
   
       $input = $request->all();
       $tmp = News::find($input['id']);
+      $tmp->id_topic = $input['id_topic'];
       $tmp->tag = $input['tag'];
       $tmp->caption = $input['caption'];
       $tmp->subtitle = $input['subtitle'];

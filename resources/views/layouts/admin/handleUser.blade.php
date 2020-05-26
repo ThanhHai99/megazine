@@ -90,7 +90,7 @@
         };
 
         let id = $("#editModalEmployee").find("#id").val();
-        let id_role = $(`#editModalEmployee #update_role option:selected`).val();
+        let id_topic = $(`#editModalEmployee #update_role option:selected`).val();
         let name = $("#editModalEmployee").find("#update_name").val();
         let email = $("#editModalEmployee").find("#update_email").val();
         
@@ -99,7 +99,7 @@
           method: "PUT",
           data: {
             id: id,
-            id_role: id_role,
+            id_topic: id_topic,
             name: name,
             email: email
           },

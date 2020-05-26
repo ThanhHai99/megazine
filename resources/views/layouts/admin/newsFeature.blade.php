@@ -47,7 +47,7 @@ let loadNewsAll_onLoad = () => {
         {
           data: null,
           targets: "no-sort", orderable: false,
-          defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news-all">
+          defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
                             <i class="glyphicon glyphicon-pencil"></i>
                           </a>
                           <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
@@ -108,7 +108,7 @@ let loadAllNews = () => {
         {
           data: null,
           targets: "no-sort", orderable: false,
-          defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news-all">
+          defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
                             <i class="glyphicon glyphicon-pencil"></i>
                           </a>
                           <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">

@@ -467,75 +467,8 @@
   });
   //End click update status video
   
-  //Start Edit News - All Record
-  $("body").delegate("#edit_news", "click", function(){
-    let table = $('#dataTable').DataTable();
-    $tr = $(this).closest('tr');
-    if ($($tr).hasClass('child')) {
-      $tr = $tr.prev('.parent');
-    };
 
-    let data = table.row($tr).data();
-    $("#editModalNews").find("#update_image").val(data['image']);
-    $("#editModalNews").find("#update_tag").val(data['tag']);
-    $("#editModalNews").find("#update_caption").val(data['caption']);
-    $("#editModalNews").find("#update_subtitle").val(data['subtitle']);
-    $("#editModalNews").modal('show');
-  });
-    //Click button update News
-    $("button.update_news").click(function(event) {
-      event.preventDefault();
-      let table = $('#dataTable').DataTable();
-      let data = table.row($tr).data();
-      let id = data['id'];
-      let tag = $("#editModalNews").find("#update_tag").val();
-      let caption = $("#editModalNews").find("#update_caption").val();
-      let subtitle = $("#editModalNews").find("#update_subtitle").val();
-      
-      $.ajax({
-        url: `{{route('news.update')}}`,
-        method: "PUT",
-        data: {
-          id: id,
-          tag: tag,
-          caption: caption,
-          subtitle: subtitle
-        },
-        success: function(response) {
-          if (response.error == false) {
-            $("#editModalNews").modal('hide');
-            alertify.notify('Update successfully', 'success', 3);
-
-            $('tbody > tr > td:first-child').each(function() {
-              console.log($(this).html());
-              if ($(this).html() == response.id) {
-                if ($(this).parent("tr").find("td:nth-child(5) > a > img").hasClass("img-responsive")) {
-                  $(this).parent("tr").find("td:nth-child(6)").html(response.tag);
-                  $(this).parent("tr").find("td:nth-child(7)").html(response.caption);
-                  $(this).parent("tr").find("td:nth-child(8)").html(response.subtitle);
-                }
-                if ($(this).parent("tr").find("td:nth-child(6) > a > img").hasClass("img-responsive")) {
-                  $(this).parent("tr").find("td:nth-child(7)").html(response.tag);
-                  $(this).parent("tr").find("td:nth-child(8)").html(response.caption);
-                  $(this).parent("tr").find("td:nth-child(9)").html(response.subtitle);
-                }
-                
-              }
-            });
-          }
-        },
-        error: function(error) {
-          if (error.responseText.error == "Unauthenticated.") {
-            location.reload(true);
-          }
-          alertify.notify('An error occurred', 'error', 3);
-        }
-      });
-    });
-    //End click button update News
-  //End Edit News - All Record
-
-
+  
   //Start Edit News Record
   $("body").delegate("#edit_news", "click", function(){
     let table = $('#dataTable').DataTable();
@@ -557,6 +490,7 @@
       let table = $('#dataTable').DataTable();
       let data = table.row($tr).data();
       let id = data['id'];
+      let id_topic = $(`#editModalNews #topic_option option:selected`).val();
       let tag = $("#editModalNews").find("#update_tag").val();
       let caption = $("#editModalNews").find("#update_caption").val();
       let subtitle = $("#editModalNews").find("#update_subtitle").val();
@@ -566,6 +500,7 @@
         method: "PUT",
         data: {
           id: id,
+          id_topic: id_topic,
           tag: tag,
           caption: caption,
           subtitle: subtitle
