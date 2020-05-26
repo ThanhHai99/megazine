@@ -11,12 +11,11 @@
       };
 
       var data = table.row($tr).data();
-      // console.log(data);
+      console.log(data);
       $("#editModalEmployee-all #id").val(data['id']);
-      // let role = $("#editModalEmployee-all #update_name").val(data['id_role']);
-      $("#editModalEmployee-all #update_role option").val(data['id_role']).attr('selected',true);
-      $("#editModalEmployee-all #update_name").val(data['name']);
-      $("#editModalEmployee-all #update_email").val(data['email']);
+      $(`#editModalEmployee-all #update_role-all option[name=`+ data['id_role'] +`]`).attr('selected', 'selected');
+      $("#editModalEmployee-all #update_name-all").val(data['name']);
+      $("#editModalEmployee-all #update_email-all").val(data['email']);
       $("#editModalEmployee-all").modal('show');
     });
       //Click button update employee

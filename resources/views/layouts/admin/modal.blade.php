@@ -15,21 +15,21 @@
         <div class="form-group">
           <label>Role</label>
           <!-- <input type="text" name="id_topic" id="insert_topic_all" class="form-control" placeholder="Topic"> -->
-          <select class="form-control" id="update_role">
+          <select class="form-control" id="update_role-all">
             @foreach($roles as $role)
-              <option value="{{ $role->id }}">{{ $role->name }}</option>
+              <option value="{{ $role->id }}" name="{{ $role->name }}">{{ $role->name }}</option>
             @endforeach              
           </select>
         </div>
 
         <div class="form-group">
           <label>Name</label>
-          <input type="text" name="name" id="update_name" class="form-control" placeholder="Name">
+          <input type="text" name="name" id="update_name-all" class="form-control" placeholder="Name">
         </div>
 
         <div class="form-group">
           <label>Email</label>
-          <input type="text" name="email" id="update_email" class="form-control" placeholder="Email">
+          <input type="text" name="email" id="update_email-all" class="form-control" placeholder="Email">
         </div>
       </div>
         

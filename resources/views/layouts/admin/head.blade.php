@@ -29,7 +29,7 @@
 <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
 
 <!-- Newest -->
-<script src="{{asset('js/app.js')}}"></script>
+<!-- <script src="{{asset('js/app.js')}}"></script> -->
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"> 
 
 <!-- alertify CSS -->
