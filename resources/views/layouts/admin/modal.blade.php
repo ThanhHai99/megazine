@@ -100,16 +100,14 @@
       </div>
 
       <div class="modal-body">
-
-
         <div class="form-group">
-            <label>Topic</label>
-            <select class="form-control" id="topic_option" name="id_topic">
-              @foreach($topics as $topic)
-                <option value="{{ $topic->id }}">{{ $topic->name }}</option>
-              @endforeach              
-            </select>
-          </div>
+          <label>Topic</label>
+          <select class="form-control" id="topic_option" name="id_topic">
+            @foreach($topics as $topic)
+              <option value="{{ $topic->id }}">{{ $topic->name }}</option>
+            @endforeach              
+          </select>
+        </div>
 
         <div class="form-group">
           <label>Tag</label>
