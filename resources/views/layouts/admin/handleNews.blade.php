@@ -482,6 +482,9 @@
     $("#editModalNews").find("#update_tag").val(data['tag']);
     $("#editModalNews").find("#update_caption").val(data['caption']);
     $("#editModalNews").find("#update_subtitle").val(data['subtitle']);
+
+    $("meta[name=type-save]").attr("value", $(`#editModalNews #topic_option option:selected`).val());
+    
     $("#editModalNews").modal('show');
   });
     //Click button update News
@@ -507,7 +510,9 @@
         },
         success: function(response) {
           if (response.error == false) {
-            alert(response.id_topic);
+            if ($("meta[name=type-save]").attr("value") != response.id_topic) {
+              alert("co thay doi topic.");
+            }
             $("#editModalNews").modal('hide');
             alertify.notify('Update successfully', 'success', 3);
 
