@@ -317,6 +317,7 @@ class AdminController extends Controller
       return response()->json([
           'error' => false,
           'id' => $tmp->id,
+          'id_topic' => $tmp->id_topic,
           'tag' => $tmp->tag,
           'caption' => $tmp->caption,
           'subtitle' => $tmp->subtitle

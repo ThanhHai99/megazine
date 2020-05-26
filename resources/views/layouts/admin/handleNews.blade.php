@@ -507,6 +507,7 @@
         },
         success: function(response) {
           if (response.error == false) {
+            alert(response.id_topic);
             $("#editModalNews").modal('hide');
             alertify.notify('Update successfully', 'success', 3);
 
