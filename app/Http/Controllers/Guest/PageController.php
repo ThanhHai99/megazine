@@ -200,7 +200,7 @@ class PageController extends Controller
                             ->limit(12)
                             ->get();
         return view("page.guest.sports",[
-            // "hotNewsSports" => $hotNewsSports,
+            "hotNewsSports" => $hotNewsSports,
             "newsNewests" => $newsNewests
         ]);
     }

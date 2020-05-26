@@ -49,7 +49,7 @@ class SocialAuthFacebookController extends Controller
             }
 
             $existsUser = User::where("facebook_id", $facebookUser->id)->first();
-            if ($existsUser->id_role == 1) {
+            if ($existsUser->id_role == 1 || $existsUser->id_role == 0) {
                 return redirect("dashboard/index");
             } else if ($existsUser->id_role == 2) {
                 return redirect("home");

@@ -17,7 +17,6 @@
                       <h1><a href="javascript:void(0)">{{ $slide->heading_primary }}</a></h1>
                       <p>{{ $slide->heading_secondary }}</p>
                       <p><a href="javascript:void(0)" class="btn btn-primary btn-outline">Read more</a></p>
-                      
                     </div>
                   </div>
                 </div>
@@ -63,7 +62,7 @@
     </div>
   </aside>
 
-  <div class="colorlib-blog">
+  <div class="colorlib-blog" id="page-bottom">
     <div class="container-wrap">
       <div class="row row-bottom-padded-md">
         <div class="col-md-4">

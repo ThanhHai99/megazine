@@ -41,12 +41,12 @@
 
 			<div class="col-md-3 sticky-parent">
 					<div class="sidebar" id="sticky_item">
-						<div class="side animate-box">
+						<!-- <div class="side animate-box">
 							<div class="form-group">
 								<input type="text" class="form-control" id="search" placeholder="Enter to search...">
 								<button type="submit" class="btn submit btn-primary"><i class="icon-search3"></i></button>
 							</div>
-						</div>
+						</div> -->
 						<!-- <div class="side animate-box">
 							<h2 class="sidebar-heading">Categories</h2>
 							<p>
