@@ -101,6 +101,16 @@
 
       <div class="modal-body">
 
+
+        <div class="form-group">
+            <label>Topic</label>
+            <select class="form-control" id="topic_option" name="id_topic">
+              @foreach($topics as $topic)
+                <option value="{{ $topic->id }}">{{ $topic->name }}</option>
+              @endforeach              
+            </select>
+          </div>
+
         <div class="form-group">
           <label>Tag</label>
           <input type="text" name="tag" id="update_tag" class="form-control" placeholder="Tag">
@@ -191,7 +201,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create News</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Create News - All</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -200,7 +210,7 @@
       <form id="form-insert-news_all" method="PUT" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="modal-body">
-          <input type="hidden" name="topic" value="ok">
+          <!-- <input type="hidden" name="topic" value="ok"> -->
           <div class="form-group">
             <label>Topic</label>
             <select class="form-control" id="topic_option" name="id_topic">
