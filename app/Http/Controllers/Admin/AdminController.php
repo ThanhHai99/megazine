@@ -41,11 +41,11 @@ class AdminController extends Controller
   }
 
   public function getIndex(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
         return view('auth.login');
@@ -59,11 +59,11 @@ class AdminController extends Controller
   }
 
   public function getEmployeeAll(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
         return view('auth.login');
@@ -77,13 +77,33 @@ class AdminController extends Controller
       ->make(true);
     };
   }
-  
-  public function getEmployeeStaff(Request $request) {
-    if(Auth::user()->id_role != 1) {
+
+  public function getEmployeeAdmin(Request $request) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
+      if (!Auth::check()) {
+        Auth::logout();
+        return view('auth.login');
+        exit();
+      }
+  
+      $query=User::where('id_role', 0);
+      return Datatables::of($query)
+      ->setRowAttr(['align'=>'center'])
+      // ->make(true);
+      ->toJson();
+    };
+  }
+  
+  public function getEmployeeStaff(Request $request) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
+      return redirect("/home")->with("notAdmin", "You are not admin.");
+    }
+
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
         return view('auth.login');
@@ -99,11 +119,11 @@ class AdminController extends Controller
   }
 
   public function getEmployeeNormalUser(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
         return view('auth.login');
@@ -116,11 +136,11 @@ class AdminController extends Controller
   }
 
   public function getNewsAll(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
         return view('auth.login');
@@ -138,11 +158,11 @@ class AdminController extends Controller
   }
 
   public function getNewsStyle(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
         return view('auth.login');
@@ -158,11 +178,11 @@ class AdminController extends Controller
   } 
 
   public function getNewsFashion(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
         return view('auth.login');
@@ -178,11 +198,11 @@ class AdminController extends Controller
   }
 
   public function getNewsTravel(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
         return view('auth.login');
@@ -198,11 +218,11 @@ class AdminController extends Controller
   }
 
   public function getNewsSports(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
         return view('auth.login');
@@ -218,11 +238,11 @@ class AdminController extends Controller
   }
 
   public function getNewsVideo(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
         return view('auth.login');
@@ -238,11 +258,11 @@ class AdminController extends Controller
   }
   
   public function getTopic(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
         return view('auth.login');
@@ -255,11 +275,11 @@ class AdminController extends Controller
   }
 
   public function getSlideAll(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
 
       if (!Auth::check()) {
         Auth::logout();
@@ -273,11 +293,11 @@ class AdminController extends Controller
   }
 
   public function newsUpdate(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'tag' => 'required',
         'caption' => 'required',
@@ -304,11 +324,11 @@ class AdminController extends Controller
   }  
 
   public function newsUpdateImageNews(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
 
       $input = $request->all();
       $tmp = News::find($input['id_news_hide']);    
@@ -338,11 +358,11 @@ class AdminController extends Controller
   }
 
   public function newsUpdateImageVideo(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $input = $request->all();
       $tmp = Video::find($input['id_video_hide']);    
       
@@ -369,11 +389,11 @@ class AdminController extends Controller
   }
 
   public function newsInsert_all(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id_topic' => 'required',
         'hot_news' => 'required',
@@ -413,11 +433,11 @@ class AdminController extends Controller
   }
 
   public function newsInsert(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id_topic' => 'required',
         'hot_news' => 'required',
@@ -457,11 +477,11 @@ class AdminController extends Controller
   }  
 
   public function newsRemove(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $input = $request->all();
       News::where('id', $input['id'])->delete();
       return response()->json([
@@ -473,11 +493,11 @@ class AdminController extends Controller
   }
 
   public function employeeUpdate(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'name' => 'required',
         'email' => 'required'
@@ -499,11 +519,11 @@ class AdminController extends Controller
 
   
   public function employeeRemove(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $input = $request->all();
       User::where('id', $input['id'])->delete();
       return response()->json([
@@ -514,11 +534,11 @@ class AdminController extends Controller
   }
 
   public function employeeUpdateStatusYes(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
       ]);
@@ -536,11 +556,11 @@ class AdminController extends Controller
   }
 
   public function employeeUpdateStatusNo(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
       ]);
@@ -559,11 +579,11 @@ class AdminController extends Controller
 
 
   public function getTopicStyle(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $datas = News::select('id', 'id_creator', 'hot_news', 'image', 'tag', 'caption', 'subtitle', 'created_at', 'updated_at')->where("id_topic", 1)->get();
       return view('page.admin._news',[
         'topic'  => 'Style',
@@ -574,11 +594,11 @@ class AdminController extends Controller
   }
 
   public function getTopicFashion(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $datas = News::where("id_topic", 2)->get();
       return view('page.admin._news',[
         'topic'  => 'Fashion',
@@ -591,11 +611,11 @@ class AdminController extends Controller
   }
 
   public function getTopicTravel(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $datas = News::where("id_topic", 3)->get();
       return view('page.admin._news',[
         'topic'  => 'Travel',
@@ -606,11 +626,11 @@ class AdminController extends Controller
   }
 
   public function getTopicSports(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $datas = News::where("id_topic", 4)->get();
       return view('page.admin._news',[
         'topic'  => 'Sports',
@@ -623,11 +643,11 @@ class AdminController extends Controller
   }
 
   public function getTopicVideo(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $datas = News::where("id_topic", 5)->get();
       return view('page.admin._news',[
         'topic'  => 'Video',
@@ -638,11 +658,11 @@ class AdminController extends Controller
   }
 
   public function getTopicArchives(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $datas = News::where("id_topic", 6)->get();
       return view('page.admin._news',[
         'topic'  => 'Archives',
@@ -652,11 +672,11 @@ class AdminController extends Controller
   }
 
   public function getEmpoyeeStaff(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $datas = User::where("id_role", 1)->get();
       return view('page.admin._employee',[
         'text'  => 'Staff',
@@ -669,11 +689,11 @@ class AdminController extends Controller
   }
 
   public function getNormalUser(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $datas = User::where("id_role", 2)->get();
       return view('page.admin._employee',[
         'text'  => 'Normal Users',
@@ -684,11 +704,11 @@ class AdminController extends Controller
   }
 
   public function updateTopic(Request $request, $id) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
 
       
       // $this->validate($request, [
@@ -710,11 +730,11 @@ class AdminController extends Controller
   }
 
   public function newsUpdateHotNewsYes(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
       ]);
@@ -733,11 +753,11 @@ class AdminController extends Controller
   }
 
   public function newsUpdateHotNewsNo(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
       ]);
@@ -757,11 +777,11 @@ class AdminController extends Controller
   }
 
   public function newsUpdateHotVideoYes(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
       ]);
@@ -781,11 +801,11 @@ class AdminController extends Controller
   }
 
   public function newsUpdateHotVideoNo(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
       ]);
@@ -805,11 +825,11 @@ class AdminController extends Controller
   }
   
   public function newsUpdateStatusNewsYes(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
       ]);
@@ -829,11 +849,11 @@ class AdminController extends Controller
   }
 
   public function newsUpdateStatusNewsNo(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
       ]);
@@ -853,11 +873,11 @@ class AdminController extends Controller
   }
 
   public function newsUpdateStatusVideoYes(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
       ]);
@@ -877,11 +897,11 @@ class AdminController extends Controller
   }
 
   public function newsUpdateStatusVideoNo(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
       ]);
@@ -901,7 +921,7 @@ class AdminController extends Controller
   }
 
   public function deleteTopic(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
@@ -909,11 +929,11 @@ class AdminController extends Controller
   }
 
   public function slideUpdate(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'heading_primary' => 'required',
         'heading_secondary' => 'required'
@@ -935,11 +955,11 @@ class AdminController extends Controller
   }
 
   public function slideUpdateImage(Request $request) {
-    if(Auth::user()->id_role != 1) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
-    if(Auth::user()->id_role == 1) {
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $input = $request->all();
       $tmp = Slide::find($input['id_slide_hide']);
       $file = $request->file('image_slide');

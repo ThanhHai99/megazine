@@ -43,6 +43,10 @@
     loadEmployeeAll();
   });
 
+  $("#employee-admin").on("click", function() {
+    loadEmployeeAdmin();
+  });
+
   $("#employee-staff").on("click", function() {
     loadEmployeeStaff();
   });

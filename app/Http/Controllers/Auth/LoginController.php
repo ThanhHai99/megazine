@@ -46,7 +46,7 @@ class LoginController extends Controller
             session(['userid' => $user->id]);
         }
 
-        if ($user->id_role == 1) {
+        if ($user->id_role == 1 || $user->id_role == 0) {
             User::where("id", $user->id)
                   ->update(['remember_token' => Str::random(100)]);                        
 

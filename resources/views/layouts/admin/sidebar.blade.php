@@ -12,30 +12,27 @@
   <!-- Divider -->
   <hr class="sidebar-divider my-0">
 
-  <!-- Nav Item - Dashboard -->
-  <!-- <li class="nav-item active">
-    <a class="nav-link" href="dashboard/index">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Dashboard</span></a>
-  </li> -->
-
   <!-- Divider -->
   <hr class="sidebar-divider">
-  
-  <li class="nav-item">
-    <!-- <a click="index" class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#collapseEmployees" aria-expanded="true" aria-controls="collapseEmployees"> -->
-    <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-      <i class="fas fa-fw fa-folder"></i>
-      <span>Employees Manager</span>
-    </a>
-    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <a id="employee-all" class="collapse-item" href="javascript:void(0)">All</a>
-        <a id="employee-staff" class="collapse-item" href="javascript:void(0)">Staff</a>
-        <a id="employee-normal_user" class="collapse-item" href="javascript:void(0)">Normal Users</a>
-      </div>
-    </div>
-  </li> 
+  <?php if (session('id_role') == '1') { ?>
+
+  <?php } else if (session('id_role') == '0') { ?>
+            <li class="nav-item">
+              <!-- <a click="index" class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#collapseEmployees" aria-expanded="true" aria-controls="collapseEmployees"> -->
+              <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Employees Manager</span>
+              </a>
+              <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <a id="employee-all" class="collapse-item" href="javascript:void(0)">All</a>
+                  <a id="employee-admin" class="collapse-item" href="javascript:void(0)">Admin</a>
+                  <a id="employee-staff" class="collapse-item" href="javascript:void(0)">Staff</a>
+                  <a id="employee-normal_user" class="collapse-item" href="javascript:void(0)">Normal Users</a>
+                </div>
+              </div>
+            </li>
+  <?php }?>
   
   <li class="nav-item">
     <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#collapseNews" aria-expanded="true" aria-controls="collapseNews">

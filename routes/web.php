@@ -145,6 +145,11 @@ Route::group(["namespace" => "Admin"], function() {
             "uses" => "AdminController@getEmployeeAll"
         ]);
 
+        Route::get("employee/admin", [
+            "as" => "employee.admin",
+            "uses" => "AdminController@getEmployeeAdmin"
+        ]);
+
         Route::get("employee/staff", [
             "as" => "employee.staff",
             "uses" => "AdminController@getEmployeeStaff"
