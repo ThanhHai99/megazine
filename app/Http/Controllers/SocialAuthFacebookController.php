@@ -32,12 +32,25 @@ class SocialAuthFacebookController extends Controller
             }
 
             if ($existsUser) {
+                $infos = $existsUser->toArray();
+                $infos_keys = array_keys($infos);
+                $infos_values = array_values($infos);
+                for ($i=0; $i < count($infos); $i++) { 
+                    session([ $infos_keys[$i] => $infos_values[$i] ]);
+                }
                 Auth::loginUsingId($existsUser->id);
             } else {
                 $user = new User;
                 $user->name = $facebookUser->name;
                 $user->facebook_id = $facebookUser->id;
                 $user->save();
+
+                $infos = $user->toArray();
+                $infos_keys = array_keys($infos);
+                $infos_values = array_values($infos);
+                for ($i=0; $i < count($infos); $i++) { 
+                    session([ $infos_keys[$i] => $infos_values[$i] ]);
+                }
                 Auth::loginUsingId($user->id);
             }
         } catch (\Throwable $th) {
