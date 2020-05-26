@@ -48,7 +48,7 @@
             table.row( this ).data( d ).draw();
           },
           error: function(error) {
-            if (error.responseText.error = "Unauthenticated.") {
+            if (error.responseText.error == "Unauthenticated.") {
               location.reload(true);
             }
             alertify.notify('An error occurred', 'error', 3);
@@ -105,7 +105,7 @@
             table.row( this ).data( d ).draw();
           },
           error: function(error) {
-            if (error.responseText.error = "Unauthenticated.") {
+            if (error.responseText.error == "Unauthenticated.") {
               location.reload(true);
             }
             alertify.notify('An error occurred', 'error', 3);
@@ -153,7 +153,7 @@
               }
             },
             error: function(error) {
-              if (error.responseText.error = "Unauthenticated.") {
+              if (error.responseText.error == "Unauthenticated.") {
                 location.reload(true);
               }
               Swal.fire({
@@ -198,7 +198,7 @@
         }
       },
       error: function(error) {
-        if (error.responseText.error = "Unauthenticated.") {
+        if (error.responseText.error == "Unauthenticated.") {
           location.reload(true);
         }
         alertify.notify('An error occurred', 'error', 3);
@@ -234,7 +234,7 @@
         }
       },
       error: function(error) {
-        if (error.responseText.error = "Unauthenticated.") {
+        if (error.responseText.error == "Unauthenticated.") {
           location.reload(true);
         }
         alertify.notify('An error occurred', 'error', 3);
@@ -273,10 +273,16 @@
         }
       },
       error: function(error) {
-        if (error.responseText.error = "Unauthenticated.") {
+        if (error.responseJSON.admin == true) {
+          alertify.notify('This is super user', 'error', 3);
+          return;
+        }
+
+        if (error.responseText.error == "Unauthenticated.") {
           location.reload(true);
         }
         alertify.notify('An error occurred', 'error', 3);
+         
       }
     });
     //End click button update hot new yes
@@ -309,7 +315,7 @@
         }
       },
       error: function(error) {
-        if (error.responseText.error = "Unauthenticated.") {
+        if (error.responseText.error == "Unauthenticated.") {
           location.reload(true);
         }
         alertify.notify('An error occurred', 'error', 3);

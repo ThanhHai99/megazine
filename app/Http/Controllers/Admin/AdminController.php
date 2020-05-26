@@ -546,6 +546,13 @@ class AdminController extends Controller
       $input = $request->all();
       $tmp = User::find($input['id']);
       $tmp->id_status = 1;
+      if ($tmp->id_role == 0) {
+        return response()->json([
+          'error' => true,
+          'admin' => true
+      ], 400);
+        exit();
+      }
       $tmp->save();
   
       return response()->json([
@@ -568,6 +575,13 @@ class AdminController extends Controller
       $input = $request->all();
       $tmp = User::find($input['id']);
       $tmp->id_status = 0;
+      if ($tmp->id_role == 0) {
+        return response()->json([
+          'error' => true,
+          'admin' => true
+      ], 400);
+        exit();
+      }
       $tmp->save();
   
       return response()->json([
