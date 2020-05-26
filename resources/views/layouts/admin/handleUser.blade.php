@@ -13,13 +13,14 @@
       var data = table.row($tr).data();
       console.log(data);
       $("#editModalEmployee-all #id").val(data['id']);
+      $(`#editModalEmployee-all #update_role-all option:selected`).removeAttr("selected");
       $(`#editModalEmployee-all #update_role-all option[name=`+ data['id_role'] +`]`).attr('selected', 'selected');
       $("#editModalEmployee-all #update_name-all").val(data['name']);
       $("#editModalEmployee-all #update_email-all").val(data['email']);
       $("#editModalEmployee-all").modal('show');
     });
       //Click button update employee
-      $("button.update_employee").click(function(event) {
+      $("button.update_employee-all").click(function(event) {
         event.preventDefault();
         let table = $('#dataTable').DataTable();
         $tr = $(this).closest('tr');
@@ -27,21 +28,24 @@
           $tr = $tr.prev('.parent');
         };
 
-        let id = $("#editModalEmployee").find("#id").val();
-        let name = $("#editModalEmployee").find("#update_name").val();
-        let email = $("#editModalEmployee").find("#update_email").val();
+        let id = $("#editModalEmployee-all").find("#id").val();
+        let id_role = $(`#editModalEmployee-all #update_role-all option:selected`).val();
+        alert(id_role);
+        let name = $("#editModalEmployee-all").find("#update_name-all").val();
+        let email = $("#editModalEmployee-all").find("#update_email-all").val();
         
         $.ajax({
-          url: `{{route('employee.update')}}`,
+          url: `{{route('employee.update_all')}}`, 
           method: "PUT",
           data: {
             id: id,
+            id_role: id_role,
             name: name,
             email: email
           },
           success: function(response) {
             if (response.error == false) {
-              $("#editModalEmployee").modal('hide');
+              $("#editModalEmployee-all").modal('hide');
               alertify.notify('Update successfully', 'success', 3);
             }
             var d = table.row( this ).data();     

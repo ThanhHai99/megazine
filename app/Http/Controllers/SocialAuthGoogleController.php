@@ -28,6 +28,13 @@ class SocialAuthGoogleController extends Controller
                                 ->first();
             // dd($existsUser);
             if ($existsUser) {
+                $infos = $existsUser->toArray();
+                // dd($infos);
+                $infos_keys = array_keys($infos);
+                $infos_values = array_values($infos);
+                for ($i=0; $i < count($infos); $i++) { 
+                    session([ $infos_keys[$i] => $infos_values[$i] ]);
+                }
                 Auth::loginUsingId($existsUser->id);
             } else {
                 $user = new User;

@@ -40,7 +40,7 @@
           table.row( this ).data( d ).draw();
         },
         error: function(error) {
-          if (error.responseText.error = "Unauthenticated.") {
+          if (error.responseText.error == "Unauthenticated.") {
             location.reload(true);
           }
           alertify.notify('An error occurred', 'error', 3);
@@ -95,7 +95,7 @@
               table.row( this ).data( d ).draw();
             },
             error: function(error) {
-              if (error.responseText.error = "Unauthenticated.") {
+              if (error.responseText.error == "Unauthenticated.") {
                 location.reload(true);
               }
               alertify.notify('An error occurred', 'error', 3);

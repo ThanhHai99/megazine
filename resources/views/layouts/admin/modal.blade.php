@@ -15,7 +15,7 @@
         <div class="form-group">
           <label>Role</label>
           <!-- <input type="text" name="id_topic" id="insert_topic_all" class="form-control" placeholder="Topic"> -->
-          <select class="form-control" id="update_role-all">
+          <select class="form-control" id="update_role-all" name="employee-role">
             @foreach($roles as $role)
               <option value="{{ $role->id }}" name="{{ $role->name }}">{{ $role->name }}</option>
             @endforeach              
@@ -35,7 +35,7 @@
         
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary update_employee">Update data</button>
+        <button type="submit" class="btn btn-primary update_employee-all">Update data</button>
       </div>
 
     </div>
@@ -191,11 +191,10 @@
       <form id="form-insert-news_all" method="PUT" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="modal-body">
-
+          <input type="hidden" name="topic" value="ok">
           <div class="form-group">
             <label>Topic</label>
-            <!-- <input type="text" name="id_topic" id="insert_topic_all" class="form-control" placeholder="Topic"> -->
-            <select class="form-control" id="topic_option">
+            <select class="form-control" id="topic_option" name="id_topic">
               @foreach($topics as $topic)
                 <option value="{{ $topic->id }}">{{ $topic->name }}</option>
               @endforeach              
@@ -229,10 +228,6 @@
 
           <div class="form-group">
             <input type="hidden" name="id_creator" value="">
-          </div>
-
-          <div class="form-group">
-            <input type="hidden" name="id_topic" value="">
           </div>
 
         </div>

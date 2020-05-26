@@ -35,9 +35,13 @@
   
 
   <script>
-  $( window ).on("load", function() {
-    loadEmployeeAll_onLoad();
-  });
+  <?php if (session('id_role') == 0) { ?>
+          loadEmployeeAll_onLoad();
+  <?php } ?>
+
+  <?php if (session('id_role') == 1) { ?>
+          loadNewsAll_onLoad();
+  <?php } ?>
 
   $("#employee-all").on("click", function() {
     loadEmployeeAll();

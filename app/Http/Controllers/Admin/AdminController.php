@@ -35,7 +35,8 @@ class AdminController extends Controller
     return view('auth.login');
   }
 
-  public function getLogout() {
+  public function getLogout(Request $request) {
+    $request->session()->flush();
     Auth::logout();
     return redirect("/login");
   }
@@ -404,7 +405,8 @@ class AdminController extends Controller
       ]);
       
       $input = $request->all();
-      
+      // dd($input);
+
       $tmp = new News;
   
       if ($request->hasFile('image')) {
@@ -415,8 +417,9 @@ class AdminController extends Controller
         $tmp->image = $filename;
       }
   
+      
       $tmp->id_topic = $input['id_topic'];
-      $tmp->id_creator = session('userid');
+      $tmp->id_creator = session('id');
       $tmp->hot_news = $input['hot_news'];
       $tmp->tag = $input['tag'];
       $tmp->caption = $input['caption'];
@@ -487,6 +490,35 @@ class AdminController extends Controller
       return response()->json([
         'error' => false,
         // 'id'  => id,
+      ], 200);
+
+    };
+  }
+
+  public function employeeUpdateAll(Request $request) {
+    if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
+      return redirect("/home")->with("notAdmin", "You are not admin.");
+    }
+
+    if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
+      $this->validate($request, [
+        'id' => 'required',
+        'id_role' => 'required',
+        'name' => 'required',
+        'email' => 'required'
+      ]);
+  
+      $input = $request->all();
+      // dd($input);
+      $tmp = User::find($input['id']);
+      $tmp->id_role = $input['id_role'];
+      $tmp->name = $input['name'];
+      $tmp->email = $input['email'];
+      $tmp->save();
+  
+      return response()->json([
+          'error' => false,
+          // 'imput'  => $input,
       ], 200);
 
     };

@@ -276,6 +276,11 @@ Route::group(["namespace" => "Admin"], function() {
         });
 
         Route::group(["prefix" => "employee"], function () {
+            Route::put("update_all", [
+                "as" => "employee.update_all",
+                "uses" => "AdminController@employeeUpdateAll"
+            ]);
+
             Route::put("update", [
                 "as" => "employee.update",
                 "uses" => "AdminController@employeeUpdate"
