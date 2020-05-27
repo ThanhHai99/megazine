@@ -79,14 +79,14 @@
     loadNewsSports();
   });
   
-  $("#topic-video").on("click", function() {
-    loadNewsVideo();
-  });
 
   $("#topic-archives").on("click", function() {
     loadNewsArchives();
   });
 
+  $("#video").on("click", function() {
+    loadVideo();
+  });
   $("#slide").on("click", function() {
     loadSlide();
   });  

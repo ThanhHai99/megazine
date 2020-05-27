@@ -238,7 +238,27 @@ class AdminController extends Controller
     };
   }
 
-  public function getNewsVideo(Request $request) {
+  // public function getNewsVideo(Request $request) {
+  //   if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
+  //     return redirect("/home")->with("notAdmin", "You are not admin.");
+  //   }
+
+  //   if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
+  //     if (!Auth::check()) {
+  //       Auth::logout();
+  //       return view('auth.login');
+  //       exit();
+  //     }
+  
+  //     $query=Video::join("users", "video.id_creator", "=", "users.id")
+  //                   ->join("topic", "video.id_topic", "=", "topic.id")
+  //                   ->select("video.id", "topic.name as id_topic", "users.name as id_creator", "video.hot_news", "video.id_status", "video.image", "video.tag", "video.caption", "video.subtitle");
+  //     return Datatables::of($query)->make(true);
+
+  //   };
+  // }
+
+  public function getVideoAll(Request $request) {
     if(Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }

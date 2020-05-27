@@ -367,7 +367,7 @@ let loadNewsSports = () => {
   });
 };
 
-let loadNewsVideo = () => {
+let loadVideo = () => {
   $('meta[name=type-news]').attr('content', '5');
   $('input[name=id_topic]').attr('value', 5);
   var table = $("#dataTable").DataTable();
@@ -378,7 +378,7 @@ let loadNewsVideo = () => {
       processing: true,
       serverSide: true,
       ajax: {
-        url: "{!! route("news.video") !!}",
+        url: "{!! route("video.all") !!}",
         error: function(error) {
           location.reload(true);
         }

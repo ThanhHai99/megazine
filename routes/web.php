@@ -185,10 +185,10 @@ Route::group(["namespace" => "Admin"], function() {
             "uses" => "AdminController@getNewsSports"
         ]);
 
-        Route::get("news/video", [
-            "as" => "news.video",
-            "uses" => "AdminController@getNewsVideo"
-        ]);
+        // Route::get("news/video", [
+        //     "as" => "news.video",
+        //     "uses" => "AdminController@getNewsVideo"
+        // ]);
 
         Route::get("news/archives", [
             "as" => "news.archives",
@@ -198,6 +198,11 @@ Route::group(["namespace" => "Admin"], function() {
         Route::get("slide/all", [
             "as" => "slide.all",
             "uses" => "AdminController@getSlideAll"
+        ]);
+
+        Route::get("video/all", [
+            "as" => "video.all",
+            "uses" => "AdminController@getVideoAll"
         ]);
 
         // End get
@@ -303,7 +308,7 @@ Route::group(["namespace" => "Admin"], function() {
 
         });
 
-        Route::group(["prefix" => "slide"], function () {
+        Route::group(["prefix" => "video"], function () {
             Route::post("update", [
                 "as" => "slide.update",
                 "uses" => "AdminController@slideUpdate"
@@ -313,6 +318,18 @@ Route::group(["namespace" => "Admin"], function() {
                 "as" => "slide.update_image",
                 "uses" => "AdminController@slideUpdateImage"
             ]);
+        });
+
+        Route::group(["prefix" => "slide"], function () {
+            // Route::post("update", [
+            //     "as" => "slide.update",
+            //     "uses" => "AdminController@slideUpdate"
+            // ]);
+
+            // Route::post("update_image", [
+            //     "as" => "slide.update_image",
+            //     "uses" => "AdminController@slideUpdateImage"
+            // ]);
         });
 
 
