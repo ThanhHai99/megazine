@@ -35,11 +35,11 @@
   
 
   <script>
-  <?php if (session('id_role') == 0) { ?>
+  <?php if (session('id_role') == 0 || session('id_role') == 1) { ?>
           loadEmployeeAll_onLoad();
   <?php } ?>
 
-  <?php if (session('id_role') == 1) { ?>
+  <?php if (session('id_role') == 2) { ?>
           loadNewsAll_onLoad();
   <?php } ?>
 

@@ -81,6 +81,9 @@
   @include("layouts.admin.newsFeature")
   @include("layouts.admin.handleNews")
 
+  @include("layouts.admin.videoFeature")
+  @include("layouts.admin.handleVideo")
+
   @stack('script-table')
 </body>
 </html>

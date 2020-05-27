@@ -55,9 +55,9 @@ class SocialAuthGoogleController extends Controller
             }
             
             $existsUser = User::where("google_id", $googleUser->id)->first();
-            if ($existsUser->id_role == 1 || $existsUser->id_role == 0) {
+            if ($existsUser->id_role == 2 || $existsUser->id_role == 1 || $existsUser->id_role == 0) {
                 return redirect("dashboard/index");
-            } else if ($existsUser->id_role == 2) {
+            } else if ($existsUser->id_role == 3) {
                 return redirect("home");
             }
 

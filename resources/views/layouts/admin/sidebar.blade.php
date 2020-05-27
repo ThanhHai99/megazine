@@ -14,9 +14,9 @@
 
   <!-- Divider -->
   <hr class="sidebar-divider">
-  <?php if (session('id_role') == '1') { ?>
+  <?php if (session('id_role') == '2') { ?>
 
-  <?php } else if (session('id_role') == '0') { ?>
+  <?php } else if ( session('id_role') == '0' || session('id_role') == '1' ) { ?>
             <li class="nav-item">
               <!-- <a click="index" class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#collapseEmployees" aria-expanded="true" aria-controls="collapseEmployees"> -->
               <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
