@@ -33,7 +33,7 @@
           <div class="blog-entry animate-box">
             <div class="blog-img" style="background-image: url(images/{{$news[0]->image}});">
               <div class="desc text-center">
-                <p class="tag"><span>{{$news[0]->tag}}</span></p>
+                <p class="tag"><span>#{{$news[0]->tag}}</span></p>
                 <h2 class="head-article"><a href="single/{{$news[0]->id}}">{{$news[0]->caption}}</a></h2>
                 <p>{{$news[0]->subtitle}}</p>
               </div>
@@ -47,7 +47,7 @@
                   <div class="blog-entry animate-box">
                     <div class="blog-img blog-img2" style="background-image: url(images/{{$news[$i]->image}});">
                       <div class="desc text-center">
-                        <p class="tag"><span>{{$news[$i]->tag}}</span></p>
+                        <p class="tag"><span>#{{$news[$i]->tag}}</span></p>
                         <h2 class="head-article"><a href="single/{{$news[$i]->id}}">{{$news[$i]->caption}}</a></h2>
                         <p>{{$news[$i]->subtitle}} {{$i}}</p>
                       </div>
@@ -59,7 +59,7 @@
                 <div class="blog-entry animate-box">
                   <div class="blog-img blog-img2" style="background-image: url(images/{{$news[3]->image}});">
                     <div class="desc text-center">
-                      <p class="tag"><span>{{$news[3]->tag}}</span></p>
+                      <p class="tag"><span>#{{$news[3]->tag}}</span></p>
                       <h2 class="head-article"><a href="single{{$news[3]->id}}">{{$news[3]->caption}}</a></h2>
                       <p>{{$news[3]->subtitle}}</p>
                     </div>
@@ -73,7 +73,7 @@
               <div class="blog-entry animate-box">
                 <div class="blog-img" style="background-image: url(images/{{$news[$i]->image}});">
                   <div class="desc text-center">
-                    <p class="tag"><span>{{$news[$i]->tag}}</span></p>
+                    <p class="tag"><span>#{{$news[$i]->tag}}</span></p>
                     <h2 class="head-article"><a href="single/{{$news[$i]->id}}">{{$news[$i]->caption}}</a></h2>
                     <p>{{$news[$i]->subtitle}}</p>
                   </div>
@@ -85,7 +85,7 @@
             <div class="blog-entry animate-box">
               <div class="blog-img" style="background-image: url(images/{{$news[7]->image}});">
                 <div class="desc text-center">
-                  <p class="tag"><span>{{$news[7]->tag}}</span></p>
+                  <p class="tag"><span>#{{$news[7]->tag}}</span></p>
                   <h2 class="head-article"><a href="single/{{$news[7]->id}}">{{$news[7]->caption}}</a></h2>
                   <p>{{$news[7]->subtitle}}</p>
                 </div>
@@ -99,7 +99,7 @@
                   <div class="blog-entry animate-box">
                     <div class="blog-img blog-img2" style="background-image: url(images/{{$news[$i]->image}});">
                       <div class="desc text-center">
-                        <p class="tag"><span>{{$news[$i]->tag}}</span></p>
+                        <p class="tag"><span>#{{$news[$i]->tag}}</span></p>
                         <h2 class="head-article"><a href="single/{{$news[$i]->id}}">{{$news[$i]->caption}}</a></h2>
                         <p>{{$news[$i]->subtitle}}</p>
                       </div>
@@ -116,7 +116,7 @@
                   <div class="blog-entry animate-box">
                     <div class="blog-img blog-img2" style="background-image: url(images/{{$news[$i]->image}});">
                       <div class="desc text-center">
-                        <p class="tag"><span>{{$news[$i]->tag}}</span></p>
+                        <p class="tag"><span>#{{$news[$i]->tag}}</span></p>
                         <h2 class="head-article"><a href="single/{{$news[$i]->id}}">{{$news[$i]->caption}}</a></h2>
                         <p>{{$news[$i]->subtitle}}</p>
                       </div>
@@ -128,7 +128,7 @@
                 <div class="blog-entry animate-box">
                   <div class="blog-img blog-img2" style="background-image: url(images/{{$news[12]->image}});">
                     <div class="desc text-center">
-                      <p class="tag"><span>{{$news[12]->tag}}</span></p>
+                      <p class="tag"><span>#{{$news[12]->tag}}</span></p>
                       <h2 class="head-article"><a href="single/{{$news[12]->id}}">{{$news[12]->caption}}</a></h2>
                       <p>{{$news[12]->subtitle}}</p>
                     </div>
@@ -141,7 +141,7 @@
             <div class="blog-entry animate-box">
               <div class="blog-img" style="background-image: url(images/{{$news[13]->image}});">
                 <div class="desc text-center">
-                  <p class="tag"><span>{{$news[13]->tag}}</span></p>
+                  <p class="tag"><span>#{{$news[13]->tag}}</span></p>
                   <h2 class="head-article"><a href="single/{{$news[13]->id}}">{{$news[13]->caption}}</a></h2>
                   <p>{{$news[13]->subtitle}}</p>
                 </div>

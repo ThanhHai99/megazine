@@ -12,7 +12,7 @@
 							<div class="desc">
 								<div class="meta">
 									<p>
-										<span>{{$newsDetails[0]->tag}}</span>
+										<span>#{{$newsDetails[0]->tag}}</span>
 										<span><?= date('d F Y', strtotime($newsDetails[0]->created_at)); ?></span>
 										<span> {{$newsDetails[0]->name}} </span>
 										<span><a href="javascript:void(0)">999 Comments</a></span>

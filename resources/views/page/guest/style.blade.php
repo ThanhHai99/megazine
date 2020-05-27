@@ -13,7 +13,7 @@
                 <div class="col-md-6 col-md-offset-3 col-md-pull-3 col-xs-12 js-fullheight slider-text">
                   <div class="slider-text-inner">
                     <div class="desc desc2">
-                      <p class="tag"><span>{{ $slide->tag }}</span></p>
+                      <p class="tag"><span>#{{ $slide->tag }}</span></p>
                       <h1><a href="javascript:void(0)">{{ $slide->heading_primary }}</a></h1>
                       <p>{{ $slide->heading_secondary }}</p>
                       <p><a href="javascript:void(0)" class="btn btn-primary btn-outline">Read more</a></p>
@@ -96,7 +96,7 @@
               </div>
               <div class="desc">
                 <p class="meta">
-                  <span class="cat"><a href="javascript:void(0)">{{ $newsStyles[$i]->tag }}</a></span>
+                  <span class="cat"><a href="javascript:void(0)">#{{ $newsStyles[$i]->tag }}</a></span>
                   <span class="date"><?= date('d F Y', strtotime($newsStyles[$i]->created_at)); ?></span>
                   <!-- <span class="pos">By <a href="javascript:void(0)">Walter</a></span> -->
                 </p>
@@ -116,7 +116,7 @@
               </div>
               <div class="desc">
                 <p class="meta">
-                  <span class="cat"><a href="javascript:void(0)">{{ $newsStyles[$i]->tag }}</a></span>
+                  <span class="cat"><a href="javascript:void(0)">#{{ $newsStyles[$i]->tag }}</a></span>
                   <span class="date"><?= date('d F Y', strtotime($newsStyles[$i]->created_at)); ?></span>
                   <!-- <span class="pos">By <a href="javascript:void(0)">Walter</a></span> -->
                 </p>
@@ -138,7 +138,7 @@
             </div>
             <div class="desc">
               <p class="meta">
-                <span class="cat"><a href="javascript:void(0)">{{ $video[0]->tag }}</a></span>
+                <span class="cat"><a href="javascript:void(0)">#{{ $video[0]->tag }}</a></span>
                 <span class="date"><?= date('d F Y', strtotime($video[0]->created_at)); ?></span>
                 <span class="pos">By <a href="javascript:void(0)">Walter</a></span>
               </p>
@@ -154,7 +154,7 @@
               </div>
               <div class="desc">
                 <p class="meta">
-                  <span class="cat"><a href="javascript:void(0)">{{ $newsStyles[5]->tag }}</a></span>
+                  <span class="cat"><a href="javascript:void(0)">#{{ $newsStyles[5]->tag }}</a></span>
                   <span class="date"><?= date('d F Y', strtotime($newsStyles[5]->created_at)); ?></span>
                   <!-- <span class="pos">By <a href="javascript:void(0)">Walter</a></span> -->
                 </p>
@@ -173,7 +173,7 @@
               </div>
               <div class="desc">
                 <p class="meta">
-                  <span class="cat"><a href="javascript:void(0)">{{ $newsStyles[$i]->tag }}</a></span>
+                  <span class="cat"><a href="javascript:void(0)">#{{ $newsStyles[$i]->tag }}</a></span>
                   <span class="date"><?= date('d F Y', strtotime($newsStyles[$i]->created_at)); ?></span>
                   <!-- <span class="pos">By <a href="javascript:void(0)">Walter</a></span> -->
                 </p>
@@ -192,7 +192,7 @@
             </div>
             <div class="desc">
               <p class="meta">
-                <span class="cat"><a href="javascript:void(0)">{{ $newsStyles[9]->tag }}</a></span>
+                <span class="cat"><a href="javascript:void(0)">#{{ $newsStyles[9]->tag }}</a></span>
                 <span class="date"><?= date('d F Y', strtotime($newsStyles[9]->created_at)); ?></span>
                 <!-- <span class="pos">By <a href="javascript:void(0)">Walter</a></span> -->
               </p>
@@ -208,7 +208,7 @@
             </div>
             <div class="desc">
               <p class="meta">
-                <span class="cat"><a href="javascript:void(0)">{{ $newsStyles[10]->tag }}</a></span>
+                <span class="cat"><a href="javascript:void(0)">#{{ $newsStyles[10]->tag }}</a></span>
                 <span class="date"><?= date('d F Y', strtotime($newsStyles[10]->created_at)); ?></span>
                 <!-- <span class="pos">By <a href="javascript:void(0)">Walter</a></span> -->
               </p>

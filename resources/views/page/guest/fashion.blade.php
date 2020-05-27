@@ -12,7 +12,7 @@
                 <div class="blog-entry">
                   <div class="blog-img" style="background-image: url(images/{{ $newsNewest->image }});">
                     <div class="desc desc2 text-center">
-                      <p class="tag"><span>{{ $newsNewest->tag }}</span></p>
+                      <p class="tag"><span>#{{ $newsNewest->tag }}</span></p>
                       <div class="desc-bottom">
                         <h2><a href="single/{{ $newsNewest->id }}">{{ $newsNewest->caption }}</a></h2>
                         <p><a href="single/{{ $newsNewest->id }}" class="btn btn-primary with-arrow">Read More <i class="icon-arrow-right22"></i></a></p>
@@ -56,7 +56,7 @@
                 <div class="desc">
                   <div class="meta">
                     <p>
-                      <span>{{ $newsFashion->tag }}</span>
+                      <span>#{{ $newsFashion->tag }}</span>
                       <span>{{ $newsFashion->created_at }}</span>
                       <!-- <span>admin </span> -->
                       <!-- <span> {{ $newsFashion->id_creator }} </span> -->

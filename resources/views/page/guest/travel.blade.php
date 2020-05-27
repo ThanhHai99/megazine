@@ -12,7 +12,7 @@
                 <div class="blog-img" style="background-image: url(images/{{ $newsTravel->image }});"></div>
                 <div class="desc">
                   <p class="meta">
-                    <span class="cat"><a href="javascript:void(0)">{{ $newsTravel->tag }}</a></span>
+                    <span class="cat"><a href="javascript:void(0)">#{{ $newsTravel->tag }}</a></span>
                     <span class="date">{{ $newsTravel->created_at }}</span>
                     <!-- <span class="pos">By <a href="javascript:void(0)">Walter</a></span> -->
                   </p>

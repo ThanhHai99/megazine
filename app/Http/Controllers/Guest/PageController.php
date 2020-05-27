@@ -281,7 +281,7 @@ class PageController extends Controller
     public function getSingle(Request $request, $id = null) {
         if (!(is_null($id))) {
             $newsDetails = News::join("users", "news.id_creator", "=", "users.id")
-                                ->select("news.id", "news.id_topic", "users.name", "news.hot_news", "news.id_status", "news.image", "news.caption", "news.subtitle", "news.created_at")
+                                ->select("news.id", "news.id_topic", "users.name", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle", "news.created_at")
                                 ->where("news.id", "=", $id)
                                 ->get();            
             $id_topic = News::find($id)->id_topic;

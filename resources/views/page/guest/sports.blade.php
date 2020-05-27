@@ -8,7 +8,7 @@
         <div class="featured-post item-sports">
           <div class="blog-img" style="background-image: url(images/{{ $hotNewsSports[0]->image }});">
             <div class="desc">
-              <p class="tag"><span>{{ $hotNewsSports[0]->tag }}</span></p>
+              <p class="tag"><span>#{{ $hotNewsSports[0]->tag }}</span></p>
               <h2><a href="single/{{ $hotNewsSports[0]->id }}">{{ $hotNewsSports[0]->caption }}</a></h2>
             </div>
           </div>
@@ -19,7 +19,7 @@
           <div class="featured-post2 item-sports">
             <a href="single/{{$hotNewsSports[$i]->id}}" class="blog-img" style="background-image: url(images/{{ $hotNewsSports[$i]->image }});">
               <span class="desc">
-                <p class="tag"><span>{{ $hotNewsSports[$i]->tag }}</span></p>
+                <p class="tag"><span>#{{ $hotNewsSports[$i]->tag }}</span></p>
                 <h2>{{ $hotNewsSports[$i]->caption }}</h2>
               </span>
             </a>
@@ -37,7 +37,7 @@
               <a href="single/{{$newsNewest->id}}" class="blog-img" style="background-image: url(images/{{ $newsNewest->image }});">
               </a>
               <div class="desc">
-                <p class="tag"><span>{{ $newsNewest->tag }}</span></p>
+                <p class="tag"><span>#{{ $newsNewest->tag }}</span></p>
                 <h2 class="head-article"><a href="single/{{$newsNewest->id}}">{{ $newsNewest->caption }}</a></h2>
                 <p>{{ $newsNewest->subtitle }}</p>
               </div>
