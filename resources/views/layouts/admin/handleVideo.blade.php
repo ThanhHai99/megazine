@@ -23,7 +23,7 @@
         if(response.error == false) {
           $('tbody > tr > td:first-child').each(function() {
             if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-              $(this).parent("tr").find("td:nth-child(3)").html(`<a href="javascript:void(0)" id="hot_video_no"><i class="fa fa-times-circle" style="color: red;"></i></a>`);
+              $(this).parent("tr").find("td:nth-child(4)").html(`<a href="javascript:void(0)" id="hot_video_no"><i class="fa fa-times-circle" style="color: red;"></i></a>`);
             }
           });
         }
@@ -59,7 +59,7 @@
         if(response.error == false) {
           $('tbody > tr > td:first-child').each(function() {
             if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-              $(this).parent("tr").find("td:nth-child(3)").html(`<a href="javascript:void(0)" id="hot_video_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`);
+              $(this).parent("tr").find("td:nth-child(4)").html(`<a href="javascript:void(0)" id="hot_video_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`);
             }
           });
         }
@@ -98,7 +98,7 @@
         if(response.error == false) {
           $('tbody > tr > td:first-child').each(function() {
             if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-              $(this).parent("tr").find("td:nth-child(4)").html(`<a href="javascript:void(0)" id="status_video_no"><i class="fas fa-lock" style="color: red;"></i></a>`);
+              $(this).parent("tr").find("td:nth-child(5)").html(`<a href="javascript:void(0)" id="status_video_no"><i class="fas fa-lock" style="color: red;"></i></a>`);
             }
           });
         }
@@ -134,7 +134,7 @@
         if(response.error == false) {
           $('tbody > tr > td:first-child').each(function() {
             if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-              $(this).parent("tr").find("td:nth-child(4)").html(`<a href="javascript:void(0)" id="status_video_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>`);
+              $(this).parent("tr").find("td:nth-child(5)").html(`<a href="javascript:void(0)" id="status_video_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>`);
             }
           });
         }
@@ -166,50 +166,47 @@
     $("button#update_image_video").remove();
     $("#editImageVideo").modal('show');
   });
+    
+    
     // Start click change image video
-    $("form#form-image-video").delegate("button#update_image_video", "click", function() {
       //Start click button create
       
-      $("form#form-image-video").on("submit", function(event) {
-        event.preventDefault();
-        let table = $('#dataTable').DataTable();
-        $tr = $(this).closest('tr');
-        if ($($tr).hasClass('child')) {
-          $tr = $tr.prev('.parent');
-        };
-        let data = table.row($tr).data();
-        // alert("Start call ajax");
-        $.ajax({
-            url: `{{route('news.update_image_video')}}`,
-            method: 'POST',
-            data: new FormData(this),
-            contentType: false,
-            cache: false,
-            processData: false,
-            success: function(response) {
-              if (response.error == false) {
-                $("#editImageVideo").modal('hide');
-                // alertify.notify('Update successfully', 'success', 3);
-                $('tbody > tr > td:first-child').each(function() {
-                  if ($(this).html() == response.id) {
-                    $(this).parent("tr").find("td:nth-child(6)").html(`<a data-toggle="modal"><img id="image-news" src="images/`+ response.image +`" class="img-responsive"></a>`);
-                  }
-                });
-                // console.log(response.tmp);
+    $("body").delegate("form#form-image-video", "submit", function(event) {
+      event.preventDefault();
+      let table = $('#dataTable').DataTable();
+      $tr = $(this).closest('tr');
+      if ($($tr).hasClass('child')) {
+        $tr = $tr.prev('.parent');
+      };
+      let data = table.row($tr).data();
+      $.ajax({
+        url: `{{route('news.update_image_video')}}`,
+        method: 'POST',
+        data: new FormData(this),
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(response) {
+          if (response.error == false) {
+            $("#editImageVideo").modal('hide');
+            alertify.notify('Update image successfully', 'success', 3);
+            $("#dataTable tbody td:nth-child(1)").each(function() {
+              if($(this).html() == response.id ) {
+                let temp = $('#dataTable').DataTable().row($("#dataTable tbody tr td:nth-child(1)")).data();
+                temp.image = response.image;
+                $('#dataTable').DataTable().row($(this).parent("tr")).data(temp);
+                return false;
               }
-              // var d = table.row( this ).data();     
-              // table.row( this ).data( d ).draw();
-            },
-            error: function(error) {
-              if (error.responseText.error == "Unauthenticated.") {
-                location.reload(true);
-              }
-              alertify.notify('An error occurred', 'error', 3);
-              // console.log(error.tmp);
-            }
-          });
-        });
-      //End click button create
+            });
+          }
+        },
+        error: function(error) {
+          if (error.responseText.error == "Unauthenticated.") {
+            location.reload(true);
+          }
+          alertify.notify('An error occurred', 'error', 3);
+        }
+      });
     });
     // End click change image video
   //End click image video
