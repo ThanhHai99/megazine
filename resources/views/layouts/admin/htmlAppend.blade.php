@@ -118,8 +118,8 @@ let htmlAllNews =`<thead>
 let htmlAllSlide =`<thead>
                     <tr>
                       <th>ID</th>
-                      <th>ID_Topic</th>
-                      <th>ID_Creator</th>
+                      <th>Topic</th>
+                      <th>Creator</th>
                       <th>Image</th>
                       <th>Caption</th>
                       <th>Subtitle</th>

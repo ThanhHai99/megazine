@@ -304,7 +304,7 @@ Route::group(["namespace" => "Admin"], function() {
         });
 
         Route::group(["prefix" => "slide"], function () {
-            Route::put("update", [
+            Route::post("update", [
                 "as" => "slide.update",
                 "uses" => "AdminController@slideUpdate"
             ]);

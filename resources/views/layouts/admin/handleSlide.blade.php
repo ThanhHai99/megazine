@@ -20,16 +20,16 @@
       let table = $('#dataTable').DataTable();
       let data = table.row($tr).data();
       let id = data['id'];
-      let caption = $("#editModalSlide").find("#update_caption").val();
-      let subtitle = $("#editModalSlide").find("#update_subtitle").val();
+      let heading_primary = $("#editModalSlide").find("#update_heading_primary").val();
+      let heading_secondary = $("#editModalSlide").find("#update_heading_secondary").val();
       
       $.ajax({
         url: `{{route('slide.update')}}`,
-        method: "PUT",
+        method: "POST",
         data: {
           id: id,
-          caption: caption,
-          subtitle: subtitle
+          heading_primary: heading_primary,
+          heading_secondary: heading_secondary
         },
         success: function(response) {
           if (response.error == false) {

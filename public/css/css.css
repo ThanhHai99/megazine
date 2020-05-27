@@ -5,3 +5,7 @@ td>i{
 td {
   text-align: center;
 }
+
+#dataTable_filter{
+  display: none !important;
+}

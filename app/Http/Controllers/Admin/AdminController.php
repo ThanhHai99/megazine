@@ -271,7 +271,6 @@ class AdminController extends Controller
       }
   
       return Datatables::of(News::query())->make(true);
-
     };
   }
 
@@ -288,7 +287,11 @@ class AdminController extends Controller
         exit();
       }
   
-      $query=Slide::all();
+      // $query=Slide::all();
+      $query=Slide::join("users", "slide.id_creator", "=", "users.id")
+                    ->join("topic", "slide.id_topic", "=", "topic.id")
+                    ->select("slide.id", "topic.name as id_topic", "users.name as id_creator", "slide.image", "slide.heading_primary", "slide.heading_secondary");
+
       return Datatables::of($query)->make(true);
     };
   }
@@ -985,9 +988,10 @@ class AdminController extends Controller
       ]);
   
       $input = $request->all();
+      // dd($input);
       $tmp = Slide::find($input['id']);
       $tmp->heading_primary = $input['heading_primary'];
-      $tmp->subtitle = $input['heading_secondary'];
+      $tmp->heading_secondary = $input['heading_secondary'];
       $tmp->save();
   
       return response()->json([
