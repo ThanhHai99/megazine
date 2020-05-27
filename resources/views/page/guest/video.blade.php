@@ -22,7 +22,7 @@
 											<span class="date">{{ $video->created_at }}</span>
 											<!-- <span class="pos">By <a href="javascript:void(0)">Walter</a></span> -->
 										</p>
-										<h2><a href="blog.html">{{ $video->caption }}</a></h2>
+										<h2><a href="javascript:void(0)">{{ $video->caption }}</a></h2>
 										<p>{{ $video->subtitle }}</p>
 									</div>
 								</div>
@@ -64,26 +64,26 @@
 						<div class="side animate-box">
 							<h2 class="sidebar-heading">Recent Blog</h2>
 							<div class="f-blog">
-								<a href="blog.html" class="blog-img" style="background-image: url(images/blog-1.jpg);">
+								<a href="javascript:void(0)" class="blog-img" style="background-image: url(images/blog-1.jpg);">
 								</a>
 								<div class="desc">
-									<h3><a href="blog.html">Be a designer</a></h3>
+									<h3><a href="javascript:void(0)">Be a designer</a></h3>
 									<p class="admin"><span>25 March 2018</span></p>
 								</div>
 							</div>
 							<div class="f-blog">
-								<a href="blog.html" class="blog-img" style="background-image: url(images/blog-2.jpg);">
+								<a href="javascript:void(0)" class="blog-img" style="background-image: url(images/blog-2.jpg);">
 								</a>
 								<div class="desc">
-									<h3><a href="blog.html">How to build website</a></h3>
+									<h3><a href="javascript:void(0)">How to build website</a></h3>
 									<p class="admin"><span>24 March 2018</span></p>
 								</div>
 							</div>
 							<div class="f-blog">
-								<a href="blog.html" class="blog-img" style="background-image: url(images/blog-3.jpg);">
+								<a href="javascript:void(0)" class="blog-img" style="background-image: url(images/blog-3.jpg);">
 								</a>
 								<div class="desc">
-									<h3><a href="blog.html">Create website</a></h3>
+									<h3><a href="javascript:void(0)">Create website</a></h3>
 									<p class="admin"><span>23 March 2018</span></p>
 								</div>
 							</div>

@@ -51,6 +51,12 @@
   </li>
 
   <li class="nav-item">
+    <a class="nav-link" href="javascript:void(0)" id="video">
+      <i class="fas fa-fw fa-folder"></i>
+      <span>Video</span></a>
+  </li>
+
+  <li class="nav-item">
     <a class="nav-link" href="javascript:void(0)" id="slide">
       <i class="fas fa-fw fa-folder"></i>
       <span>Slide</span></a>
