@@ -55,9 +55,15 @@
     loadEmployeeStaff();
   });
 
-  $("#employee-normal_user").on("click", function() {
-    loadEmployeeNormalUser();
+  $("#employee-creator").on("click", function() {
+    loadEmployeeCreator();
   });
+
+  $("#employee-guest").on("click", function() {
+    loadEmployeeGuest();
+  });
+
+  
 
   $("#news-all").on("click", function() {
     loadAllNews();

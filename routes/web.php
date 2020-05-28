@@ -156,9 +156,16 @@ Route::group(["namespace" => "Admin"], function() {
         ]);
 
         Route::get("employee/creator", [
-            "as" => "employee.normal_user",
-            "uses" => "AdminController@getEmployeeNormalUser"
+            "as" => "employee.creator",
+            "uses" => "AdminController@getEmployeeCreator"
         ]);
+
+        Route::get("employee/guest", [
+            "as" => "employee.guest",
+            "uses" => "AdminController@getEmployeeGuest"
+        ]);
+
+        
 
         Route::get("news/all", [
             "as" => "news.all",

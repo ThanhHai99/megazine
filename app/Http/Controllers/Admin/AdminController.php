@@ -119,7 +119,7 @@ class AdminController extends Controller
     };
   }
 
-  public function getEmployeeNormalUser(Request $request) {
+  public function getEmployeeCreator(Request $request) {
     if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
@@ -132,6 +132,23 @@ class AdminController extends Controller
       }
   
       $query=User::where('id_role', 2);
+      return Datatables::of($query)->make(true);
+    };
+  }
+
+  public function getEmployeeGuest(Request $request) {
+    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
+      return redirect("/home")->with("notAdmin", "You are not admin.");
+    }
+
+    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
+      if (!Auth::check()) {
+        Auth::logout();
+        return view('auth.login');
+        exit();
+      }
+  
+      $query=User::where('id_role', 3);
       return Datatables::of($query)->make(true);
     };
   }

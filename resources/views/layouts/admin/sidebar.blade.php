@@ -28,7 +28,8 @@
                   <a id="employee-all" class="collapse-item" href="javascript:void(0)">All</a>
                   <a id="employee-admin" class="collapse-item" href="javascript:void(0)">Admin</a>
                   <a id="employee-staff" class="collapse-item" href="javascript:void(0)">Staff Manager</a>
-                  <a id="employee-normal_user" class="collapse-item" href="javascript:void(0)">Normal Users</a>
+                  <a id="employee-creator" class="collapse-item" href="javascript:void(0)">Creator</a>
+                  <a id="employee-guest" class="collapse-item" href="javascript:void(0)">Guest</a>
                 </div>
               </div>
             </li>

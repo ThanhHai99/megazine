@@ -9,7 +9,9 @@ $("body").delegate("#edit_employee", "click", function(){
 
   let data = table.row($tr).data();
   $("#editModalEmployee input[name=employee_id]").val(data['id']);
-  $(`#editModalEmployee select[name=employee_id_role] option:selected`).removeAttr("selected");
+  $(`#editModalEmployee select[name=employee_id_role] option`).each(function() {
+    $(this).removeAttr("selected");
+  });
   $(`#editModalEmployee select[name=employee_id_role] option[name='`+ data['id_role'] +`']`).attr('selected', 'selected');
   $("#editModalEmployee input[name=employee_name]").val(data['name']);
   $("#editModalEmployee input[name=employee_email]").val(data['email']);
