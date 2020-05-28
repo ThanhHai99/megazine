@@ -155,7 +155,7 @@ Route::group(["namespace" => "Admin"], function() {
             "uses" => "AdminController@getEmployeeStaff"
         ]);
 
-        Route::get("employee/normal_user", [
+        Route::get("employee/creator", [
             "as" => "employee.normal_user",
             "uses" => "AdminController@getEmployeeNormalUser"
         ]);
@@ -336,7 +336,7 @@ Route::group(["namespace" => "Admin"], function() {
                 "uses" => "AdminController@slideRemove"
             ]);
 
-            Route::put("insert", [
+            Route::post("insert", [
                 "as" => "slide.insert",
                 "uses" => "AdminController@slideInsert"
             ]);

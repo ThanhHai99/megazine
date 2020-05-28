@@ -521,33 +521,6 @@ class AdminController extends Controller
     };
   }
 
-  public function employeeUpdateAll(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      $this->validate($request, [
-        'id' => 'required',
-        'id_role' => 'required',
-        'name' => 'required',
-        'email' => 'required'
-      ]);
-  
-      $input = $request->all();
-      $tmp = User::find($input['id']);
-      $tmp->id_role = $input['id_role'];
-      $tmp->name = $input['name'];
-      $tmp->email = $input['email'];
-      $tmp->save();
-  
-      return response()->json([
-          'error' => false,
-      ], 200);
-
-    };
-  }
-
   public function employeeUpdate(Request $request) {
     if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
@@ -555,20 +528,26 @@ class AdminController extends Controller
 
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
-        'id_role' => 'required',
-        'name' => 'required',
-        'email' => 'required'
+        'employee_id' => 'required',
+        'employee_id_role' => 'required',
+        'employee_name' => 'required',
+        'employee_email' => 'required'
       ]);
   
       $input = $request->all();
-      $tmp = User::find($input['id']);
-      $tmp->id_role = $input['id_role'];
-      $tmp->name = $input['name'];
-      $tmp->email = $input['email'];
+      // dd($input);
+      $tmp = User::find($input['employee_id']);
+      $tmp->id_role = $input['employee_id_role'];
+      $tmp->name = $input['employee_name'];
+      $tmp->email = $input['employee_email'];
       $tmp->save();
   
       return response()->json([
           'error' => false,
+          'employee_id' => $input['employee_id'],
+          'employee_id_role' => $input['employee_id_role'],
+          'employee_name' => $input['employee_name'],
+          'employee_email' => $input['employee_email']
       ], 200);
 
     };
@@ -1087,26 +1066,26 @@ class AdminController extends Controller
 
       $tmp = new Slide;
   
-      if ($request->hasFile('image')) {
-        $file = $request->file('image');
-        $extension = $file->getClientOriginalExtension();
-        $filename = time() . '_'. uniqid() . '.' . $extension;
-        $file->move("images", $filename);
-        $tmp->image = $filename;
-      }
+      // if ($request->hasFile('image')) {
+      //   $file = $request->file('image');
+      //   $extension = $file->getClientOriginalExtension();
+      //   $filename = time() . '_'. uniqid() . '.' . $extension;
+      //   $file->move("images", $filename);
+      //   $tmp->image = $filename;
+      // }
   
       
-      $tmp->id_topic = $input['id_topic'];
-      $tmp->id_creator = session('id');
-      $tmp->hot_news = $input['hot_news'];
-      $tmp->tag = $input['tag'];
-      $tmp->caption = $input['caption'];
-      $tmp->subtitle = $input['subtitle'];
-      $tmp->save();
+      // $tmp->id_topic = $input['id_topic'];
+      // $tmp->id_creator = session('id');
+      // $tmp->hot_news = $input['hot_news'];
+      // $tmp->tag = $input['tag'];
+      // $tmp->caption = $input['caption'];
+      // $tmp->subtitle = $input['subtitle'];
+      // $tmp->save();
   
       return response()->json([
-        'error' => false,
-        'input'  => $input
+        // 'error' => false,
+        // 'input'  => $input
       ], 200);
 
     };

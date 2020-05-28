@@ -181,7 +181,7 @@ $("form#form_insert_slide").on("submit", function(event) {
   let table = $('#dataTable').DataTable();
   $.ajax({
     url: `{{route('slide.insert')}}`,
-    method: 'PUT',
+    method: 'POST',
     data: new FormData(this),
     contentType: false,
     cache: false,

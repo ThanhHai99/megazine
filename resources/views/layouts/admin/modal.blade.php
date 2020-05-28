@@ -9,12 +9,13 @@
         </button>
       </div>
 
-      <form id="form_insert_slide" method="PUT" enctype="multipart/form-data">
+      <form id="form_insert_slide" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="modal-body">
           <div class="form-group">
             <label>Topic</label>
-            <select class="form-control" id="topic_option" name="id_topic">
+            <!-- <select class="form-control" id="topic_option" name="id_topic"> -->
+            <select class="form-control" name="id_topic">
               @foreach($topics as $topic)
                 <option value="{{ $topic->id }}">{{ $topic->name }}</option>
               @endforeach              
@@ -28,12 +29,12 @@
           </div>
 
           <div class="form-group">
-            <label>Caption</label>
+            <label>Heading Primary</label>
             <input type="text" name="caption" id="insert_caption_slide" class="form-control" placeholder="Caption">
           </div>
 
           <div class="form-group">
-            <label>Subtitle</label>
+            <label>Heading Secondary</label>
             <input type="text" name="subtitle" id="insert_subtitle_slide" class="form-control" placeholder="Subtitle">
           </div>
 
@@ -48,52 +49,6 @@
   </div>
 </div>
 
-
-<!-- Start Edit Employee Modal - All -->
-<div class="modal fade" id="editModalEmployee-all" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Employee - All</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      <div class="modal-body">
-      <input type="hidden" id="id" value="">
-
-        <div class="form-group">
-          <label>Role</label>
-          <select class="form-control" id="update_role-all" name="employee-role-all">
-            @foreach($roles as $role)
-              <option value="{{ $role->id }}" name="{{ $role->name }}">{{ $role->name }}</option>
-            @endforeach              
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Name</label>
-          <input type="text" name="name" id="update_name-all" class="form-control" placeholder="Name">
-        </div>
-
-        <div class="form-group">
-          <label>Email</label>
-          <input type="text" name="email" id="update_email-all" class="form-control" placeholder="Email">
-        </div>
-      </div>
-        
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary update_employee-all">Update data</button>
-      </div>
-
-    </div>
-  </div>
-</div>
-<!-- End Edit Employee Modal - All-->
-
-
 <!-- Start Edit Employee Modal  -->
 <div class="modal fade" id="editModalEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -106,11 +61,12 @@
       </div>
 
       <div class="modal-body">
-      <input type="hidden" id="id" value="">
+
+        <input type="hidden" name="employee_id" value="">
 
         <div class="form-group">
           <label>Role</label>
-          <select class="form-control" id="update_role" name="employee-role">
+          <select class="form-control" name="employee_id_role">
             @foreach($roles as $role)
               <option value="{{ $role->id }}" name="{{ $role->name }}">{{ $role->name }}</option>
             @endforeach              
@@ -120,12 +76,12 @@
 
         <div class="form-group">
           <label>Name</label>
-          <input type="text" name="name" id="update_name" class="form-control" placeholder="Name">
+          <input type="text" name="employee_name" class="form-control" placeholder="Name">
         </div>
 
         <div class="form-group">
           <label>Email</label>
-          <input type="text" name="email" id="update_email" class="form-control" placeholder="Email">
+          <input type="text" name="employee_email" class="form-control" placeholder="Email">
         </div>
       </div>
         
