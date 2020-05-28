@@ -143,7 +143,7 @@ $("body").delegate("#status_employee_yes-all", "click", function(event) {
           if ($(this).html() == $('meta[name=row-index]').attr('content')) {
             $(this).parent("tr").find("td:nth-child(3)").html(
               `<a href="javascript:void(0)" id="status_employee_no-all"><i class="fas fa-lock" style="color: red;"></i></a>`
-              );
+            );
           }
         });
       }
@@ -185,7 +185,7 @@ $("body").delegate("#status_employee_no-all", "click", function(event) {
           if ($(this).html() == $('meta[name=row-index]').attr('content')) {
             $(this).parent("tr").find("td:nth-child(3)").html(
               `<a href="javascript:void(0)" id="status_employee_yes-all"><i class="fas fa-lock-open" style="color:green;"></i></a>`
-              );
+            );
           }
         });
       }
@@ -223,7 +223,7 @@ $("body").delegate("#status_employee_yes", "click", function(event) {
           if ($(this).html() == $('meta[name=row-index]').attr('content')) {
             $(this).parent("tr").find("td:nth-child(2)").html(
               `<a href="javascript:void(0)" id="status_employee_no"><i class="fas fa-lock" style="color: red;"></i></a>`
-              );
+            );
           }
         });
       }
@@ -267,7 +267,7 @@ $("body").delegate("#status_employee_no", "click", function(event) {
           if ($(this).html() == $('meta[name=row-index]').attr('content')) {
             $(this).parent("tr").find("td:nth-child(2)").html(
               `<a href="javascript:void(0)" id="status_employee_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>`
-              );
+            );
           }
         });
       }
