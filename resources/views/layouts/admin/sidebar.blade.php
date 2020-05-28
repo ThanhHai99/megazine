@@ -25,11 +25,13 @@
               </a>
               <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" data="employee">
                 <div class="bg-white py-2 collapse-inner rounded">
-                  <a id="employee-all" class="collapse-item all" href="javascript:void(0)">All</a>
-                  <a id="employee-admin" class="collapse-item" href="javascript:void(0)">Admin</a>
-                  <a id="employee-staff" class="collapse-item" href="javascript:void(0)">Staff Manager</a>
-                  <a id="employee-creator" class="collapse-item" href="javascript:void(0)">Creator</a>
-                  <a id="employee-guest" class="collapse-item" href="javascript:void(0)">Guest</a>
+                  @if ( session('id_role') == '0')
+                    <a id="employee-all" class="collapse-item all" href="javascript:void(0)">All</a>
+                    <a id="employee-admin" class="collapse-item" data="admin" href="javascript:void(0)">Admin</a>
+                  @endif
+                  <a id="employee-staff" class="collapse-item" data="staff manager" href="javascript:void(0)">Staff Manager</a>
+                  <a id="employee-creator" class="collapse-item" data="creator" href="javascript:void(0)">Creator</a>
+                  <a id="employee-guest" class="collapse-item" data="guest" href="javascript:void(0)">Guest</a>
                 </div>
               </div>
             </li>

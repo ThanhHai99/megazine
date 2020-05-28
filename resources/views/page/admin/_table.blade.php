@@ -35,12 +35,20 @@
   
 
   <script>
-  <?php if (session('id_role') == 0 || session('id_role') == 1) { ?>
+  <?php if (session('id_role') == 0) { ?>
           $("div[data=employee] a").each(function() {
             $(this).removeClass("active");
           });
           $("div[data=employee] a#employee-all").addClass("active");
           loadEmployeeAll_onLoad();
+  <?php } ?>
+
+  <?php if (session('id_role') == 1) { ?>
+          $("div[data=employee] a").each(function() {
+            $(this).removeClass("active");
+          });
+          $("div[data=employee] a#employee-staff").addClass("active");
+          loadEmployeeStaff_onLoad();
   <?php } ?>
 
   <?php if (session('id_role') == 2) { ?>

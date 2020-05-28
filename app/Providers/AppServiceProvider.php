@@ -49,7 +49,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer('page.admin._table', function($view) {
-            $roles = Role::all();
+            $roles = Role::whereBetween('id', array(1, 3))->get();
             $view->with('roles', $roles);
         });
 
