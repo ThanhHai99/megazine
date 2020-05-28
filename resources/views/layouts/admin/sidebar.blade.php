@@ -25,7 +25,7 @@
               </a>
               <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" data="employee">
                 <div class="bg-white py-2 collapse-inner rounded">
-                  <a id="employee-all" class="collapse-item" href="javascript:void(0)">All</a>
+                  <a id="employee-all" class="collapse-item all" href="javascript:void(0)">All</a>
                   <a id="employee-admin" class="collapse-item" href="javascript:void(0)">Admin</a>
                   <a id="employee-staff" class="collapse-item" href="javascript:void(0)">Staff Manager</a>
                   <a id="employee-creator" class="collapse-item" href="javascript:void(0)">Creator</a>

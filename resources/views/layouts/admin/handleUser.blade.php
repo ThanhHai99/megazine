@@ -135,83 +135,83 @@ $("body").delegate("#remove_employee", "click", function() {
   });
 });
 
-$("body").delegate("#status_employee_yes-all", "click", function(event) {
-  event.preventDefault();
-  let table = $('#dataTable').DataTable();
-  $tr = $(this).closest('tr');
-  if ($($tr).hasClass('child')) {
-    $tr = $tr.prev('.parent');
-  };
-  let data = table.row($tr).data();
-  let id = data['id'];
-  $('meta[name=row-index]').attr('content', id);
-  $.ajax({
-    url: `{{route('employee.updateEmployeeStatusNo')}}`,
-    method: "PUT",
-    data: {
-      id: id
-    },
-    success: function(response) {
-      if (response.error == false) {
-        $('tbody > tr > td:first-child').each(function() {
-          if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(3)").html(
-              `<a href="javascript:void(0)" id="status_employee_no-all"><i class="fas fa-lock" style="color: red;"></i></a>`
-            );
-          }
-        });
-      }
-    },
-    error: function(error) {
-      if (error.responseJSON.admin == true) {
-        alertify.notify('This is super user', 'error', 3);
-        return;
-      }
+// $("body").delegate("#status_employee_yes-all", "click", function(event) {
+//   event.preventDefault();
+//   let table = $('#dataTable').DataTable();
+//   $tr = $(this).closest('tr');
+//   if ($($tr).hasClass('child')) {
+//     $tr = $tr.prev('.parent');
+//   };
+//   let data = table.row($tr).data();
+//   let id = data['id'];
+//   $('meta[name=row-index]').attr('content', id);
+//   $.ajax({
+//     url: `{{route('employee.updateEmployeeStatusNo')}}`,
+//     method: "PUT",
+//     data: {
+//       id: id
+//     },
+//     success: function(response) {
+//       if (response.error == false) {
+//         $('tbody > tr > td:first-child').each(function() {
+//           if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+//             $(this).parent("tr").find("td:nth-child(3)").html(
+//               `<a href="javascript:void(0)" id="status_employee_no-all"><i class="fas fa-lock" style="color: red;"></i></a>`
+//             );
+//           }
+//         });
+//       }
+//     },
+//     error: function(error) {
+//       if (error.responseJSON.admin == true) {
+//         alertify.notify('This is super user', 'error', 3);
+//         return;
+//       }
 
-      if (error.responseText.error == "Unauthenticated.") {
-        location.reload(true);
-      }
-      alertify.notify('An error occurred', 'error', 3);
-    }
-  });
-});
+//       if (error.responseText.error == "Unauthenticated.") {
+//         location.reload(true);
+//       }
+//       alertify.notify('An error occurred', 'error', 3);
+//     }
+//   });
+// });
 
 
-$("body").delegate("#status_employee_no-all", "click", function(event) {
-  event.preventDefault();
-  let table = $('#dataTable').DataTable();
-  $tr = $(this).closest('tr');
-  if ($($tr).hasClass('child')) {
-    $tr = $tr.prev('.parent');
-  };
-  let data = table.row($tr).data();
-  let id = data['id'];
-  $('meta[name=row-index]').attr('content', id);
-  $.ajax({
-    url: `{{route('employee.updateEmployeeStatusYes')}}`,
-    method: "PUT",
-    data: {
-      id: id
-    },
-    success: function(response) {
-      if (response.error == false) {
-        $('tbody > tr > td:first-child').each(function() {
-          if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(3)").html(
-              `<a href="javascript:void(0)" id="status_employee_yes-all"><i class="fas fa-lock-open" style="color:green;"></i></a>`
-            );
-          }
-        });
-      }
-    },
-    error: function(error) {
-      if (error.responseText.error == "Unauthenticated.") {
-        location.reload(true);
-      }
-      alertify.notify('An error occurred', 'error', 3);
-    }
-  });
-});
+// $("body").delegate("#status_employee_no-all", "click", function(event) {
+//   event.preventDefault();
+//   let table = $('#dataTable').DataTable();
+//   $tr = $(this).closest('tr');
+//   if ($($tr).hasClass('child')) {
+//     $tr = $tr.prev('.parent');
+//   };
+//   let data = table.row($tr).data();
+//   let id = data['id'];
+//   $('meta[name=row-index]').attr('content', id);
+//   $.ajax({
+//     url: `{{route('employee.updateEmployeeStatusYes')}}`,
+//     method: "PUT",
+//     data: {
+//       id: id
+//     },
+//     success: function(response) {
+//       if (response.error == false) {
+//         $('tbody > tr > td:first-child').each(function() {
+//           if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+//             $(this).parent("tr").find("td:nth-child(3)").html(
+//               `<a href="javascript:void(0)" id="status_employee_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>`
+//             );
+//           }
+//         });
+//       }
+//     },
+//     error: function(error) {
+//       if (error.responseText.error == "Unauthenticated.") {
+//         location.reload(true);
+//       }
+//       alertify.notify('An error occurred', 'error', 3);
+//     }
+//   });
+// });
 
 
 $("body").delegate("#status_employee_yes", "click", function(event) {

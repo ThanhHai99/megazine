@@ -52,10 +52,10 @@ let loadEmployeeAll = () => {
         // { data: "id_status", name: "id_status" },
         { data: "id_status", name: "id_status", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="status_employee_yes-all"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_employee_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
             }
             else {
-              return '<a href="javascript:void(0)" id="status_employee_no-all"><i class="fas fa-lock" style="color: red;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_employee_no"><i class="fas fa-lock" style="color: red;"></i></a>';
             }
           },
           searchable: false

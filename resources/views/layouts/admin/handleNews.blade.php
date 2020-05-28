@@ -382,22 +382,24 @@ $("button.update_news").click(function(event) {
     },
     success: function(response) {
       if (response.error == false) {
-        if ($("meta[name=type-save]").attr("value") != response.id_topic) {
-          alert("co thay doi topic.");
-        }
+
         $("#editModalNews").modal('hide');
         alertify.notify('Update successfully', 'success', 3);
 
-        $("#dataTable tbody td:nth-child(1)").each(function() {
-          if ($(this).html() == response.id) {
-            let temp = $('#dataTable').DataTable().row($("#dataTable tbody tr td:nth-child(1)")).data();
-            temp.tag = response.tag;
-            temp.caption = response.caption;
-            temp.subtitle = response.subtitle;
-            $('#dataTable').DataTable().row($(this).parent("tr")).data(temp);
-            return false;
+        if( $("div.dataTables_paginate span a").length == 1) {
+          if( $("div[data=employee] a").hasClass("active") ) {
+            $("div[data=employee] a.active").click();
           }
-        });
+        } else {
+          if ( $("div.dataTables_paginate a.previous").hasClass("disabled") ) {
+            $("div.dataTables_paginate a.next").click();
+            $("div.dataTables_paginate a.previous").click();
+          }
+          if ( $("div.dataTables_paginate a.next").hasClass("disabled") ) {
+            $("div.dataTables_paginate a.previous").click();
+            $("div.dataTables_paginate a.next").click();
+          }
+        }
       }
     },
     error: function(error) {
@@ -520,15 +522,20 @@ $("body").delegate("#remove_news", "click", function(event) {
               'Element has been deleted.',
               'success'
             )
-            $("#dataTable tbody td:nth-child(1)").each(function() {
-              if ($(this).html() == response.id) {
-                alert( $("div.dataTables_paginate a").hasClass("disabled") );
-                $("a.paginate_button next").click();
-                $("a.current").click();
-                return false;
+            if( $("div.dataTables_paginate span a").length == 1) {
+              if( $("div[data=employee] a").hasClass("active") ) {
+                $("div[data=employee] a.active").click();
               }
-            });
-            // table.row( $(this).parents('tr') ).remove();
+            } else {
+              if ( $("div.dataTables_paginate a.previous").hasClass("disabled") ) {
+                $("div.dataTables_paginate a.next").click();
+                $("div.dataTables_paginate a.previous").click();
+              }
+              if ( $("div.dataTables_paginate a.next").hasClass("disabled") ) {
+                $("div.dataTables_paginate a.previous").click();
+                $("div.dataTables_paginate a.next").click();
+              }
+            }
           }
         },
         error: function(error) {
@@ -566,27 +573,23 @@ $("body").delegate("form#form-image-news", "submit", function(event) {
     success: function(response) {
       if (response.error == false) {
         $("#editImageNews").modal('hide');
-        // alertify.notify('Update successfully', 'success', 3);
+        alertify.notify('Update successfully', 'success', 3);
 
-        $('tbody > tr > td:first-child').each(function() {
-          if ($(this).html() == response.id) {
-            if ($(this).parent("tr").find("td:nth-child(5) > a > img").hasClass("img-responsive")) {
-              $(this).parent("tr").find("td:nth-child(5)").html(
-                `<a data-toggle="modal"><img id="image-news" src="images/` + response.image +
-                `" class="img-responsive"></a>`);
-            } else if ($(this).parent("tr").find("td:nth-child(6) > a > img").hasClass(
-              "img-responsive")) {
-              $(this).parent("tr").find("td:nth-child(6)").html(
-                `<a data-toggle="modal"><img id="image-news" src="images/` + response.image +
-                `" class="img-responsive"></a>`);
-            }
-
+        if( $("div.dataTables_paginate span a").length == 1) {
+          if( $("div[data=employee] a").hasClass("active") ) {
+            $("div[data=employee] a.active").click();
           }
-        });
-
+        } else {
+          if ( $("div.dataTables_paginate a.previous").hasClass("disabled") ) {
+            $("div.dataTables_paginate a.next").click();
+            $("div.dataTables_paginate a.previous").click();
+          }
+          if ( $("div.dataTables_paginate a.next").hasClass("disabled") ) {
+            $("div.dataTables_paginate a.previous").click();
+            $("div.dataTables_paginate a.next").click();
+          }
+        }
       }
-      // var d = table.row( this ).data();     
-      // table.row( this ).data( d ).draw();
     },
     error: function(error) {
       if (error.responseText.error == "Unauthenticated.") {
