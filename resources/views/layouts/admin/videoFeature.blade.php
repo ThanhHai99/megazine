@@ -1,7 +1,6 @@
 <script>
 
 let loadVideo = () => {
-  $('meta[name=type-news]').attr('content', '5');
   $('input[name=id_topic]').attr('value', 5);
   var table = $("#dataTable").DataTable();
   table.destroy();

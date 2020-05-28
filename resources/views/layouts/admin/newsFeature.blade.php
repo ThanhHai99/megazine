@@ -120,7 +120,6 @@ let loadAllNews = () => {
 };
 
 let loadNewsStyle = () => {
-  $('meta[name=type-news]').attr('content', '1');
   $('input[name=id_topic]').attr('value', 1);
   var table = $("#dataTable").DataTable();
   table.destroy();
@@ -182,7 +181,6 @@ let loadNewsStyle = () => {
 };
 
 let loadNewsFashion = () => {
-  $("meta[name=type-news]").attr("content", "2");
   $('input[name=id_topic]').attr('value', 2);
   var table = $("#dataTable").DataTable();
   table.destroy();
@@ -244,7 +242,6 @@ let loadNewsFashion = () => {
 };
 
 let loadNewsTravel = () => {
-  $('meta[name=type-news]').attr('content', '3');
   $('input[name=id_topic]').attr('value', 3);
   var table = $("#dataTable").DataTable();
   table.destroy();
@@ -306,7 +303,6 @@ let loadNewsTravel = () => {
 };
 
 let loadNewsSports = () => {
-  $('meta[name=type-news]').attr('content', '4');
   $('input[name=id_topic]').attr('value', 4);
   var table = $("#dataTable").DataTable();
   table.destroy();
