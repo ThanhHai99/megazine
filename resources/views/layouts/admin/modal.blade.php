@@ -61,7 +61,6 @@
       </div>
 
       <div class="modal-body">
-
         <input type="hidden" name="employee_id" value="">
 
         <div class="form-group" id="employee_role">

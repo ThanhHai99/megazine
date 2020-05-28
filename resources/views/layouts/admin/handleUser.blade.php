@@ -13,9 +13,10 @@ $("body").delegate("#edit_employee", "click", function() {
     $(this).removeAttr("selected");
   });
 
-  if ( $("div[data=employee] a.active").attr("data") == "admin" ) {
-    $("div#employee_role").remove();
+  if ( data['id_role'] == "admin" || data['id_role'] == 0 ) {
+    $("div#employee_role").hide();
   } else {
+    $("div#employee_role").show();
     if ($("div[data=employee] a.active").hasClass("all")) {
       $(`#editModalEmployee select[name=employee_id_role] option[name='` + data['id_role'] + `']`).attr('selected','selected');
     } else {
@@ -24,7 +25,6 @@ $("body").delegate("#edit_employee", "click", function() {
     }
   }
   
-
   $("#editModalEmployee input[name=employee_name]").val(data['name']);
   $("#editModalEmployee input[name=employee_email]").val(data['email']);
   $("#editModalEmployee").modal('show');
@@ -43,20 +43,7 @@ $("body").delegate("button.update_employee", "click", function(event) {
   
   <?php if(session("id_role") == 0) { ?>
           employee_id_role = 0;
-          alert( $("div[data=employee] a.active").attr("data") );
-          if ( $("div[data=employee] a.active").attr("data") == "admin" ) {
-            console.log($("div#employee_role").html());
-          }
-          // if (employee_id_role != 0) {
-            // alertify.error("Not allow");
-            // return false;
-          // }
   <?php } ?>
-
-  // if (employee_id_role == 0) {
-  //   alertify.error("You are admin");
-  //   return false;
-  // }
 
   let employee_name = $("#editModalEmployee input[name=employee_name]").val();
   let employee_email = $("#editModalEmployee input[name=employee_email]").val();

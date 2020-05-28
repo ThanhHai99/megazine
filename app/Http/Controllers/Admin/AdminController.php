@@ -552,9 +552,12 @@ class AdminController extends Controller
       ]);
   
       $input = $request->all();
-      // dd($input);
       $tmp = User::find($input['employee_id']);
-      $tmp->id_role = $input['employee_id_role'];
+      if ($tmp->id_role == 0) {
+        $tmp->id_role = 0;
+      } else {
+        $tmp->id_role = $input['employee_id_role'];
+      }
       $tmp->name = $input['employee_name'];
       $tmp->email = $input['employee_email'];
       $tmp->save();
