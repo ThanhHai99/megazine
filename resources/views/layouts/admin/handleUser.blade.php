@@ -102,7 +102,8 @@ $("body").delegate("#remove_employee", "click", function(){
               'Element has been deleted.',
               'success'
             )
-            table.row( $(this).parents('tr') ).remove().draw();
+            // table.row( $(this).parents('tr') ).remove().draw();
+            table.draw();
           }
         },
         error: function(error) {

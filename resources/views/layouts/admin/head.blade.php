@@ -30,7 +30,9 @@
 
 <!-- Newest -->
 <!-- <script src="{{asset('js/app.js')}}"></script> -->
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"> 
+<!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">  -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css"/>
+
 
 <!-- alertify CSS -->
 <link rel="stylesheet" href="{{asset('css/alertify.min.css')}}" />

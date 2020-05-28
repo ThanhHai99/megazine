@@ -24,7 +24,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<!-- datatable -->
+<!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script> -->
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
 
 <!-- Page level plugins -->
 <script src="{{asset('datatables/jquery.dataTables.min.js')}}"></script>
