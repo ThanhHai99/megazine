@@ -66,9 +66,6 @@ $("button.update_employee").click(function(event) {
   });
 });
 
-
-
-
 $("body").delegate("#remove_employee", "click", function(){
   Swal.fire({
     title: 'Are you sure?',
@@ -273,4 +270,5 @@ $("body").delegate("#status_employee_no", "click", function(event) {
     }
   });
 });
+
 </script>
