@@ -515,7 +515,7 @@ class AdminController extends Controller
       News::where('id', $input['id'])->delete();
       return response()->json([
         'error' => false,
-        // 'id'  => id,
+        'id'  => $input["id"]
       ], 200);
 
     };
@@ -1008,7 +1008,6 @@ class AdminController extends Controller
       ]);
   
       $input = $request->all();
-      // dd($input);
       $tmp = Slide::find($input['id']);
       $tmp->heading_primary = $input['heading_primary'];
       $tmp->heading_secondary = $input['heading_secondary'];
@@ -1016,13 +1015,36 @@ class AdminController extends Controller
   
       return response()->json([
           'error' => false,
-          // 'task'  => $tmp,
+          'id' => $input['id'],
+          'heading_primary' => $tmp->heading_primary,
+          'heading_secondary' => $tmp->heading_secondary
       ], 200);
 
     };
 
   }
 
+  public function slideRemove(Request $request) {
+    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
+      return redirect("/home")->with("notAdmin", "You are not admin.");
+    }
+
+    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
+      // $this->validate($request, [
+      //   'heading_primary' => 'required',
+      //   'heading_secondary' => 'required'
+      // ]);
+  
+      $input = $request->all();
+      Slide::where('id', $input['id'])->delete();
+      return response()->json([
+          'error' => false,
+          'id' => $input['id']
+      ], 200);
+    };
+  }
+
+  
   public function slideUpdateImage(Request $request) {
     if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
@@ -1037,14 +1059,57 @@ class AdminController extends Controller
       $file->move("images", $filename);
       $tmp->image = $filename;
       $tmp->save();
+      return response()->json([
+        'error' => false,
+        'id' => $input['id_slide_hide'],
+        'image' => $tmp->image
+      ], 200);
+    };
+  }
+
+  public function slideInsert(Request $request) {
+    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
+      return redirect("/home")->with("notAdmin", "You are not admin.");
+    }
+
+    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
+      // $this->validate($request, [
+      //   'id_topic' => 'required',
+      //   'hot_news' => 'required',
+      //   'image' => 'required',
+      //   'tag' => 'required',
+      //   'caption' => 'required',
+      //   'subtitle' => 'required'
+      // ]);
+      
+      $input = $request->all();
+      dd($input);
+
+      $tmp = new Slide;
+  
+      if ($request->hasFile('image')) {
+        $file = $request->file('image');
+        $extension = $file->getClientOriginalExtension();
+        $filename = time() . '_'. uniqid() . '.' . $extension;
+        $file->move("images", $filename);
+        $tmp->image = $filename;
+      }
+  
+      
+      $tmp->id_topic = $input['id_topic'];
+      $tmp->id_creator = session('id');
+      $tmp->hot_news = $input['hot_news'];
+      $tmp->tag = $input['tag'];
+      $tmp->caption = $input['caption'];
+      $tmp->subtitle = $input['subtitle'];
+      $tmp->save();
   
       return response()->json([
         'error' => false,
+        'input'  => $input
       ], 200);
 
     };
 
   }
-
-
 }

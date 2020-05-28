@@ -308,19 +308,7 @@ Route::group(["namespace" => "Admin"], function() {
 
         });
 
-        Route::group(["prefix" => "video"], function () {
-            Route::post("update", [
-                "as" => "slide.update",
-                "uses" => "AdminController@slideUpdate"
-            ]);
-
-            Route::post("update_image", [
-                "as" => "slide.update_image",
-                "uses" => "AdminController@slideUpdateImage"
-            ]);
-        });
-
-        Route::group(["prefix" => "slide"], function () {
+        // Route::group(["prefix" => "video"], function () {
             // Route::post("update", [
             //     "as" => "slide.update",
             //     "uses" => "AdminController@slideUpdate"
@@ -330,6 +318,30 @@ Route::group(["namespace" => "Admin"], function() {
             //     "as" => "slide.update_image",
             //     "uses" => "AdminController@slideUpdateImage"
             // ]);
+        // });
+
+        Route::group(["prefix" => "slide"], function () {
+            Route::post("update", [
+                "as" => "slide.update",
+                "uses" => "AdminController@slideUpdate"
+            ]);
+
+            Route::post("update_image", [
+                "as" => "slide.update_image",
+                "uses" => "AdminController@slideUpdateImage"
+            ]);
+
+            Route::put("remove", [
+                "as" => "slide.remove",
+                "uses" => "AdminController@slideRemove"
+            ]);
+
+            Route::put("insert", [
+                "as" => "slide.insert",
+                "uses" => "AdminController@slideInsert"
+            ]);
+
+            
         });
 
 

@@ -1,3 +1,54 @@
+<!-- Modal insert slide -->
+<div class="modal fade" id="insertModalSlide" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create Slide</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form id="form_insert_slide" method="PUT" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Topic</label>
+            <select class="form-control" id="topic_option" name="id_topic">
+              @foreach($topics as $topic)
+                <option value="{{ $topic->id }}">{{ $topic->name }}</option>
+              @endforeach              
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label>Image</label>
+            <input type="file" name="image" id="insert_image_slide" class="form-control" placeholder="Image">
+          </div>
+
+          <div class="form-group">
+            <label>Caption</label>
+            <input type="text" name="caption" id="insert_caption_slide" class="form-control" placeholder="Caption">
+          </div>
+
+          <div class="form-group">
+            <label>Subtitle</label>
+            <input type="text" name="subtitle" id="insert_subtitle_slide" class="form-control" placeholder="Subtitle">
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success insert_slide">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
 <!-- Start Edit Employee Modal - All -->
 <div class="modal fade" id="editModalEmployee-all" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

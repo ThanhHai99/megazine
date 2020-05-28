@@ -124,7 +124,7 @@ let htmlAllSlide =`<thead>
                       <th>Caption</th>
                       <th>Subtitle</th>
                       <th class="text-center">
-                        <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg" id="insert_news_all">
+                        <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg" id="insert_slide">
                           <i class="glyphicon glyphicon-plus"></i>
                         </a>
                       </th>
@@ -140,7 +140,7 @@ let htmlAllSlide =`<thead>
                       <th>Caption</th>
                       <th>Subtitle</th>
                       <th class="text-center">
-                        <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg" id="insert_news_all">
+                        <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg" id="insert_slide">
                           <i class="glyphicon glyphicon-plus"></i>
                         </a>
                       </th>
