@@ -44,50 +44,85 @@
   <?php } ?>
 
   $("#employee-all").on("click", function() {
+    $("div[data=employee] a").each(function() {
+      $(this).removeClass("active");
+    });
+    $("div[data=employee] a#employee-all").addClass("active");
     loadEmployeeAll();
   });
 
   $("#employee-admin").on("click", function() {
+    $("div[data=employee] a").each(function() {
+      $(this).removeClass("active");
+    });
+    $("div[data=employee] a#employee-admin").addClass("active");
     loadEmployeeAdmin();
   });
 
   $("#employee-staff").on("click", function() {
+    $("div[data=employee] a").each(function() {
+      $(this).removeClass("active");
+    });
+    $("div[data=employee] a#employee-staff").addClass("active");
     loadEmployeeStaff();
   });
 
   $("#employee-creator").on("click", function() {
+    $("div[data=employee] a").each(function() {
+      $(this).removeClass("active");
+    });
+    $("div[data=employee] a#employee-creator").addClass("active");
     loadEmployeeCreator();
   });
 
   $("#employee-guest").on("click", function() {
+    $("div[data=employee] a").each(function() {
+      $(this).removeClass("active");
+    });
+    $("div[data=employee] a#employee-guest").addClass("active");
     loadEmployeeGuest();
   });
 
   
 
   $("#news-all").on("click", function() {
+    $("div[data=news] a").each(function() {
+      $(this).removeClass("active");
+    });
+    $("div[data=news] a#news-all").addClass("active");
     loadAllNews();
   });
 
-  $("#topic-style").on("click", function() {
+  $("#news-style").on("click", function() {
+    $("div[data=news] a").each(function() {
+      $(this).removeClass("active");
+    });
+    $("div[data=news] a#news-style").addClass("active");
     loadNewsStyle();
   });
 
-  $("#topic-fashion").on("click", function() {
+  $("#news-fashion").on("click", function() {
+    $("div[data=news] a").each(function() {
+      $(this).removeClass("active");
+    });
+    $("div[data=news] a#news-fashion").addClass("active");
     loadNewsFashion();
   });
 
-  $("#topic-travel").on("click", function() {
+  $("#news-travel").on("click", function() {
+    $("div[data=news] a").each(function() {
+      $(this).removeClass("active");
+    });
+    $("div[data=news] a#news-travel").addClass("active");
     loadNewsTravel();
   });
 
-  $("#topic-sports").on("click", function() {
+  $("#news-sports").on("click", function() {
+    $("div[data=news] a").each(function() {
+      $(this).removeClass("active");
+    });
+    $("div[data=news] a#news-sport").addClass("active");
     loadNewsSports();
-  });
-  
-
-  $("#topic-archives").on("click", function() {
-    loadNewsArchives();
   });
 
   $("#video").on("click", function() {

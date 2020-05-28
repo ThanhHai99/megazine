@@ -522,8 +522,9 @@ $("body").delegate("#remove_news", "click", function(event) {
             )
             $("#dataTable tbody td:nth-child(1)").each(function() {
               if ($(this).html() == response.id) {
-                $(this).parent("tr").remove();
-
+                alert( $("div.dataTables_paginate a").hasClass("disabled") );
+                $("a.paginate_button next").click();
+                $("a.current").click();
                 return false;
               }
             });
