@@ -1,7 +1,6 @@
 <script>
-
 // open modal edit slide
-$("body").delegate("#edit_slide", "click", function(){
+$("body").delegate("#edit_slide", "click", function() {
   let table = $('#dataTable').DataTable();
   $tr = $(this).closest('tr');
   if ($($tr).hasClass('child')) {
@@ -44,7 +43,7 @@ $("button.update_slide").click(function(event) {
   let id = data['id'];
   let heading_primary = $("#editModalSlide").find("#update_heading_primary").val();
   let heading_secondary = $("#editModalSlide").find("#update_heading_secondary").val();
-  
+
   $.ajax({
     url: `{{route('slide.update')}}`,
     method: "POST",
@@ -59,7 +58,7 @@ $("button.update_slide").click(function(event) {
         alertify.notify('Update successfully', 'success', 3);
       }
       $("#dataTable tbody td:nth-child(1)").each(function() {
-        if($(this).html() == response.id ) {
+        if ($(this).html() == response.id) {
           let temp = $('#dataTable').DataTable().row($("#dataTable tbody tr td:nth-child(1)")).data();
           temp.heading_primary = response.heading_primary;
           temp.heading_secondary = response.heading_secondary;
@@ -99,7 +98,7 @@ $("body").delegate("form#form-image-slide", "submit", function(event) {
         alertify.notify('Update successfully', 'success', 3);
       }
       $("#dataTable tbody td:nth-child(1)").each(function() {
-        if($(this).html() == response.id ) {
+        if ($(this).html() == response.id) {
           let temp = $('#dataTable').DataTable().row($("#dataTable tbody tr td:nth-child(1)")).data();
           temp.image = response.image;
           $('#dataTable').DataTable().row($(this).parent("tr")).data(temp);
@@ -152,7 +151,7 @@ $("body").delegate("#remove_slide", "click", function(event) {
               'success'
             )
             $("#dataTable tbody td:nth-child(1)").each(function() {
-              if($(this).html() == response.id ) {
+              if ($(this).html() == response.id) {
                 $(this).parent("tr").remove();
                 return false;
               }
@@ -191,16 +190,16 @@ $("form#form_insert_slide").on("submit", function(event) {
         $("#insertModalSlide").modal('hide');
         alertify.notify('Create successfully', 'success', 3);
       }
-      table.rows.add( [{
-        "id" : "",
-        "id_topic" : "",
-        "id_creator" : "",
-        "image" : "",
-        "tag" : "",
-        "caption" : "",
-        "subtitle" : "",
+      table.rows.add([{
+        "id": "",
+        "id_topic": "",
+        "id_creator": "",
+        "image": "",
+        "tag": "",
+        "caption": "",
+        "subtitle": "",
         "action": ""
-      }] ).draw();
+      }]).draw();
     },
     error: function(error) {
       if (error.responseText.error == "Unauthenticated.") {

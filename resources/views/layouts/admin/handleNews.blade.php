@@ -1,25 +1,24 @@
 <script>
-
 // send Mail while created new news  
 let sendNews = () => {
   $.ajax({
     url: `{{route('news.send')}}`,
     method: 'POST',
-    data: {  },
+    data: {},
     contentType: false,
     cache: false,
     processData: false,
     success: function(response) {
-      
+
     },
     error: function(error) {
-      
+
     }
   });
 }
-  
+
 // open modal [prepare]
-$("body").delegate("#edit_news", "click", function(){
+$("body").delegate("#edit_news", "click", function() {
   let table = $('#dataTable').DataTable();
   $tr = $(this).closest('tr');
   if ($($tr).hasClass('child')) {
@@ -77,10 +76,12 @@ $("body").delegate("#hot_news_yes", "click", function(event) {
       id: id
     },
     success: function(response) {
-      if(response.error == false) {
+      if (response.error == false) {
         $('tbody > tr > td:first-child').each(function() {
           if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(3)").html(`<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color: red;"></i></a>`);
+            $(this).parent("tr").find("td:nth-child(3)").html(
+              `<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color: red;"></i></a>`
+              );
           }
         });
       }
@@ -112,10 +113,12 @@ $("body").delegate("#hot_news_no", "click", function(event) {
       id: id
     },
     success: function(response) {
-      if(response.error == false) {
+      if (response.error == false) {
         $('tbody > tr > td:first-child').each(function() {
           if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(3)").html(`<a href="javascript:void(0)" id="hot_news_yes"><a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`);
+            $(this).parent("tr").find("td:nth-child(3)").html(
+              `<a href="javascript:void(0)" id="hot_news_yes"><a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`
+              );
           }
         });
       }
@@ -148,10 +151,12 @@ $("body").delegate("#hot_news_yes-all", "click", function(event) {
       id: id
     },
     success: function(response) {
-      if(response.error == false) {
+      if (response.error == false) {
         $('tbody > tr > td:first-child').each(function() {
           if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(4)").html(`<a href="javascript:void(0)" id="hot_news_no-all"><i class="fa fa-times-circle" style="color: red;"></i></a>`);
+            $(this).parent("tr").find("td:nth-child(4)").html(
+              `<a href="javascript:void(0)" id="hot_news_no-all"><i class="fa fa-times-circle" style="color: red;"></i></a>`
+              );
           }
         });
       }
@@ -184,10 +189,12 @@ $("body").delegate("#hot_news_no-all", "click", function(event) {
       id: id
     },
     success: function(response) {
-      if(response.error == false) {
+      if (response.error == false) {
         $('tbody > tr > td:first-child').each(function() {
           if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(4)").html(`<a href="javascript:void(0)" id="hot_news_yes-all"><i class="fa fa-check-circle" style="color:green;"></i></a>`);
+            $(this).parent("tr").find("td:nth-child(4)").html(
+              `<a href="javascript:void(0)" id="hot_news_yes-all"><i class="fa fa-check-circle" style="color:green;"></i></a>`
+              );
           }
         });
       }
@@ -220,10 +227,12 @@ $("body").delegate("#status_news_yes", "click", function(event) {
       id: id
     },
     success: function(response) {
-      if(response.error == false) {
+      if (response.error == false) {
         $('tbody > tr > td:first-child').each(function() {
           if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(4)").html(`<a href="javascript:void(0)" id="status_news_no"><i class="fas fa-lock" style="color: red;"></i></a>`);
+            $(this).parent("tr").find("td:nth-child(4)").html(
+              `<a href="javascript:void(0)" id="status_news_no"><i class="fas fa-lock" style="color: red;"></i></a>`
+              );
           }
         });
       }
@@ -256,10 +265,12 @@ $("body").delegate("#status_news_no", "click", function(event) {
       id: id
     },
     success: function(response) {
-      if(response.error == false) {
+      if (response.error == false) {
         $('tbody > tr > td:first-child').each(function() {
           if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(4)").html(`<a href="javascript:void(0)" id="status_news_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>`);
+            $(this).parent("tr").find("td:nth-child(4)").html(
+              `<a href="javascript:void(0)" id="status_news_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>`
+              );
           }
         });
       }
@@ -291,10 +302,12 @@ $("body").delegate("#status_news_yes-all", "click", function(event) {
       id: id
     },
     success: function(response) {
-      if(response.error == false) {
+      if (response.error == false) {
         $('tbody > tr > td:first-child').each(function() {
           if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(5)").html(`<a href="javascript:void(0)" id="status_news_no-all"><i class="fas fa-lock" style="color: red;"></i></a>`);
+            $(this).parent("tr").find("td:nth-child(5)").html(
+              `<a href="javascript:void(0)" id="status_news_no-all"><i class="fas fa-lock" style="color: red;"></i></a>`
+              );
           }
         });
       }
@@ -327,10 +340,12 @@ $("body").delegate("#status_news_no-all", "click", function(event) {
       id: id
     },
     success: function(response) {
-      if(response.error == false) {
+      if (response.error == false) {
         $('tbody > tr > td:first-child').each(function() {
           if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(5)").html(`<a href="javascript:void(0)" id="status_news_yes-all"><i class="fas fa-lock-open" style="color:green;"></i></a>`);
+            $(this).parent("tr").find("td:nth-child(5)").html(
+              `<a href="javascript:void(0)" id="status_news_yes-all"><i class="fas fa-lock-open" style="color:green;"></i></a>`
+              );
           }
         });
       }
@@ -344,7 +359,7 @@ $("body").delegate("#status_news_no-all", "click", function(event) {
   });
   //End click button update hot new yes
 });
-  
+
 $("button.update_news").click(function(event) {
   event.preventDefault();
   let table = $('#dataTable').DataTable();
@@ -354,7 +369,7 @@ $("button.update_news").click(function(event) {
   let tag = $("#editModalNews").find("#update_tag").val();
   let caption = $("#editModalNews").find("#update_caption").val();
   let subtitle = $("#editModalNews").find("#update_subtitle").val();
-  
+
   $.ajax({
     url: `{{route('news.update')}}`,
     method: "PUT",
@@ -374,7 +389,7 @@ $("button.update_news").click(function(event) {
         alertify.notify('Update successfully', 'success', 3);
 
         $("#dataTable tbody td:nth-child(1)").each(function() {
-          if($(this).html() == response.id ) {
+          if ($(this).html() == response.id) {
             let temp = $('#dataTable').DataTable().row($("#dataTable tbody tr td:nth-child(1)")).data();
             temp.tag = response.tag;
             temp.caption = response.caption;
@@ -393,7 +408,7 @@ $("button.update_news").click(function(event) {
     }
   });
 });
-  
+
 $("form#form-insert-news").on("submit", function(event) {
   event.preventDefault();
   let table = $('#dataTable').DataTable();
@@ -409,18 +424,18 @@ $("form#form-insert-news").on("submit", function(event) {
         $("#insertModalNews").modal('hide');
         alertify.notify('Create successfully', 'success', 3);
         sendNews();
-      }   
-      table.rows.add( [{
-        "id" : "",
-        "id_topic" : "",
-        "id_creator" : "",
-        "hot_news" : "",
-        "image" : "",
-        "tag" : "",
-        "caption" : "",
-        "subtitle" : "",
+      }
+      table.rows.add([{
+        "id": "",
+        "id_topic": "",
+        "id_creator": "",
+        "hot_news": "",
+        "image": "",
+        "tag": "",
+        "caption": "",
+        "subtitle": "",
         "action": ""
-      }] ).draw();
+      }]).draw();
     },
     error: function(error) {
       if (error.responseText.error == "Unauthenticated.") {
@@ -450,17 +465,17 @@ $("form#form-insert-news_all").on("submit", function(event) {
         $("#insertModalNews_all").modal('hide');
         alertify.notify('Create successfully', 'success', 3);
       }
-      table.rows.add( [{
-        "id" : "",
-        "id_topic" : "",
-        "id_creator" : "",
-        "hot_news" : "",
-        "image" : "",
-        "tag" : "",
-        "caption" : "",
-        "subtitle" : "",
+      table.rows.add([{
+        "id": "",
+        "id_topic": "",
+        "id_creator": "",
+        "hot_news": "",
+        "image": "",
+        "tag": "",
+        "caption": "",
+        "subtitle": "",
         "action": ""
-      }] ).draw();
+      }]).draw();
     },
     error: function(error) {
       if (error.responseText.error == "Unauthenticated.") {
@@ -506,7 +521,7 @@ $("body").delegate("#remove_news", "click", function(event) {
               'success'
             )
             $("#dataTable tbody td:nth-child(1)").each(function() {
-              if($(this).html() == response.id ) {
+              if ($(this).html() == response.id) {
                 $(this).parent("tr").remove();
 
                 return false;
@@ -530,7 +545,7 @@ $("body").delegate("#remove_news", "click", function(event) {
     }
   });
 });
-      
+
 $("body").delegate("form#form-image-news", "submit", function(event) {
   event.preventDefault();
   let table = $('#dataTable').DataTable();
@@ -555,9 +570,14 @@ $("body").delegate("form#form-image-news", "submit", function(event) {
         $('tbody > tr > td:first-child').each(function() {
           if ($(this).html() == response.id) {
             if ($(this).parent("tr").find("td:nth-child(5) > a > img").hasClass("img-responsive")) {
-              $(this).parent("tr").find("td:nth-child(5)").html(`<a data-toggle="modal"><img id="image-news" src="images/`+ response.image +`" class="img-responsive"></a>`);
-            } else if ($(this).parent("tr").find("td:nth-child(6) > a > img").hasClass("img-responsive")) {
-              $(this).parent("tr").find("td:nth-child(6)").html(`<a data-toggle="modal"><img id="image-news" src="images/`+ response.image +`" class="img-responsive"></a>`);
+              $(this).parent("tr").find("td:nth-child(5)").html(
+                `<a data-toggle="modal"><img id="image-news" src="images/` + response.image +
+                `" class="img-responsive"></a>`);
+            } else if ($(this).parent("tr").find("td:nth-child(6) > a > img").hasClass(
+              "img-responsive")) {
+              $(this).parent("tr").find("td:nth-child(6)").html(
+                `<a data-toggle="modal"><img id="image-news" src="images/` + response.image +
+                `" class="img-responsive"></a>`);
             }
 
           }
@@ -576,7 +596,4 @@ $("body").delegate("form#form-image-news", "submit", function(event) {
     }
   });
 });
-
-  
 </script>
-
