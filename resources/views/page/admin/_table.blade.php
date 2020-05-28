@@ -36,10 +36,18 @@
 
   <script>
   <?php if (session('id_role') == 0 || session('id_role') == 1) { ?>
+          $("div[data=employee] a").each(function() {
+            $(this).removeClass("active");
+          });
+          $("div[data=employee] a#employee-all").addClass("active");
           loadEmployeeAll_onLoad();
   <?php } ?>
 
   <?php if (session('id_role') == 2) { ?>
+          $("div[data=news] a").each(function() {
+            $(this).removeClass("active");
+          });
+          $("div[data=news] a#news-all").addClass("active");
           loadNewsAll_onLoad();
   <?php } ?>
 

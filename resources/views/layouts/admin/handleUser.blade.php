@@ -45,22 +45,21 @@ $("button.update_employee").click(function(event) {
       if (response.error == false) {
         $("#editModalEmployee").modal('hide');
         alertify.notify('Update successfully', 'success', 3);
-        // console.log( $("div.dataTables_paginate span").length );
-        if( $("div.dataTables_paginate span").length ) {
-          
+        if( $("div.dataTables_paginate span a").length == 1) {
+          if( $("div[data=employee] a").hasClass("active") ) {
+            $("div[data=employee] a.active").click();
+          }
+        } else {
+          if ( $("div.dataTables_paginate a.previous").hasClass("disabled") ) {
+            $("div.dataTables_paginate a.next").click();
+            $("div.dataTables_paginate a.previous").click();
+          }
+          if ( $("div.dataTables_paginate a.next").hasClass("disabled") ) {
+            $("div.dataTables_paginate a.previous").click();
+            $("div.dataTables_paginate a.next").click();
+          }
         }
-        // $("#dataTable tbody td:nth-child(1)").each(function() {
-        //   if ($(this).html() == response.employee_id) {
-        //     let temp = $('#dataTable').DataTable().row($(this)).data();
-        //     temp.name = response.employee_name;
-        //     temp.email = response.employee_email;
-        //     temp.id_role = $(`#editModalEmployee select option[value='` + response.employee_id_role + `']`).attr("name");
-        //     $('#dataTable').DataTable().row($(this).parent("tr")).data(temp);
-        //     return false;
-        //   }
-        // });
       }
-
     },
     error: function(error) {
       if (error.responseText.error == "Unauthenticated.") {
@@ -104,8 +103,20 @@ $("body").delegate("#remove_employee", "click", function() {
               'Element has been deleted.',
               'success'
             )
-            // table.row( $(this).parents('tr') ).remove().draw();
-            table.draw();
+            if( $("div.dataTables_paginate span a").length == 1) {
+              if( $("div[data=employee] a").hasClass("active") ) {
+                $("div[data=employee] a.active").click();
+              }
+            } else {
+              if ( $("div.dataTables_paginate a.previous").hasClass("disabled") ) {
+                $("div.dataTables_paginate a.next").click();
+                $("div.dataTables_paginate a.previous").click();
+              }
+              if ( $("div.dataTables_paginate a.next").hasClass("disabled") ) {
+                $("div.dataTables_paginate a.previous").click();
+                $("div.dataTables_paginate a.next").click();
+              }
+            }
           }
         },
         error: function(error) {
