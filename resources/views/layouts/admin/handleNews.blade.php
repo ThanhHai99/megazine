@@ -34,11 +34,9 @@ $("body").delegate("#edit_news", "click", function() {
   $("#editModalNews").modal('show');
 });
 
-
 $("body").delegate("a#insert_news", "click", function() {
   $("#insertModalNews").modal('show');
 });
-
 
 $("body").delegate("img#image-news", "click", function() {
   let table = $('#dataTable').DataTable();
@@ -55,8 +53,6 @@ $("body").delegate("img#image-news", "click", function() {
   $("button#update_image_news").remove();
   $("#editImageNews").modal('show');
 });
-
-
 
 //handle
 $("body").delegate("#hot_news_yes", "click", function(event) {
@@ -360,7 +356,7 @@ $("body").delegate("#status_news_no-all", "click", function(event) {
   //End click button update hot new yes
 });
 
-$("button.update_news").click(function(event) {
+$("body").delegate("button.update_news", "click", function(event) {
   event.preventDefault();
   let table = $('#dataTable').DataTable();
   let data = table.row($tr).data();
@@ -411,7 +407,7 @@ $("button.update_news").click(function(event) {
   });
 });
 
-$("form#form-insert-news").on("submit", function(event) {
+$("body").delegate("form#form-insert-news", "submit", function(event) {
   event.preventDefault();
   let table = $('#dataTable').DataTable();
   $.ajax({
@@ -452,7 +448,7 @@ $("body").delegate("a#insert_news_all", "click", function() {
   $("#insertModalNews_all").modal("show");
 });
 
-$("form#form-insert-news_all").on("submit", function(event) {
+$("body").delegate("form#form-insert-news_all", "submit", function(event) {
   event.preventDefault();
   let table = $('#dataTable').DataTable();
   $.ajax({
