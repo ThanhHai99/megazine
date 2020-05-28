@@ -64,7 +64,7 @@
 
         <input type="hidden" name="employee_id" value="">
 
-        <div class="form-group">
+        <div class="form-group" id="employee_role">
           <label>Role</label>
           <select class="form-control" name="employee_id_role">
             @foreach($roles as $role)

@@ -12,13 +12,18 @@ $("body").delegate("#edit_employee", "click", function() {
   $(`#editModalEmployee select[name=employee_id_role] option`).each(function() {
     $(this).removeAttr("selected");
   });
-  
-  if ($("div[data=employee] a.active").hasClass("all")) {
-    $(`#editModalEmployee select[name=employee_id_role] option[name='` + data['id_role'] + `']`).attr('selected','selected');
+
+  if ( $("div[data=employee] a.active").attr("data") == "admin" ) {
+    $("div#employee_role").remove();
   } else {
-    let role = $("div[data=employee] a.active").attr("data");
-    $(`#editModalEmployee select[name=employee_id_role] option[name='` + role + `']`).attr('selected','selected');
+    if ($("div[data=employee] a.active").hasClass("all")) {
+      $(`#editModalEmployee select[name=employee_id_role] option[name='` + data['id_role'] + `']`).attr('selected','selected');
+    } else {
+      let role = $("div[data=employee] a.active").attr("data");
+      $(`#editModalEmployee select[name=employee_id_role] option[name='` + role + `']`).attr('selected','selected');
+    }
   }
+  
 
   $("#editModalEmployee input[name=employee_name]").val(data['name']);
   $("#editModalEmployee input[name=employee_email]").val(data['email']);
@@ -35,11 +40,17 @@ $("body").delegate("button.update_employee", "click", function(event) {
 
   let employee_id = $("#editModalEmployee input[name=employee_id]").val();
   let employee_id_role = $("#editModalEmployee select[name=employee_id_role] option:selected").val();
+  
   <?php if(session("id_role") == 0) { ?>
-          if (employee_id_role != 0) {
-            alertify.error("Not allow");
-            return false;
+          employee_id_role = 0;
+          alert( $("div[data=employee] a.active").attr("data") );
+          if ( $("div[data=employee] a.active").attr("data") == "admin" ) {
+            console.log($("div#employee_role").html());
           }
+          // if (employee_id_role != 0) {
+            // alertify.error("Not allow");
+            // return false;
+          // }
   <?php } ?>
 
   // if (employee_id_role == 0) {
