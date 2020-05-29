@@ -73,13 +73,23 @@ $("body").delegate("#hot_news_yes", "click", function(event) {
     },
     success: function(response) {
       if (response.error == false) {
-        $('tbody > tr > td:first-child').each(function() {
-          if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(3)").html(
-              `<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color: red;"></i></a>`
-              );
-          }
-        });
+        if ( $("div[data=news] a.active").hasClass("all") ) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(4)").html(
+                `<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color: red;"></i></a>`
+                );
+            }
+          });
+        } else {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(3)").html(
+                `<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color: red;"></i></a>`
+                );
+            }
+          });
+        }
       }
     },
     error: function(error) {
@@ -110,13 +120,23 @@ $("body").delegate("#hot_news_no", "click", function(event) {
     },
     success: function(response) {
       if (response.error == false) {
-        $('tbody > tr > td:first-child').each(function() {
-          if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(3)").html(
-              `<a href="javascript:void(0)" id="hot_news_yes"><a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`
-              );
-          }
-        });
+        if ( $("div[data=news] a.active").hasClass("all") ) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(4)").html(
+                `<a href="javascript:void(0)" id="hot_news_yes"><a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`
+                );
+            }
+          });
+        } else {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(3)").html(
+                `<a href="javascript:void(0)" id="hot_news_yes"><a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`
+                );
+            }
+          });
+        }
       }
     },
     error: function(error) {
@@ -128,8 +148,6 @@ $("body").delegate("#hot_news_no", "click", function(event) {
   });
   //End click button update hot new yes
 });
-
-
 
 
 $("body").delegate("#status_news_yes", "click", function(event) {
@@ -228,80 +246,6 @@ $("body").delegate("#status_news_no", "click", function(event) {
   //End click button update hot new yes
 });
 
-$("body").delegate("#status_news_yes-all", "click", function(event) {
-  event.preventDefault();
-  let table = $('#dataTable').DataTable();
-  $tr = $(this).closest('tr');
-  if ($($tr).hasClass('child')) {
-    $tr = $tr.prev('.parent');
-  };
-  let data = table.row($tr).data();
-  let id = data['id'];
-  $('meta[name=row-index]').attr('content', id);
-  $.ajax({
-    url: `{{route('news.updateStatusNewsNo')}}`,
-    method: "PUT",
-    data: {
-      id: id
-    },
-    success: function(response) {
-      if (response.error == false) {
-        $('tbody > tr > td:first-child').each(function() {
-          if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(5)").html(
-              `<a href="javascript:void(0)" id="status_news_no-all"><i class="fas fa-lock" style="color: red;"></i></a>`
-              );
-          }
-        });
-      }
-    },
-    error: function(error) {
-      if (error.responseText.error == "Unauthenticated.") {
-        location.reload(true);
-      }
-      alertify.notify('An error occurred', 'error', 3);
-    }
-  });
-  //End click button update hot new yes
-});
-
-$("body").delegate("#status_news_no-all", "click", function(event) {
-  //Click button update hot new yes
-  event.preventDefault();
-  let table = $('#dataTable').DataTable();
-  $tr = $(this).closest('tr');
-  if ($($tr).hasClass('child')) {
-    $tr = $tr.prev('.parent');
-  };
-  let data = table.row($tr).data();
-  let id = data['id'];
-  $('meta[name=row-index]').attr('content', id);
-  $.ajax({
-    url: `{{route('news.updateStatusNewsYes')}}`,
-    method: "PUT",
-    data: {
-      id: id
-    },
-    success: function(response) {
-      if (response.error == false) {
-        $('tbody > tr > td:first-child').each(function() {
-          if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(5)").html(
-              `<a href="javascript:void(0)" id="status_news_yes-all"><i class="fas fa-lock-open" style="color:green;"></i></a>`
-              );
-          }
-        });
-      }
-    },
-    error: function(error) {
-      if (error.responseText.error == "Unauthenticated.") {
-        location.reload(true);
-      }
-      alertify.notify('An error occurred', 'error', 3);
-    }
-  });
-  //End click button update hot new yes
-});
 
 $("body").delegate("button.update_news", "click", function(event) {
   event.preventDefault();
