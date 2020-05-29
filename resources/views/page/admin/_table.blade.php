@@ -146,9 +146,15 @@
     loadNewsSports();
   });
 
-  $("#video").on("click", function() {
-    loadVideo();
+  $("#video-all").on("click", function() {
+    $("div[data=video] a").each(function() {
+      $(this).removeClass("active");
+    });
+    $("div[data=video] a#video-all").addClass("active");
+    $("input[name=_video_id_topic]").attr("value", "");
+    loadVideoAll();
   });
+
   $("#slide").on("click", function() {
     loadSlide();
   });  

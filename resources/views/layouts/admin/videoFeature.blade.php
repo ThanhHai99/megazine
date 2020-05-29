@@ -1,6 +1,6 @@
 <script>
 
-let loadVideo = () => {
+let loadVideoAll = () => {
   $('input[name=id_topic]').attr('value', 5);
   var table = $("#dataTable").DataTable();
   table.destroy();

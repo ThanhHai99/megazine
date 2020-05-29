@@ -53,10 +53,26 @@
     </div>
   </li>
 
-  <li class="nav-item">
+  <!-- <li class="nav-item">
     <a class="nav-link" href="javascript:void(0)" id="video">
       <i class="fas fa-fw fa-folder"></i>
       <span>Video</span></a>
+  </li> -->
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#collapseVideo" aria-expanded="true" aria-controls="collapseVideo">
+      <i class="fas fa-fw fa-folder"></i>
+      <span>Video</span>
+    </a>
+    <div id="collapseVideo" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" data="video">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <a href="javascript:void(0)" class="collapse-item all" id="video-all" style="text-transform: capitalize">All</a>
+        @foreach ($topics as $topic)
+          <!-- <a href="dashboard/table" class="collapse-item" style="text-transform: capitalize">{{ $topic->name }}</a> -->
+          <a href="javascript:void(0)" class="collapse-item" id="video-{{ $topic->name }}" data="{{ $topic->name }}" style="text-transform: capitalize">{{ $topic->name }}</a>
+        @endforeach
+      </div>
+    </div>
   </li>
 
   <li class="nav-item">

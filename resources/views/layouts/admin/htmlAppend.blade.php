@@ -185,5 +185,41 @@ let htmlAllVideo =`<thead>
                     </tr>
                   </tfoot>`;
 
+let htmlVideo =`<thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Creator</th>
+                      <th>Hot News</th>
+                      <th>Status</th>
+                      <th>Image</th>
+                      <th>Tag</th>
+                      <th>Caption</th>
+                      <th>Subtitle</th>
+                      <th class="text-center">
+                        <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg" id="insert_video">
+                          <i class="glyphicon glyphicon-plus"></i>
+                        </a>
+                      </th>
+                    </tr>
+                  </thead>
+                  
+                  <tfoot>
+                    <tr>
+                      <th>ID</th>
+                      <th>Creator</th>
+                      <th>Hot News</th>
+                      <th>Status</th>
+                      <th>Image</th>
+                      <th>Tag</th>
+                      <th>Caption</th>
+                      <th>Subtitle</th>
+                      <th class="text-center">
+                        <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg" id="insert_video">
+                          <i class="glyphicon glyphicon-plus"></i>
+                        </a>
+                      </th>
+                    </tr>
+                  </tfoot>`;
+
 
 </script>

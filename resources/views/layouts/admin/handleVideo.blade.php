@@ -1,8 +1,5 @@
 <script>
-//Click update hot video
-//Yes
 $("body").delegate("#hot_video_yes", "click", function(event) {
-  //Click button update hot new yes
   event.preventDefault();
   let table = $('#dataTable').DataTable();
   $tr = $(this).closest('tr');
@@ -36,11 +33,9 @@ $("body").delegate("#hot_video_yes", "click", function(event) {
       alertify.notify('An error occurred', 'error', 3);
     }
   });
-  //End click button update hot new yes
 });
-//No
+
 $("body").delegate("#hot_video_no", "click", function(event) {
-  //Click button update hot new yes
   event.preventDefault();
   let table = $('#dataTable').DataTable();
   $tr = $(this).closest('tr');
@@ -74,14 +69,9 @@ $("body").delegate("#hot_video_no", "click", function(event) {
       alertify.notify('An error occurred', 'error', 3);
     }
   });
-  //End click button update hot new yes
 });
-//End click update hot video
 
-//Click update status video
-//Yes
 $("body").delegate("#status_video_yes", "click", function(event) {
-  //Click button update hot new yes
   event.preventDefault();
   let table = $('#dataTable').DataTable();
   $tr = $(this).closest('tr');
@@ -115,11 +105,9 @@ $("body").delegate("#status_video_yes", "click", function(event) {
       alertify.notify('An error occurred', 'error', 3);
     }
   });
-  //End click button update hot new yes
 });
-//No
+
 $("body").delegate("#status_video_no", "click", function(event) {
-  //Click button update hot new yes
   event.preventDefault();
   let table = $('#dataTable').DataTable();
   $tr = $(this).closest('tr');
@@ -153,11 +141,8 @@ $("body").delegate("#status_video_no", "click", function(event) {
       alertify.notify('An error occurred', 'error', 3);
     }
   });
-  //End click button update hot new yes
 });
-//End click update status video
 
-//Start click image video
 $("body").delegate("img#image-video", "click", function() {
   let table = $('#dataTable').DataTable();
   $tr = $(this).closest('tr');
@@ -173,10 +158,6 @@ $("body").delegate("img#image-video", "click", function() {
   $("button#update_image_video").remove();
   $("#editImageVideo").modal('show');
 });
-
-
-// Start click change image video
-//Start click button create
 
 $("body").delegate("form#form-image-video", "submit", function(event) {
   event.preventDefault();
@@ -215,6 +196,4 @@ $("body").delegate("form#form-image-video", "submit", function(event) {
     }
   });
 });
-// End click change image video
-//End click image video
 </script>
