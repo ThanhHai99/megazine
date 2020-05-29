@@ -336,6 +336,11 @@ Route::group(["namespace" => "Admin"], function() {
                 "uses" => "AdminController@videoUpdate"
             ]);
 
+            Route::put("remove", [
+                "as" => "video.remove",
+                "uses" => "AdminController@videoRemove"
+            ]);
+
             
         });
 

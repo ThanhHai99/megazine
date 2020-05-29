@@ -159,7 +159,7 @@ let htmlAllVideo =`<thead>
                       <th>Caption</th>
                       <th>Subtitle</th>
                       <th class="text-center">
-                        <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg" id="insert_news">
+                        <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg" id="insert_video">
                           <i class="glyphicon glyphicon-plus"></i>
                         </a>
                       </th>
@@ -178,7 +178,7 @@ let htmlAllVideo =`<thead>
                       <th>Caption</th>
                       <th>Subtitle</th>
                       <th class="text-center">
-                        <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg" id="insert_news">
+                        <a href="javascript:void(0)" class="create-modal btn btn-success btn-lg" id="insert_video">
                           <i class="glyphicon glyphicon-plus"></i>
                         </a>
                       </th>

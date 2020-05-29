@@ -205,6 +205,70 @@
 </div>
 <!-- End Insert News Modal -->
 
+<!-- Start Insert Video Modal  -->
+<div class="modal fade" id="insertModalVideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create News - Video</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form id="form-insert-video" method="PUT" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <div class="modal-body">
+          <input type="hidden" name="_video_id_topic" value="">
+          <div class="form-group" id="video_id_topic">
+            <label>Topic</label>
+            <select class="form-control" name="video_id_topic">
+              @foreach($topics as $topic)
+                <option value="{{ $topic->id }}">{{ $topic->name }}</option>
+              @endforeach              
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Hot News</label>
+            <div>
+              <label class="radio-inline"><input type="radio" name="video_hot_news" value="1">Yes</label>
+              <label class="radio-inline"><input type="radio" name="video_hot_news" value="0" checked>No</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Image</label>
+            <input type="file" name="video_image" class="form-control" placeholder="Image">
+          </div>
+
+          <div class="form-group">
+            <label>Tag</label>
+            <input type="text" name="video_tag" class="form-control" placeholder="Tag">
+          </div>
+
+          <div class="form-group">
+            <label>Caption</label>
+            <input type="text" name="video_caption" class="form-control" placeholder="Caption">
+          </div>
+
+          <div class="form-group">
+            <label>Subtitle</label>
+            <input type="text" name="video_subtitle" class="form-control" placeholder="Subtitle">
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success insert_news">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- End Insert Video Modal -->
+
 <!-- Start Insert News Modal - All -->
 <div class="modal fade" id="insertModalNews_all" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

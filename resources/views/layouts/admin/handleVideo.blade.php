@@ -273,4 +273,81 @@ $("body").delegate("form#form-image-video", "submit", function(event) {
     }
   });
 });
+
+
+$("body").delegate("a#insert_video", "click", function() {
+  if ($("div[data=video] a.active").hasClass("all")) {
+    $("div#insertModalVideo div[id=video_id_topic]").show();
+  } else {
+    $("div#insertModalVideo div[id=video_id_topic]").hide();
+  }
+  $("#insertModalVideo").modal('show');
+});
+
+$("body").delegate("#remove_video", "click", function(event) {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.value) {
+      event.preventDefault();
+
+      $tr = $(this).closest('tr');
+      if ($($tr).hasClass('child')) {
+        $tr = $tr.prev('.parent');
+      };
+
+      let table = $('#dataTable').DataTable();
+      let data = table.row($tr).data();
+      let id = data['id'];
+      $.ajax({
+        url: `{{route('video.remove')}}`,
+        method: "PUT",
+        data: {
+          id: id
+        },
+        success: function(response) {
+          if (response.error == false) {
+            Swal.fire(
+              'Deleted!',
+              'Element has been deleted.',
+              'success'
+            )
+            if( $("div.dataTables_paginate span a").length == 1) {
+              if( $("div[data=employee] a").hasClass("active") ) {
+                $("div[data=employee] a.active").click();
+              }
+            } else {
+              if ( $("div.dataTables_paginate a.previous").hasClass("disabled") ) {
+                $("div.dataTables_paginate a.next").click();
+                $("div.dataTables_paginate a.previous").click();
+              }
+              if ( $("div.dataTables_paginate a.next").hasClass("disabled") ) {
+                $("div.dataTables_paginate a.previous").click();
+                $("div.dataTables_paginate a.next").click();
+              }
+            }
+          }
+        },
+        error: function(error) {
+          if (error.responseText.error == "Unauthenticated.") {
+            location.reload(true);
+          }
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            // footer: '<a href>Why do I have this issue?</a>'
+          })
+        }
+      });
+    }
+  });
+});
+
 </script>

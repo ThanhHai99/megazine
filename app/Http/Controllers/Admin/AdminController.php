@@ -936,7 +936,23 @@ class AdminController extends Controller
 
     };
 
-  } 
+  }
+
+  public function videoRemove(Request $request) {
+    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
+      return redirect("/home")->with("notAdmin", "You are not admin.");
+    }
+
+    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
+      $input = $request->all();
+      Video::where('id', $input['id'])->delete();
+      return response()->json([
+        'error' => false,
+        'id'  => $input["id"]
+      ], 200);
+
+    };
+  }
 
   public function newsUpdateHotVideoYes(Request $request) {
     if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
