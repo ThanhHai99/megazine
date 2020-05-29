@@ -106,6 +106,7 @@
       $(this).removeClass("active");
     });
     $("div[data=news] a#news-all").addClass("active");
+    $("input[name=_news_id_topic]").attr("value", "");
     loadAllNews();
   });
 
@@ -114,6 +115,7 @@
       $(this).removeClass("active");
     });
     $("div[data=news] a#news-style").addClass("active");
+    $("input[name=_news_id_topic]").attr("value", "1");
     loadNewsStyle();
   });
 
@@ -122,6 +124,7 @@
       $(this).removeClass("active");
     });
     $("div[data=news] a#news-fashion").addClass("active");
+    $("input[name=_news_id_topic]").attr("value", "2");
     loadNewsFashion();
   });
 
@@ -130,6 +133,7 @@
       $(this).removeClass("active");
     });
     $("div[data=news] a#news-travel").addClass("active");
+    $("input[name=_news_id_topic]").attr("value", "3");
     loadNewsTravel();
   });
 
@@ -138,6 +142,7 @@
       $(this).removeClass("active");
     });
     $("div[data=news] a#news-sport").addClass("active");
+    $("input[name=_news_id_topic]").attr("value", "4");
     loadNewsSports();
   });
 

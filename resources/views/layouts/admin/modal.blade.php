@@ -155,7 +155,8 @@
       <form id="form-insert-news" method="PUT" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="modal-body">
-          <div class="form-group">
+          <input type="hidden" name="_news_id_topic" value="">
+          <div class="form-group" id="news_id_topic">
             <label>Topic</label>
             <select class="form-control" name="news_id_topic">
               @foreach($topics as $topic)

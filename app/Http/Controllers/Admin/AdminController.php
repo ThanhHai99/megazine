@@ -466,28 +466,32 @@ class AdminController extends Controller
 
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
-        'id_topic' => 'required',
-        'hot_news' => 'required',
-        'image' => 'required',
-        'tag' => 'required',
-        'caption' => 'required',
-        'subtitle' => 'required'
+        '_news_id_topic' => 'required_without:news_id_topic',
+        'news_id_topic' => 'required_without:_news_id_topic',
+        'news_hot_news' => 'required',
+        'news_image' => 'required',
+        'news_tag' => 'required',
+        'news_caption' => 'required',
+        'news_subtitle' => 'required'
       ]);
       
       $input = $request->all();
-      dd($input);
       
       $tmp = new News;
   
-      if ($request->hasFile('image')) {
-        $file = $request->file('image');
+      if ($request->hasFile('news_image')) {
+        $file = $request->file('news_image');
         $extension = $file->getClientOriginalExtension();
         $filename = time() . '_'. uniqid() . '.' . $extension;
         $file->move("images", $filename);
         $tmp->image = $filename;
       }
-  
-      $tmp->id_topic = $input['news_id_topic'];
+
+      if ($input['_news_id_topic'] != "") {
+        $tmp->id_topic = $input['_news_id_topic'];
+      } else {
+        $tmp->id_topic = $input['news_id_topic'];
+      }
       $tmp->id_creator = session('id');
       $tmp->hot_news = $input['news_hot_news'];
       $tmp->tag = $input['news_tag'];
