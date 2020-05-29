@@ -156,36 +156,37 @@
         {{ csrf_field() }}
         <div class="modal-body">
           <div class="form-group">
+            <label>Topic</label>
+            <select class="form-control" name="news_id_topic">
+              @foreach($topics as $topic)
+                <option value="{{ $topic->id }}">{{ $topic->name }}</option>
+              @endforeach              
+            </select>
+          </div>
+
+          <div class="form-group">
             <label>Hot News</label>
-            <input type="text" name="hot_news" id="insert_hot_news" class="form-control" placeholder="Hot News">
+            <input type="text" name="news_hot_news" class="form-control" placeholder="Hot News">
           </div>
 
           <div class="form-group">
             <label>Image</label>
-            <input type="file" name="image" id="insert_image" class="form-control" placeholder="Image">
+            <input type="file" name="news_image" class="form-control" placeholder="Image">
           </div>
 
           <div class="form-group">
             <label>Tag</label>
-            <input type="text" name="tag" id="insert_tag" class="form-control" placeholder="Tag">
+            <input type="text" name="news_tag" class="form-control" placeholder="Tag">
           </div>
 
           <div class="form-group">
             <label>Caption</label>
-            <input type="text" name="caption" id="insert_caption" class="form-control" placeholder="Caption">
+            <input type="text" name="news_caption" class="form-control" placeholder="Caption">
           </div>
 
           <div class="form-group">
             <label>Subtitle</label>
-            <input type="text" name="subtitle" id="insert_subtitle" class="form-control" placeholder="Subtitle">
-          </div>
-
-          <div class="form-group">
-            <input type="hidden" name="id_topic" value="">
-          </div>
-
-          <div class="form-group">
-            <input type="hidden" name="id_creator" value="">
+            <input type="text" name="news_subtitle" class="form-control" placeholder="Subtitle">
           </div>
 
         </div>

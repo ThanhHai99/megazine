@@ -335,45 +335,45 @@ $("body").delegate("form#form-insert-news", "submit", function(event) {
   });
 });
 
-$("body").delegate("a#insert_news_all", "click", function() {
-  $("#insertModalNews_all").modal("show");
-});
+// $("body").delegate("a#insert_news_all", "click", function() {
+//   $("#insertModalNews_all").modal("show");
+// });
 
-$("body").delegate("form#form-insert-news_all", "submit", function(event) {
-  event.preventDefault();
-  let table = $('#dataTable').DataTable();
-  $.ajax({
-    url: `{{route('news.insert_all')}}`,
-    method: 'POST',
-    data: new FormData(this),
-    contentType: false,
-    cache: false,
-    processData: false,
-    success: function(response) {
-      if (response.error == false) {
-        $("#insertModalNews_all").modal('hide');
-        alertify.notify('Create successfully', 'success', 3);
-      }
-      table.rows.add([{
-        "id": "",
-        "id_topic": "",
-        "id_creator": "",
-        "hot_news": "",
-        "image": "",
-        "tag": "",
-        "caption": "",
-        "subtitle": "",
-        "action": ""
-      }]).draw();
-    },
-    error: function(error) {
-      if (error.responseText.error == "Unauthenticated.") {
-        location.reload(true);
-      }
-      alertify.notify('An error occurred', 'error', 3);
-    }
-  });
-});
+// $("body").delegate("form#form-insert-news_all", "submit", function(event) {
+//   event.preventDefault();
+//   let table = $('#dataTable').DataTable();
+//   $.ajax({
+//     url: `{{route('news.insert_all')}}`,
+//     method: 'POST',
+//     data: new FormData(this),
+//     contentType: false,
+//     cache: false,
+//     processData: false,
+//     success: function(response) {
+//       if (response.error == false) {
+//         $("#insertModalNews_all").modal('hide');
+//         alertify.notify('Create successfully', 'success', 3);
+//       }
+//       table.rows.add([{
+//         "id": "",
+//         "id_topic": "",
+//         "id_creator": "",
+//         "hot_news": "",
+//         "image": "",
+//         "tag": "",
+//         "caption": "",
+//         "subtitle": "",
+//         "action": ""
+//       }]).draw();
+//     },
+//     error: function(error) {
+//       if (error.responseText.error == "Unauthenticated.") {
+//         location.reload(true);
+//       }
+//       alertify.notify('An error occurred', 'error', 3);
+//     }
+//   });
+// });
 
 $("body").delegate("#remove_news", "click", function(event) {
   Swal.fire({

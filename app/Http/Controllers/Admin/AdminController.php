@@ -255,25 +255,6 @@ class AdminController extends Controller
     };
   }
 
-  // public function getNewsVideo(Request $request) {
-  //   if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-  //     return redirect("/home")->with("notAdmin", "You are not admin.");
-  //   }
-
-  //   if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-  //     if (!Auth::check()) {
-  //       Auth::logout();
-  //       return view('auth.login');
-  //       exit();
-  //     }
-  
-  //     $query=Video::join("users", "video.id_creator", "=", "users.id")
-  //                   ->join("topic", "video.id_topic", "=", "topic.id")
-  //                   ->select("video.id", "topic.name as id_topic", "users.name as id_creator", "video.hot_news", "video.id_status", "video.image", "video.tag", "video.caption", "video.subtitle");
-  //     return Datatables::of($query)->make(true);
-
-  //   };
-  // }
 
   public function getVideoAll(Request $request) {
     if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
@@ -494,6 +475,7 @@ class AdminController extends Controller
       ]);
       
       $input = $request->all();
+      dd($input);
       
       $tmp = new News;
   
@@ -505,12 +487,12 @@ class AdminController extends Controller
         $tmp->image = $filename;
       }
   
-      $tmp->id_topic = $input['id_topic'];
+      $tmp->id_topic = $input['news_id_topic'];
       $tmp->id_creator = session('id');
-      $tmp->hot_news = $input['hot_news'];
-      $tmp->tag = $input['tag'];
-      $tmp->caption = $input['caption'];
-      $tmp->subtitle = $input['subtitle'];
+      $tmp->hot_news = $input['news_hot_news'];
+      $tmp->tag = $input['news_tag'];
+      $tmp->caption = $input['news_caption'];
+      $tmp->subtitle = $input['news_subtitle'];
       $tmp->save();
   
       return response()->json([
@@ -776,8 +758,6 @@ class AdminController extends Controller
     }
 
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-
-      
       // $this->validate($request, [
       //   'hot_news' => 'required',
       //   'image' => 'required',
