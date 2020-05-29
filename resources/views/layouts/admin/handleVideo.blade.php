@@ -24,6 +24,58 @@ $("body").delegate("#edit_video", "click", function() {
   $("#editModalVideo").modal('show');
 });
 
+$("body").delegate("button.update_video", "click", function(event) {
+  event.preventDefault();
+  let table = $('#dataTable').DataTable();
+  let data = table.row($tr).data();
+  let id = data['id'];
+  let id_topic = $(`#editModalVideo select[name=video_id_topic] option:selected`).val();
+  let tag = $("#editModalVideo input[name=video_tag]").val();
+  let caption = $("#editModalVideo input[name=video_caption]").val();
+  let subtitle = $("#editModalVideo input[name=video_subtitle]").val();
+
+  $.ajax({
+    url: `{{route('video.update')}}`,
+    method: "PUT",
+    data: {
+      id: id,
+      video_id_topic: id_topic,
+      video_tag: tag,
+      video_caption: caption,
+      video_subtitle: subtitle
+    },
+    success: function(response) {
+      if (response.error == false) {
+
+        $("#editModalVideo").modal('hide');
+        alertify.notify('Update successfully', 'success', 3);
+
+        if( $("div.dataTables_paginate span a").length == 1) {
+          if( $("div[data=employee] a").hasClass("active") ) {
+            $("div[data=employee] a.active").click();
+          }
+        } else {
+          if ( $("div.dataTables_paginate a.previous").hasClass("disabled") ) {
+            $("div.dataTables_paginate a.next").click();
+            $("div.dataTables_paginate a.previous").click();
+          }
+          if ( $("div.dataTables_paginate a.next").hasClass("disabled") ) {
+            $("div.dataTables_paginate a.previous").click();
+            $("div.dataTables_paginate a.next").click();
+          }
+        }
+      }
+    },
+    error: function(error) {
+      if (error.responseText.error == "Unauthenticated.") {
+        location.reload(true);
+      }
+      alertify.notify('An error occurred', 'error', 3);
+    }
+  });
+});
+
+
 $("body").delegate("#hot_video_yes", "click", function(event) {
   event.preventDefault();
   let table = $('#dataTable').DataTable();

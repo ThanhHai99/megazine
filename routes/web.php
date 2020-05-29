@@ -330,17 +330,14 @@ Route::group(["namespace" => "Admin"], function() {
 
         });
 
-        // Route::group(["prefix" => "video"], function () {
-            // Route::post("update", [
-            //     "as" => "slide.update",
-            //     "uses" => "AdminController@slideUpdate"
-            // ]);
+        Route::group(["prefix" => "video"], function () {
+            Route::put("update", [
+                "as" => "video.update",
+                "uses" => "AdminController@videoUpdate"
+            ]);
 
-            // Route::post("update_image", [
-            //     "as" => "slide.update_image",
-            //     "uses" => "AdminController@slideUpdateImage"
-            // ]);
-        // });
+            
+        });
 
         Route::group(["prefix" => "slide"], function () {
             Route::post("update", [

@@ -5,6 +5,7 @@
       @foreach ($topics as $topic)
         <li class="{{ (Request::segment(1) == $topic->name ? 'colorlib-active': '')}}"><a href="{{route($topic->name)}}">{{$topic->name}}</a></li>
       @endforeach
+      <li class="{{ (Request::segment(1) == 'video' ? 'colorlib-active': '')}}"><a href="{{route('video')}}">video</a></li>
    
       @if (Auth::user())
         <li>

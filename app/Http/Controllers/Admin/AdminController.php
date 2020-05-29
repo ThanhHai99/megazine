@@ -907,6 +907,37 @@ class AdminController extends Controller
 
   }
 
+  public function videoUpdate(Request $request) {
+    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
+      return redirect("/home")->with("notAdmin", "You are not admin.");
+    }
+
+    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
+      $this->validate($request, [
+        'video_id_topic' => 'required',
+        'video_tag' => 'required',
+        'video_caption' => 'required',
+        'video_subtitle' => 'required'
+      ]);
+  
+      $input = $request->all();
+      // dd($input);
+      $tmp = Video::find($input['id']);
+      $tmp->id_topic = $input['video_id_topic'];
+      $tmp->tag = $input['video_tag'];
+      $tmp->caption = $input['video_caption'];
+      $tmp->subtitle = $input['video_subtitle'];
+      $tmp->save();
+  
+      return response()->json([
+          'error' => false,
+          'id' => $tmp->id
+      ], 200);
+
+    };
+
+  } 
+
   public function newsUpdateHotVideoYes(Request $request) {
     if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
