@@ -151,9 +151,47 @@
       $(this).removeClass("active");
     });
     $("div[data=video] a#video-all").addClass("active");
-    $("input[name=_video_id_topic]").attr("value", "");
+    // $("input[name=_video_id_topic]").attr("value", "");
     loadVideoAll();
   });
+
+  $("#video-style").on("click", function() {
+    $("div[data=video] a").each(function() {
+      $(this).removeClass("active");
+    });
+    $("div[data=video] a#video-style").addClass("active");
+    // $("input[name=_video_id_topic]").attr("value", "");
+    loadVideoStyle();
+  });
+
+  $("#video-fashion").on("click", function() {
+    $("div[data=video] a").each(function() {
+      $(this).removeClass("active");
+    });
+    $("div[data=video] a#video-fashion").addClass("active");
+    // $("input[name=_video_id_topic]").attr("value", "");
+    loadVideoFashion();
+  });
+
+  $("#video-travel").on("click", function() {
+    $("div[data=video] a").each(function() {
+      $(this).removeClass("active");
+    });
+    $("div[data=video] a#video-travel").addClass("active");
+    // $("input[name=_video_id_topic]").attr("value", "");
+    loadVideoTravel();
+  });
+
+  $("#video-sports").on("click", function() {
+    $("div[data=video] a").each(function() {
+      $(this).removeClass("active");
+    });
+    $("div[data=video] a#video-sports").addClass("active");
+    // $("input[name=_video_id_topic]").attr("value", "");
+    loadVideoSports();
+  });
+
+
 
   $("#slide").on("click", function() {
     loadSlide();

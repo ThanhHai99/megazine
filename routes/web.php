@@ -192,11 +192,6 @@ Route::group(["namespace" => "Admin"], function() {
             "uses" => "AdminController@getNewsSports"
         ]);
 
-        // Route::get("news/video", [
-        //     "as" => "news.video",
-        //     "uses" => "AdminController@getNewsVideo"
-        // ]);
-
         Route::get("news/archives", [
             "as" => "news.archives",
             "uses" => "AdminController@getNewsArchives"
@@ -210,6 +205,26 @@ Route::group(["namespace" => "Admin"], function() {
         Route::get("video/all", [
             "as" => "video.all",
             "uses" => "AdminController@getVideoAll"
+        ]);
+
+        Route::get("video/style", [
+            "as" => "video.style",
+            "uses" => "AdminController@getVideoStyle"
+        ]);
+
+        Route::get("video/fashion", [
+            "as" => "video.fashion",
+            "uses" => "AdminController@getVideoFashion"
+        ]);
+
+        Route::get("video/travel", [
+            "as" => "video.travel",
+            "uses" => "AdminController@getVideoTravel"
+        ]);
+
+        Route::get("video/sports", [
+            "as" => "video.sports",
+            "uses" => "AdminController@getVideoSports"
         ]);
 
         // End get
