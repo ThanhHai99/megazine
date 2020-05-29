@@ -141,7 +141,7 @@
     $("div[data=news] a").each(function() {
       $(this).removeClass("active");
     });
-    $("div[data=news] a#news-sport").addClass("active");
+    $("div[data=news] a#news-sports").addClass("active");
     $("input[name=_news_id_topic]").attr("value", "4");
     loadNewsSports();
   });

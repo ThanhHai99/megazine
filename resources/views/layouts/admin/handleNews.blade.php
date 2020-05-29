@@ -25,12 +25,21 @@ $("body").delegate("#edit_news", "click", function() {
     $tr = $tr.prev('.parent');
   };
 
+  $(`#editModalNews select[name=news_id_topic] option`).each(function() {
+    $(this).removeAttr("selected");
+  });
+
   let data = table.row($tr).data();
-  $("#editModalNews").find("#update_image").val(data['image']);
-  $("#editModalNews").find("#update_tag").val(data['tag']);
-  $("#editModalNews").find("#update_caption").val(data['caption']);
-  $("#editModalNews").find("#update_subtitle").val(data['subtitle']);
-  $("meta[name=type-save]").attr("value", $(`#editModalNews #topic_option option:selected`).val());
+  // $("#editModalNews #update_image").val(data['image']);
+  $("#editModalNews input[name=news_tag]").val(data['tag']);
+  $("#editModalNews input[name=news_caption]").val(data['caption']);
+  $("#editModalNews input[name=news_subtitle]").val(data['subtitle']);
+  if ($("div[data=news] a.active").hasClass("all")) {
+    $(`#editModalNews select[name=news_id_topic] option[data='` + data['id_topic'] + `']`).attr('selected','selected');
+  } else {
+    let topic = $("div[data=news] a.active").attr("data");
+    $(`#editModalNews select[name=news_id_topic] option[data='` + topic + `']`).attr('selected','selected');
+  }
   $("#editModalNews").modal('show');
 });
 
@@ -257,20 +266,20 @@ $("body").delegate("button.update_news", "click", function(event) {
   let table = $('#dataTable').DataTable();
   let data = table.row($tr).data();
   let id = data['id'];
-  let id_topic = $(`#editModalNews #topic_option option:selected`).val();
-  let tag = $("#editModalNews").find("#update_tag").val();
-  let caption = $("#editModalNews").find("#update_caption").val();
-  let subtitle = $("#editModalNews").find("#update_subtitle").val();
+  let id_topic = $(`#editModalNews select[name=news_id_topic] option:selected`).val();
+  let tag = $("#editModalNews input[name=news_tag]").val();
+  let caption = $("#editModalNews input[name=news_caption]").val();
+  let subtitle = $("#editModalNews input[name=news_subtitle]").val();
 
   $.ajax({
     url: `{{route('news.update')}}`,
     method: "PUT",
     data: {
       id: id,
-      id_topic: id_topic,
-      tag: tag,
-      caption: caption,
-      subtitle: subtitle
+      news_id_topic: id_topic,
+      news_tag: tag,
+      news_caption: caption,
+      news_subtitle: subtitle
     },
     success: function(response) {
       if (response.error == false) {

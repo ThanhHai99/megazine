@@ -321,18 +321,18 @@ class AdminController extends Controller
 
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
-        'id_topic' => 'required',
-        'tag' => 'required',
-        'caption' => 'required',
-        'subtitle' => 'required'
+        'news_id_topic' => 'required',
+        'news_tag' => 'required',
+        'news_caption' => 'required',
+        'news_subtitle' => 'required'
       ]);
   
       $input = $request->all();
       $tmp = News::find($input['id']);
-      $tmp->id_topic = $input['id_topic'];
-      $tmp->tag = $input['tag'];
-      $tmp->caption = $input['caption'];
-      $tmp->subtitle = $input['subtitle'];
+      $tmp->id_topic = $input['news_id_topic'];
+      $tmp->tag = $input['news_tag'];
+      $tmp->caption = $input['news_caption'];
+      $tmp->subtitle = $input['news_subtitle'];
       $tmp->save();
   
       return response()->json([

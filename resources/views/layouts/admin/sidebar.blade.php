@@ -47,7 +47,7 @@
         <a href="javascript:void(0)" class="collapse-item all" id="news-all" style="text-transform: capitalize">All</a>
         @foreach ($topics as $topic)
           <!-- <a href="dashboard/table" class="collapse-item" style="text-transform: capitalize">{{ $topic->name }}</a> -->
-          <a href="javascript:void(0)" class="collapse-item" id="news-{{ $topic->name }}" style="text-transform: capitalize">{{ $topic->name }}</a>
+          <a href="javascript:void(0)" class="collapse-item" id="news-{{ $topic->name }}" data="{{ $topic->name }}" style="text-transform: capitalize">{{ $topic->name }}</a>
         @endforeach
       </div>
     </div>

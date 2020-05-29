@@ -108,26 +108,26 @@
       <div class="modal-body">
         <div class="form-group">
           <label>Topic</label>
-          <select class="form-control" id="topic_option" name="id_topic">
+          <select class="form-control" name="news_id_topic">
             @foreach($topics as $topic)
-              <option value="{{ $topic->id }}">{{ $topic->name }}</option>
+              <option value="{{ $topic->id }}" data="{{ $topic->name }}">{{ $topic->name }}</option>
             @endforeach              
           </select>
         </div>
 
         <div class="form-group">
           <label>Tag</label>
-          <input type="text" name="tag" id="update_tag" class="form-control" placeholder="Tag">
+          <input type="text" name="news_tag" class="form-control" placeholder="Tag">
         </div>
 
         <div class="form-group">
           <label>Caption</label>
-          <input type="text" name="caption" id="update_caption" class="form-control" placeholder="Caption">
+          <input type="text" name="news_caption" class="form-control" placeholder="Caption">
         </div>
 
         <div class="form-group">
           <label>Subtitle</label>
-          <input type="text" name="subtitle" id="update_subtitle" class="form-control" placeholder="Subtitle">
+          <input type="text" name="news_subtitle" class="form-control" placeholder="Subtitle">
         </div>
       </div>
 
@@ -167,7 +167,10 @@
 
           <div class="form-group">
             <label>Hot News</label>
-            <input type="text" name="news_hot_news" class="form-control" placeholder="Hot News">
+            <div>
+              <label class="radio-inline"><input type="radio" name="news_hot_news" value="1">Yes</label>
+              <label class="radio-inline"><input type="radio" name="news_hot_news" value="0" checked>No</label>
+            </div>
           </div>
 
           <div class="form-group">
@@ -347,11 +350,6 @@
       </div>
 
       <div class="modal-body">
-
-        <!-- <div class="form-group">
-          <label>Tag</label>
-          <input type="text" name="tag" id="update_tag" class="form-control" placeholder="Tag">
-        </div> -->
 
         <div class="form-group">
           <label>Heading Primary</label>
