@@ -372,6 +372,54 @@
 </div>
 <!-- End Edit Slide Modal -->
 
+<!-- Start Edit Video Modal  -->
+<div class="modal fade" id="editModalVideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Video</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Topic</label>
+          <select class="form-control" name="video_id_topic">
+            @foreach($topics as $topic)
+              <option value="{{ $topic->id }}" data="{{ $topic->name }}">{{ $topic->name }}</option>
+            @endforeach              
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Tag</label>
+          <input type="text" name="video_tag" class="form-control" placeholder="Tag">
+        </div>
+
+        <div class="form-group">
+          <label>Caption</label>
+          <input type="text" name="video_caption" class="form-control" placeholder="Caption">
+        </div>
+
+        <div class="form-group">
+          <label>Subtitle</label>
+          <input type="text" name="video_subtitle" class="form-control" placeholder="Subtitle">
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary update_video">Update data</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- End Edit Video Modal -->
+
+
 <!-- Start Image Slide Modal -->
 <div class="modal fade" id="editImageSlide" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

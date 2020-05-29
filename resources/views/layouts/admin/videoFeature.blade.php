@@ -51,10 +51,10 @@ let loadVideoAll = () => {
         {
           data: null,
           targets: "no-sort", orderable: false,
-          defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
+          defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_video">
                             <i class="glyphicon glyphicon-pencil"></i>
                           </a>
-                          <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
+                          <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_video">
                             <i class="glyphicon glyphicon-trash"></i>
                           </a>`
         }
@@ -110,10 +110,10 @@ let loadVideoStyle = () => {
         {
           data: null,
           targets: "no-sort", orderable: false,
-          defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
+          defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_video">
                             <i class="glyphicon glyphicon-pencil"></i>
                           </a>
-                          <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
+                          <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_video">
                             <i class="glyphicon glyphicon-trash"></i>
                           </a>`
         }
@@ -169,10 +169,10 @@ let loadVideoFashion = () => {
         {
           data: null,
           targets: "no-sort", orderable: false,
-          defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
+          defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_video">
                             <i class="glyphicon glyphicon-pencil"></i>
                           </a>
-                          <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
+                          <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_video">
                             <i class="glyphicon glyphicon-trash"></i>
                           </a>`
         }
@@ -228,10 +228,10 @@ let loadVideoTravel = () => {
         {
           data: null,
           targets: "no-sort", orderable: false,
-          defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
+          defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_video">
                             <i class="glyphicon glyphicon-pencil"></i>
                           </a>
-                          <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
+                          <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_video">
                             <i class="glyphicon glyphicon-trash"></i>
                           </a>`
         }
@@ -287,10 +287,10 @@ let loadVideoSports = () => {
         {
           data: null,
           targets: "no-sort", orderable: false,
-          defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_news">
+          defaultContent: `<a href="javascript:void(0)" class="edit-modal btn btn-warning btn-lg" id="edit_video">
                             <i class="glyphicon glyphicon-pencil"></i>
                           </a>
-                          <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_news">
+                          <a href="javascript:void(0)" class="delete-modal btn btn-danger btn-lg" id="remove_video">
                             <i class="glyphicon glyphicon-trash"></i>
                           </a>`
         }

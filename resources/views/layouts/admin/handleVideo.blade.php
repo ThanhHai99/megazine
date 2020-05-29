@@ -1,4 +1,29 @@
 <script>
+$("body").delegate("#edit_video", "click", function() {
+  let table = $('#dataTable').DataTable();
+  $tr = $(this).closest('tr');
+  if ($($tr).hasClass('child')) {
+    $tr = $tr.prev('.parent');
+  };
+
+  $(`#editModalVideo select[name=video_id_topic] option`).each(function() {
+    $(this).removeAttr("selected");
+  });
+
+  let data = table.row($tr).data();
+  console.log(data);
+  $("#editModalVideo input[name=video_tag]").val(data['tag']);
+  $("#editModalVideo input[name=video_caption]").val(data['caption']);
+  $("#editModalVideo input[name=video_subtitle]").val(data['subtitle']);
+  if ($("div[data=video] a.active").hasClass("all")) {
+    $(`#editModalVideo select[name=video_id_topic] option[data='` + data['id_topic'] + `']`).attr('selected','selected');
+  } else {
+    let topic = $("div[data=video] a.active").attr("data");
+    $(`#editModalVideo select[name=video_id_topic] option[data='` + topic + `']`).attr('selected','selected');
+  }
+  $("#editModalVideo").modal('show');
+});
+
 $("body").delegate("#hot_video_yes", "click", function(event) {
   event.preventDefault();
   let table = $('#dataTable').DataTable();
