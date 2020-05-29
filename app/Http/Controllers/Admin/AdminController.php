@@ -586,7 +586,7 @@ class AdminController extends Controller
 
     };
 
-  }  
+  }
 
   public function newsRemove(Request $request) {
     if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
@@ -932,6 +932,55 @@ class AdminController extends Controller
       return response()->json([
           'error' => false,
           'id' => $tmp->id
+      ], 200);
+
+    };
+
+  }
+
+  public function videoInsert(Request $request) {
+    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
+      return redirect("/home")->with("notAdmin", "You are not admin.");
+    }
+
+    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
+      $this->validate($request, [
+        '_video_id_topic' => 'required_without:video_id_topic',
+        'video_id_topic' => 'required_without:_video_id_topic',
+        'video_hot_news' => 'required',
+        'video_image' => 'required',
+        'video_tag' => 'required',
+        'video_caption' => 'required',
+        'video_subtitle' => 'required'
+      ]);
+      
+      $input = $request->all();
+      
+      $tmp = new Video;
+  
+      if ($request->hasFile('video_image')) {
+        $file = $request->file('video_image');
+        $extension = $file->getClientOriginalExtension();
+        $filename = time() . '_'. uniqid() . '.' . $extension;
+        $file->move("images", $filename);
+        $tmp->image = $filename;
+      }
+
+      if ($input['_video_id_topic'] != "") {
+        $tmp->id_topic = $input['_video_id_topic'];
+      } else {
+        $tmp->id_topic = $input['video_id_topic'];
+      }
+      $tmp->id_creator = session('id');
+      $tmp->hot_news = $input['video_hot_news'];
+      $tmp->tag = $input['video_tag'];
+      $tmp->caption = $input['video_caption'];
+      $tmp->subtitle = $input['video_subtitle'];
+      $tmp->save();
+  
+      return response()->json([
+        'error' => false,
+        'input'  => $input
       ], 200);
 
     };

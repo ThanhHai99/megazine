@@ -341,6 +341,11 @@ Route::group(["namespace" => "Admin"], function() {
                 "uses" => "AdminController@videoRemove"
             ]);
 
+            Route::post("insert", [
+                "as" => "video.insert",
+                "uses" => "AdminController@videoInsert"
+            ]);
+
             
         });
 

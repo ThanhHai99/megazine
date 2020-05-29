@@ -284,6 +284,59 @@ $("body").delegate("a#insert_video", "click", function() {
   $("#insertModalVideo").modal('show');
 });
 
+
+$("body").delegate("form#form-insert-video", "submit", function(event) {
+  event.preventDefault();
+  let table = $('#dataTable').DataTable();
+  $.ajax({
+    url: `{{route('video.insert')}}`,
+    method: 'POST',
+    data: new FormData(this),
+    contentType: false,
+    cache: false,
+    processData: false,
+    success: function(response) {
+      if (response.error == false) {
+        $("#insertModalVideo").modal('hide');
+        alertify.notify('Create successfully', 'success', 3);
+        sendNews();
+      }
+      // table.rows.add([{
+      //   "id": "",
+      //   "id_topic": "",
+      //   "id_creator": "",
+      //   "hot_news": "",
+      //   "image": "",
+      //   "tag": "",
+      //   "caption": "",
+      //   "subtitle": "",
+      //   "action": ""
+      // }]).draw();
+      if( $("div.dataTables_paginate span a").length == 1) {
+          if( $("div[data=employee] a").hasClass("active") ) {
+            $("div[data=employee] a.active").click();
+          }
+        } else {
+          if ( $("div.dataTables_paginate a.previous").hasClass("disabled") ) {
+            $("div.dataTables_paginate a.next").click();
+            $("div.dataTables_paginate a.previous").click();
+          }
+          if ( $("div.dataTables_paginate a.next").hasClass("disabled") ) {
+            $("div.dataTables_paginate a.previous").click();
+            $("div.dataTables_paginate a.next").click();
+          }
+        }
+    },
+    error: function(error) {
+      if (error.responseText.error == "Unauthenticated.") {
+        location.reload(true);
+      }
+      alertify.notify('An error occurred', 'error', 3);
+    }
+  });
+});
+
+
 $("body").delegate("#remove_video", "click", function(event) {
   Swal.fire({
     title: 'Are you sure?',
