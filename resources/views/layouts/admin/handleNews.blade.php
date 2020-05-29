@@ -129,81 +129,81 @@ $("body").delegate("#hot_news_no", "click", function(event) {
   //End click button update hot new yes
 });
 
-$("body").delegate("#hot_news_yes-all", "click", function(event) {
-  //Click button update hot new yes
-  event.preventDefault();
-  let table = $('#dataTable').DataTable();
-  $tr = $(this).closest('tr');
-  if ($($tr).hasClass('child')) {
-    $tr = $tr.prev('.parent');
-  };
-  let data = table.row($tr).data();
-  let id = data['id'];
-  $('meta[name=row-index]').attr('content', id);
-  $.ajax({
-    url: `{{route('news.updateHotNewsNo')}}`,
-    method: "PUT",
-    data: {
-      id: id
-    },
-    success: function(response) {
-      if (response.error == false) {
-        $('tbody > tr > td:first-child').each(function() {
-          if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(4)").html(
-              `<a href="javascript:void(0)" id="hot_news_no-all"><i class="fa fa-times-circle" style="color: red;"></i></a>`
-              );
-          }
-        });
-      }
-    },
-    error: function(error) {
-      if (error.responseText.error == "Unauthenticated.") {
-        location.reload(true);
-      }
-      alertify.notify('An error occurred', 'error', 3);
-    }
-  });
-  //End click button update hot new yes
-});
+// $("body").delegate("#hot_news_yes-all", "click", function(event) {
+//   //Click button update hot new yes
+//   event.preventDefault();
+//   let table = $('#dataTable').DataTable();
+//   $tr = $(this).closest('tr');
+//   if ($($tr).hasClass('child')) {
+//     $tr = $tr.prev('.parent');
+//   };
+//   let data = table.row($tr).data();
+//   let id = data['id'];
+//   $('meta[name=row-index]').attr('content', id);
+//   $.ajax({
+//     url: `{{route('news.updateHotNewsNo')}}`,
+//     method: "PUT",
+//     data: {
+//       id: id
+//     },
+//     success: function(response) {
+//       if (response.error == false) {
+//         $('tbody > tr > td:first-child').each(function() {
+//           if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+//             $(this).parent("tr").find("td:nth-child(4)").html(
+//               `<a href="javascript:void(0)" id="hot_news_no-all"><i class="fa fa-times-circle" style="color: red;"></i></a>`
+//               );
+//           }
+//         });
+//       }
+//     },
+//     error: function(error) {
+//       if (error.responseText.error == "Unauthenticated.") {
+//         location.reload(true);
+//       }
+//       alertify.notify('An error occurred', 'error', 3);
+//     }
+//   });
+//   //End click button update hot new yes
+// });
 
-$("body").delegate("#hot_news_no-all", "click", function(event) {
-  //Click button update hot new yes
-  event.preventDefault();
-  let table = $('#dataTable').DataTable();
-  $tr = $(this).closest('tr');
-  if ($($tr).hasClass('child')) {
-    $tr = $tr.prev('.parent');
-  };
-  let data = table.row($tr).data();
-  let id = data['id'];
-  $('meta[name=row-index]').attr('content', id);
-  $.ajax({
-    url: `{{route('news.updateHotNewsYes')}}`,
-    method: "PUT",
-    data: {
-      id: id
-    },
-    success: function(response) {
-      if (response.error == false) {
-        $('tbody > tr > td:first-child').each(function() {
-          if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(4)").html(
-              `<a href="javascript:void(0)" id="hot_news_yes-all"><i class="fa fa-check-circle" style="color:green;"></i></a>`
-              );
-          }
-        });
-      }
-    },
-    error: function(error) {
-      if (error.responseText.error == "Unauthenticated.") {
-        location.reload(true);
-      }
-      alertify.notify('An error occurred', 'error', 3);
-    }
-  });
-  //End click button update hot new yes
-});
+// $("body").delegate("#hot_news_no-all", "click", function(event) {
+//   //Click button update hot new yes
+//   event.preventDefault();
+//   let table = $('#dataTable').DataTable();
+//   $tr = $(this).closest('tr');
+//   if ($($tr).hasClass('child')) {
+//     $tr = $tr.prev('.parent');
+//   };
+//   let data = table.row($tr).data();
+//   let id = data['id'];
+//   $('meta[name=row-index]').attr('content', id);
+//   $.ajax({
+//     url: `{{route('news.updateHotNewsYes')}}`,
+//     method: "PUT",
+//     data: {
+//       id: id
+//     },
+//     success: function(response) {
+//       if (response.error == false) {
+//         $('tbody > tr > td:first-child').each(function() {
+//           if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+//             $(this).parent("tr").find("td:nth-child(4)").html(
+//               `<a href="javascript:void(0)" id="hot_news_yes-all"><i class="fa fa-check-circle" style="color:green;"></i></a>`
+//               );
+//           }
+//         });
+//       }
+//     },
+//     error: function(error) {
+//       if (error.responseText.error == "Unauthenticated.") {
+//         location.reload(true);
+//       }
+//       alertify.notify('An error occurred', 'error', 3);
+//     }
+//   });
+//   //End click button update hot new yes
+// });
 
 $("body").delegate("#status_news_yes", "click", function(event) {
   //Click button update hot new yes

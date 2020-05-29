@@ -18,10 +18,10 @@ let loadNewsAll_onLoad = () => {
         { data: "id_creator", name: "id_creator" },
         { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="hot_news_yes-all"><i class="fa fa-check-circle" style="color:green;"></i></a>';
+              return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>';
             }
             else {
-              return '<a href="javascript:void(0)" id="hot_news_no-all"><i class="fa fa-times-circle" style="color: red;"></i></a>';
+              return '<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color: red;"></i></a>';
             }
           },
           searchable: false
@@ -79,10 +79,10 @@ let loadAllNews = () => {
         { data: "id_creator", name: "id_creator" },
         { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="hot_news_yes-all"><i class="fa fa-check-circle" style="color:green;"></i></a>';
+              return '<a href="javascript:void(0)" id="hot_news_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>';
             }
             else {
-              return '<a href="javascript:void(0)" id="hot_news_no-all"><i class="fa fa-times-circle" style="color: red;"></i></a>';
+              return '<a href="javascript:void(0)" id="hot_news_no"><i class="fa fa-times-circle" style="color: red;"></i></a>';
             }
           },
           searchable: false
