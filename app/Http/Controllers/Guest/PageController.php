@@ -20,6 +20,7 @@ class PageController extends Controller
     public function getHome(Request $request) {
         $slides = Slide::select("slide.image", "slide.heading_primary", "slide.heading_secondary", "slide.tag")
                         ->limit(3)
+                        ->orderBy("created_at", "desc")
                         ->get();
 
         $news = News::orderBy("created_at", "desc")

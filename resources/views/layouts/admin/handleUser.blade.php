@@ -15,6 +15,7 @@ $("body").delegate("#edit_employee", "click", function() {
 
   if ( data['id_role'] == "admin" || data['id_role'] == 0 ) {
     $("div#employee_role").hide();
+
   } else {
     $("div#employee_role").show();
     if ($("div[data=employee] a.active").hasClass("all")) {
@@ -41,9 +42,6 @@ $("body").delegate("button.update_employee", "click", function(event) {
   let employee_id = $("#editModalEmployee input[name=employee_id]").val();
   let employee_id_role = $("#editModalEmployee select[name=employee_id_role] option:selected").val();
   
-  <?php if(session("id_role") == 0) { ?>
-          employee_id_role = 0;
-  <?php } ?>
 
   let employee_name = $("#editModalEmployee input[name=employee_name]").val();
   let employee_email = $("#editModalEmployee input[name=employee_email]").val();
@@ -86,6 +84,20 @@ $("body").delegate("button.update_employee", "click", function(event) {
 });
 
 $("body").delegate("#remove_employee", "click", function() {
+  let table = $('#dataTable').DataTable();
+  $tr = $(this).closest('tr');
+  if ($($tr).hasClass('child')) {
+    $tr = $tr.prev('.parent');
+  };
+
+  let data = table.row($tr).data();
+  let id = data['id'];
+  if (data["id_role"] == "admin") {
+    alertify.error("This is super user");
+    return false;
+  }
+
+
   Swal.fire({
     title: 'Are you sure?',
     text: "You won't be able to revert this!",

@@ -190,16 +190,6 @@ $("form#form_insert_slide").on("submit", function(event) {
         $("#insertModalSlide").modal('hide');
         alertify.notify('Create successfully', 'success', 3);
       }
-      // table.rows.add([{
-      //   "id": "",
-      //   "id_topic": "",
-      //   "id_creator": "",
-      //   "image": "",
-      //   "tag": "",
-      //   "caption": "",
-      //   "subtitle": "",
-      //   "action": ""
-      // }]).draw();
       if( $("div.dataTables_paginate span a").length == 1) {
         // if( $("div[data=slide] a").hasClass("active") ) {
         //   $("div[data=slide] a.active").click();
