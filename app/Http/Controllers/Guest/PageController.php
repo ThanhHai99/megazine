@@ -18,8 +18,8 @@ use App\ReceiveNews;
 class PageController extends Controller
 {
     public function getHome(Request $request) {
-        $slides = Slide::join("topic", "slide.id_topic", "=", "topic.id")
-                        ->select("slide.image", "slide.heading_primary", "slide.heading_secondary", "topic.name")
+        $slides = Slide::select("slide.image", "slide.heading_primary", "slide.heading_secondary", "slide.tag")
+                        ->limit(3)
                         ->get();
 
         $news = News::orderBy("created_at", "desc")

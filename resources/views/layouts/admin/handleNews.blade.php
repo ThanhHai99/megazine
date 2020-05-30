@@ -341,19 +341,19 @@ $("body").delegate("form#form-insert-news", "submit", function(event) {
       // }]).draw();
 
       if( $("div.dataTables_paginate span a").length == 1) {
-          if( $("div[data=employee] a").hasClass("active") ) {
-            $("div[data=employee] a.active").click();
-          }
-        } else {
-          if ( $("div.dataTables_paginate a.previous").hasClass("disabled") ) {
-            $("div.dataTables_paginate a.next").click();
-            $("div.dataTables_paginate a.previous").click();
-          }
-          if ( $("div.dataTables_paginate a.next").hasClass("disabled") ) {
-            $("div.dataTables_paginate a.previous").click();
-            $("div.dataTables_paginate a.next").click();
-          }
+        if( $("div[data=employee] a").hasClass("active") ) {
+          $("div[data=employee] a.active").click();
         }
+      } else {
+        if ( $("div.dataTables_paginate a.previous").hasClass("disabled") ) {
+          $("div.dataTables_paginate a.next").click();
+          $("div.dataTables_paginate a.previous").click();
+        }
+        if ( $("div.dataTables_paginate a.next").hasClass("disabled") ) {
+          $("div.dataTables_paginate a.previous").click();
+          $("div.dataTables_paginate a.next").click();
+        }
+      }
     },
     error: function(error) {
       if (error.responseText.error == "Unauthenticated.") {

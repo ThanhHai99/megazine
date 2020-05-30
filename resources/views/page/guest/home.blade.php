@@ -12,7 +12,7 @@
                 <div class="col-md-12 col-xs-12 js-fullheight slider-text">
                   <div class="slider-text-inner">
                     <div class="desc">
-                      <p class="tag"><span>{{ $slide->name }}</span></p>
+                      <p class="tag"><span>{{ $slide->tag }}</span></p>
                       <h1><a href="javascript:void(0)">{{ $slide->heading_primary }}</a></h1>
                       <p>{{ $slide->heading_secondary }}</p>
                     </div>

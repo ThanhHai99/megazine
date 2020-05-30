@@ -22,6 +22,11 @@
             </select>
           </div>
 
+          <div class="form-group">
+            <label>Tag</label>
+            <input type="text" name="tag" id="insert_tag_slide" class="form-control" placeholder="Tag">
+          </div>
+
 
           <div class="form-group">
             <label>Image</label>

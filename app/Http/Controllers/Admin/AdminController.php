@@ -1232,40 +1232,36 @@ class AdminController extends Controller
     }
 
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      // $this->validate($request, [
-      //   'id_topic' => 'required',
-      //   'hot_news' => 'required',
-      //   'image' => 'required',
-      //   'tag' => 'required',
-      //   'caption' => 'required',
-      //   'subtitle' => 'required'
-      // ]);
+      $this->validate($request, [
+        'id_topic' => 'required',
+        'image' => 'required',
+        'tag' => 'required',
+        'caption' => 'required',
+        'subtitle' => 'required'
+      ]);
       
       $input = $request->all();
-      dd($input);
+      // dd($input);
 
-      $tmp = new Slide;
-  
-      // if ($request->hasFile('image')) {
-      //   $file = $request->file('image');
-      //   $extension = $file->getClientOriginalExtension();
-      //   $filename = time() . '_'. uniqid() . '.' . $extension;
-      //   $file->move("images", $filename);
-      //   $tmp->image = $filename;
-      // }
+      $tmp = new Slide;  
+      if ($request->hasFile('image')) {
+        $file = $request->file('image');
+        $extension = $file->getClientOriginalExtension();
+        $filename = time() . '_'. uniqid() . '.' . $extension;
+        $file->move("images", $filename);
+        $tmp->image = $filename;
+      }
   
       
-      // $tmp->id_topic = $input['id_topic'];
-      // $tmp->id_creator = session('id');
-      // $tmp->hot_news = $input['hot_news'];
-      // $tmp->tag = $input['tag'];
-      // $tmp->caption = $input['caption'];
-      // $tmp->subtitle = $input['subtitle'];
-      // $tmp->save();
+      $tmp->id_topic = $input['id_topic'];
+      $tmp->id_creator = session('id');
+      $tmp->tag = $input['tag'];
+      $tmp->heading_primary = $input['caption'];
+      $tmp->heading_secondary = $input['subtitle'];
+      $tmp->save();
   
       return response()->json([
-        // 'error' => false,
-        // 'input'  => $input
+        'error' => false
       ], 200);
 
     };
