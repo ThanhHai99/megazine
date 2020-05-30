@@ -404,12 +404,14 @@
         <hr>
         <div class="modal-body">
           <div class="form-group">
-            <div class="blog-img">
+            <div id="video-background">
               <!-- <div class="video colorlib-video" style="background-image: url(images/video->image); height: 600px;"> -->
-              <div id="video-background" class="video colorlib-video" style="">
+              <!-- <div id="video-background" class="video colorlib-video" style="">
                 <a href="" class="popup-vimeo"><i class="icon-play4"></i></a>
                 <div class="overlay"></div>
-              </div>
+              </div> -->
+              <video src="" width="100%" height="auto" preload controls allowFullScreen>
+              </video>
             </div>
           </div>
         </div>

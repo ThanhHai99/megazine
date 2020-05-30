@@ -274,11 +274,11 @@ $("body").delegate("img#image-video", "click", function() {
   $("img#show-image-video").attr("src", linkImage);
   $("button#update_image_video").remove();
 
-  let backgroudVideo = `background-image: url(images/`+ data['image'] +`); height: 600px;`;
-  $("div#video-background").attr("style", backgroudVideo);
-  let linkVideo = 'videos/' + data['video'];
-  $("div#video-background a").attr("href", linkVideo);
-  // $("button#update_video_video").remove();
+  // let backgroudVideo = `background-image: url(images/`+ data['image'] +`); height: 600px;`;
+  // $("div#video-background").attr("style", backgroudVideo);
+  let linkVideo = 'https://megazine.com/public/videos/' + data['video'];
+  $("div#video-background video").attr("src", linkVideo);
+  $("button#update_video_video").remove();
 
   $("#editImageVideo").modal('show');
 });
