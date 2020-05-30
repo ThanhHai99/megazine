@@ -24,13 +24,12 @@
 
           <div class="form-group">
             <label>Tag</label>
-            <input type="text" name="tag" id="insert_tag_slide" class="form-control" placeholder="Tag">
+            <textarea class="form-control col-xs-12" name="tag"></textarea>
           </div>
 
           <div>
             <img id="preview_slide_image" class="img-fluid" src="" alt="" srcset="">
           </div>
-
 
           <div class="form-group">
             <label>Image</label>
@@ -39,12 +38,12 @@
 
           <div class="form-group">
             <label>Heading Primary</label>
-            <input type="text" name="caption" id="insert_caption_slide" class="form-control" placeholder="Caption">
+            <textarea class="form-control col-xs-12" name="caption"></textarea>
           </div>
 
           <div class="form-group">
             <label>Heading Secondary</label>
-            <input type="text" name="subtitle" id="insert_subtitle_slide" class="form-control" placeholder="Subtitle">
+            <textarea class="form-control col-xs-12" name="subtitle"></textarea>
           </div>
 
         </div>
