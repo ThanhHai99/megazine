@@ -27,6 +27,10 @@
             <input type="text" name="tag" id="insert_tag_slide" class="form-control" placeholder="Tag">
           </div>
 
+          <div>
+            <img id="preview_slide_image" class="img-fluid" src="" alt="" srcset="">
+          </div>
+
 
           <div class="form-group">
             <label>Image</label>
@@ -244,6 +248,10 @@
               <label class="radio-inline"><input type="radio" name="video_hot_news" value="1">Yes</label>
               <label class="radio-inline"><input type="radio" name="video_hot_news" value="0" checked>No</label>
             </div>
+          </div>
+
+          <div>
+            <img id="preview_video_image" class="img-fluid" src="" alt="" srcset="">
           </div>
 
           <div class="form-group">

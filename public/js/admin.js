@@ -30,7 +30,7 @@ $("input#video_video").change(function() {
   }
 });
 
-function previewImageVideo(input, className) {
+function previewImage(input, className) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();    
     reader.onload = function(e) {
@@ -40,7 +40,7 @@ function previewImageVideo(input, className) {
   }
 }
 
-function previewVideoVideo(input) {
+function previewVideo(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();    
     reader.onload = function(e) {
@@ -53,15 +53,21 @@ function previewVideoVideo(input) {
 
 
 $("#image_video").change(function() {
-  previewImageVideo(this, 'img#show-image-video');
+  previewImage(this, 'img#show-image-video');
 });
 
 $("input[name=news_image]").change(function() {
-  previewImageVideo(this, 'img#preview_news_image');
+  previewImage(this, 'img#preview_news_image');
 });
 
+$("input[name=video_image]").change(function() {
+  previewImage(this, 'img#preview_video_image');
+});
+
+
+
 $("#video_video").change(function() {
-  previewVideoVideo(this);
+  previewVideo(this);
 });
 
 $("input#image_slide").change(function() {
@@ -70,16 +76,20 @@ $("input#image_slide").change(function() {
   }
 });
 
-function previewImageSlide(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();    
-    reader.onload = function(e) {
-      $('img#show-image-slide').attr('src', e.target.result);
-    }    
-    reader.readAsDataURL(input.files[0]); // convert to base64 string
-  }
-}
+// function previewImageSlide(input, className) {
+//   if (input.files && input.files[0]) {
+//     var reader = new FileReader();    
+//     reader.onload = function(e) {
+//       $(className).attr('src', e.target.result);
+//     }    
+//     reader.readAsDataURL(input.files[0]); // convert to base64 string
+//   }
+// }
 
 $("#image_slide").change(function() {
-  previewImageSlide(this);
+  previewImage(this, 'img#show-image-slide');
+});
+
+$("input#insert_image_slide").change(function() {
+  previewImage(this, 'img#preview_slide_image');
 });
