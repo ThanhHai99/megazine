@@ -24,6 +24,12 @@ $("input#image_video").change(function() {
   }
 });
 
+$("input#video_video").change(function() {
+  if ($("button#update_video_video").length == false) {
+    $("div#video-modal-foot").append(`<button id="update_video_video" type="submit" class="btn btn-outline-success btn-rounded btn-md ml-4">Update</button>`);
+  }
+});
+
 function previewImageVideo(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();    
@@ -34,9 +40,24 @@ function previewImageVideo(input) {
   }
 }
 
+function previewVideoVideo(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();    
+    reader.onload = function(e) {
+      $('img#show-video-video').attr('src', e.target.result);
+    }    
+    reader.readAsDataURL(input.files[0]); // convert to base64 string
+  }
+}
+
 $("#image_video").change(function() {
   previewImageVideo(this);
 });
+
+$("#video_video").change(function() {
+  previewVideoVideo(this);
+});
+
 
 
 

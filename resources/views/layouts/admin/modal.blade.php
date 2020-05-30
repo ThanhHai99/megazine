@@ -400,6 +400,17 @@
           <label class="btn btn-outline-primary btn-rounded btn-md ml-4" for="image_video">Change image</label>
           <input style="visibility:hidden;" type="file" id="image_video" name="image_video">
         </div>
+
+        <hr>
+        <div class="modal-body">
+          <div class="form-group">
+            <img srcset="" src="" alt="" class="img-fluid" id="show-video">
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center" id="video-modal-foot">
+          <label class="btn btn-outline-primary btn-rounded btn-md ml-4" for="video_video">Change video</label>
+          <input style="visibility:hidden;" type="file" id="video_video" name="video_video">
+        </div>
       </form>
 
     </div>

@@ -270,7 +270,7 @@ class AdminController extends Controller
   
       $query=Video::join("users", "video.id_creator", "=", "users.id")
                     ->join("topic", "video.id_topic", "=", "topic.id")
-                    ->select("video.id", "topic.name as id_topic", "users.name as id_creator", "video.hot_news", "video.id_status", "video.image", "video.tag", "video.caption", "video.subtitle");
+                    ->select("video.id", "topic.name as id_topic", "users.name as id_creator", "video.hot_news", "video.id_status", "video.image", "video.video", "video.tag", "video.caption", "video.subtitle");
       return Datatables::of($query)->make(true);
 
     };
