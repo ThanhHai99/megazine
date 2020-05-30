@@ -94,13 +94,23 @@ $("body").delegate("#hot_video_yes", "click", function(event) {
     },
     success: function(response) {
       if (response.error == false) {
-        $('tbody > tr > td:first-child').each(function() {
-          if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(4)").html(
-              `<a href="javascript:void(0)" id="hot_video_no"><i class="fa fa-times-circle" style="color: red;"></i></a>`
-              );
-          }
-        });
+        if ( $("div[data=video] a.active").hasClass("all") ) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(4)").html(
+                `<a href="javascript:void(0)" id="hot_video_no"><i class="fa fa-times-circle" style="color: red;"></i></a>`
+                ); 
+            }
+          });
+        } else {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(3)").html(
+                `<a href="javascript:void(0)" id="hot_video_no"><i class="fa fa-times-circle" style="color: red;"></i></a>`
+                ); 
+            }
+          });
+        }
       }
     },
     error: function(error) {
@@ -130,13 +140,23 @@ $("body").delegate("#hot_video_no", "click", function(event) {
     },
     success: function(response) {
       if (response.error == false) {
-        $('tbody > tr > td:first-child').each(function() {
-          if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(4)").html(
-              `<a href="javascript:void(0)" id="hot_video_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`
-              );
-          }
-        });
+        if ( $("div[data=video] a.active").hasClass("all") ) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(4)").html(
+                `<a href="javascript:void(0)" id="hot_video_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`
+                );
+            }
+          });
+        } else {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(3)").html(
+                `<a href="javascript:void(0)" id="hot_video_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`
+                );
+            }
+          });
+        }
       }
     },
     error: function(error) {
@@ -166,13 +186,23 @@ $("body").delegate("#status_video_yes", "click", function(event) {
     },
     success: function(response) {
       if (response.error == false) {
-        $('tbody > tr > td:first-child').each(function() {
-          if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(5)").html(
-              `<a href="javascript:void(0)" id="status_video_no"><i class="fas fa-lock" style="color: red;"></i></a>`
-              );
-          }
-        });
+        if ( $("div[data=video] a.active").hasClass("all") ) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(5)").html(
+                `<a href="javascript:void(0)" id="status_video_no"><i class="fas fa-lock" style="color: red;"></i></a>`
+                );
+            }
+          });
+        } else {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(4)").html(
+                `<a href="javascript:void(0)" id="status_video_no"><i class="fas fa-lock" style="color: red;"></i></a>`
+                );
+            }
+          });
+        }
       }
     },
     error: function(error) {
@@ -202,13 +232,23 @@ $("body").delegate("#status_video_no", "click", function(event) {
     },
     success: function(response) {
       if (response.error == false) {
-        $('tbody > tr > td:first-child').each(function() {
-          if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-            $(this).parent("tr").find("td:nth-child(5)").html(
-              `<a href="javascript:void(0)" id="status_video_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>`
-              );
-          }
-        });
+        if ( $("div[data=video] a.active").hasClass("all") ) {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(5)").html(
+                `<a href="javascript:void(0)" id="status_video_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>`
+                );
+            }
+          });
+        } else {
+          $('tbody > tr > td:first-child').each(function() {
+            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+              $(this).parent("tr").find("td:nth-child(4)").html(
+                `<a href="javascript:void(0)" id="status_video_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>`
+                );
+            }
+          });
+        }
       }
     },
     error: function(error) {
