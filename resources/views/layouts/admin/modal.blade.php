@@ -178,6 +178,10 @@
             </div>
           </div>
 
+          <div>
+            <img id="preview_news_image" class="img-fluid" src="" alt="" srcset="">
+          </div>
+
           <div class="form-group">
             <label>Image</label>
             <input type="file" name="news_image" class="form-control" placeholder="Image">

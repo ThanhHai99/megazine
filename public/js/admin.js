@@ -30,11 +30,11 @@ $("input#video_video").change(function() {
   }
 });
 
-function previewImageVideo(input) {
+function previewImageVideo(input, className) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();    
     reader.onload = function(e) {
-      $('img#show-image-video').attr('src', e.target.result);
+      $(className).attr('src', e.target.result);
     }    
     reader.readAsDataURL(input.files[0]); // convert to base64 string
   }
@@ -50,8 +50,14 @@ function previewVideoVideo(input) {
   }
 }
 
+
+
 $("#image_video").change(function() {
-  previewImageVideo(this);
+  previewImageVideo(this, 'img#show-image-video');
+});
+
+$("input[name=news_image]").change(function() {
+  previewImageVideo(this, 'img#preview_news_image');
 });
 
 $("#video_video").change(function() {
