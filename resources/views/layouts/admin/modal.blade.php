@@ -403,7 +403,11 @@
       </form>
 
       <form id="form-video-video" method="POST" enctype="multipart/form-data">
-        <hr>
+        {{ csrf_field() }}
+        <div>
+          <input type="hidden" name="id_video_hide" value="">
+        </div>
+
         <div class="modal-body">
           <div class="form-group">
             <div id="video-background">
