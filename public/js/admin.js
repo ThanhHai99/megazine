@@ -51,7 +51,6 @@ function previewVideo(input) {
 }
 
 
-
 $("#image_video").change(function() {
   previewImage(this, 'img#show-image-video');
 });
