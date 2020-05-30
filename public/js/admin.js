@@ -44,7 +44,7 @@ function previewVideoVideo(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();    
     reader.onload = function(e) {
-      $('img#show-video').attr('src', e.target.result);
+      $('video#show-video').attr('src', e.target.result);
     }    
     reader.readAsDataURL(input.files[0]); // convert to base64 string
   }
@@ -57,9 +57,6 @@ $("#image_video").change(function() {
 $("#video_video").change(function() {
   previewVideoVideo(this);
 });
-
-
-
 
 $("input#image_slide").change(function() {
   if ($("button#update_image_slide").length == false) {
@@ -79,15 +76,4 @@ function previewImageSlide(input) {
 
 $("#image_slide").change(function() {
   previewImageSlide(this);
-});
-
-// let ok = () => {
-  
-  // $('#dataTable tbody').on( 'click', 'tr', function () {
-      // console.log( $('#dataTable').DataTable().row( this ).data() );
-  // } );
-// };
-
-$( function() {
-  // ok();
 });
