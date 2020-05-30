@@ -404,7 +404,13 @@
         <hr>
         <div class="modal-body">
           <div class="form-group">
-            <img srcset="" src="" alt="" class="img-fluid" id="show-video">
+            <div class="blog-img">
+              <!-- <div class="video colorlib-video" style="background-image: url(images/video->image); height: 600px;"> -->
+              <div id="video-background" class="video colorlib-video" style="">
+                <a href="" class="popup-vimeo"><i class="icon-play4"></i></a>
+                <div class="overlay"></div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="modal-footer justify-content-center" id="video-modal-foot">
