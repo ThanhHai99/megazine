@@ -400,7 +400,9 @@
           <label class="btn btn-outline-primary btn-rounded btn-md ml-4" for="image_video">Change image</label>
           <input style="visibility:hidden;" type="file" id="image_video" name="image_video">
         </div>
+      </form>
 
+      <form id="form-video-video" method="POST" enctype="multipart/form-data">
         <hr>
         <div class="modal-body">
           <div class="form-group">

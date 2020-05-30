@@ -319,6 +319,44 @@ $("body").delegate("form#form-image-video", "submit", function(event) {
   });
 });
 
+$("body").delegate("form#form-video-video", "submit", function(event) {
+  event.preventDefault();
+  let table = $('#dataTable').DataTable();
+  $tr = $(this).closest('tr');
+  if ($($tr).hasClass('child')) {
+    $tr = $tr.prev('.parent');
+  };
+  let data = table.row($tr).data();
+  $.ajax({
+    url: `{{route('news.update_video_video')}}`,
+    method: 'POST',
+    data: new FormData(this),
+    contentType: false,
+    cache: false,
+    processData: false,
+    success: function(response) {
+      if (response.error == false) {
+        $("#editImageVideo").modal('hide');
+        alertify.notify('Update image successfully', 'success', 3);
+        $("#dataTable tbody td:nth-child(1)").each(function() {
+          if ($(this).html() == response.id) {
+            let temp = $('#dataTable').DataTable().row($("#dataTable tbody tr td:nth-child(1)")).data();
+            temp.video = response.video;
+            $('#dataTable').DataTable().row($(this).parent("tr")).data(temp);
+            return false;
+          }
+        });
+      }
+    },
+    error: function(error) {
+      if (error.responseText.error == "Unauthenticated.") {
+        location.reload(true);
+      }
+      alertify.notify('An error occurred', 'error', 3);
+    }
+  });
+});
+
 
 $("body").delegate("a#insert_video", "click", function() {
   if ($("div[data=video] a.active").hasClass("all")) {

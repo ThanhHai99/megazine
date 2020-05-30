@@ -291,6 +291,11 @@ Route::group(["namespace" => "Admin"], function() {
                 "uses" => "AdminController@newsUpdateImageVideo"
             ]);
 
+            Route::post("update_video_video", [
+                "as" => "news.update_video_video",
+                "uses" => "AdminController@newsUpdateVideoVideo"
+            ]);
+
             Route::post("insert", [
                 "as" => "news.insert",
                 "uses" => "AdminController@newsInsert"

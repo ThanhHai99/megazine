@@ -493,6 +493,39 @@ class AdminController extends Controller
 
   }
 
+  public function newsUpdateVideoVideo(Request $request) {
+    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
+      return redirect("/home")->with("notAdmin", "You are not admin.");
+    }
+
+    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
+      $input = $request->all();
+      $tmp = Video::find($input['id_video_hide']);    
+      
+      $video_path = "videos/".$tmp->video;  // Value is not URL but directory file path
+      if(File::exists($video_path)) {
+        File::delete($video_path);
+      }
+  
+      $file = $request->file('video_video');
+      $extension = $file->getClientOriginalExtension();
+      $filename = time() . '_'. uniqid() . '.' . $extension;
+      $file->move("videos", $filename);
+      $tmp->video = $filename;
+      $tmp->save();
+  
+      return response()->json([
+        'error' => false,
+        'id' => $tmp->id,
+        'video' => $tmp->video
+      ], 200);
+
+    };
+
+  }
+
+  
+
   public function newsInsert_all(Request $request) {
     if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
