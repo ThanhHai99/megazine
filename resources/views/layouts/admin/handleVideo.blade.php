@@ -12,9 +12,9 @@ $("body").delegate("#edit_video", "click", function() {
 
   let data = table.row($tr).data();
   console.log(data);
-  $("#editModalVideo input[name=video_tag]").val(data['tag']);
-  $("#editModalVideo input[name=video_caption]").val(data['caption']);
-  $("#editModalVideo input[name=video_subtitle]").val(data['subtitle']);
+  $("#editModalVideo textarea[name=video_tag]").val(data['tag']);
+  $("#editModalVideo textarea[name=video_caption]").val(data['caption']);
+  $("#editModalVideo textarea[name=video_subtitle]").val(data['subtitle']);
   if ($("div[data=video] a.active").hasClass("all")) {
     $(`#editModalVideo select[name=video_id_topic] option[data='` + data['id_topic'] + `']`).attr('selected','selected');
   } else {
@@ -30,9 +30,9 @@ $("body").delegate("button.update_video", "click", function(event) {
   let data = table.row($tr).data();
   let id = data['id'];
   let id_topic = $(`#editModalVideo select[name=video_id_topic] option:selected`).val();
-  let tag = $("#editModalVideo input[name=video_tag]").val();
-  let caption = $("#editModalVideo input[name=video_caption]").val();
-  let subtitle = $("#editModalVideo input[name=video_subtitle]").val();
+  let tag = $("#editModalVideo textarea[name=video_tag]").val();
+  let caption = $("#editModalVideo textarea[name=video_caption]").val();
+  let subtitle = $("#editModalVideo textarea[name=video_subtitle]").val();
 
   $.ajax({
     url: `{{route('video.update')}}`,

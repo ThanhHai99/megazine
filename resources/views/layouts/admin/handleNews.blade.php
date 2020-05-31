@@ -31,9 +31,9 @@ $("body").delegate("#edit_news", "click", function() {
 
   let data = table.row($tr).data();
   // $("#editModalNews #update_image").val(data['image']);
-  $("#editModalNews input[name=news_tag]").val(data['tag']);
-  $("#editModalNews input[name=news_caption]").val(data['caption']);
-  $("#editModalNews input[name=news_subtitle]").val(data['subtitle']);
+  $("#editModalNews textarea[name=news_tag]").val(data['tag']);
+  $("#editModalNews textarea[name=news_caption]").val(data['caption']);
+  $("#editModalNews textarea[name=news_subtitle]").val(data['subtitle']);
   if ($("div[data=news] a.active").hasClass("all")) {
     $(`#editModalNews select[name=news_id_topic] option[data='` + data['id_topic'] + `']`).attr('selected','selected');
   } else {
@@ -267,9 +267,9 @@ $("body").delegate("button.update_news", "click", function(event) {
   let data = table.row($tr).data();
   let id = data['id'];
   let id_topic = $(`#editModalNews select[name=news_id_topic] option:selected`).val();
-  let tag = $("#editModalNews input[name=news_tag]").val();
-  let caption = $("#editModalNews input[name=news_caption]").val();
-  let subtitle = $("#editModalNews input[name=news_subtitle]").val();
+  let tag = $("#editModalNews textarea[name=news_tag]").val();
+  let caption = $("#editModalNews textarea[name=news_caption]").val();
+  let subtitle = $("#editModalNews textarea[name=news_subtitle]").val();
 
   $.ajax({
     url: `{{route('news.update')}}`,
