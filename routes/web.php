@@ -40,14 +40,6 @@ Route::get("auth/facebook/callback", [
 ]);
 
 
-// Route::group(["namespace" => "Auth"], function() {
-//     Route::post("update-password", [
-//         "as" => "password.update",
-//         "uses" => "ForgotPasswordController@changePassword"
-//     ]);
-// });
-
-
 
 Route::group(["namespace" => "Guest"], function() {
     Route::get("/", function () {
