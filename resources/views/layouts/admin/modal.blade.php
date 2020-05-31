@@ -91,7 +91,6 @@
           <input type="text" name="employee_email" class="form-control" placeholder="Email">
         </div>
       </div>
-        
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary update_employee">Update data</button>
