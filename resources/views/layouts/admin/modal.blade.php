@@ -495,20 +495,37 @@
           </select>
         </div>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label>Tag</label>
           <input type="text" name="video_tag" class="form-control" placeholder="Tag">
+        </div> -->
+
+        <div class="form-group">
+          <label>Tag</label>
+          <textarea class="form-control col-xs-12" name="video_tag"></textarea>
         </div>
+
+        <!-- <div class="form-group">
+          <label>Caption</label>
+          <input type="text" name="video_caption" class="form-control" placeholder="Caption">
+        </div> -->
 
         <div class="form-group">
           <label>Caption</label>
-          <input type="text" name="video_caption" class="form-control" placeholder="Caption">
+          <textarea class="form-control col-xs-12" name="video_caption"></textarea>
         </div>
+
+        <!-- <div class="form-group">
+          <label>Subtitle</label>
+          <input type="text" name="video_subtitle" class="form-control" placeholder="Subtitle">
+        </div> -->
 
         <div class="form-group">
           <label>Subtitle</label>
-          <input type="text" name="video_subtitle" class="form-control" placeholder="Subtitle">
+          <textarea class="form-control col-xs-12" name="video_subtitle"></textarea>
         </div>
+
+
       </div>
 
       <div class="modal-footer">
