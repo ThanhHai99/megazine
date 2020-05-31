@@ -47,7 +47,7 @@ class ResetPasswordController extends Controller
                 "errorPasswordConfirmation" => "Retype password does not match"
             ]);
         } else {
-            $user = User::where("remember_token", last(request()->segments()))
+            $user = User::where("remember_token", $request->token)
                         ->update([
                             "remember_token" => $request->_token,
                             "password" => bcrypt($request->password)

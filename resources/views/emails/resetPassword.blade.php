@@ -8,7 +8,7 @@ Button Text
     https://megazine.com/public/password/reset/{{$user['remember_token']}}
   </a>
 @endcomponent
-
+ 
 Thanks,<br>
 {{ config('app.name') }}
 @endcomponent

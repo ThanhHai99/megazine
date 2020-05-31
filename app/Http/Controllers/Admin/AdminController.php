@@ -1231,10 +1231,9 @@ class AdminController extends Controller
     }
 
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      // $this->validate($request, [
-      //   'heading_primary' => 'required',
-      //   'heading_secondary' => 'required'
-      // ]);
+      $this->validate($request, [
+        'id' => 'required'
+      ]);
   
       $input = $request->all();
       Slide::where('id', $input['id'])->delete();
@@ -1283,7 +1282,6 @@ class AdminController extends Controller
       ]);
       
       $input = $request->all();
-      // dd($input);
 
       $tmp = new Slide;  
       if ($request->hasFile('image')) {

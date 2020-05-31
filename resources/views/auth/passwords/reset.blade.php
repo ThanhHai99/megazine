@@ -24,7 +24,9 @@
             <?php } ?>
 
             <form class="user" method="POST" action="{{ route('password.update') }}">
-              {{ csrf_field() }}              
+              {{ csrf_field() }}
+              <input type="hidden" name="token" value="{{ (Request::segment(3)) }}">
+
               <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                   <input type="password" class="form-control form-control-user" id="exampleInputPassword" name="password" placeholder="Password">
                   @if ($errors->has('password'))

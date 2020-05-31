@@ -36,6 +36,10 @@ class LoginController extends Controller
      */
 
     protected function authenticated(Request $request, $user) {
+        // dd($user);
+        User::where("id", $user->id)
+                ->update(['remember_token' => Str::random(100)]);
+
         if ($user->id_status == 0) {
             Auth::logout();
             return view('auth.login', [
@@ -47,9 +51,6 @@ class LoginController extends Controller
         }
 
         if ($user->id_role == 2 || $user->id_role == 1 || $user->id_role == 0) {
-            User::where("id", $user->id)
-                  ->update(['remember_token' => Str::random(100)]);                        
-
             $infos = $user->toArray();
             for ($i=0; $i < count(array_keys($infos)); $i++) { 
                 $infos_keys[$i] = 'user_' . array_keys($infos)[$i];
@@ -62,8 +63,6 @@ class LoginController extends Controller
         }
 
         if ($user->id_status == 1) {
-            User::where("id", $user->id)
-                  ->update(['remember_token' => Str::random(100)]);            
             return redirect("home");
         }
     }
