@@ -8,9 +8,9 @@ $("body").delegate("#edit_slide", "click", function() {
   };
 
   let data = table.row($tr).data();
-  $("#editModalSlide #update_tag").val(data['tag']);
-  $("#editModalSlide #update_heading_primary").val(data['heading_primary']);
-  $("#editModalSlide #update_heading_secondary").val(data['heading_secondary']);
+  $("#editModalSlide textarea[name=tag]").val(data['tag']);
+  $("#editModalSlide textarea[name=heading_primary]").val(data['heading_primary']);
+  $("#editModalSlide textarea[name=heading_secondary]").val(data['heading_secondary']);
   $("#editModalSlide").modal('show');
 });
 
@@ -42,14 +42,16 @@ $("button.update_slide").click(function(event) {
   let table = $('#dataTable').DataTable();
   let data = table.row($tr).data();
   let id = data['id'];
-  let heading_primary = $("#editModalSlide").find("#update_heading_primary").val();
-  let heading_secondary = $("#editModalSlide").find("#update_heading_secondary").val();
+  let tag = $("#editModalSlide textarea[name=tag]").val();
+  let heading_primary = $("#editModalSlide textarea[name=heading_primary]").val();
+  let heading_secondary = $("#editModalSlide textarea[name=heading_secondary]").val();
 
   $.ajax({
     url: `{{route('slide.update')}}`,
     method: "POST",
     data: {
       id: id,
+      tag: tag,
       heading_primary: heading_primary,
       heading_secondary: heading_secondary
     },

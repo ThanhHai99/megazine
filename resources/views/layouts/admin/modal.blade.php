@@ -432,20 +432,36 @@
 
       <div class="modal-body">
 
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label>Tag</label>
           <input type="text" name="tag" id="update_tag" class="form-control" placeholder="Tag">
+        </div> -->
+
+        <div class="form-group">
+          <label>Tag</label>
+          <textarea class="form-control col-xs-12" name="tag"></textarea>
         </div>
+
+        <!-- <div class="form-group">
+          <label>Heading Primary</label>
+          <input type="text" name="heading_primary" id="update_heading_primary" class="form-control" placeholder="Heading Primary">
+        </div> -->
 
         <div class="form-group">
           <label>Heading Primary</label>
-          <input type="text" name="heading_primary" id="update_heading_primary" class="form-control" placeholder="Heading Primary">
+          <textarea class="form-control col-xs-12" name="heading_primary"></textarea>
         </div>
+
+        <!-- <div class="form-group">
+          <label>Heading Secondary</label>
+          <input type="text" name="heading_secondary" id="update_heading_secondary" class="form-control" placeholder="Heading Secondary">
+        </div> -->
 
         <div class="form-group">
           <label>Heading Secondary</label>
-          <input type="text" name="heading_secondary" id="update_heading_secondary" class="form-control" placeholder="Heading Secondary">
+          <textarea class="form-control col-xs-12" name="heading_secondary"></textarea>
         </div>
+
       </div>
 
       <div class="modal-footer">
