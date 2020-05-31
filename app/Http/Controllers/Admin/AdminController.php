@@ -982,6 +982,7 @@ class AdminController extends Controller
         'video_id_topic' => 'required_without:_video_id_topic',
         'video_hot_news' => 'required',
         'video_image' => 'required',
+        'video_video' => 'required',
         'video_tag' => 'required',
         'video_caption' => 'required',
         'video_subtitle' => 'required'
@@ -997,6 +998,14 @@ class AdminController extends Controller
         $filename = time() . '_'. uniqid() . '.' . $extension;
         $file->move("images", $filename);
         $tmp->image = $filename;
+      }
+
+      if ($request->hasFile('video_video')) {
+        $file = $request->file('video_video');
+        $extension = $file->getClientOriginalExtension();
+        $filename = time() . '_'. uniqid() . '.' . $extension;
+        $file->move("videos", $filename);
+        $tmp->video = $filename;
       }
 
       if ($input['_video_id_topic'] != "") {

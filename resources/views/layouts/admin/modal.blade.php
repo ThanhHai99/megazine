@@ -290,15 +290,12 @@
           </div>
 
           <div>
-            <!-- <div id="video-background"> -->
-              <video id="preview_video_video" src="" width="100%" height="auto" preload controls allowFullScreen>
-              </video>
-            <!-- </div> -->
+            <video id="preview_video_video" src="" width="100%" height="auto" preload controls allowFullScreen>
+            </video>
           </div>
 
           <div class="form-group">
             <label>Video</label>
-            <!-- <input id="video_video_preview" type="file" name="video_video" class="form-control" placeholder="Video"> -->
             <input type="file" id="video_video_preview" name="video_video">
           </div>
 
