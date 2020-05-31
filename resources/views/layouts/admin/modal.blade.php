@@ -331,71 +331,6 @@
 </div>
 <!-- End Insert Video Modal -->
 
-<!-- Start Insert News Modal - All -->
-<div class="modal fade" id="insertModalNews_all" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create News - All</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      <form id="form-insert-news_all" method="PUT" enctype="multipart/form-data">
-        {{ csrf_field() }}
-        <div class="modal-body">
-          <!-- <input type="hidden" name="topic" value="ok"> -->
-          <div class="form-group">
-            <label>Topic</label>
-            <select class="form-control" id="topic_option" name="id_topic">
-              @foreach($topics as $topic)
-                <option value="{{ $topic->id }}">{{ $topic->name }}</option>
-              @endforeach              
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Hot News</label>
-            <input type="text" name="hot_news" id="insert_hot_news_all" class="form-control" placeholder="Hot News">
-          </div>
-
-          <div class="form-group">
-            <label>Image</label>
-            <input type="file" name="image" id="insert_image_all" class="form-control" placeholder="Image">
-          </div>
-
-          <div class="form-group">
-            <label>Tag</label>
-            <input type="text" name="tag" id="insert_tag_all" class="form-control" placeholder="Tag">
-          </div>
-
-          <div class="form-group">
-            <label>Caption</label>
-            <input type="text" name="caption" id="insert_caption_all" class="form-control" placeholder="Caption">
-          </div>
-
-          <div class="form-group">
-            <label>Subtitle</label>
-            <input type="text" name="subtitle" id="insert_subtitle_all" class="form-control" placeholder="Subtitle">
-          </div>
-
-          <div class="form-group">
-            <input type="hidden" name="id_creator" value="">
-          </div>
-
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-success insert_news_all">Create</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-<!-- End Insert News Modal - All-->
-
 <!-- Start Image News Modal -->
 <div class="modal fade" id="editImageNews" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -496,6 +431,11 @@
       </div>
 
       <div class="modal-body">
+
+        <div class="form-group">
+          <label>Tag</label>
+          <input type="text" name="tag" id="update_tag" class="form-control" placeholder="Tag">
+        </div>
 
         <div class="form-group">
           <label>Heading Primary</label>

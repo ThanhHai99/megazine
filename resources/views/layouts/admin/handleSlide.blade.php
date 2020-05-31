@@ -8,8 +8,9 @@ $("body").delegate("#edit_slide", "click", function() {
   };
 
   let data = table.row($tr).data();
-  $("#editModalSlide").find("#update_heading_primary").val(data['heading_primary']);
-  $("#editModalSlide").find("#update_heading_secondary").val(data['heading_secondary']);
+  $("#editModalSlide #update_tag").val(data['tag']);
+  $("#editModalSlide #update_heading_primary").val(data['heading_primary']);
+  $("#editModalSlide #update_heading_secondary").val(data['heading_secondary']);
   $("#editModalSlide").modal('show');
 });
 
