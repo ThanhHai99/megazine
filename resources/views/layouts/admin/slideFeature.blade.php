@@ -23,6 +23,7 @@ let loadSlide = () => {
           },
           targets: "no-sort", orderable: false, searchable: false
         },
+        { data: "tag", name: "tag" },
         { data: "heading_primary", name: "heading_primary" },
         { data: "heading_secondary", name: "heading_secondary" },
         {

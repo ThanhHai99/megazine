@@ -388,7 +388,7 @@ class AdminController extends Controller
       // $query=Slide::all();
       $query=Slide::join("users", "slide.id_creator", "=", "users.id")
                     ->join("topic", "slide.id_topic", "=", "topic.id")
-                    ->select("slide.id", "topic.name as id_topic", "users.name as id_creator", "slide.image", "slide.heading_primary", "slide.heading_secondary");
+                    ->select("slide.id", "topic.name as id_topic", "users.name as id_creator", "slide.image", "slide.tag", "slide.heading_primary", "slide.heading_secondary");
 
       return Datatables::of($query)->make(true);
     };

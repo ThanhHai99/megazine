@@ -121,6 +121,7 @@ let htmlAllSlide =`<thead>
                       <th>Topic</th>
                       <th>Creator</th>
                       <th>Image</th>
+                      <th>Tag</th>
                       <th>Caption</th>
                       <th>Subtitle</th>
                       <th class="text-center">
@@ -137,6 +138,7 @@ let htmlAllSlide =`<thead>
                       <th>ID_Topic</th>
                       <th>ID_Creator</th>
                       <th>Image</th>
+                      <th>Tag</th>
                       <th>Caption</th>
                       <th>Subtitle</th>
                       <th class="text-center">
