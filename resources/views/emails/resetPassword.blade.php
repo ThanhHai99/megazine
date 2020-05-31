@@ -1,14 +1,12 @@
-<!-- @component('mail::message') -->
+Welcome to our website.<br>
+Please, click on the link below to reset your password.<br>
 
-Welcome to our website.
-
-<!-- @component('mail::button', ['url' => '']) -->
-Button Text
+<p>
   <a href="https://megazine.com/public/password/reset/{{$user['remember_token']}}">
     https://megazine.com/public/password/reset/{{$user['remember_token']}}
   </a>
-@endcomponent
- 
+</p>
+
+<br>
 Thanks,<br>
 {{ config('app.name') }}
-@endcomponent
