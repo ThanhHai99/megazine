@@ -180,7 +180,7 @@ class PageController extends Controller
                         <span class="cat"><a href="javascript:void(0)">'. $newsTravelMore->tag .'</a></span>
                         <span class="date">'. date("d F Y", strtotime($newsTravelMore->created_at)) .'</span>
                     </p>
-                    <h2><a href="single/63">'. $newsTravelMore->caption .'</a></h2>
+                    <h2><a href="single/'. $newsTravelMore->id .'">'. $newsTravelMore->caption .'</a></h2>
                     <p>'. $newsTravelMore->title .'</p>
                     <p><a href="single/'. $newsTravelMore->id .'" class="btn btn-primary with-arrow">Read More <i class="icon-arrow-right22"></i></a></p>
                     </div>
@@ -271,13 +271,6 @@ class PageController extends Controller
         }
         echo $output;
     }
-
-    public function getArchives(Request $request) {
-        $news = News::orderBy("created_at", "desc")->paginate(7);
-        return view("page.guest.archives", [
-            "news" => $news
-        ]);
-    }    
 
     public function getSingle(Request $request, $id = null) {
         if (!(is_null($id))) {
