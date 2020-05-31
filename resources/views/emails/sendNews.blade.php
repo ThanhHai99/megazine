@@ -1,16 +1,12 @@
-@component('mail::message')
+Welcome to our website.<br>
 
-Welcome to our website.
+The link below is our latest news <br>
 
-@component('mail::button', ['url' => ''])
-Button Text
-  <p>{{ $news['id'] }}</p>
-  <p>{{ $news['image'] }}</p>
-  <p>{{ $news['tag'] }}</p>
-  <p>{{ $news['caption'] }}</p>
-  <p>{{ $news['subtitle'] }}</p>
-@endcomponent
+<p>
+  <a href="https://megazine.com/public/single/{{$news['id']}}">
+    https://megazine.com/public/single/{{$news['id']}}
+  </a>
+</p><br>
 
 Thanks,<br>
 {{ config('app.name') }}
-@endcomponent
