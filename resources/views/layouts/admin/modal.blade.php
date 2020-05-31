@@ -289,6 +289,22 @@
             <input type="file" name="video_image" class="form-control" placeholder="Image">
           </div>
 
+          <div>
+            <!-- <div id="video-background"> -->
+              <video id="preview_video_video" src="" width="100%" height="auto" preload controls allowFullScreen>
+              </video>
+            <!-- </div> -->
+          </div>
+
+          <div class="form-group">
+            <label>Video</label>
+            <!-- <input id="video_video_preview" type="file" name="video_video" class="form-control" placeholder="Video"> -->
+            <input type="file" id="video_video_preview" name="video_video">
+          </div>
+
+          
+          
+
           <!-- <div class="form-group">
             <label>Tag</label>
             <input type="text" name="video_tag" class="form-control" placeholder="Tag">
@@ -393,6 +409,17 @@
           <input style="visibility:hidden;" type="file" id="image_video" name="image_video">
         </div>
       </form>
+
+
+
+
+
+
+
+
+
+
+
 
       <form id="form-video-video" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}

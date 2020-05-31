@@ -40,11 +40,11 @@ function previewImage(input, className) {
   }
 }
 
-function previewVideo(input) {
+function previewVideo(input, className) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();    
     reader.onload = function(e) {
-      $('video#show-video').attr('src', e.target.result);
+      $(className).attr('src', e.target.result);
     }    
     reader.readAsDataURL(input.files[0]); // convert to base64 string
   }
@@ -63,10 +63,14 @@ $("input[name=video_image]").change(function() {
   previewImage(this, 'img#preview_video_image');
 });
 
+$("input#video_video_preview").change(function() {
+  previewVideo(this, 'video#preview_video_video');
+});
+
 
 
 $("#video_video").change(function() {
-  previewVideo(this);
+  previewVideo(this, 'video#show-video');
 });
 
 $("input#image_slide").change(function() {
