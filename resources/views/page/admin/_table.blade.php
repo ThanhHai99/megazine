@@ -35,7 +35,7 @@
   
 
   <script>
-  <?php if (session('id_role') == 0) { ?>
+  <?php if (session('user_id_role') == 0) { ?>
           $("div[data=employee] a").each(function() {
             $(this).removeClass("active");
           });
@@ -43,7 +43,7 @@
           loadEmployeeAll_onLoad();
   <?php } ?>
 
-  <?php if (session('id_role') == 1) { ?>
+  <?php if (session('user_id_role') == 1) { ?>
           $("div[data=employee] a").each(function() {
             $(this).removeClass("active");
           });
@@ -51,7 +51,7 @@
           loadEmployeeStaff_onLoad();
   <?php } ?>
 
-  <?php if (session('id_role') == 2) { ?>
+  <?php if (session('user_id_role') == 2) { ?>
           $("div[data=news] a").each(function() {
             $(this).removeClass("active");
           });

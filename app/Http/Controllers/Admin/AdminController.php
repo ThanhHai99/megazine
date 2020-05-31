@@ -556,7 +556,7 @@ class AdminController extends Controller
   
       
       $tmp->id_topic = $input['id_topic'];
-      $tmp->id_creator = session('id');
+      $tmp->id_creator = session('user_id');
       $tmp->hot_news = $input['hot_news'];
       $tmp->tag = $input['tag'];
       $tmp->caption = $input['caption'];
@@ -605,7 +605,7 @@ class AdminController extends Controller
       } else {
         $tmp->id_topic = $input['news_id_topic'];
       }
-      $tmp->id_creator = session('id');
+      $tmp->id_creator = session('user_id');
       $tmp->hot_news = $input['news_hot_news'];
       $tmp->tag = $input['news_tag'];
       $tmp->caption = $input['news_caption'];
@@ -1004,7 +1004,7 @@ class AdminController extends Controller
       } else {
         $tmp->id_topic = $input['video_id_topic'];
       }
-      $tmp->id_creator = session('id');
+      $tmp->id_creator = session('user_id');
       $tmp->hot_news = $input['video_hot_news'];
       $tmp->tag = $input['video_tag'];
       $tmp->caption = $input['video_caption'];
@@ -1287,7 +1287,7 @@ class AdminController extends Controller
   
       
       $tmp->id_topic = $input['id_topic'];
-      $tmp->id_creator = session('id');
+      $tmp->id_creator = session('user_id');
       $tmp->tag = $input['tag'];
       $tmp->heading_primary = $input['caption'];
       $tmp->heading_secondary = $input['subtitle'];

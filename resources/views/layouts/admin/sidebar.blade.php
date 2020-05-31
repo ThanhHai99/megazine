@@ -14,9 +14,9 @@
 
   <!-- Divider -->
   <hr class="sidebar-divider">
-  <?php if (session('id_role') == '2') { ?>
+  <?php if (session('user_id_role') == '2') { ?>
 
-  <?php } else if ( session('id_role') == '0' || session('id_role') == '1' ) { ?>
+  <?php } else if ( session('user_id_role') == '0' || session('user_id_role') == '1' ) { ?>
             <li class="nav-item">
               <!-- <a click="index" class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#collapseEmployees" aria-expanded="true" aria-controls="collapseEmployees"> -->
               <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -25,7 +25,7 @@
               </a>
               <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" data="employee">
                 <div class="bg-white py-2 collapse-inner rounded">
-                  @if ( session('id_role') == '0')
+                  @if ( session('user_id_role') == '0')
                     <a id="employee-all" class="collapse-item all" href="javascript:void(0)">All</a>
                     <a id="employee-admin" class="collapse-item" data="admin" href="javascript:void(0)">Admin</a>
                   @endif
