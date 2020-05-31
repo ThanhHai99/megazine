@@ -51,7 +51,6 @@ class LoginController extends Controller
                   ->update(['remember_token' => Str::random(100)]);                        
 
             $infos = $user->toArray();
-            // $infos_keys[];
             for ($i=0; $i < count(array_keys($infos)); $i++) { 
                 $infos_keys[$i] = 'user_' . array_keys($infos)[$i];
             }
@@ -59,7 +58,6 @@ class LoginController extends Controller
             for ($i=0; $i < count($infos); $i++) { 
                 session([ $infos_keys[$i] => $infos_values[$i] ]);
             }
-            dd(session('user_id'));
             return redirect("dashboard/index");
         }
 
