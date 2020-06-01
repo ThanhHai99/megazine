@@ -32,7 +32,7 @@ class AdminController extends Controller
   }
 
   public function getLogin() {
-    return view('auth.login');
+    return view('auth.login'); 
   }
 
   public function getLogout(Request $request) {

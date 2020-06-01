@@ -5,12 +5,6 @@ $("body").delegate("form#post_comment input[type=submit]", "submit", function() 
 });
 
 $("body").delegate("form#post_comment", "submit", function(event) {
-  // if( Auth::user()  ) {
-  //   alert('ton tai user');
-  // } else {
-  //   alert('khong ton tai user');
-  // }
-  // return false;
   event.preventDefault();
   let id = $("form#post_comment input[name=id]").val();
   let comment = $("form#post_comment textarea[name=comment]").val();
@@ -23,8 +17,6 @@ $("body").delegate("form#post_comment", "submit", function(event) {
     },
     success: function(response) {
       if (response.error == false) {
-        //alert('success');
-
         let strAppend = `<div class="review">
                           <div class="user-img" style="background-image: url(images/default-user.png)"></div>
                           <div class="desc">
@@ -50,7 +42,7 @@ $("body").delegate("form#post_comment", "submit", function(event) {
     error: function(error) {
       if (error.responseJSON['authenticated'] == false) {
         Swal.fire({
-          title: 'Are you want login?',
+          title: 'Are you want login to add comment?',
           // text: "You won't be able to revert this!",
           icon: 'warning',
           showCancelButton: true,
@@ -62,19 +54,6 @@ $("body").delegate("form#post_comment", "submit", function(event) {
             location.href = "{{ route('dashboard.login') }}";    
           }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
       } else {
         alertify.notify('An error occurred', 'error', 3);
       }

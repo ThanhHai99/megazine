@@ -9,15 +9,7 @@
    
       @if (Auth::user())
         <li>
-            <a href="{{ route('dashboard.logout') }}"
-                onclick="event.preventDefault();
-                          document.getElementById('logout-form').submit();">
-                Logout
-            </a>
-
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                {{ csrf_field() }}
-            </form>
+          <a href="{{ route('dashboard.logout') }}">Logout</a></li>
         </li>
       @else
         <li><a href="{{route('dashboard.login')}}">Login</a></li>

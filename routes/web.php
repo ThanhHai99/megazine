@@ -18,10 +18,10 @@ Auth::routes();
 use App\Mail\ResetPasswordMail;
 use Illuminate\Support\Facades\Mail;
 
-Route::get("logout", [
-    "as" => "logout",
-    "uses" => "HomeController@getLogout"
-]);
+// Route::get("logout", [
+//     "as" => "logout",
+//     "uses" => "HomeController@getLogout"
+// ]);
 
 Route::get("auth/google", [
     "as" => "auth.google",
