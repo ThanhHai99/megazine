@@ -18,6 +18,10 @@ Auth::routes();
 use App\Mail\ResetPasswordMail;
 use Illuminate\Support\Facades\Mail;
 
+Route::get("logout", [
+    "as" => "logout",
+    "uses" => "HomeController@getLogout"
+]);
 
 Route::get("auth/google", [
     "as" => "auth.google",
@@ -101,11 +105,6 @@ Route::group(["namespace" => "Guest"], function() {
         "uses" => "PageController@getVideoMore"
     ]);
 
-    Route::get("archives", [
-        "as" => "archives",
-        "uses" => "PageController@getArchives"
-    ]);
-
     Route::get("single/{id?}", [
         "as" => "single",
         "uses" => "PageController@getSingle"
@@ -120,6 +119,14 @@ Route::group(["namespace" => "Guest"], function() {
         "as" => "news.send",
         "uses" => "PageController@sendNews"
     ]);
+
+    Route::put("comment/new", [
+        "as" => "comment.new",
+        "uses" => "PageController@commentNew"
+    ]);
+
+    
+
     
 });
 

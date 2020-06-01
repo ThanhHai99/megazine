@@ -15,7 +15,7 @@
 										<span>#{{$newsDetails[0]->tag}}</span>
 										<span><?= date('d F Y', strtotime($newsDetails[0]->created_at)); ?></span>
 										<span> {{$newsDetails[0]->name}} </span>
-										<span><a href="javascript:void(0)">999 Comments</a></span>
+										<span id="total-comment"><a href="javascript:void(0)">{{ count($comments) }} Comments</a></span>
 									</p>
 								</div>
 								<!-- <h2><a>Take a perfect shot, capture everything in Nature</a></h2> -->
@@ -26,90 +26,45 @@
 							</div>
 						</article>
 						<div class="row row-bottom-padded-md">
-							<div class="col-md-12 animate-box">
-								<h2 class="heading-2">23 Comments</h2>
-								<div class="review">
-									<div class="user-img" style="background-image: url(images/person1.jpg)"></div>
-									<div class="desc">
-										<h4>
-											<span class="text-left">Jacob Webb</span>
-											<span class="text-right">24 May 2018</span>
-										</h4>
-										<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
-										<p class="star">
-											<span class="text-left"><a href="javascript:void(0)" class="reply"><i class="icon-reply2"></i></a></span>
-										</p>
+							<div class="col-md-12 animate-box" id="content-comment">
+								<h2 class="heading-2" id="total-comment">{{ count($comments) }} Comments</h2>
+								@foreach($comments as $comment)
+									<div class="review">
+										<div class="user-img" style="background-image: url(images/default-user.png)"></div>
+										<div class="desc">
+											<h4>
+												<span class="text-left">{{ $comment->name }}</span>
+												<span class="text-right"><?= date('d F Y', strtotime($comment->created_at)); ?></span>
+											</h4>
+											<p>{{ $comment->content }}</p>
+											<p class="star">
+												<span class="text-left"><a href="javascript:void(0)" class="reply"><i class="icon-reply2"></i></a></span>
+											</p>
+										</div>
 									</div>
-								</div>
-								<div class="review">
-									<div class="user-img" style="background-image: url(images/person2.jpg)"></div>
-									<div class="desc">
-										<h4>
-											<span class="text-left">Jacob Webb</span>
-											<span class="text-right">24 May 2018</span>
-										</h4>
-										<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
-										<p class="star">
-											<span class="text-left"><a href="javascript:void(0)" class="reply"><i class="icon-reply2"></i></a></span>
-										</p>
-									</div>
-								</div>
-								<div class="review">
-									<div class="user-img" style="background-image: url(images/person3.jpg)"></div>
-									<div class="desc">
-										<h4>
-											<span class="text-left">Jacob Webb</span>
-											<span class="text-right">24 May 2018</span>
-										</h4>
-										<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
-										<p class="star">
-											<span class="text-left"><a href="javascript:void(0)" class="reply"><i class="icon-reply2"></i></a></span>
-										</p>
-									</div>
-								</div>
+								@endforeach
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-12 animate-box">
-								<h2 class="heading-2">Say something</h2>
-								<form action="#">
-									<div class="row form-group">
-										<div class="col-md-6">
-											<!-- <label for="fname">First Name</label> -->
-											<input type="text" id="fname" class="form-control" placeholder="Your firstname">
-										</div>
-										<div class="col-md-6">
-											<!-- <label for="lname">Last Name</label> -->
-											<input type="text" id="lname" class="form-control" placeholder="Your lastname">
-										</div>
-									</div>
+						
+							<div class="row">
+								<div class="col-md-12 animate-box">
+									<h2 class="heading-2">Comment</h2>
+									<form id="post_comment" method="PUT" enctype="multipart/form-data">
+										{{ csrf_field() }}
+										<input type="hidden" name="id" value="{{ (Request::segment(2)) }}">
 
-									<div class="row form-group">
-										<div class="col-md-12">
-											<!-- <label for="email">Email</label> -->
-											<input type="text" id="email" class="form-control" placeholder="Your email address">
+										<div class="row form-group">
+											<div class="col-md-12">
+												<!-- <label for="message">Message</label> -->
+												<textarea name="comment" id="comment" cols="30" rows="10" class="form-control" placeholder="Say something about this news"></textarea>
+											</div>
 										</div>
-									</div>
-
-									<div class="row form-group">
-										<div class="col-md-12">
-											<!-- <label for="subject">Subject</label> -->
-											<input type="text" id="subject" class="form-control" placeholder="Your subject of this message">
+										<div class="form-group">
+											<input type="submit" value="Post Comment" class="btn btn-primary">
 										</div>
-									</div>
-
-									<div class="row form-group">
-										<div class="col-md-12">
-											<!-- <label for="message">Message</label> -->
-											<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
-										</div>
-									</div>
-									<div class="form-group">
-										<input type="submit" value="Post Comment" class="btn btn-primary">
-									</div>
-								</form>	
+									</form>	
+								</div>
 							</div>
-						</div>
 					</div>
 				</div>
 				<div class="col-md-3 sticky-parent">

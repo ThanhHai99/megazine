@@ -18,6 +18,8 @@
 	
 	@include('layouts.guest.processNews')
 
+	@include('layouts.guest.processComment')
+
 	</body>
 </html>
 

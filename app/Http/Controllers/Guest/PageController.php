@@ -13,6 +13,7 @@ use App\Topic;
 use App\News;
 use App\Video;
 use App\ReceiveNews;
+use App\Comment;
 
 
 class PageController extends Controller
@@ -284,10 +285,14 @@ class PageController extends Controller
                                 ->inRandomOrder()
                                 ->limit(6)->get();
 
-            // dd($newsRecent);
+            $comments = Comment::where("id_news", $id)
+                                ->join("users", "comment.id_user", "=", "users.id")
+                                ->select("comment.content", "comment.created_at", "users.name")
+                                ->get();
             return view("page.guest.single", [                
                 "newsDetails" => $newsDetails,
-                "newsRecents" => $newsRecents
+                "newsRecents" => $newsRecents,
+                "comments" => $comments
             ]);
         };
     }
@@ -313,5 +318,21 @@ class PageController extends Controller
             Mail::to($receiveNew['email'])->send(new SendNewsMail($receiveNew));
         }
 
+    }
+
+    public function commentNew(Request $request) {
+        $this->validate($request, [
+            'id' => 'required',
+            'comment' => 'required'
+          ]);
+        $input = $request->all();
+        $tmp = new Comment;
+        $tmp->id_news = $input["id"];
+        $tmp->id_user = session('user_id');
+        $tmp->content = $input["comment"];
+        $tmp->save();
+        return response()->json([
+            'error' => false
+        ], 200);
     }
 }

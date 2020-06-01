@@ -9,7 +9,7 @@
    
       @if (Auth::user())
         <li>
-            <a href="{{ route('logout') }}"
+            <a href="{{ route('dashboard.logout') }}"
                 onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
                 Logout
@@ -20,7 +20,7 @@
             </form>
         </li>
       @else
-        <li><a href="{{route('login')}}">Login</a></li>
+        <li><a href="{{route('dashboard.login')}}">Login</a></li>
       @endif
       
     </ul>

@@ -172,7 +172,7 @@
     <!-- <a class="dropdown-item" href="dashboard/logout" data-toggle="modal" data-target="#logoutModal"> -->
     <a class="dropdown-item" href="dashboard/logout">
       <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-      <form id="logout-form" action="{{ route('dashboard.logout') }}" method="GET" style="display: none;">
+      <form id="logout-form" action="{{ route('logout') }}" method="GET" style="display: none;">
         {{ csrf_field() }}
       </form>
       Logout
