@@ -25,9 +25,11 @@ class SocialAuthFacebookController extends Controller
             $facebookUser = Socialite::driver("facebook")->user();
             $existsUser = User::where("facebook_id", $facebookUser->id)->first();
 
-            if ($existsUser) {     
+            if ($existsUser) { 
                 $infos = $existsUser->toArray();
-                $infos_keys = array_keys($infos);
+                for ($i=0; $i < count(array_keys($infos)); $i++) { 
+                    $infos_keys[$i] = 'user_' . array_keys($infos)[$i];
+                }
                 $infos_values = array_values($infos);
                 for ($i=0; $i < count($infos); $i++) { 
                     session([ $infos_keys[$i] => $infos_values[$i] ]);
@@ -40,7 +42,9 @@ class SocialAuthFacebookController extends Controller
                 $user->save();
 
                 $infos = $user->toArray();
-                $infos_keys = array_keys($infos);
+                for ($i=0; $i < count(array_keys($infos)); $i++) { 
+                    $infos_keys[$i] = 'user_' . array_keys($infos)[$i];
+                }
                 $infos_values = array_values($infos);
                 for ($i=0; $i < count($infos); $i++) { 
                     session([ $infos_keys[$i] => $infos_values[$i] ]);

@@ -36,7 +36,6 @@ class LoginController extends Controller
      */
 
     protected function authenticated(Request $request, $user) {
-        // dd($user);
         User::where("id", $user->id)
                 ->update(['remember_token' => Str::random(100)]);
 

@@ -26,13 +26,13 @@ class SocialAuthGoogleController extends Controller
             $existsUser = User::where("google_id", $googleUser->id)
                                 ->first();
             
-            
-            // dd($existsUser);
-
-            
             if ($existsUser) {
+
+
                 $infos = $existsUser->toArray();
-                $infos_keys = array_keys($infos);
+                for ($i=0; $i < count(array_keys($infos)); $i++) { 
+                    $infos_keys[$i] = 'user_' . array_keys($infos)[$i];
+                }
                 $infos_values = array_values($infos);
                 for ($i=0; $i < count($infos); $i++) { 
                     session([ $infos_keys[$i] => $infos_values[$i] ]);
@@ -44,9 +44,11 @@ class SocialAuthGoogleController extends Controller
                 $user->email = $googleUser->email;
                 $user->google_id = $googleUser->id;
                 $user->save();
-
+                
                 $infos = $user->toArray();
-                $infos_keys = array_keys($infos);
+                for ($i=0; $i < count(array_keys($infos)); $i++) { 
+                    $infos_keys[$i] = 'user_' . array_keys($infos)[$i];
+                }
                 $infos_values = array_values($infos);
                 for ($i=0; $i < count($infos); $i++) { 
                     session([ $infos_keys[$i] => $infos_values[$i] ]);
