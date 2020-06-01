@@ -1,5 +1,9 @@
+
 <!-- jQuery -->
 <script src="js/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
 <!-- jQuery Easing -->
 <script src="js/jquery.easing.1.3.js"></script>
 <!-- Bootstrap -->
@@ -21,5 +25,3 @@
 <script src="js/main.js"></script>
 
 
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
