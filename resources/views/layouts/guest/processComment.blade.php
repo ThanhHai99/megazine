@@ -1,14 +1,16 @@
 <script>
 
-
+$("body").delegate("form#post_comment input[type=submit]", "submit", function() {
+  alert('start click');
+});
 
 $("body").delegate("form#post_comment", "submit", function(event) {
-  if( <?= Auth::user() ?>  ) {
-    alert('ton tai user');
-  } else {
-    alert('khong ton tai user');
-  }
-  return false;
+  // if( Auth::user()  ) {
+  //   alert('ton tai user');
+  // } else {
+  //   alert('khong ton tai user');
+  // }
+  // return false;
   event.preventDefault();
   let id = $("form#post_comment input[name=id]").val();
   let comment = $("form#post_comment textarea[name=comment]").val();
@@ -46,11 +48,36 @@ $("body").delegate("form#post_comment", "submit", function(event) {
       }
     },
     error: function(error) {
-      console.log(error);
-      // if (error.responseText.error == "Unauthenticated.") {
-      //   location.reload(true);
-      // }
-      // alertify.notify('An error occurred', 'error', 3);
+      if (error.responseJSON['authenticated'] == false) {
+        Swal.fire({
+          title: 'Are you want login?',
+          // text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes'
+        }).then((result) => {
+          if (result.value) {
+            location.href = "{{ route('dashboard.login') }}";    
+          }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+      } else {
+        alertify.notify('An error occurred', 'error', 3);
+      }
     }
   });
 });

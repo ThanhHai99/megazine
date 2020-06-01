@@ -321,6 +321,12 @@ class PageController extends Controller
     }
 
     public function commentNew(Request $request) {
+        if (session('user_id') == null) {
+            return response()->json([
+                'authenticated' => false
+            ], 500);
+            exit();
+        }
         $this->validate($request, [
             'id' => 'required',
             'comment' => 'required'
