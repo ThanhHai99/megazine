@@ -207,6 +207,10 @@ $("form#form_insert_slide").on("submit", function(event) {
           $("div.dataTables_paginate a.previous").click();
           $("div.dataTables_paginate a.next").click();
         }
+        if ( !($("div.dataTables_paginate a.previous").hasClass("disabled")) || !($("div.dataTables_paginate a.next").hasClass("disabled")) ) {
+          $("div.dataTables_paginate a.next").click();
+          $("div.dataTables_paginate a.previous").click();
+        }
       }
     },
     error: function(error) {

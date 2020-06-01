@@ -71,6 +71,10 @@ $("body").delegate("button.update_employee", "click", function(event) {
             $("div.dataTables_paginate a.previous").click();
             $("div.dataTables_paginate a.next").click();
           }
+          if ( !($("div.dataTables_paginate a.previous").hasClass("disabled")) || !($("div.dataTables_paginate a.next").hasClass("disabled")) ) {
+            $("div.dataTables_paginate a.next").click();
+            $("div.dataTables_paginate a.previous").click();
+          }
         }
       }
     },
@@ -142,6 +146,10 @@ $("body").delegate("#remove_employee", "click", function() {
               if ( $("div.dataTables_paginate a.next").hasClass("disabled") ) {
                 $("div.dataTables_paginate a.previous").click();
                 $("div.dataTables_paginate a.next").click();
+              }
+              if ( !($("div.dataTables_paginate a.previous").hasClass("disabled")) || !($("div.dataTables_paginate a.next").hasClass("disabled")) ) {
+                $("div.dataTables_paginate a.next").click();
+                $("div.dataTables_paginate a.previous").click();
               }
             }
           }

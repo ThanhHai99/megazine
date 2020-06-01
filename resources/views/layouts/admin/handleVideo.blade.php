@@ -63,6 +63,10 @@ $("body").delegate("button.update_video", "click", function(event) {
             $("div.dataTables_paginate a.previous").click();
             $("div.dataTables_paginate a.next").click();
           }
+          if ( !($("div.dataTables_paginate a.previous").hasClass("disabled")) || !($("div.dataTables_paginate a.next").hasClass("disabled")) ) {
+            $("div.dataTables_paginate a.next").click();
+            $("div.dataTables_paginate a.previous").click();
+          }
         }
       }
     },
@@ -384,17 +388,6 @@ $("body").delegate("form#form-insert-video", "submit", function(event) {
         alertify.notify('Create successfully', 'success', 3);
         sendNews();
       }
-      // table.rows.add([{
-      //   "id": "",
-      //   "id_topic": "",
-      //   "id_creator": "",
-      //   "hot_news": "",
-      //   "image": "",
-      //   "tag": "",
-      //   "caption": "",
-      //   "subtitle": "",
-      //   "action": ""
-      // }]).draw();
       if( $("div.dataTables_paginate span a").length == 1) {
           if( $("div[data=employee] a").hasClass("active") ) {
             $("div[data=employee] a.active").click();
@@ -407,6 +400,10 @@ $("body").delegate("form#form-insert-video", "submit", function(event) {
           if ( $("div.dataTables_paginate a.next").hasClass("disabled") ) {
             $("div.dataTables_paginate a.previous").click();
             $("div.dataTables_paginate a.next").click();
+          }
+          if ( !($("div.dataTables_paginate a.previous").hasClass("disabled")) || !($("div.dataTables_paginate a.next").hasClass("disabled")) ) {
+            $("div.dataTables_paginate a.next").click();
+            $("div.dataTables_paginate a.previous").click();
           }
         }
     },
@@ -466,6 +463,10 @@ $("body").delegate("#remove_video", "click", function(event) {
               if ( $("div.dataTables_paginate a.next").hasClass("disabled") ) {
                 $("div.dataTables_paginate a.previous").click();
                 $("div.dataTables_paginate a.next").click();
+              }
+              if ( !($("div.dataTables_paginate a.previous").hasClass("disabled")) || !($("div.dataTables_paginate a.next").hasClass("disabled")) ) {
+                $("div.dataTables_paginate a.next").click();
+                $("div.dataTables_paginate a.previous").click();
               }
             }
           }
