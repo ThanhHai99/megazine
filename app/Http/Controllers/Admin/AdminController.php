@@ -524,54 +524,6 @@ class AdminController extends Controller
 
   }
 
-  
-
-  public function newsInsert_all(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      $this->validate($request, [
-        'id_topic' => 'required',
-        'hot_news' => 'required',
-        'image' => 'required',
-        'tag' => 'required',
-        'caption' => 'required',
-        'subtitle' => 'required'
-      ]);
-      
-      $input = $request->all();
-      // dd($input);
-
-      $tmp = new News;
-  
-      if ($request->hasFile('image')) {
-        $file = $request->file('image');
-        $extension = $file->getClientOriginalExtension();
-        $filename = time() . '_'. uniqid() . '.' . $extension;
-        $file->move("images", $filename);
-        $tmp->image = $filename;
-      }
-  
-      
-      $tmp->id_topic = $input['id_topic'];
-      $tmp->id_creator = session('user_id');
-      $tmp->hot_news = $input['hot_news'];
-      $tmp->tag = $input['tag'];
-      $tmp->caption = $input['caption'];
-      $tmp->subtitle = $input['subtitle'];
-      $tmp->save();
-  
-      return response()->json([
-        'error' => false,
-        'input'  => $input
-      ], 200);
-
-    };
-
-  }
-
   public function newsInsert(Request $request) {
     if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");

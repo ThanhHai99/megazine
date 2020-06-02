@@ -54,10 +54,10 @@
               </button>
               <hr>
               <a href="{{ route('auth.google') }}" class="btn btn-google btn-user btn-block">
-                <i class="fab fa-google-plus-g fa-fw"></i> Login with Google 
+                <i class="fab fa-google-plus-g fa-fw"></i> Sign Up with Google 
               </a>
               <a href="{{ route('auth.facebook') }}" class="btn btn-facebook btn-user btn-block">
-                <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                <i class="fab fa-facebook-f fa-fw"></i> Sign Up with Facebook
               </a>
             </form>
             <hr>

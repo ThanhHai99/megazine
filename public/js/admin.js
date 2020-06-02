@@ -5,6 +5,7 @@ $("input#image_news").change(function() {
 });
 
 function previewImageNews(input) {
+  // console.log(input);
   if (input.files && input.files[0]) {
     var reader = new FileReader();    
     reader.onload = function(e) {
@@ -31,6 +32,7 @@ $("input#video_video").change(function() {
 });
 
 function previewImage(input, className) {
+  // console.log(input);
   if (input.files && input.files[0]) {
     var reader = new FileReader();    
     reader.onload = function(e) {
