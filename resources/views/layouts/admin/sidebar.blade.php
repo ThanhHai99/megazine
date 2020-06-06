@@ -37,21 +37,25 @@
             </li>
   <?php }?>
   
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#collapseNews" aria-expanded="true" aria-controls="collapseNews">
-      <i class="fas fa-fw fa-folder"></i>
-      <span>News Manager</span>
-    </a>
-    <div id="collapseNews" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" data="news">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <a href="javascript:void(0)" class="collapse-item all" id="news-all" style="text-transform: capitalize">All</a>
-        @foreach ($topics as $topic)
-          <!-- <a href="dashboard/table" class="collapse-item" style="text-transform: capitalize">{{ $topic->name }}</a> -->
-          <a href="javascript:void(0)" class="collapse-item" id="news-{{ $topic->name }}" data="{{ $topic->name }}" style="text-transform: capitalize">{{ $topic->name }}</a>
-        @endforeach
-      </div>
-    </div>
-  </li>
+  <?php if (session('user_id_role') == '1') { ?>
+
+  <?php } else if ( session('user_id_role') == '0' || session('user_id_role') == '2' ) { ?>
+                <li class="nav-item">
+                  <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#collapseNews" aria-expanded="true" aria-controls="collapseNews">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>News Manager</span>
+                  </a>
+                  <div id="collapseNews" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" data="news">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                      <a href="javascript:void(0)" class="collapse-item all" id="news-all" style="text-transform: capitalize">All</a>
+                      @foreach ($topics as $topic)
+                        <!-- <a href="dashboard/table" class="collapse-item" style="text-transform: capitalize">{{ $topic->name }}</a> -->
+                        <a href="javascript:void(0)" class="collapse-item" id="news-{{ $topic->name }}" data="{{ $topic->name }}" style="text-transform: capitalize">{{ $topic->name }}</a>
+                      @endforeach
+                    </div>
+                  </div>
+                </li>
+  <?php } ?>
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#collapseVideo" aria-expanded="true" aria-controls="collapseVideo">

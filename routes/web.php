@@ -13,15 +13,8 @@
 
 Auth::routes();
 
-
-
 use App\Mail\ResetPasswordMail;
 use Illuminate\Support\Facades\Mail;
-
-// Route::get("logout", [
-//     "as" => "logout",
-//     "uses" => "HomeController@getLogout"
-// ]);
 
 Route::get("auth/google", [
     "as" => "auth.google",
@@ -42,7 +35,6 @@ Route::get("auth/facebook/callback", [
     "as" => "auth.facebook.callback",
     "uses" => "SocialAuthFacebookController@callback"
 ]);
-
 
 
 Route::group(["namespace" => "Guest"], function() {
@@ -169,6 +161,28 @@ Route::group(["namespace" => "EmployeeController"], function() {
         "as" => "employee.guest",
         "uses" => "EmployeeController@getEmployeeGuest"
     ]);
+
+    Route::group(["prefix" => "employee"], function () {
+        Route::put("update", [
+            "as" => "employee.update",
+            "uses" => "EmployeeController@employeeUpdate"
+        ]);
+
+        Route::put("remove", [
+            "as" => "employee.remove",
+            "uses" => "EmployeeController@employeeRemove"
+        ]);
+
+        Route::put("update_status_employee_yes", [
+            "as" => "employee.updateEmployeeStatusYes",
+            "uses" => "EmployeeController@employeeUpdateStatusYes"
+        ]);
+
+        Route::put("update_status_employee_no", [
+            "as" => "employee.updateEmployeeStatusNo",
+            "uses" => "EmployeeController@employeeUpdateStatusNo"
+        ]);
+    });
 });
 
 Route::group(["namespace" => "VideoController"], function() {  
@@ -197,6 +211,53 @@ Route::group(["namespace" => "VideoController"], function() {
             "as" => "video.sports",
             "uses" => "VideoController@getVideoSports"
         ]);
+
+        Route::group(["prefix" => "video"], function () {
+            Route::put("update", [
+                "as" => "video.update",
+                "uses" => "VideoController@videoUpdate"
+            ]);
+
+            Route::put("remove", [
+                "as" => "video.remove",
+                "uses" => "VideoController@videoRemove"
+            ]);
+
+            Route::post("insert", [
+                "as" => "video.insert",
+                "uses" => "VideoController@videoInsert"
+            ]);
+
+            Route::put("update_hot_video_yes", [
+                "as" => "news.updateHotVideoYes",
+                "uses" => "VideoController@newsUpdateHotVideoYes"
+            ]);
+
+            Route::put("update_hot_video_no", [
+                "as" => "news.updateHotVideoNo",
+                "uses" => "VideoController@newsUpdateHotVideoNo"
+            ]);
+
+            Route::put("update_status_video_yes", [
+                "as" => "news.updateStatusVideoYes",
+                "uses" => "VideoController@newsUpdateStatusVideoYes"
+            ]);
+
+            Route::put("update_status_video_no", [
+                "as" => "news.updateStatusVideoNo",
+                "uses" => "VideoController@newsUpdateStatusVideoNo"
+            ]);
+
+            Route::post("update_image_video", [
+                "as" => "news.update_image_video",
+                "uses" => "VideoController@newsUpdateImageVideo"
+            ]);
+
+            Route::post("update_video_video", [
+                "as" => "news.update_video_video",
+                "uses" => "VideoController@newsUpdateVideoVideo"
+            ]);
+        });
     });
 });
 
@@ -205,9 +266,7 @@ Route::group(["namespace" => "NewsController"], function() {
         Route::get("index", [
             "as" => "dashboard.index",
             "uses" => "NewsController@getIndex"
-        ]);
-    
-        
+        ]);        
     
         Route::get("news/all", [
             "as" => "news.all",
@@ -233,6 +292,48 @@ Route::group(["namespace" => "NewsController"], function() {
             "as" => "news.sports",
             "uses" => "NewsController@getNewsSports"
         ]);
+
+        Route::group(["prefix" => "news"], function () {
+            Route::put("update", [
+                "as" => "news.update",
+                "uses" => "NewsController@newsUpdate"
+            ]);
+
+            Route::put("update_hot_news_yes", [
+                "as" => "news.updateHotNewsYes",
+                "uses" => "NewsController@newsUpdateHotNewsYes"
+            ]);
+
+            Route::put("update_hot_news_no", [
+                "as" => "news.updateHotNewsNo",
+                "uses" => "NewsController@newsUpdateHotNewsNo"
+            ]);
+
+            Route::put("update_status_news_yes", [
+                "as" => "news.updateStatusNewsYes",
+                "uses" => "NewsController@newsUpdateStatusNewsYes"
+            ]);
+
+            Route::put("update_status_news_no", [
+                "as" => "news.updateStatusNewsNo",
+                "uses" => "NewsController@newsUpdateStatusNewsNo"
+            ]);
+            
+            Route::post("update_image_news", [
+                "as" => "news.update_image_news",
+                "uses" => "NewsController@newsUpdateImageNews"
+            ]);            
+
+            Route::post("insert", [
+                "as" => "news.insert",
+                "uses" => "NewsController@newsInsert"
+            ]);
+
+            Route::put("remove", [
+                "as" => "news.remove",
+                "uses" => "NewsController@newsRemove"
+            ]);
+        });
     });
 });
 
@@ -242,152 +343,37 @@ Route::group(["namespace" => "SlideController"], function() {
             "as" => "slide.all",
             "uses" => "SlideController@getSlideAll"
         ]);
+
+        Route::group(["prefix" => "slide"], function () {
+            Route::post("update", [
+                "as" => "slide.update",
+                "uses" => "SlideController@slideUpdate"
+            ]);
+
+            Route::post("update_image", [
+                "as" => "slide.update_image",
+                "uses" => "SlideController@slideUpdateImage"
+            ]);
+
+            Route::put("remove", [
+                "as" => "slide.remove",
+                "uses" => "SlideController@slideRemove"
+            ]);
+
+            Route::post("insert", [
+                "as" => "slide.insert",
+                "uses" => "SlideController@slideInsert"
+            ]);
+        });
     });
 });
 
 Route::group(["namespace" => "Admin"], function() {
     Route::group(["prefix" => "dashboard"], function () {
-        
-
-        Route::group(["prefix" => "news"], function () {
-            Route::put("update", [
-                "as" => "news.update",
-                "uses" => "AdminController@newsUpdate"
-            ]);
-
-            Route::put("update_hot_news_yes", [
-                "as" => "news.updateHotNewsYes",
-                "uses" => "AdminController@newsUpdateHotNewsYes"
-            ]);
-
-            Route::put("update_hot_news_no", [
-                "as" => "news.updateHotNewsNo",
-                "uses" => "AdminController@newsUpdateHotNewsNo"
-            ]);
-
-            Route::put("update_hot_video_yes", [
-                "as" => "news.updateHotVideoYes",
-                "uses" => "AdminController@newsUpdateHotVideoYes"
-            ]);
-
-            Route::put("update_hot_video_no", [
-                "as" => "news.updateHotVideoNo",
-                "uses" => "AdminController@newsUpdateHotVideoNo"
-            ]);
-
-            Route::put("update_status_news_yes", [
-                "as" => "news.updateStatusNewsYes",
-                "uses" => "AdminController@newsUpdateStatusNewsYes"
-            ]);
-
-            Route::put("update_status_news_no", [
-                "as" => "news.updateStatusNewsNo",
-                "uses" => "AdminController@newsUpdateStatusNewsNo"
-            ]);
-
-            Route::put("update_status_video_yes", [
-                "as" => "news.updateStatusVideoYes",
-                "uses" => "AdminController@newsUpdateStatusVideoYes"
-            ]);
-
-            Route::put("update_status_video_no", [
-                "as" => "news.updateStatusVideoNo",
-                "uses" => "AdminController@newsUpdateStatusVideoNo"
-            ]);
+        // Route::group(["prefix" => "slide"], function () {
             
-            Route::post("update_image_news", [
-                "as" => "news.update_image_news",
-                "uses" => "AdminController@newsUpdateImageNews"
-            ]);
-
-            Route::post("update_image_video", [
-                "as" => "news.update_image_video",
-                "uses" => "AdminController@newsUpdateImageVideo"
-            ]);
-
-            Route::post("update_video_video", [
-                "as" => "news.update_video_video",
-                "uses" => "AdminController@newsUpdateVideoVideo"
-            ]);
-
-            Route::post("insert", [
-                "as" => "news.insert",
-                "uses" => "AdminController@newsInsert"
-            ]);
-
-            Route::put("remove", [
-                "as" => "news.remove",
-                "uses" => "AdminController@newsRemove"
-            ]);
-        });
-
-        Route::group(["prefix" => "employee"], function () {
-            Route::put("update", [
-                "as" => "employee.update",
-                "uses" => "AdminController@employeeUpdate"
-            ]);
-
-            Route::put("remove", [
-                "as" => "employee.remove",
-                "uses" => "AdminController@employeeRemove"
-            ]);
-
-            Route::put("update_status_employee_yes", [
-                "as" => "employee.updateEmployeeStatusYes",
-                "uses" => "AdminController@employeeUpdateStatusYes"
-            ]);
-
-            Route::put("update_status_employee_no", [
-                "as" => "employee.updateEmployeeStatusNo",
-                "uses" => "AdminController@employeeUpdateStatusNo"
-            ]);
-
-        });
-
-        Route::group(["prefix" => "video"], function () {
-            Route::put("update", [
-                "as" => "video.update",
-                "uses" => "AdminController@videoUpdate"
-            ]);
-
-            Route::put("remove", [
-                "as" => "video.remove",
-                "uses" => "AdminController@videoRemove"
-            ]);
-
-            Route::post("insert", [
-                "as" => "video.insert",
-                "uses" => "AdminController@videoInsert"
-            ]);
-
             
-        });
-
-        Route::group(["prefix" => "slide"], function () {
-            Route::post("update", [
-                "as" => "slide.update",
-                "uses" => "AdminController@slideUpdate"
-            ]);
-
-            Route::post("update_image", [
-                "as" => "slide.update_image",
-                "uses" => "AdminController@slideUpdateImage"
-            ]);
-
-            Route::put("remove", [
-                "as" => "slide.remove",
-                "uses" => "AdminController@slideRemove"
-            ]);
-
-            Route::post("insert", [
-                "as" => "slide.insert",
-                "uses" => "AdminController@slideInsert"
-            ]);
-
-            
-        });
-
-
+        // });
     });
 
 });
