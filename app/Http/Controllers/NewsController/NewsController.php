@@ -29,95 +29,51 @@ class NewsController extends CreatorController
   public function __construct() {
     $this->middleware('auth');
     $this->middleware('isAdmin');
+    $this->middleware('isCreator');
   }
  
 //   start get =======================================================================================================================
   
 
-  public function getNewsAll(Request $request) {
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-      
+  public function getNewsAll(Request $request) {      
       $query=News::join("users", "news.id_creator", "=", "users.id")
                     ->join("topic", "news.id_topic", "=", "topic.id")
                     ->select("news.id", "topic.name as id_topic", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
   
       return Datatables::of($query)
       ->make(true);
-    };
   }
 
-  public function getNewsStyle(Request $request) {
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-  
+  public function getNewsStyle(Request $request) {  
       $query=News::where('id_topic', 1)
                     ->join("users", "news.id_creator", "=", "users.id")
                     ->join("topic", "news.id_topic", "=", "topic.id")
                     ->select("news.id", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
       return Datatables::of($query)->make(true);
-    };
   } 
 
-  public function getNewsFashion(Request $request) {
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-  
+  public function getNewsFashion(Request $request) {  
       $query=News::where('id_topic', 2)
                     ->join("users", "news.id_creator", "=", "users.id")
                     ->join("topic", "news.id_topic", "=", "topic.id")
                     ->select("news.id", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
       return Datatables::of($query)->make(true);
-    };
   }
 
-  public function getNewsTravel(Request $request) {
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-  
+  public function getNewsTravel(Request $request) {  
       $query=News::where('id_topic', 3)
                     ->join("users", "news.id_creator", "=", "users.id")
                     ->join("topic", "news.id_topic", "=", "topic.id")
                     ->select("news.id", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
       return Datatables::of($query)->make(true);
-    };
   }
 
-  public function getNewsSports(Request $request) {
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-  
+  public function getNewsSports(Request $request) {  
       $query=News::where('id_topic', 4)
                     ->join("users", "news.id_creator", "=", "users.id")
                     ->join("topic", "news.id_topic", "=", "topic.id")
                     ->select("news.id", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
       return Datatables::of($query)->make(true);
-    };
   }
 //   end get =======================================================================================================================
 

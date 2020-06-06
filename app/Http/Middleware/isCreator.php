@@ -15,7 +15,7 @@ class isCreator
      * @return mixed
      */
     public function handle($request, Closure $next) {
-        if(Auth::user()->id_role == 2) {
+        if(Auth::user()->id_role == 2 || Auth::user()->id_role == 0) {
             return $next($request);
         } else {
             exit();

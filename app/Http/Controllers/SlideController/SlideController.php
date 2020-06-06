@@ -29,6 +29,7 @@ class SlideController extends CreatorController
   public function __construct() {
       $this->middleware('auth');
       $this->middleware('isAdmin');
+      $this->middleware('isCreator');
   }
   // start get=========================================================================================================  
   public function getSlideAll(Request $request) {  

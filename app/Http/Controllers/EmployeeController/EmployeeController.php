@@ -30,7 +30,7 @@ class EmployeeController extends StaffManagerController
   public function __construct() {
     $this->middleware('auth');
     $this->middleware('isAdmin');
-    $this->middleware('isCreator');
+    $this->middleware('isStaffManager');
   }
 
   // start get======================================================================================================

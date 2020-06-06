@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class isStaffManager
 {
@@ -15,10 +16,10 @@ class isStaffManager
      */
     public function handle($request, Closure $next)
     {
-      if(Auth::user()->id_role == 1) {
-          return $next($request);
+      if(Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
+        return $next($request);
       } else {
-          exit();
+        exit();
       }
     }
 }
