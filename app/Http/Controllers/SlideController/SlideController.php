@@ -28,22 +28,20 @@ class SlideController extends Controller
   
   public function __construct() {
       $this->middleware('auth');
-  }  
-  // start get=========================================================================================================
+  }
+  // start get=========================================================================================================  
   public function getSlideAll(Request $request) {
     if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
     }
 
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-
       if (!Auth::check()) {
         Auth::logout();
         return view('auth.login');
         exit();
       }
   
-      // $query=Slide::all();
       $query=Slide::join("users", "slide.id_creator", "=", "users.id")
                     ->join("topic", "slide.id_topic", "=", "topic.id")
                     ->select("slide.id", "topic.name as id_topic", "users.name as id_creator", "slide.image", "slide.tag", "slide.heading_primary", "slide.heading_secondary");
@@ -53,7 +51,7 @@ class SlideController extends Controller
   }
   // end get==========================================================================================================
 
-  // start CRUD
+  // start CRUD========================================================================================================
   public function slideUpdate(Request $request) {
     if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
       return redirect("/home")->with("notAdmin", "You are not admin.");
@@ -163,5 +161,5 @@ class SlideController extends Controller
     };
 
   }
-  // end CRUD
+  // end CRUD=========================================================================================================
 }
