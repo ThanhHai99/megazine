@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Session;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\CreatorController;
 
 
 use App\Topic;
@@ -22,7 +22,7 @@ use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
-class VideoController extends Controller
+class VideoController extends CreatorController
 {
   use AuthenticatesUsers;
   

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Session;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\CreatorController;
 
 use App\Topic;
 use App\News;
@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 
-class SlideController extends Controller
+class SlideController extends CreatorController
 {
   use AuthenticatesUsers;
   

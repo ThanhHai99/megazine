@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Session;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\CreatorController;
 
 use App\Topic;
 use App\News;
@@ -22,9 +22,9 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 
-class NewsController extends Controller
+class NewsController extends CreatorController
 {
-    use AuthenticatesUsers;
+  use AuthenticatesUsers;
 
   public function __construct() {
     $this->middleware('auth');
@@ -61,7 +61,6 @@ class NewsController extends Controller
         exit();
       }
       
-      // $query=News::all();
       $query=News::join("users", "news.id_creator", "=", "users.id")
                     ->join("topic", "news.id_topic", "=", "topic.id")
                     ->select("news.id", "topic.name as id_topic", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");

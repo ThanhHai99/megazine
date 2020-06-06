@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Session;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\StaffManagerController;
 
 
 use App\Topic;
@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 
-class EmployeeController extends Controller
+class EmployeeController extends StaffManagerController
 {
   use AuthenticatesUsers;
 
