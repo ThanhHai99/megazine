@@ -91,8 +91,8 @@ $("body").delegate("#hot_news", "click", function(event) {
     success: function(response) {
       if (response.error == false) {
         if( $("div.dataTables_paginate a.paginate_button:last-child").html() == 1) {
-          if( $("div[data=employee] a").hasClass("active") ) {
-            $("div[data=employee] a.active").click();
+          if( $("div[data=news] a").hasClass("active") ) {
+            $("div[data=news] a.active").click();
           }
         } else {
           if ( $("div.dataTables_paginate a.previous").hasClass("disabled") ) {

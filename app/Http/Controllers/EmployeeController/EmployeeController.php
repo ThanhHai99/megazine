@@ -108,6 +108,36 @@ class EmployeeController extends StaffManagerController {
     };
   }
 
+  public function employeeUpdateStatus(Request $request) {
+    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
+      $this->validate($request, [
+        'id' => 'required'
+      ]);
+  
+      $input = $request->all();
+      $tmp = User::find($input['id']);
+      if ($input['id_status'] == 0) {
+        $tmp->id_status = 1;
+      } else {
+        $tmp->id_status = 0;
+      }
+
+      if ($tmp->id_role == 0) {
+        return response()->json([
+          'error' => true,
+          'admin' => true
+      ], 400);
+        exit();
+      }
+      $tmp->save();
+  
+      return response()->json([
+          'error' => false,
+          'id_status' => $tmp->id_status
+      ], 200);
+    };
+  }
+
   public function employeeUpdateStatusYes(Request $request) {
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
@@ -131,6 +161,8 @@ class EmployeeController extends StaffManagerController {
       ], 200);
     };
   }
+
+  
 
   public function employeeUpdateStatusNo(Request $request) {
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {

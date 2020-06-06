@@ -170,6 +170,64 @@ $("body").delegate("#remove_employee", "click", function() {
   });
 });
 
+
+
+$("body").delegate("#status_employee", "click", function(event) {
+  //Click button update hot new yes
+  event.preventDefault();
+  let table = $('#dataTable').DataTable();
+  $tr = $(this).closest('tr');
+  if ($($tr).hasClass('child')) {
+    $tr = $tr.prev('.parent');
+  };
+  let data = table.row($tr).data();
+  let id = data['id'];
+  let id_status = data['id_status'];
+  $('meta[name=row-index]').attr('content', id);
+  $.ajax({
+    url: `{{route('employee.updateEmployeeStatus')}}`,
+    method: "PUT",
+    data: {
+      id: id,
+      id_status: id_status
+    },
+    success: function(response) {
+      if (response.error == false) {        
+        if( $("div.dataTables_paginate a.paginate_button:last-child").html() == 1) {
+          if( $("div[data=employee] a").hasClass("active") ) {
+            $("div[data=employee] a.active").click();
+          }
+        } else {
+          if ( $("div.dataTables_paginate a.previous").hasClass("disabled") ) {
+            $("div.dataTables_paginate a.next").click();
+            $("div.dataTables_paginate a.previous").click();
+          }
+          if ( $("div.dataTables_paginate a.next").hasClass("disabled") ) {
+            $("div.dataTables_paginate a.previous").click();
+            $("div.dataTables_paginate a.next").click();
+          }
+          if ( !($("div.dataTables_paginate a.previous").hasClass("disabled")) || !($("div.dataTables_paginate a.next").hasClass("disabled")) ) {
+            $("div.dataTables_paginate a.next").click();
+            $("div.dataTables_paginate a.previous").click();
+          }
+        }
+      }
+    },
+    error: function(error) {
+      if (error.responseJSON.admin == true) {
+        alertify.notify('This is super user', 'error', 3);
+        return;
+      }
+
+      if (error.responseText.error == "Unauthenticated.") {
+        location.reload(true);
+      }
+      alertify.notify('An error occurred', 'error', 3);
+
+    }
+  });
+});
+
 $("body").delegate("#status_employee_yes", "click", function(event) {
   //Click button update hot new yes
   event.preventDefault();
@@ -222,6 +280,7 @@ $("body").delegate("#status_employee_yes", "click", function(event) {
     }
   });
 });
+
 
 $("body").delegate("#status_employee_no", "click", function(event) {
   //Click button update hot new yes

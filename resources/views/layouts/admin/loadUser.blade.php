@@ -18,10 +18,10 @@ let loadEmployeeAll_onLoad = () => {
         // { data: "id_status", name: "id_status" },
         { data: "id_status", name: "id_status", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="status_employee_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_employee"><i class="fas fa-lock-open" style="color:green;"></i></a>';
             }
             else {
-              return '<a href="javascript:void(0)" id="status_employee_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_employee"><i class="fas fa-lock" style="color: red;"></i></a>';
             }
           },
           searchable: false
@@ -57,10 +57,10 @@ let loadEmployeeStaff_onLoad = () => {
         { data: "id", name: "id" },
         { data: "id_status", name: "id_status", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="status_employee_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_employee"><i class="fas fa-lock-open" style="color:green;"></i></a>';
             }
             else {
-              return '<a href="javascript:void(0)" id="status_employee_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_employee"><i class="fas fa-lock" style="color: red;"></i></a>';
             }
           },
           searchable: false
@@ -101,10 +101,10 @@ let loadEmployeeAll = () => {
         // { data: "id_status", name: "id_status" },
         { data: "id_status", name: "id_status", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="status_employee_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_employee"><i class="fas fa-lock-open" style="color:green;"></i></a>';
             }
             else {
-              return '<a href="javascript:void(0)" id="status_employee_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_employee"><i class="fas fa-lock" style="color: red;"></i></a>';
             }
           },
           searchable: false
@@ -143,10 +143,10 @@ let loadEmployeeAdmin = () => {
         { data: "id", name: "id" },
         { data: "id_status", name: "id_status", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="status_employee_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_employee"><i class="fas fa-lock-open" style="color:green;"></i></a>';
             }
             else {
-              return '<a href="javascript:void(0)" id="status_employee_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_employee"><i class="fas fa-lock" style="color: red;"></i></a>';
             }
           },
           searchable: false
@@ -185,10 +185,10 @@ let loadEmployeeStaff = () => {
         { data: "id", name: "id" },
         { data: "id_status", name: "id_status", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="status_employee_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_employee"><i class="fas fa-lock-open" style="color:green;"></i></a>';
             }
             else {
-              return '<a href="javascript:void(0)" id="status_employee_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_employee"><i class="fas fa-lock" style="color: red;"></i></a>';
             }
           },
           searchable: false
@@ -227,10 +227,10 @@ let loadEmployeeCreator = () => {
         { data: "id", name: "id" },
         { data: "id_status", name: "id_status", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="status_employee_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_employee"><i class="fas fa-lock-open" style="color:green;"></i></a>';
             }
             else {
-              return '<a href="javascript:void(0)" id="status_employee_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_employee"><i class="fas fa-lock" style="color: red;"></i></a>';
             }
           },
           searchable: false
@@ -270,10 +270,10 @@ let loadEmployeeGuest = () => {
         { data: "id", name: "id" },
         { data: "id_status", name: "id_status", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="status_employee_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_employee"><i class="fas fa-lock-open" style="color:green;"></i></a>';
             }
             else {
-              return '<a href="javascript:void(0)" id="status_employee_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_employee"><i class="fas fa-lock" style="color: red;"></i></a>';
             }
           },
           searchable: false
