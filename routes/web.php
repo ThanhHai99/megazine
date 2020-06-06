@@ -185,18 +185,6 @@ Route::group(["namespace" => "EmployeeController"], function() {
             "as" => "employee.updateEmployeeStatus",
             "uses" => "EmployeeController@employeeUpdateStatus"
         ]);
-
-        Route::put("update_status_employee_yes", [
-            "as" => "employee.updateEmployeeStatusYes",
-            "uses" => "EmployeeController@employeeUpdateStatusYes"
-        ]);
-
-        
-
-        Route::put("update_status_employee_no", [
-            "as" => "employee.updateEmployeeStatusNo",
-            "uses" => "EmployeeController@employeeUpdateStatusNo"
-        ]);
     });
 });
 

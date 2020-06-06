@@ -68,124 +68,69 @@ class EmployeeController extends StaffManagerController {
 
   // start CRUD========================================================================================================
   public function employeeUpdate(Request $request) {
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      $this->validate($request, [
-        'employee_id' => 'required',
-        'employee_id_role' => 'required',
-        'employee_name' => 'required',
-        'employee_email' => 'required'
-      ]);
-  
-      $input = $request->all();
-      $tmp = User::find($input['employee_id']);
-      if ($tmp->id_role == 0) {
-        $tmp->id_role = 0;
-      } else {
-        $tmp->id_role = $input['employee_id_role'];
-      }
-      $tmp->name = $input['employee_name'];
-      $tmp->email = $input['employee_email'];
-      $tmp->save();
-  
-      return response()->json([
-          'error' => false,
-          'employee_id' => $input['employee_id'],
-          'employee_id_role' => $input['employee_id_role'],
-          'employee_name' => $input['employee_name'],
-          'employee_email' => $input['employee_email']
-      ], 200);
+    $this->validate($request, [
+      'employee_id' => 'required',
+      'employee_id_role' => 'required',
+      'employee_name' => 'required',
+      'employee_email' => 'required'
+    ]);
 
-    };
+    $input = $request->all();
+    $tmp = User::find($input['employee_id']);
+    if ($tmp->id_role == 0) {
+      $tmp->id_role = 0;
+    } else {
+      $tmp->id_role = $input['employee_id_role'];
+    }
+    $tmp->name = $input['employee_name'];
+    $tmp->email = $input['employee_email'];
+    $tmp->save();
+
+    return response()->json([
+        'error' => false,
+        'employee_id' => $input['employee_id'],
+        'employee_id_role' => $input['employee_id_role'],
+        'employee_name' => $input['employee_name'],
+        'employee_email' => $input['employee_email']
+    ], 200);
+
   }
   
   public function employeeRemove(Request $request) {
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      $input = $request->all();
-      User::where('id', $input['id'])->delete();
-      return response()->json([
-        'error' => false,
-      ], 200);
-    };
+    $input = $request->all();
+    User::where('id', $input['id'])->delete();
+    return response()->json([
+      'error' => false,
+    ], 200);
   }
 
   public function employeeUpdateStatus(Request $request) {
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      $this->validate($request, [
-        'id' => 'required'
-      ]);
-  
-      $input = $request->all();
-      $tmp = User::find($input['id']);
-      if ($input['id_status'] == 0) {
-        $tmp->id_status = 1;
-      } else {
-        $tmp->id_status = 0;
-      }
+    $this->validate($request, [
+      'id' => 'required'
+    ]);
 
-      if ($tmp->id_role == 0) {
-        return response()->json([
-          'error' => true,
-          'admin' => true
-      ], 400);
-        exit();
-      }
-      $tmp->save();
-  
-      return response()->json([
-          'error' => false,
-          'id_status' => $tmp->id_status
-      ], 200);
-    };
-  }
-
-  public function employeeUpdateStatusYes(Request $request) {
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      $this->validate($request, [
-        'id' => 'required'
-      ]);
-  
-      $input = $request->all();
-      $tmp = User::find($input['id']);
+    $input = $request->all();
+    $tmp = User::find($input['id']);
+    if ($input['id_status'] == 0) {
       $tmp->id_status = 1;
-      if ($tmp->id_role == 0) {
-        return response()->json([
-          'error' => true,
-          'admin' => true
-      ], 400);
-        exit();
-      }
-      $tmp->save();
-  
-      return response()->json([
-          'error' => false,
-      ], 200);
-    };
-  }
-
-  
-
-  public function employeeUpdateStatusNo(Request $request) {
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      $this->validate($request, [
-        'id' => 'required'
-      ]);
-  
-      $input = $request->all();
-      $tmp = User::find($input['id']);
+    } else {
       $tmp->id_status = 0;
-      if ($tmp->id_role == 0) {
-        return response()->json([
-          'error' => true,
-          'admin' => true
-      ], 400);
-        exit();
-      }
-      $tmp->save();
-  
+    }
+
+    if ($tmp->id_role == 0) {
       return response()->json([
-          'error' => false,
-      ], 200);
-    };
+        'error' => true,
+        'admin' => true
+    ], 400);
+      exit();
+    }
+    $tmp->save();
+
+    return response()->json([
+        'error' => false,
+        'id_status' => $tmp->id_status
+    ], 200);
   }
+
   // end CRUD==========================================================================================================
 }
