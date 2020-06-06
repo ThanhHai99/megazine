@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\EmployeeController;
 
 use Illuminate\Http\Request;
-
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Session;
 use App\Http\Controllers\StaffManagerController;
-
 
 use App\Topic;
 use App\News;
@@ -23,10 +21,9 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 
-class EmployeeController extends StaffManagerController
-{
+class EmployeeController extends StaffManagerController {
   use AuthenticatesUsers;
-
+  
   public function __construct() {
     $this->middleware('auth');
     $this->middleware('isAdmin');
