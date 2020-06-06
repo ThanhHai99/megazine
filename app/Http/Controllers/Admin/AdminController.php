@@ -31,330 +31,105 @@ class AdminController extends Controller
     $this->middleware('auth');
   }
 
-  public function getLogin() {
-    return view('auth.login'); 
-  }
+  // public function getVideoAll(Request $request) {
+  //   if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
+  //     return redirect("/home")->with("notAdmin", "You are not admin.");
+  //   }
 
-  public function getLogout(Request $request) {
-    $request->session()->flush();
-    Auth::logout();
-    return redirect("/login");
-  }
-
-  public function getIndex(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "Not allow.");
-    }
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-
-      return view('page.admin._table',[
-        // 'topics' => $topics
-      ]);
-    };
-  }
-
-  public function getEmployeeAll(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "Not allow.");
-    }
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
+  //   if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
+  //     if (!Auth::check()) {
+  //       Auth::logout();
+  //       return view('auth.login');
+  //       exit();
+  //     }
   
-      $query=User::join("role", "users.id_role", "=", "role.id")
-                    ->select("users.id", "role.name as id_role", "users.id_status", "users.name", "users.email");
+  //     $query=Video::join("users", "video.id_creator", "=", "users.id")
+  //                   ->join("topic", "video.id_topic", "=", "topic.id")
+  //                   ->select("video.id", "topic.name as id_topic", "users.name as id_creator", "video.hot_news", "video.id_status", "video.image", "video.video", "video.tag", "video.caption", "video.subtitle");
+  //     return Datatables::of($query)->make(true);
 
-      return Datatables::of($query)
-      ->make(true);
-    };
-  }
+  //   };
+  // }
 
-  public function getEmployeeAdmin(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
+  // public function getVideoStyle(Request $request) {
+  //   if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
+  //     return redirect("/home")->with("notAdmin", "You are not admin.");
+  //   }
 
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
+  //   if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
+  //     if (!Auth::check()) {
+  //       Auth::logout();
+  //       return view('auth.login');
+  //       exit();
+  //     }
   
-      $query=User::where('id_role', 0);
-      return Datatables::of($query)
-      ->setRowAttr(['align'=>'center'])
-      // ->make(true);
-      ->toJson();
-    };
-  }
+  //     $query=Video::where("id_topic", 1)
+  //                   ->join("users", "video.id_creator", "=", "users.id")
+  //                   ->select("video.id", "users.name as id_creator", "video.hot_news", "video.id_status", "video.image", "video.tag", "video.caption", "video.subtitle");
+  //     return Datatables::of($query)->make(true);
+
+  //   };
+  // }
+
+  // public function getVideoFashion(Request $request) {
+  //   if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
+  //     return redirect("/home")->with("notAdmin", "You are not admin.");
+  //   }
+
+  //   if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
+  //     if (!Auth::check()) {
+  //       Auth::logout();
+  //       return view('auth.login');
+  //       exit();
+  //     }
   
-  public function getEmployeeStaff(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
+  //     $query=Video::where("id_topic", 2)
+  //                   ->join("users", "video.id_creator", "=", "users.id")
+  //                   ->select("video.id", "users.name as id_creator", "video.hot_news", "video.id_status", "video.image", "video.tag", "video.caption", "video.subtitle");
+  //     return Datatables::of($query)->make(true);
 
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
+  //   };
+  // }
+
+  // public function getVideoTravel(Request $request) {
+  //   if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
+  //     return redirect("/home")->with("notAdmin", "You are not admin.");
+  //   }
+
+  //   if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
+  //     if (!Auth::check()) {
+  //       Auth::logout();
+  //       return view('auth.login');
+  //       exit();
+  //     }
   
-      $query=User::where('id_role', 1);
-      return Datatables::of($query)
-      ->setRowAttr(['align'=>'center'])
-      // ->make(true);
-      ->toJson();
-    };
-  }
+  //     $query=Video::where("id_topic", 3)
+  //                   ->join("users", "video.id_creator", "=", "users.id")
+  //                   ->select("video.id", "users.name as id_creator", "video.hot_news", "video.id_status", "video.image", "video.tag", "video.caption", "video.subtitle");
+  //     return Datatables::of($query)->make(true);
 
-  public function getEmployeeCreator(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
+  //   };
+  // }
 
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
+  // public function getVideoSports(Request $request) {
+  //   if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
+  //     return redirect("/home")->with("notAdmin", "You are not admin.");
+  //   }
+
+  //   if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
+  //     if (!Auth::check()) {
+  //       Auth::logout();
+  //       return view('auth.login');
+  //       exit();
+  //     }
   
-      $query=User::where('id_role', 2);
-      return Datatables::of($query)->make(true);
-    };
-  }
+  //     $query=Video::where("id_topic", 4)
+  //                   ->join("users", "video.id_creator", "=", "users.id")
+  //                   ->select("video.id", "users.name as id_creator", "video.hot_news", "video.id_status", "video.image", "video.tag", "video.caption", "video.subtitle");
+  //     return Datatables::of($query)->make(true);
 
-  public function getEmployeeGuest(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-  
-      $query=User::where('id_role', 3);
-      return Datatables::of($query)->make(true);
-    };
-  }
-
-  public function getNewsAll(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-      
-      // $query=News::all();
-      $query=News::join("users", "news.id_creator", "=", "users.id")
-                    ->join("topic", "news.id_topic", "=", "topic.id")
-                    ->select("news.id", "topic.name as id_topic", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
-  
-      return Datatables::of($query)
-      ->make(true);
-    };
-  }
-
-  public function getNewsStyle(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-  
-      $query=News::where('id_topic', 1)
-                    ->join("users", "news.id_creator", "=", "users.id")
-                    ->join("topic", "news.id_topic", "=", "topic.id")
-                    ->select("news.id", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
-      return Datatables::of($query)->make(true);
-    };
-  } 
-
-  public function getNewsFashion(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-  
-      $query=News::where('id_topic', 2)
-                    ->join("users", "news.id_creator", "=", "users.id")
-                    ->join("topic", "news.id_topic", "=", "topic.id")
-                    ->select("news.id", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
-      return Datatables::of($query)->make(true);
-    };
-  }
-
-  public function getNewsTravel(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-  
-      $query=News::where('id_topic', 3)
-                    ->join("users", "news.id_creator", "=", "users.id")
-                    ->join("topic", "news.id_topic", "=", "topic.id")
-                    ->select("news.id", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
-      return Datatables::of($query)->make(true);
-    };
-  }
-
-  public function getNewsSports(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-  
-      $query=News::where('id_topic', 4)
-                    ->join("users", "news.id_creator", "=", "users.id")
-                    ->join("topic", "news.id_topic", "=", "topic.id")
-                    ->select("news.id", "users.name as id_creator", "news.hot_news", "news.id_status", "news.image", "news.tag", "news.caption", "news.subtitle");
-      return Datatables::of($query)->make(true);
-    };
-  }
-
-
-  public function getVideoAll(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-  
-      $query=Video::join("users", "video.id_creator", "=", "users.id")
-                    ->join("topic", "video.id_topic", "=", "topic.id")
-                    ->select("video.id", "topic.name as id_topic", "users.name as id_creator", "video.hot_news", "video.id_status", "video.image", "video.video", "video.tag", "video.caption", "video.subtitle");
-      return Datatables::of($query)->make(true);
-
-    };
-  }
-
-  public function getVideoStyle(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-  
-      $query=Video::where("id_topic", 1)
-                    ->join("users", "video.id_creator", "=", "users.id")
-                    ->select("video.id", "users.name as id_creator", "video.hot_news", "video.id_status", "video.image", "video.tag", "video.caption", "video.subtitle");
-      return Datatables::of($query)->make(true);
-
-    };
-  }
-
-  public function getVideoFashion(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-  
-      $query=Video::where("id_topic", 2)
-                    ->join("users", "video.id_creator", "=", "users.id")
-                    ->select("video.id", "users.name as id_creator", "video.hot_news", "video.id_status", "video.image", "video.tag", "video.caption", "video.subtitle");
-      return Datatables::of($query)->make(true);
-
-    };
-  }
-
-  public function getVideoTravel(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-  
-      $query=Video::where("id_topic", 3)
-                    ->join("users", "video.id_creator", "=", "users.id")
-                    ->select("video.id", "users.name as id_creator", "video.hot_news", "video.id_status", "video.image", "video.tag", "video.caption", "video.subtitle");
-      return Datatables::of($query)->make(true);
-
-    };
-  }
-
-  public function getVideoSports(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-  
-      $query=Video::where("id_topic", 4)
-                    ->join("users", "video.id_creator", "=", "users.id")
-                    ->select("video.id", "users.name as id_creator", "video.hot_news", "video.id_status", "video.image", "video.tag", "video.caption", "video.subtitle");
-      return Datatables::of($query)->make(true);
-
-    };
-  }
+  //   };
+  // }
   
   public function getTopic(Request $request) {
     if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
@@ -372,27 +147,27 @@ class AdminController extends Controller
     };
   }
 
-  public function getSlideAll(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
+  // public function getSlideAll(Request $request) {
+  //   if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
+  //     return redirect("/home")->with("notAdmin", "You are not admin.");
+  //   }
 
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
+  //   if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
 
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
+  //     if (!Auth::check()) {
+  //       Auth::logout();
+  //       return view('auth.login');
+  //       exit();
+  //     }
   
-      // $query=Slide::all();
-      $query=Slide::join("users", "slide.id_creator", "=", "users.id")
-                    ->join("topic", "slide.id_topic", "=", "topic.id")
-                    ->select("slide.id", "topic.name as id_topic", "users.name as id_creator", "slide.image", "slide.tag", "slide.heading_primary", "slide.heading_secondary");
+  //     // $query=Slide::all();
+  //     $query=Slide::join("users", "slide.id_creator", "=", "users.id")
+  //                   ->join("topic", "slide.id_topic", "=", "topic.id")
+  //                   ->select("slide.id", "topic.name as id_topic", "users.name as id_creator", "slide.image", "slide.tag", "slide.heading_primary", "slide.heading_secondary");
 
-      return Datatables::of($query)->make(true);
-    };
-  }
+  //     return Datatables::of($query)->make(true);
+  //   };
+  // }
 
   public function newsUpdate(Request $request) {
     if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {

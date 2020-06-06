@@ -81,8 +81,6 @@ let loadEmployeeStaff_onLoad = () => {
   });
 };
 
-
-
 let loadEmployeeAll = () => {
   var table = $("#dataTable").DataTable();
   table.destroy();

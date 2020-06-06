@@ -130,115 +130,124 @@ Route::group(["namespace" => "Guest"], function() {
     
 });
 
-Route::group(["namespace" => "Admin"], function() {
+Route::group(["namespace" => "Auth"], function() {
     Route::group(["prefix" => "dashboard"], function () {
-
-        // Start get
         Route::get("login", [
             "as" => "dashboard.login",
-            "uses" => "AdminController@getLogin"
+            "uses" => "AuthenticateController@getLogin"
         ]);
 
         Route::get("logout", [
             "as" => "dashboard.logout",
-            "uses" => "AdminController@getLogout"
+            "uses" => "AuthenticateController@getLogout"
         ]);
-        
-        Route::get("index", [
-            "as" => "dashboard.index",
-            "uses" => "AdminController@getIndex"
-        ]);
+    });
+});
 
-        Route::get("employee/all", [
-            "as" => "employee.all",
-            "uses" => "AdminController@getEmployeeAll"
-        ]);
+Route::group(["namespace" => "EmployeeController"], function() {
+    Route::get("employee/all", [
+        "as" => "employee.all",
+        "uses" => "EmployeeController@getEmployeeAll"
+    ]);
 
-        Route::get("employee/admin", [
-            "as" => "employee.admin",
-            "uses" => "AdminController@getEmployeeAdmin"
-        ]);
+    Route::get("employee/admin", [
+        "as" => "employee.admin",
+        "uses" => "EmployeeController@getEmployeeAdmin"
+    ]);
 
-        Route::get("employee/staff", [
-            "as" => "employee.staff",
-            "uses" => "AdminController@getEmployeeStaff"
-        ]);
+    Route::get("employee/staff", [
+        "as" => "employee.staff",
+        "uses" => "EmployeeController@getEmployeeStaff"
+    ]);
 
-        Route::get("employee/creator", [
-            "as" => "employee.creator",
-            "uses" => "AdminController@getEmployeeCreator"
-        ]);
+    Route::get("employee/creator", [
+        "as" => "employee.creator",
+        "uses" => "EmployeeController@getEmployeeCreator"
+    ]);
 
-        Route::get("employee/guest", [
-            "as" => "employee.guest",
-            "uses" => "AdminController@getEmployeeGuest"
-        ]);
+    Route::get("employee/guest", [
+        "as" => "employee.guest",
+        "uses" => "EmployeeController@getEmployeeGuest"
+    ]);
+});
 
-        
-
-        Route::get("news/all", [
-            "as" => "news.all",
-            "uses" => "AdminController@getNewsAll"
-        ]);
-
-        Route::get("news/style", [
-            "as" => "news.style",
-            "uses" => "AdminController@getNewsStyle"
-        ]);
-
-        Route::get("news/fashion", [
-            "as" => "news.fashion",
-            "uses" => "AdminController@getNewsFashion"
-        ]);
-
-        Route::get("news/travel", [
-            "as" => "news.travel",
-            "uses" => "AdminController@getNewsTravel"
-        ]);
-
-        Route::get("news/sports", [
-            "as" => "news.sports",
-            "uses" => "AdminController@getNewsSports"
-        ]);
-
-        Route::get("news/archives", [
-            "as" => "news.archives",
-            "uses" => "AdminController@getNewsArchives"
-        ]);
-
-        Route::get("slide/all", [
-            "as" => "slide.all",
-            "uses" => "AdminController@getSlideAll"
-        ]);
-
+Route::group(["namespace" => "VideoController"], function() {  
+    Route::group(["prefix" => "dashboard"], function () {
         Route::get("video/all", [
             "as" => "video.all",
-            "uses" => "AdminController@getVideoAll"
+            "uses" => "VideoController@getVideoAll"
         ]);
 
         Route::get("video/style", [
             "as" => "video.style",
-            "uses" => "AdminController@getVideoStyle"
+            "uses" => "VideoController@getVideoStyle"
         ]);
 
         Route::get("video/fashion", [
             "as" => "video.fashion",
-            "uses" => "AdminController@getVideoFashion"
+            "uses" => "VideoController@getVideoFashion"
         ]);
 
         Route::get("video/travel", [
             "as" => "video.travel",
-            "uses" => "AdminController@getVideoTravel"
+            "uses" => "VideoController@getVideoTravel"
         ]);
 
         Route::get("video/sports", [
             "as" => "video.sports",
-            "uses" => "AdminController@getVideoSports"
+            "uses" => "VideoController@getVideoSports"
         ]);
+    });
+});
 
-        // End get
+Route::group(["namespace" => "NewsController"], function() {  
+    Route::group(["prefix" => "dashboard"], function () {
+        Route::get("index", [
+            "as" => "dashboard.index",
+            "uses" => "NewsController@getIndex"
+        ]);
+    
+        
+    
+        Route::get("news/all", [
+            "as" => "news.all",
+            "uses" => "NewsController@getNewsAll"
+        ]);
+    
+        Route::get("news/style", [
+            "as" => "news.style",
+            "uses" => "NewsController@getNewsStyle"
+        ]);
+    
+        Route::get("news/fashion", [
+            "as" => "news.fashion",
+            "uses" => "NewsController@getNewsFashion"
+        ]);
+    
+        Route::get("news/travel", [
+            "as" => "news.travel",
+            "uses" => "NewsController@getNewsTravel"
+        ]);
+    
+        Route::get("news/sports", [
+            "as" => "news.sports",
+            "uses" => "NewsController@getNewsSports"
+        ]);
+    });
+});
 
-        // Start CRUD
+Route::group(["namespace" => "SlideController"], function() {  
+    Route::group(["prefix" => "dashboard"], function () {
+        Route::get("slide/all", [
+            "as" => "slide.all",
+            "uses" => "SlideController@getSlideAll"
+        ]);
+    });
+});
+Route::group(["namespace" => "Admin"], function() {
+    Route::group(["prefix" => "dashboard"], function () {
+        
+
         Route::group(["prefix" => "news"], function () {
             Route::put("update", [
                 "as" => "news.update",
@@ -312,11 +321,6 @@ Route::group(["namespace" => "Admin"], function() {
         });
 
         Route::group(["prefix" => "employee"], function () {
-            Route::put("update_all", [
-                "as" => "employee.update_all",
-                "uses" => "AdminController@employeeUpdateAll"
-            ]);
-
             Route::put("update", [
                 "as" => "employee.update",
                 "uses" => "AdminController@employeeUpdate"
