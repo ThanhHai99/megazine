@@ -28,13 +28,10 @@ class SlideController extends CreatorController
   
   public function __construct() {
       $this->middleware('auth');
+      $this->middleware('isAdmin');
   }
   // start get=========================================================================================================  
   public function getSlideAll(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
@@ -53,10 +50,6 @@ class SlideController extends CreatorController
 
   // start CRUD========================================================================================================
   public function slideUpdate(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'heading_primary' => 'required',
@@ -81,10 +74,6 @@ class SlideController extends CreatorController
   }
 
   public function slideRemove(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
@@ -100,10 +89,6 @@ class SlideController extends CreatorController
   }
   
   public function slideUpdateImage(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $input = $request->all();
       $tmp = Slide::find($input['id_slide_hide']);
@@ -122,10 +107,6 @@ class SlideController extends CreatorController
   }
 
   public function slideInsert(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id_topic' => 'required',

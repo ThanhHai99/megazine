@@ -29,14 +29,11 @@ class EmployeeController extends StaffManagerController
 
   public function __construct() {
     $this->middleware('auth');
+    $this->middleware('isAdmin');
   }
 
   // start get======================================================================================================
   public function getEmployeeAll(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "Not allow.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
@@ -53,10 +50,6 @@ class EmployeeController extends StaffManagerController
   }
 
   public function getEmployeeAdmin(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
@@ -73,10 +66,6 @@ class EmployeeController extends StaffManagerController
   }
   
   public function getEmployeeStaff(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
@@ -93,10 +82,6 @@ class EmployeeController extends StaffManagerController
   }
 
   public function getEmployeeCreator(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
@@ -110,10 +95,6 @@ class EmployeeController extends StaffManagerController
   }
 
   public function getEmployeeGuest(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
@@ -129,10 +110,6 @@ class EmployeeController extends StaffManagerController
 
   // start CRUD========================================================================================================
   public function employeeUpdate(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'employee_id' => 'required',
@@ -164,10 +141,6 @@ class EmployeeController extends StaffManagerController
   }
   
   public function employeeRemove(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $input = $request->all();
       User::where('id', $input['id'])->delete();
@@ -178,10 +151,6 @@ class EmployeeController extends StaffManagerController
   }
 
   public function employeeUpdateStatusYes(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
@@ -206,10 +175,6 @@ class EmployeeController extends StaffManagerController
   }
 
   public function employeeUpdateStatusNo(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'

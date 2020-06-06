@@ -29,14 +29,10 @@ class AdminController extends AdminController0
 
   public function __construct() {
     $this->middleware('auth');
+    $this->middleware('isAdmin');
   }
   
   public function getIndex(Request $request) {
-    isAdmin();
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "Not allow.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();

@@ -28,14 +28,11 @@ class VideoController extends CreatorController
   
   public function __construct() {
       $this->middleware('auth');
+      $this->middleware('isAdmin');
   }
 
   // start get
   public function getVideoAll(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
@@ -52,10 +49,6 @@ class VideoController extends CreatorController
   }
 
   public function getVideoStyle(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
@@ -72,10 +65,6 @@ class VideoController extends CreatorController
   }
 
   public function getVideoFashion(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
@@ -92,10 +81,6 @@ class VideoController extends CreatorController
   }
 
   public function getVideoTravel(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
@@ -112,10 +97,6 @@ class VideoController extends CreatorController
   }
 
   public function getVideoSports(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
         Auth::logout();
@@ -134,10 +115,6 @@ class VideoController extends CreatorController
 
   // start CRUD
   public function videoUpdate(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'video_id_topic' => 'required',
@@ -165,10 +142,6 @@ class VideoController extends CreatorController
   }
 
   public function videoInsert(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         '_video_id_topic' => 'required_without:video_id_topic',
@@ -223,10 +196,6 @@ class VideoController extends CreatorController
   }
 
   public function videoRemove(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $input = $request->all();
       Video::where('id', $input['id'])->delete();
@@ -239,10 +208,6 @@ class VideoController extends CreatorController
   }
 
   public function newsUpdateHotVideoYes(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
@@ -263,10 +228,6 @@ class VideoController extends CreatorController
   }
 
   public function newsUpdateHotVideoNo(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
@@ -287,10 +248,6 @@ class VideoController extends CreatorController
   }
 
   public function newsUpdateStatusVideoYes(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
@@ -311,10 +268,6 @@ class VideoController extends CreatorController
   }
 
   public function newsUpdateStatusVideoNo(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
@@ -335,10 +288,6 @@ class VideoController extends CreatorController
   }
 
   public function newsUpdateImageVideo(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $input = $request->all();
       $tmp = Video::find($input['id_video_hide']);    
@@ -366,10 +315,6 @@ class VideoController extends CreatorController
   }
 
   public function newsUpdateVideoVideo(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
-
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $input = $request->all();
       $tmp = Video::find($input['id_video_hide']);    

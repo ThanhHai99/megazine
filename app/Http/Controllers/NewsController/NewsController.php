@@ -28,15 +28,13 @@ class NewsController extends CreatorController
 
   public function __construct() {
     $this->middleware('auth');
+    $this->middleware('isAdmin');
   }
  
 //   start get =======================================================================================================================
   
 
   public function getNewsAll(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
 
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
@@ -55,9 +53,6 @@ class NewsController extends CreatorController
   }
 
   public function getNewsStyle(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
 
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
@@ -75,9 +70,6 @@ class NewsController extends CreatorController
   } 
 
   public function getNewsFashion(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
 
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
@@ -95,9 +87,6 @@ class NewsController extends CreatorController
   }
 
   public function getNewsTravel(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
 
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
@@ -115,9 +104,6 @@ class NewsController extends CreatorController
   }
 
   public function getNewsSports(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "You are not admin.");
-    }
 
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       if (!Auth::check()) {
