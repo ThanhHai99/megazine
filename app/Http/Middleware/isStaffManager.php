@@ -15,6 +15,10 @@ class isStaffManager
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+      if(Auth::user()->id_role == 1) {
+          return $next($request);
+      } else {
+          exit();
+      }
     }
 }

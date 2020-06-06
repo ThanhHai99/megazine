@@ -31,20 +31,12 @@ class SlideController extends CreatorController
       $this->middleware('isAdmin');
   }
   // start get=========================================================================================================  
-  public function getSlideAll(Request $request) {
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-  
-      $query=Slide::join("users", "slide.id_creator", "=", "users.id")
-                    ->join("topic", "slide.id_topic", "=", "topic.id")
-                    ->select("slide.id", "topic.name as id_topic", "users.name as id_creator", "slide.image", "slide.tag", "slide.heading_primary", "slide.heading_secondary");
+  public function getSlideAll(Request $request) {  
+    $query=Slide::join("users", "slide.id_creator", "=", "users.id")
+                  ->join("topic", "slide.id_topic", "=", "topic.id")
+                  ->select("slide.id", "topic.name as id_topic", "users.name as id_creator", "slide.image", "slide.tag", "slide.heading_primary", "slide.heading_secondary");
 
-      return Datatables::of($query)->make(true);
-    };
+    return Datatables::of($query)->make(true);
   }
   // end get==========================================================================================================
 

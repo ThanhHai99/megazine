@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class isCreator
 {
@@ -13,8 +14,11 @@ class isCreator
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
-        return $next($request);
+    public function handle($request, Closure $next) {
+        if(Auth::user()->id_role == 2) {
+            return $next($request);
+        } else {
+            exit();
+        }
     }
 }

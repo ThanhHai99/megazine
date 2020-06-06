@@ -33,16 +33,8 @@ class AdminController extends AdminController0
   }
   
   public function getIndex(Request $request) {
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-
-      return view('page.admin._table',[
-        // 'topics' => $topics
-      ]);
-    };
+    return view('page.admin._table',[
+      // 'topics' => $topics
+    ]);
   }
 }
