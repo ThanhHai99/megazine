@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Validator;
 use Session;
-// use Illuminate\Support\Str;
 
 use App\Topic;
 use App\News;
