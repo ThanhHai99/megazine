@@ -18,6 +18,10 @@ use App\Comment;
 
 class PageController extends GuestController
 {
+    public function __construct() {
+        $this->middleware('isGuest');
+      }
+
     public function getHome(Request $request) {
         $slides = Slide::select("slide.image", "slide.heading_primary", "slide.heading_secondary", "slide.tag")
                         ->limit(3)
