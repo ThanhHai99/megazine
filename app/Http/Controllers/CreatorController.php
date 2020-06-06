@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\AdminController;
 
-abstract class CreatorController extends Controller {
+abstract class CreatorController extends AdminController {
     
 }
