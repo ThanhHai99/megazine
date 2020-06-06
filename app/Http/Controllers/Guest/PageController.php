@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Guest;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\GuestController;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\SendNewsMail;
 use Illuminate\Support\Facades\Mail;
@@ -16,7 +16,7 @@ use App\ReceiveNews;
 use App\Comment;
 
 
-class PageController extends Controller
+class PageController extends GuestController
 {
     public function getHome(Request $request) {
         $slides = Slide::select("slide.image", "slide.heading_primary", "slide.heading_secondary", "slide.tag")
