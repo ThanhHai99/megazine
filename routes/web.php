@@ -244,6 +244,7 @@ Route::group(["namespace" => "SlideController"], function() {
         ]);
     });
 });
+
 Route::group(["namespace" => "Admin"], function() {
     Route::group(["prefix" => "dashboard"], function () {
         

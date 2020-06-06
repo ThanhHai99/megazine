@@ -31,7 +31,7 @@ class EmployeeController extends Controller
         $this->middleware('auth');
     }
 
-    public function getEmployeeAll(Request $request) {
+      public function getEmployeeAll(Request $request) {
         if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
           return redirect("/home")->with("notAdmin", "Not allow.");
         }
