@@ -36,6 +36,14 @@ Route::get("auth/facebook/callback", [
     "uses" => "SocialAuthFacebookController@callback"
 ]);
 
+Route::group(["namespace" => "Admin"], function() {  
+    Route::group(["prefix" => "dashboard"], function () {
+        Route::get("index", [
+            "as" => "dashboard.index",
+            "uses" => "AdminController@getIndex"
+        ]);        
+    });
+});
 
 Route::group(["namespace" => "Guest"], function() {
     Route::get("/", function () {
@@ -261,15 +269,6 @@ Route::group(["namespace" => "VideoController"], function() {
     });
 });
 
-Route::group(["namespace" => "Admin"], function() {  
-    Route::group(["prefix" => "dashboard"], function () {
-        Route::get("index", [
-            "as" => "dashboard.index",
-            "uses" => "AdminController@getIndex"
-        ]);        
-    });
-});
-
 Route::group(["namespace" => "NewsController"], function() {  
     Route::group(["prefix" => "dashboard"], function () {
         Route::get("news/all", [
@@ -303,24 +302,14 @@ Route::group(["namespace" => "NewsController"], function() {
                 "uses" => "NewsController@newsUpdate"
             ]);
 
-            Route::put("update_hot_news_yes", [
-                "as" => "news.updateHotNewsYes",
-                "uses" => "NewsController@newsUpdateHotNewsYes"
-            ]);
-
-            Route::put("update_hot_news_no", [
-                "as" => "news.updateHotNewsNo",
-                "uses" => "NewsController@newsUpdateHotNewsNo"
+            Route::put("update_hot_news", [
+                "as" => "news.updateHotNews",
+                "uses" => "NewsController@newsUpdateHotNews"
             ]);
 
             Route::put("update_status_news_yes", [
-                "as" => "news.updateStatusNewsYes",
-                "uses" => "NewsController@newsUpdateStatusNewsYes"
-            ]);
-
-            Route::put("update_status_news_no", [
-                "as" => "news.updateStatusNewsNo",
-                "uses" => "NewsController@newsUpdateStatusNewsNo"
+                "as" => "news.updateStatusNews",
+                "uses" => "NewsController@newsUpdateStatusNews"
             ]);
             
             Route::post("update_image_news", [

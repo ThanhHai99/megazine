@@ -71,16 +71,16 @@
 
   @include("layouts.admin.htmlAppend")
 
-  @include("layouts.admin.slideFeature")
+  @include("layouts.admin.loadSlide")
   @include("layouts.admin.handleSlide")
 
-  @include("layouts.admin.userFeature")
+  @include("layouts.admin.loadUser")
   @include("layouts.admin.handleUser")
 
-  @include("layouts.admin.newsFeature")
+  @include("layouts.admin.loadNews")
   @include("layouts.admin.handleNews")
 
-  @include("layouts.admin.videoFeature")
+  @include("layouts.admin.loadVideo")
   @include("layouts.admin.handleVideo")
 
   @stack('script-table')
