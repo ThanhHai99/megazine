@@ -261,13 +261,17 @@ Route::group(["namespace" => "VideoController"], function() {
     });
 });
 
-Route::group(["namespace" => "NewsController"], function() {  
+Route::group(["namespace" => "Admin"], function() {  
     Route::group(["prefix" => "dashboard"], function () {
         Route::get("index", [
             "as" => "dashboard.index",
-            "uses" => "NewsController@getIndex"
+            "uses" => "AdminController@getIndex"
         ]);        
-    
+    });
+});
+
+Route::group(["namespace" => "NewsController"], function() {  
+    Route::group(["prefix" => "dashboard"], function () {
         Route::get("news/all", [
             "as" => "news.all",
             "uses" => "NewsController@getNewsAll"

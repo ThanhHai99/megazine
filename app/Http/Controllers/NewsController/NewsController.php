@@ -31,23 +31,7 @@ class NewsController extends CreatorController
   }
  
 //   start get =======================================================================================================================
-  public function getIndex(Request $request) {
-    if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
-      return redirect("/home")->with("notAdmin", "Not allow.");
-    }
-
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      if (!Auth::check()) {
-        Auth::logout();
-        return view('auth.login');
-        exit();
-      }
-
-      return view('page.admin._table',[
-        // 'topics' => $topics
-      ]);
-    };
-  }
+  
 
   public function getNewsAll(Request $request) {
     if(Auth::user()->id_role != 2 && Auth::user()->id_role != 1 && Auth::user()->id_role != 0) {
