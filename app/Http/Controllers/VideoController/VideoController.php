@@ -208,7 +208,7 @@ class VideoController extends CreatorController
     };
   }
 
-  public function newsUpdateHotVideoYes(Request $request) {
+  public function newsUpdateHotVideo(Request $request) {
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
@@ -216,7 +216,11 @@ class VideoController extends CreatorController
   
       $input = $request->all();
       $tmp = Video::find($input['id']);
-      $tmp->hot_news = 1;
+      if ($input['hot_news'] == 0) {
+        $tmp->hot_news = 1;
+      } else {
+        $tmp->hot_news = 0;
+      }
       $tmp->save();
   
       return response()->json([
@@ -228,7 +232,7 @@ class VideoController extends CreatorController
 
   }
 
-  public function newsUpdateHotVideoNo(Request $request) {
+  public function newsUpdateStatusVideo(Request $request) {
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
@@ -236,7 +240,11 @@ class VideoController extends CreatorController
   
       $input = $request->all();
       $tmp = Video::find($input['id']);
-      $tmp->hot_news = 0;
+      if ($input['id_status'] == 0) {
+        $tmp->id_status = 1;
+      } else {
+        $tmp->id_status = 0;
+      }
       $tmp->save();
   
       return response()->json([

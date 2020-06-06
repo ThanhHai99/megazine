@@ -170,8 +170,6 @@ $("body").delegate("#remove_employee", "click", function() {
   });
 });
 
-
-
 $("body").delegate("#status_employee", "click", function(event) {
   //Click button update hot new yes
   event.preventDefault();

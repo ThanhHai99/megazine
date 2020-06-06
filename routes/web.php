@@ -231,14 +231,26 @@ Route::group(["namespace" => "VideoController"], function() {
                 "uses" => "VideoController@videoInsert"
             ]);
 
-            Route::put("update_hot_video_yes", [
-                "as" => "news.updateHotVideoYes",
-                "uses" => "VideoController@newsUpdateHotVideoYes"
+            Route::put("update_hot_video", [
+                "as" => "news.updateHotVideo",
+                "uses" => "VideoController@newsUpdateHotVideo"
             ]);
 
-            Route::put("update_hot_video_no", [
-                "as" => "news.updateHotVideoNo",
-                "uses" => "VideoController@newsUpdateHotVideoNo"
+            // Route::put("update_hot_video_yes", [
+            //     "as" => "news.updateHotVideoYes",
+            //     "uses" => "VideoController@newsUpdateHotVideoYes"
+            // ]);
+
+            
+
+            // Route::put("update_hot_video_no", [
+            //     "as" => "news.updateHotVideoNo",
+            //     "uses" => "VideoController@newsUpdateHotVideoNo"
+            // ]);
+
+            Route::put("update_status_video", [
+                "as" => "news.updateStatusVideo",
+                "uses" => "VideoController@newsUpdateStatusVideo"
             ]);
 
             Route::put("update_status_video_yes", [

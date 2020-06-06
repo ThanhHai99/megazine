@@ -79,8 +79,7 @@ $("body").delegate("button.update_video", "click", function(event) {
   });
 });
 
-
-$("body").delegate("#hot_video_yes", "click", function(event) {
+$("body").delegate("#hot_video", "click", function(event) {
   event.preventDefault();
   let table = $('#dataTable').DataTable();
   $tr = $(this).closest('tr');
@@ -88,33 +87,54 @@ $("body").delegate("#hot_video_yes", "click", function(event) {
     $tr = $tr.prev('.parent');
   };
   let data = table.row($tr).data();
+  console.log(data);
   let id = data['id'];
+  let hot_news = data['hot_news'];
   $('meta[name=row-index]').attr('content', id);
   $.ajax({
-    url: `{{route('news.updateHotVideoNo')}}`,
+    url: `{{route('news.updateHotVideo')}}`,
     method: "PUT",
     data: {
-      id: id
+      id: id,
+      hot_news: hot_news
     },
     success: function(response) {
       if (response.error == false) {
-        if ( $("div[data=video] a.active").hasClass("all") ) {
-          $('tbody > tr > td:first-child').each(function() {
-            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-              $(this).parent("tr").find("td:nth-child(4)").html(
-                `<a href="javascript:void(0)" id="hot_video_no"><i class="fa fa-times-circle" style="color: red;"></i></a>`
-                ); 
-            }
-          });
+        if( $("div.dataTables_paginate a.paginate_button:last-child").html() == 1) {
+          if( $("div[data=video] a").hasClass("active") ) {
+            $("div[data=video] a.active").click();
+          }
         } else {
-          $('tbody > tr > td:first-child').each(function() {
-            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-              $(this).parent("tr").find("td:nth-child(3)").html(
-                `<a href="javascript:void(0)" id="hot_video_no"><i class="fa fa-times-circle" style="color: red;"></i></a>`
-                ); 
-            }
-          });
+          if ( $("div.dataTables_paginate a.previous").hasClass("disabled") ) {
+            $("div.dataTables_paginate a.next").click();
+            $("div.dataTables_paginate a.previous").click();
+          }
+          if ( $("div.dataTables_paginate a.next").hasClass("disabled") ) {
+            $("div.dataTables_paginate a.previous").click();
+            $("div.dataTables_paginate a.next").click();
+          }
+          if ( !($("div.dataTables_paginate a.previous").hasClass("disabled")) || !($("div.dataTables_paginate a.next").hasClass("disabled")) ) {
+            $("div.dataTables_paginate a.next").click();
+            $("div.dataTables_paginate a.previous").click();
+          }
         }
+        // if ( $("div[data=video] a.active").hasClass("all") ) {
+        //   $('tbody > tr > td:first-child').each(function() {
+        //     if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+        //       $(this).parent("tr").find("td:nth-child(4)").html(
+        //         `<a href="javascript:void(0)" id="hot_video_no"><i class="fa fa-times-circle" style="color: red;"></i></a>`
+        //         ); 
+        //     }
+        //   });
+        // } else {
+        //   $('tbody > tr > td:first-child').each(function() {
+        //     if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+        //       $(this).parent("tr").find("td:nth-child(3)").html(
+        //         `<a href="javascript:void(0)" id="hot_video_no"><i class="fa fa-times-circle" style="color: red;"></i></a>`
+        //         ); 
+        //     }
+        //   });
+        // }
       }
     },
     error: function(error) {
@@ -126,7 +146,7 @@ $("body").delegate("#hot_video_yes", "click", function(event) {
   });
 });
 
-$("body").delegate("#hot_video_no", "click", function(event) {
+$("body").delegate("#status_video", "click", function(event) {
   event.preventDefault();
   let table = $('#dataTable').DataTable();
   $tr = $(this).closest('tr');
@@ -135,32 +155,52 @@ $("body").delegate("#hot_video_no", "click", function(event) {
   };
   let data = table.row($tr).data();
   let id = data['id'];
+  let id_status = data['id_status'];
   $('meta[name=row-index]').attr('content', id);
   $.ajax({
-    url: `{{route('news.updateHotVideoYes')}}`,
+    url: `{{route('news.updateStatusVideo')}}`,
     method: "PUT",
     data: {
-      id: id
+      id: id,
+      id_status: id_status
     },
     success: function(response) {
       if (response.error == false) {
-        if ( $("div[data=video] a.active").hasClass("all") ) {
-          $('tbody > tr > td:first-child').each(function() {
-            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-              $(this).parent("tr").find("td:nth-child(4)").html(
-                `<a href="javascript:void(0)" id="hot_video_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`
-                );
-            }
-          });
+        if( $("div.dataTables_paginate a.paginate_button:last-child").html() == 1) {
+          if( $("div[data=video] a").hasClass("active") ) {
+            $("div[data=video] a.active").click();
+          }
         } else {
-          $('tbody > tr > td:first-child').each(function() {
-            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-              $(this).parent("tr").find("td:nth-child(3)").html(
-                `<a href="javascript:void(0)" id="hot_video_yes"><i class="fa fa-check-circle" style="color:green;"></i></a>`
-                );
-            }
-          });
+          if ( $("div.dataTables_paginate a.previous").hasClass("disabled") ) {
+            $("div.dataTables_paginate a.next").click();
+            $("div.dataTables_paginate a.previous").click();
+          }
+          if ( $("div.dataTables_paginate a.next").hasClass("disabled") ) {
+            $("div.dataTables_paginate a.previous").click();
+            $("div.dataTables_paginate a.next").click();
+          }
+          if ( !($("div.dataTables_paginate a.previous").hasClass("disabled")) || !($("div.dataTables_paginate a.next").hasClass("disabled")) ) {
+            $("div.dataTables_paginate a.next").click();
+            $("div.dataTables_paginate a.previous").click();
+          }
         }
+        // if ( $("div[data=video] a.active").hasClass("all") ) {
+        //   $('tbody > tr > td:first-child').each(function() {
+        //     if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+        //       $(this).parent("tr").find("td:nth-child(5)").html(
+        //         `<a href="javascript:void(0)" id="status_video_no"><i class="fas fa-lock" style="color: red;"></i></a>`
+        //         );
+        //     }
+        //   });
+        // } else {
+        //   $('tbody > tr > td:first-child').each(function() {
+        //     if ($(this).html() == $('meta[name=row-index]').attr('content')) {
+        //       $(this).parent("tr").find("td:nth-child(4)").html(
+        //         `<a href="javascript:void(0)" id="status_video_no"><i class="fas fa-lock" style="color: red;"></i></a>`
+        //         );
+        //     }
+        //   });
+        // }
       }
     },
     error: function(error) {
@@ -170,119 +210,6 @@ $("body").delegate("#hot_video_no", "click", function(event) {
       alertify.notify('An error occurred', 'error', 3);
     }
   });
-});
-
-$("body").delegate("#status_video_yes", "click", function(event) {
-  event.preventDefault();
-  let table = $('#dataTable').DataTable();
-  $tr = $(this).closest('tr');
-  if ($($tr).hasClass('child')) {
-    $tr = $tr.prev('.parent');
-  };
-  let data = table.row($tr).data();
-  let id = data['id'];
-  $('meta[name=row-index]').attr('content', id);
-  $.ajax({
-    url: `{{route('news.updateStatusVideoNo')}}`,
-    method: "PUT",
-    data: {
-      id: id
-    },
-    success: function(response) {
-      if (response.error == false) {
-        if ( $("div[data=video] a.active").hasClass("all") ) {
-          $('tbody > tr > td:first-child').each(function() {
-            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-              $(this).parent("tr").find("td:nth-child(5)").html(
-                `<a href="javascript:void(0)" id="status_video_no"><i class="fas fa-lock" style="color: red;"></i></a>`
-                );
-            }
-          });
-        } else {
-          $('tbody > tr > td:first-child').each(function() {
-            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-              $(this).parent("tr").find("td:nth-child(4)").html(
-                `<a href="javascript:void(0)" id="status_video_no"><i class="fas fa-lock" style="color: red;"></i></a>`
-                );
-            }
-          });
-        }
-      }
-    },
-    error: function(error) {
-      if (error.responseText.error == "Unauthenticated.") {
-        location.reload(true);
-      }
-      alertify.notify('An error occurred', 'error', 3);
-    }
-  });
-});
-
-$("body").delegate("#status_video_no", "click", function(event) {
-  event.preventDefault();
-  let table = $('#dataTable').DataTable();
-  $tr = $(this).closest('tr');
-  if ($($tr).hasClass('child')) {
-    $tr = $tr.prev('.parent');
-  };
-  let data = table.row($tr).data();
-  let id = data['id'];
-  $('meta[name=row-index]').attr('content', id);
-  $.ajax({
-    url: `{{route('news.updateStatusVideoYes')}}`,
-    method: "PUT",
-    data: {
-      id: id
-    },
-    success: function(response) {
-      if (response.error == false) {
-        if ( $("div[data=video] a.active").hasClass("all") ) {
-          $('tbody > tr > td:first-child').each(function() {
-            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-              $(this).parent("tr").find("td:nth-child(5)").html(
-                `<a href="javascript:void(0)" id="status_video_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>`
-                );
-            }
-          });
-        } else {
-          $('tbody > tr > td:first-child').each(function() {
-            if ($(this).html() == $('meta[name=row-index]').attr('content')) {
-              $(this).parent("tr").find("td:nth-child(4)").html(
-                `<a href="javascript:void(0)" id="status_video_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>`
-                );
-            }
-          });
-        }
-      }
-    },
-    error: function(error) {
-      if (error.responseText.error == "Unauthenticated.") {
-        location.reload(true);
-      }
-      alertify.notify('An error occurred', 'error', 3);
-    }
-  });
-});
-
-$("body").delegate("img#image-video", "click", function() {
-  let table = $('#dataTable').DataTable();
-  $tr = $(this).closest('tr');
-  if ($($tr).hasClass('child')) {
-    $tr = $tr.prev('.parent');
-  };
-
-  let data = table.row($tr).data();
-  $("input[name=id_video_hide]").attr('value', data['id']);
-  $("img#show-image-video").attr("src", '');
-  let linkImage = 'images/' + data['image'];
-  $("img#show-image-video").attr("src", linkImage);
-  $("button#update_image_video").remove();
-
-  let linkVideo = 'https://megazine.com/public/videos/' + data['video'];
-  $("video#show-video").attr("src", linkVideo);
-  $("button#update_video_video").remove();
-
-  $("#editImageVideo").modal('show');
 });
 
 $("body").delegate("form#form-image-video", "submit", function(event) {
@@ -361,7 +288,6 @@ $("body").delegate("form#form-video-video", "submit", function(event) {
   });
 });
 
-
 $("body").delegate("a#insert_video", "click", function() {
   if ($("div[data=video] a.active").hasClass("all")) {
     $("div#insertModalVideo div[id=video_id_topic]").show();
@@ -370,7 +296,6 @@ $("body").delegate("a#insert_video", "click", function() {
   }
   $("#insertModalVideo").modal('show');
 });
-
 
 $("body").delegate("form#form-insert-video", "submit", function(event) {
   event.preventDefault();
@@ -415,7 +340,6 @@ $("body").delegate("form#form-insert-video", "submit", function(event) {
     }
   });
 });
-
 
 $("body").delegate("#remove_video", "click", function(event) {
   Swal.fire({

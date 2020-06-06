@@ -21,20 +21,20 @@ let loadVideoAll = () => {
         { data: "id_creator", name: "id_creator" },
         { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="hot_video_yes"><i class="fa fa-check-circle" style="color:green"></i>';
+              return '<a href="javascript:void(0)" id="hot_video"><i class="fa fa-check-circle" style="color:green"></i>';
             }
             else {
-              return '<a href="javascript:void(0)" id="hot_video_no"><i class="fa fa-times-circle" style="color:red"></i></a>';
+              return '<a href="javascript:void(0)" id="hot_video"><i class="fa fa-times-circle" style="color:red"></i></a>';
             }
           },
           searchable: false
         },
         { data: "id_status", name: "id_status", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="status_video_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_video"><i class="fas fa-lock-open" style="color:green;"></i></a>';
             }
             else {
-              return '<a href="javascript:void(0)" id="status_video_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_video"><i class="fas fa-lock" style="color: red;"></i></a>';
             }
           },
           searchable: false
@@ -81,20 +81,20 @@ let loadVideoStyle = () => {
         { data: "id_creator", name: "id_creator" },
         { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="hot_video_yes"><i class="fa fa-check-circle" style="color:green"></i>';
+              return '<a href="javascript:void(0)" id="hot_video"><i class="fa fa-check-circle" style="color:green"></i>';
             }
             else {
-              return '<a href="javascript:void(0)" id="hot_video_no"><i class="fa fa-times-circle" style="color:red"></i></a>';
+              return '<a href="javascript:void(0)" id="hot_video"><i class="fa fa-times-circle" style="color:red"></i></a>';
             }
           },
           searchable: false
         },
         { data: "id_status", name: "id_status", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="status_video_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_video"><i class="fas fa-lock-open" style="color:green;"></i></a>';
             }
             else {
-              return '<a href="javascript:void(0)" id="status_video_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_video"><i class="fas fa-lock" style="color: red;"></i></a>';
             }
           },
           searchable: false
@@ -140,20 +140,20 @@ let loadVideoFashion = () => {
         { data: "id_creator", name: "id_creator" },
         { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="hot_video_yes"><i class="fa fa-check-circle" style="color:green"></i>';
+              return '<a href="javascript:void(0)" id="hot_video"><i class="fa fa-check-circle" style="color:green"></i>';
             }
             else {
-              return '<a href="javascript:void(0)" id="hot_video_no"><i class="fa fa-times-circle" style="color:red"></i></a>';
+              return '<a href="javascript:void(0)" id="hot_video"><i class="fa fa-times-circle" style="color:red"></i></a>';
             }
           },
           searchable: false
         },
         { data: "id_status", name: "id_status", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="status_video_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_video"><i class="fas fa-lock-open" style="color:green;"></i></a>';
             }
             else {
-              return '<a href="javascript:void(0)" id="status_video_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_video"><i class="fas fa-lock" style="color: red;"></i></a>';
             }
           },
           searchable: false
@@ -199,20 +199,20 @@ let loadVideoTravel = () => {
         { data: "id_creator", name: "id_creator" },
         { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="hot_video_yes"><i class="fa fa-check-circle" style="color:green"></i>';
+              return '<a href="javascript:void(0)" id="hot_video"><i class="fa fa-check-circle" style="color:green"></i>';
             }
             else {
-              return '<a href="javascript:void(0)" id="hot_video_no"><i class="fa fa-times-circle" style="color:red"></i></a>';
+              return '<a href="javascript:void(0)" id="hot_video"><i class="fa fa-times-circle" style="color:red"></i></a>';
             }
           },
           searchable: false
         },
         { data: "id_status", name: "id_status", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="status_video_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_video"><i class="fas fa-lock-open" style="color:green;"></i></a>';
             }
             else {
-              return '<a href="javascript:void(0)" id="status_video_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_video"><i class="fas fa-lock" style="color: red;"></i></a>';
             }
           },
           searchable: false
@@ -258,20 +258,20 @@ let loadVideoSports = () => {
         { data: "id_creator", name: "id_creator" },
         { data: "hot_news", name: "hot_news", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="hot_video_yes"><i class="fa fa-check-circle" style="color:green"></i>';
+              return '<a href="javascript:void(0)" id="hot_video"><i class="fa fa-check-circle" style="color:green"></i>';
             }
             else {
-              return '<a href="javascript:void(0)" id="hot_video_no"><i class="fa fa-times-circle" style="color:red"></i></a>';
+              return '<a href="javascript:void(0)" id="hot_video"><i class="fa fa-times-circle" style="color:red"></i></a>';
             }
           },
           searchable: false
         },
         { data: "id_status", name: "id_status", render: function(data, type, row) { 
             if (data == 1) {
-              return '<a href="javascript:void(0)" id="status_video_yes"><i class="fas fa-lock-open" style="color:green;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_video"><i class="fas fa-lock-open" style="color:green;"></i></a>';
             }
             else {
-              return '<a href="javascript:void(0)" id="status_video_no"><i class="fas fa-lock" style="color: red;"></i></a>';
+              return '<a href="javascript:void(0)" id="status_video"><i class="fas fa-lock" style="color: red;"></i></a>';
             }
           },
           searchable: false
