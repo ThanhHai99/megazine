@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2020 at 06:58 AM
+-- Generation Time: Jun 07, 2020 at 06:40 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.30
 
@@ -46,7 +46,15 @@ INSERT INTO `comment` (`id`, `id_news`, `id_user`, `content`, `created_at`, `upd
 (11, 385, 1, '1', '2020-06-01 00:30:56', '2020-06-01 00:30:56'),
 (25, 385, 1, '2', '2020-06-01 00:51:49', '2020-06-01 00:51:49'),
 (26, 385, 1, '3', '2020-06-01 00:51:55', '2020-06-01 00:51:55'),
-(27, 384, 1, '1', '2020-06-01 04:06:08', '2020-06-01 04:06:08');
+(27, 384, 1, '1', '2020-06-01 04:06:08', '2020-06-01 04:06:08'),
+(31, 384, 1, '2', '2020-06-01 05:00:45', '2020-06-01 05:00:45'),
+(32, 385, 1, '4', '2020-06-01 05:07:47', '2020-06-01 05:07:47'),
+(33, 385, 1, '5', '2020-06-01 05:09:24', '2020-06-01 05:09:24'),
+(34, 385, 1, '6', '2020-06-02 06:58:05', '2020-06-02 06:58:05'),
+(35, 382, 1, '1', '2020-06-02 08:56:48', '2020-06-02 08:56:48'),
+(36, 386, 1, '1', '2020-06-06 10:40:34', '2020-06-06 10:40:34'),
+(37, 386, 1, '2', '2020-06-06 10:43:12', '2020-06-06 10:43:12'),
+(38, 389, 1, '1', '2020-06-07 02:12:27', '2020-06-07 02:12:27');
 
 -- --------------------------------------------------------
 
@@ -101,22 +109,23 @@ INSERT INTO `news` (`id`, `id_topic`, `id_creator`, `hot_news`, `id_status`, `im
 (371, 1, 1, 1, 1, '1590763226_5ed11edabd1fb.jpg', '1', '1', '1', '2020-05-29 14:39:19', '2020-05-29 14:40:26'),
 (372, 1, 1, 1, 1, '1590763252_5ed11ef47dab6.jpg', '1', '1', '1', '2020-05-29 14:40:52', '2020-05-29 14:40:52'),
 (373, 1, 1, 1, 1, '1590763341_5ed11f4dbb9eb.jpg', '1', '1', '1', '2020-05-29 14:42:21', '2020-05-29 14:42:21'),
-(16, 1, 1, 1, 1, '1590768868_5ed134e4ebff3.jpg', 'Healthyyyy', 'Gym Fitnes', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:39:47', '2020-05-31 01:29:30'),
+(16, 1, 1, 1, 1, '1590768868_5ed134e4ebff3.jpg', 'Healthyyyyyyyyyyyyyyy', 'Gym Fitnes', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:39:47', '2020-06-06 18:17:50'),
 (245, 2, 1, 1, 1, '1588667646_5eb124fe05c57.jpg', '111', '1', '1', '2020-04-24 23:35:57', '2020-05-12 09:19:33'),
 (246, 2, 1, 1, 1, '1588717072_5eb1e610256d2.jpg', '11', '1', '1', '2020-04-24 23:36:02', '2020-05-12 09:19:01'),
-(27, 2, 1, 0, 1, '1588717027_5eb1e5e3d287b.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:40', '2020-05-05 22:17:07'),
-(28, 1, 1, 1, 1, '1588667585_5eb124c164da7.jpg', 'Healthyyyyyyyyyyyyyyyyyyyyy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:40', '2020-05-29 03:31:08'),
-(30, 2, 1, 1, 1, '1588667499_5eb1246bc5474.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:40', '2020-05-05 08:31:39'),
-(31, 2, 1, 0, 1, '1588725692_5eb207bcf132e.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:40', '2020-05-06 00:41:32'),
-(38, 2, 1, 0, 1, '1590691115_5ed0052ba4e44.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:41', '2020-05-28 18:38:35'),
-(39, 2, 1, 0, 1, '1590691123_5ed005330aab7.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:41', '2020-05-28 18:38:43'),
-(40, 2, 1, 0, 1, '1590691130_5ed0053a7b258.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:41', '2020-05-28 18:38:50'),
-(41, 2, 1, 0, 1, '1590691149_5ed0054db727d.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:41', '2020-05-28 18:39:09'),
+(27, 2, 1, 0, 1, '1588717027_5eb1e5e3d287b.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:40', '2020-06-06 16:46:53'),
+(28, 1, 1, 1, 1, '1588667585_5eb124c164da7.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:40', '2020-06-06 16:25:46'),
+(30, 2, 1, 1, 1, '1588667499_5eb1246bc5474.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:40', '2020-06-06 16:36:37'),
+(31, 2, 1, 1, 1, '1588725692_5eb207bcf132e.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:40', '2020-06-06 16:36:44'),
+(387, 4, 1, 0, 1, '1591495812_5edc4c84c3ff9.jpg', 'tag', 'cap', 'sub', '2020-06-07 02:10:12', '2020-06-07 02:10:12'),
+(389, 4, 1, 0, 1, '1591495925_5edc4cf5e70d2.jpg', 'tag', 'cap', 'sub', '2020-06-07 02:12:05', '2020-06-07 02:12:05'),
+(38, 2, 1, 1, 1, '1590691115_5ed0052ba4e44.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:41', '2020-06-06 16:36:50'),
+(39, 2, 1, 1, 1, '1591467493_5edbdde582e96.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:41', '2020-06-06 18:18:13'),
+(40, 2, 1, 0, 1, '1590691130_5ed0053a7b258.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:41', '2020-06-06 16:39:16'),
+(41, 2, 1, 1, 1, '1590691149_5ed0054db727d.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:41', '2020-06-06 16:27:19'),
 (380, 4, 1, 0, 1, '1590795651_5ed19d8301932.jpg', '1', '1', '1', '2020-05-29 23:40:51', '2020-05-29 23:40:51'),
 (381, 4, 1, 0, 1, '1590795665_5ed19d91f1569.jpg', '1', '1', '1', '2020-05-29 23:41:05', '2020-05-29 23:41:05'),
-(378, 3, 1, 0, 1, '1590795426_5ed19ca22fafa.jpg', '1', '1', '1', '2020-05-29 23:37:06', '2020-05-29 23:37:06'),
 (379, 3, 1, 0, 1, '1590795583_5ed19d3f37ea4.jpg', '1', '1', '1', '2020-05-29 23:39:43', '2020-05-29 23:39:43'),
-(44, 2, 1, 0, 1, '1590691236_5ed005a4e4fff.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:41', '2020-05-28 18:40:36'),
+(44, 2, 1, 0, 1, '1590691236_5ed005a4e4fff.jpg', 'Healthyyyyyy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:41', '2020-06-06 16:42:23'),
 (45, 2, 1, 0, 1, '1590691244_5ed005ac597e4.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:41', '2020-05-28 18:40:44'),
 (46, 2, 1, 0, 1, '1590691251_5ed005b3e9995.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:41', '2020-05-28 18:40:51'),
 (47, 2, 1, 1, 1, '1590691259_5ed005bbe0a8b.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:41', '2020-05-28 18:40:59'),
@@ -126,53 +135,42 @@ INSERT INTO `news` (`id`, `id_topic`, `id_creator`, `hot_news`, `id_status`, `im
 (51, 2, 1, 1, 1, '1590691188_5ed00574dbf71.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:41', '2020-05-28 18:39:48'),
 (52, 2, 1, 1, 1, '1590691211_5ed0058baaf10.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:41', '2020-05-28 18:40:11'),
 (53, 2, 1, 1, 1, '1590691205_5ed005856081d.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:41', '2020-05-28 18:40:05'),
-(54, 2, 1, 1, 1, '1590691198_5ed0057eb84be.jpg', 'Motor', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:41', '2020-05-28 18:39:58'),
+(54, 2, 1, 1, 1, '1590691198_5ed0057eb84be.jpg', 'Motorrrrrrrrrrr', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:43:41', '2020-06-01 08:12:22'),
 (377, 4, 1, 1, 1, '1590795336_5ed19c4834858.jpg', '1', '1', '1', '2020-05-29 23:35:36', '2020-05-29 23:35:36'),
 (57, 1, 1, 0, 1, '1589257809_5eba26514091d.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:28', '2020-05-29 15:44:16'),
 (375, 1, 1, 1, 1, '1590764198_5ed122a68cd83.jpg', '1', '1', '1', '2020-05-29 14:56:38', '2020-05-29 14:56:38'),
 (376, 2, 1, 0, 1, '1590765099_5ed1262b9942e.jpg', '1', '1', '1', '2020-05-29 15:11:39', '2020-05-29 15:12:06'),
-(59, 3, 1, 1, 1, '1588724127_5eb2019fb3e1c.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:28', '2020-05-06 00:15:27'),
-(60, 3, 1, 0, 1, '1588724133_5eb201a5cf4b4.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-05-06 00:15:33'),
 (61, 3, 1, 0, 1, '1588724141_5eb201adb122c.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-05-06 00:15:41'),
 (62, 3, 1, 1, 1, '1588724147_5eb201b378ba0.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-05-06 00:15:47'),
 (63, 3, 1, 0, 1, '1588724158_5eb201becfca1.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-05-06 00:15:58'),
 (64, 3, 1, 0, 1, '1588724167_5eb201c74bbc8.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-05-06 00:16:07'),
 (65, 3, 1, 0, 1, '1590691288_5ed005d8c7957.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-05-28 18:41:28'),
 (66, 3, 1, 0, 1, '1588667534_5eb1248e80e3c.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-05-05 08:32:14'),
-(69, 1, 1, 0, 1, '1590681351_5ecfdf077bde4.jpg', 'Healthy', 'Gym Fitnesssssssssssssss', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-05-28 15:58:10'),
-(70, 1, 1, 0, 1, '1590691329_5ed00601a2324.jpg', 'Healthy', 'Gym Fitnessssssssssssssss', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-05-28 18:42:09'),
-(71, 3, 1, 0, 1, '1590691348_5ed00614d5699.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-05-28 18:42:28'),
+(69, 1, 1, 0, 1, '1590681351_5ecfdf077bde4.jpg', 'Healthy', 'Gym Fitnes', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-06-01 07:41:05'),
+(70, 1, 1, 0, 1, '1590691329_5ed00601a2324.jpg', 'Healthy', 'Gym Fitnes', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-06-01 07:36:52'),
+(71, 3, 1, 0, 1, '1590691348_5ed00614d5699.jpg', 'Healthyyyyyyyyyyyyyyyyyy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-06-01 07:37:20'),
 (72, 3, 1, 0, 1, '1590691342_5ed0060ee99eb.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-05-28 18:42:22'),
 (73, 3, 1, 0, 1, '1590691336_5ed0060810535.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-05-28 18:42:16'),
-(74, 3, 1, 1, 1, '1590691396_5ed00644be631.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-05-28 18:43:16'),
-(75, 3, 1, 0, 1, '1590691356_5ed0061cb93ea.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-05-28 18:42:36'),
-(76, 3, 1, 0, 1, '1590691389_5ed0063d34fa1.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-05-28 18:43:09'),
-(77, 3, 1, 0, 1, '1590691364_5ed0062445adf.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-05-28 18:42:44'),
-(78, 3, 1, 0, 1, '1590691380_5ed0063476bf3.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:29', '2020-05-28 18:43:00'),
-(79, 3, 1, 0, 1, '1590691372_5ed0062c843db.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:30', '2020-05-28 18:42:52'),
-(80, 3, 1, 0, 1, '1590691316_5ed005f4093f4.jpg', 'Healthyy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:30', '2020-05-28 18:41:56'),
-(81, 3, 1, 0, 1, '1590691309_5ed005eda7738.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:44:30', '2020-05-28 18:41:49'),
 (83, 4, 1, 0, 1, '1588713950_5eb1d9de14ebe.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:07', '2020-05-12 00:45:57'),
 (84, 4, 1, 0, 1, '1588714001_5eb1da111fb58.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:07', '2020-05-05 21:26:41'),
 (85, 4, 1, 1, 1, '1588715053_5eb1de2d82abb.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:07', '2020-05-05 21:44:13'),
-(86, 4, 1, 0, 1, '1588714388_5eb1db941103a.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:07', '2020-05-05 21:33:08'),
-(87, 4, 1, 1, 1, '1588715046_5eb1de265f620.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:07', '2020-05-05 21:44:06'),
+(86, 4, 1, 1, 0, '1588714388_5eb1db941103a.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:07', '2020-06-01 07:34:14'),
+(87, 4, 1, 1, 0, '1588715046_5eb1de265f620.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:07', '2020-06-01 07:34:20'),
 (366, 4, 1, 1, 1, '1590668958_5ecfae9e8582c.jpg', '1', '1', '1', '2020-05-28 12:29:18', '2020-05-28 12:29:18'),
 (367, 4, 1, 1, 1, '1590668987_5ecfaebbce7ea.jpg', '1', '1', '1', '2020-05-28 12:29:47', '2020-05-28 12:29:47'),
 (89, 4, 1, 0, 1, '1588714981_5eb1dde554b98.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-05-05 21:43:01'),
-(90, 4, 1, 0, 1, '1588714243_5eb1db03c892f.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-05-05 21:30:43'),
-(91, 4, 1, 0, 1, '1588714393_5eb1db99f136e.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-05-05 21:33:13'),
+(90, 4, 1, 0, 1, '1588714243_5eb1db03c892f.jpg', 'Healthy-ok', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-06-01 08:17:54'),
 (92, 4, 1, 0, 1, '1588714968_5eb1ddd85e0a1.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-05-05 21:42:48'),
 (93, 4, 1, 0, 1, '1588714404_5eb1dba45e62b.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-05-05 21:33:24'),
 (94, 4, 1, 0, 1, '1589258069_5eba275503a37.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-05-12 04:34:29'),
-(95, 4, 1, 0, 1, '1588714429_5eb1dbbdc0e69.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-05-05 21:33:49'),
-(96, 4, 1, 0, 1, '1588714452_5eb1dbd4564b3.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-05-05 21:34:12'),
+(95, 4, 1, 0, 1, '1588714429_5eb1dbbdc0e69.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-06-06 16:50:30'),
+(96, 4, 1, 0, 1, '1588714452_5eb1dbd4564b3.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-06-06 16:50:33'),
 (97, 4, 1, 1, 1, '1588715426_5eb1dfa206a3a.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-05-05 21:50:26'),
 (98, 4, 1, 1, 1, '1588724039_5eb20147d914f.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-05-06 00:13:59'),
-(99, 4, 1, 0, 1, '1588715414_5eb1df962401e.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-05-05 21:50:14'),
-(100, 4, 1, 0, 1, '1588714471_5eb1dbe72a2a4.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-05-05 21:34:31'),
-(101, 4, 1, 0, 1, '1588714641_5eb1dc917f40e.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-05-05 21:37:21'),
-(102, 4, 1, 1, 1, '1588715612_5eb1e05c1020e.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-05-05 21:53:32'),
+(99, 4, 1, 0, 1, '1588715414_5eb1df962401e.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-06-06 16:50:53'),
+(100, 4, 1, 0, 1, '1588714471_5eb1dbe72a2a4.jpg', 'Healthyyyyyyyyyyyyyyyyyyy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-06-01 08:21:27'),
+(101, 4, 1, 0, 1, '1588714641_5eb1dc917f40e.jpg', 'Healthyiiiiiiiiiyyyyyyyyyyyyyyy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-06-06 16:50:38'),
+(102, 4, 1, 0, 1, '1588715612_5eb1e05c1020e.jpg', 'Healthyyyyyyy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-06-06 16:51:21'),
 (103, 4, 1, 0, 1, '1588715634_5eb1e07219841.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-05-05 21:53:54'),
 (104, 4, 1, 0, 1, '1588715624_5eb1e0683fbf4.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-05-05 21:53:44'),
 (105, 4, 1, 0, 1, '1588715645_5eb1e07da7787.jpg', 'Healthy', 'Gym Fitness', 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life', '2020-04-09 08:45:08', '2020-05-05 21:54:05'),
@@ -187,11 +185,10 @@ INSERT INTO `news` (`id`, `id_topic`, `id_creator`, `hot_news`, `id_status`, `im
 (385, 4, 1, 0, 1, '1590943149_5ed3ddadcebd8.jpg', 'tag', 'cap', 'sub', '2020-05-31 16:39:09', '2020-05-31 16:39:09'),
 (273, 1, 1, 1, 1, '1588717773_5eb1e8cdb6267.jpg', '1qs', '1', '1', '2020-05-05 02:38:04', '2020-05-12 05:28:53'),
 (274, 1, 1, 1, 1, '1588717336_5eb1e7189aaf0.jpg', '1', '1', '1', '2020-05-05 02:41:15', '2020-05-05 22:22:16'),
-(275, 1, 1, 1, 1, '1588717327_5eb1e70f5f0c0.jpg', '1', '1', '1', '2020-05-05 02:41:30', '2020-05-05 22:22:07'),
+(275, 1, 1, 1, 1, '1588717327_5eb1e70f5f0c0.jpg', '1okok', '1', '1', '2020-05-05 02:41:30', '2020-06-01 07:38:16'),
 (276, 1, 1, 1, 1, '1588717312_5eb1e700ce194.jpg', '1BRBER', '1ẺBERBE', '1ẺBERBER', '2020-05-05 02:50:28', '2020-05-27 05:55:42'),
 (280, 1, 1, 1, 1, '1588667426_5eb1242299099.jpg', 'z', 'z', 'z', '2020-05-05 03:11:59', '2020-05-05 08:30:26'),
 (283, 4, 1, 1, 1, '1589651426_5ec027e2dd0b3.jpg', '1', '1', '1', '2020-05-16 17:50:26', '2020-05-26 05:04:44'),
-(284, 3, 1, 1, 1, '1589651466_5ec0280ad75a9.jpg', '11', 'cap1', '1', '2020-05-16 17:51:06', '2020-05-26 06:26:12'),
 (285, 1, 1, 1, 1, '1589651495_5ec028277e2bf.jpg', '1rbtrrt', '1brtbrt', '1brtbrt', '2020-05-16 17:51:35', '2020-05-27 05:56:49'),
 (362, 1, 1, 1, 1, '1590642875_5ecf48bbeeb92.jpg', '1', '1', '1', '2020-05-28 05:14:35', '2020-05-28 05:14:35'),
 (287, 1, 1, 1, 1, '1589677543_5ec08de79de9f.jpg', '1brbrt', '1brtbrtbrt', '1brtbrtb', '2020-05-17 01:05:43', '2020-05-27 05:56:58'),
@@ -200,7 +197,7 @@ INSERT INTO `news` (`id`, `id_topic`, `id_creator`, `hot_news`, `id_status`, `im
 (291, 1, 1, 1, 1, '1589690855_5ec0c1e7c9970.jpg', '1brtbrt', '1btrbrtb', '1btrbrtbrt', '2020-05-17 04:47:35', '2020-05-27 05:57:58'),
 (292, 1, 1, 1, 1, '1589690940_5ec0c23c359b8.jpg', '1', '1', '1', '2020-05-17 04:49:00', '2020-05-17 04:49:00'),
 (293, 1, 1, 1, 1, '1589690983_5ec0c2673f393.jpg', '1', '1', '1', '2020-05-17 04:49:43', '2020-05-17 04:49:43'),
-(294, 1, 1, 1, 1, '1589691268_5ec0c384795da.jpg', '1', '1', '1', '2020-05-17 04:54:28', '2020-05-17 04:54:28'),
+(294, 1, 1, 1, 1, '1589691268_5ec0c384795da.jpg', '1', '1ok', '1', '2020-05-17 04:54:28', '2020-06-01 07:38:26'),
 (295, 1, 1, 1, 1, '1589693466_5ec0cc1a9cbc1.jpg', '1', '1', '1', '2020-05-17 05:31:06', '2020-05-17 05:31:06'),
 (296, 1, 1, 1, 1, '1589693499_5ec0cc3b9a390.jpg', '1', '1', '1', '2020-05-17 05:31:39', '2020-05-17 05:31:39'),
 (297, 1, 1, 1, 1, '1589693573_5ec0cc8558d9d.jpg', '1', '1', '1', '2020-05-17 05:32:53', '2020-05-17 05:32:53'),
@@ -224,12 +221,10 @@ INSERT INTO `news` (`id`, `id_topic`, `id_creator`, `hot_news`, `id_status`, `im
 (317, 1, 1, 1, 1, '1590459367_5ecc7be79f0c6.jpg', '1gggggggggggg', '1ggggggggggg', '1gggggggggg', '2020-05-26 02:16:07', '2020-05-27 05:58:56'),
 (318, 1, 1, 1, 1, '1590460655_5ecc80efd0f61.jpg', '1gggggggggggggggg', '1gggggggggggggg', '1ggggggggggg', '2020-05-26 02:37:35', '2020-05-27 05:58:51'),
 (319, 1, 1, 1, 1, '1590461215_5ecc831f5b4a1.jpg', '1grrrrrrrr', '1grrrrr', '1rggggggggggggggggg', '2020-05-26 02:46:55', '2020-05-27 05:58:43'),
-(320, 3, 1, 1, 1, '1590461269_5ecc8355752dd.jpg', '1', '1', '1', '2020-05-26 02:47:49', '2020-05-26 02:47:49'),
 (321, 1, 1, 1, 1, '1590461342_5ecc839e16a10.jpg', '1brtbrt', '1brtbrt', '1brtbrt', '2020-05-26 02:49:02', '2020-05-27 05:57:17'),
 (323, 4, 1, 1, 1, '1590474693_5eccb7c50ee10.jpg', 'tag1', 'cap1', 'sub1', '2020-05-26 06:31:33', '2020-05-26 06:31:33'),
-(325, 3, 1, 1, 1, '1590475089_5eccb951c1ff8.jpg', 'q ejwf', 'biebie', 'ndlvdnvlknd', '2020-05-26 06:38:09', '2020-05-26 06:38:09'),
 (326, 2, 1, 1, 1, '1590475404_5eccba8c18fb8.jpg', 'q ejwf', 'biebie', 'ndlvdnvlknd', '2020-05-26 06:43:24', '2020-05-26 06:43:24'),
-(327, 2, 1, 1, 1, '1590475408_5eccba90ce423.jpg', 'q ejwf', 'biebie', 'ndlvdnvlknd', '2020-05-26 06:43:28', '2020-05-26 06:43:28'),
+(327, 2, 1, 1, 1, '1591089151_5ed617ff3ae96.jpg', 'q ejwf', 'biebie', 'ndlvdnvlknd', '2020-05-26 06:43:28', '2020-06-02 09:12:31'),
 (328, 2, 1, 1, 1, '1590475411_5eccba93a3748.jpg', 'q ejwf', 'biebie', 'ndlvdnvlknd', '2020-05-26 06:43:31', '2020-05-26 06:43:31'),
 (329, 2, 1, 1, 1, '1590475415_5eccba9723e07.jpg', 'q ejwf', 'biebie', 'ndlvdnvlknd', '2020-05-26 06:43:35', '2020-05-26 06:43:35'),
 (330, 2, 1, 1, 1, '1590475418_5eccba9a6339f.jpg', 'q ejwf', 'biebie', 'ndlvdnvlknd', '2020-05-26 06:43:38', '2020-05-26 06:43:38'),
@@ -241,11 +236,7 @@ INSERT INTO `news` (`id`, `id_topic`, `id_creator`, `hot_news`, `id_status`, `im
 (336, 2, 1, 1, 1, '1590475435_5eccbaabc899f.jpg', 'q ejwf', 'biebie', 'ndlvdnvlknd', '2020-05-26 06:43:55', '2020-05-26 06:43:55'),
 (337, 2, 1, 1, 1, '1590475439_5eccbaafc3300.jpg', 'q ejwf', 'biebie', 'ndlvdnvlknd', '2020-05-26 06:43:59', '2020-05-26 06:43:59'),
 (338, 2, 1, 1, 1, '1590475443_5eccbab3005c8.jpg', 'q ejwf', 'biebie', 'ndlvdnvlknd', '2020-05-26 06:44:03', '2020-05-26 06:44:03'),
-(339, 3, 1, 1, 1, '1590475477_5eccbad55bffd.jpg', 'q ejwf', 'biebie', 'ndlvdnvlknd', '2020-05-26 06:44:37', '2020-05-26 06:44:37'),
-(340, 3, 1, 1, 1, '1590475480_5eccbad8c6e45.jpg', 'q ejwf', 'biebie', 'ndlvdnvlknd', '2020-05-26 06:44:40', '2020-05-26 06:44:40'),
-(341, 3, 1, 1, 1, '1590475483_5eccbadb7452e.jpg', 'q ejwf', 'biebie', 'ndlvdnvlknd', '2020-05-26 06:44:43', '2020-05-26 06:44:43'),
-(342, 3, 1, 1, 1, '1590475486_5eccbaded0fb6.jpg', 'q ejwf', 'biebie', 'ndlvdnvlknd', '2020-05-26 06:44:46', '2020-05-26 06:44:46'),
-(343, 3, 1, 1, 1, '1590475498_5eccbaea50d7a.jpg', 'q ejwf', 'biebie', 'ndlvdnvlknd', '2020-05-26 06:44:58', '2020-05-26 06:44:58'),
+(386, 2, 3, 1, 1, '1591081966_5ed5fbee64e73.jpg', 'tag', 'cap', 'kon', '2020-06-02 07:12:30', '2020-06-02 07:34:38'),
 (374, 1, 1, 1, 1, '1590768893_5ed134fd73de4.jpg', '1', '1', '1', '2020-05-29 14:55:38', '2020-05-29 16:14:53'),
 (347, 4, 1, 1, 1, '1590475525_5eccbb05c5cba.jpg', 'q ejwf', 'biebie', 'ndlvdnvlknd', '2020-05-26 06:45:25', '2020-05-26 06:45:25'),
 (348, 4, 1, 1, 1, '1590475529_5eccbb0977c9c.jpg', 'q ejwf', 'biebie', 'ndlvdnvlknd', '2020-05-26 06:45:29', '2020-05-26 06:45:29'),
@@ -446,16 +437,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `google_id`, `facebook_id`, `id_role`, `id_status`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(3, NULL, NULL, 2, 1, 'haiit33', 'tranvietthanhhaiit3@gmail.com', '$2y$10$JNxtb1xsCx6.CjpkyEJca.WWHFt1PIkpE0ETrOB5t1OMc/jzAyQOa', 'FlIw49TB8fY47YH4zrd7ttTfn3LA2ZhphFb0yJONgbGdkDMo1tBiYtdDccUb', '2020-04-20 07:18:55', '2020-05-30 06:23:47'),
-(2, NULL, NULL, 1, 1, 'haiit2', 'tranvietthanhhaiit2@gmail.com', '$2y$10$hzCaFe/3ADHHK99t/Lej5eRjtQjNyS4dXQkDTyedrQ0jqSewmKSvq', 'ZFUDR9Qc6Kqatxy6Fzcc1WhBA9ui3ZNz0Ah0IvEqOOKiPcvVTxTO9zRHrK7w', '2020-04-20 07:17:22', '2020-05-30 20:58:19'),
-(75, '103828606473742253800', NULL, 3, 1, 'Claud Claud S Mills', 'claudsmillsc@my.lanecc.eduuu', NULL, NULL, '2020-05-28 05:08:25', '2020-05-28 09:49:14'),
-(74, '103828606473742253800', NULL, 3, 1, 'Claud Claud S Mills', 'claudsmillsc@my.lanecc.eduu', NULL, NULL, '2020-05-28 05:08:25', '2020-05-28 08:19:43'),
-(66, '106765797680362007486', NULL, 3, 1, 'Hải Trần', 'haitran23031999@gmail.com', NULL, NULL, '2020-05-28 04:52:55', '2020-05-28 09:28:15'),
-(70, '103828606473742253800', NULL, 3, 1, 'Claud Claud S Mills', 'claudsmillsc@my.lanecc.edu', NULL, NULL, '2020-05-28 05:08:25', '2020-05-28 08:52:31'),
-(77, '103828606473742253800', NULL, 2, 1, 'Claud Claud S Mills', 'claudsmillsc@my.lanecc.eduuuuu', NULL, NULL, '2020-05-28 05:08:25', '2020-05-31 21:03:17'),
-(1, NULL, NULL, 0, 1, 'haiit1', 'tranvietthanhhaiit1@gmail.com', '$2y$10$hzCaFe/3ADHHK99t/Lej5eRjtQjNyS4dXQkDTyedrQ0jqSewmKSvq', 'FwAXEHx7UKf4xi1GNWjw795DD9KjNH7RpaU3SVFTrxJEsFY8zSDetkVByEfO', '2020-04-20 07:17:22', '2020-05-31 21:02:47'),
-(82, NULL, NULL, 3, 1, 'haiit', 'tranvietthanhhaiit@gmail.com', '$2y$10$RIBntfyPYsvGqMLByYIKgu5rZYQ4.16bbqfDfiNavZq70Gk3Du6B.', '8g7T3QJSQEdeXc2D461ittYHQQkYNHg80LObXEHGFPISsWISfkphzRMSspDZ', '2020-05-30 20:33:38', '2020-05-31 19:31:02'),
-(83, NULL, NULL, 3, 1, 'tranhai', 'tranhai23031999@gmail.com', '$2y$10$LCpwbHoAexw4rNsTJD1w0./jpNNW8HnchpxL9NTbBBzUGucNYcpc.', NULL, '2020-05-30 20:43:41', '2020-05-30 20:43:41');
+(3, NULL, NULL, 2, 1, 'haiit3', 'tranvietthanhhaiit3@gmail.com', '$2y$10$JNxtb1xsCx6.CjpkyEJca.WWHFt1PIkpE0ETrOB5t1OMc/jzAyQOa', 'VBngF7gRj50pHdOAQsybleaGUVr45B19xpx40xhobFn0i8JBWQLoD3nV4Fpr', '2020-04-20 07:18:55', '2020-06-06 19:02:32'),
+(2, NULL, NULL, 1, 1, 'haiit22', 'tranvietthanhhaiit2@gmail.com', '$2y$10$hzCaFe/3ADHHK99t/Lej5eRjtQjNyS4dXQkDTyedrQ0jqSewmKSvq', 'wrpsb1iVSSRNb5ZMMiTvpMY0QgRBRrmidcZvgCg45bnwUJcXqTQ2u1xq9ylF', '2020-04-20 07:17:22', '2020-06-06 03:26:22'),
+(91, NULL, NULL, 1, 1, 'phong', 'phongnguyen.pn488@gmail.com', '$2y$10$7h88yJctyOzfeaAK1hKlmu3r0mXXSYO9mXm2XJqWEezL4ge6JEOAW', 'K8pCrSnq5aXxAUxvEPG1EtozQWzriAfPRsZ2wAyQBCnzSxTjdFiqq5g1nPfp', '2020-06-02 00:37:38', '2020-06-02 00:39:41'),
+(92, '103828606473742253800', NULL, 3, 1, 'Claud Claud S Mills', 'claudsmillsc@my.lanecc.edu', NULL, NULL, '2020-06-06 04:09:29', '2020-06-06 04:09:29'),
+(93, '106765797680362007486', NULL, 3, 1, 'Hải Trần', 'haitran23031999@gmail.com', NULL, NULL, '2020-06-06 20:56:51', '2020-06-06 20:56:51'),
+(89, NULL, '103340031406512', 3, 1, 'Hai Tran', NULL, NULL, NULL, '2020-06-01 04:20:06', '2020-06-01 04:20:06'),
+(1, NULL, NULL, 0, 1, 'haiit1', 'tranvietthanhhaiit1@gmail.com', '$2y$10$hzCaFe/3ADHHK99t/Lej5eRjtQjNyS4dXQkDTyedrQ0jqSewmKSvq', 'wsfGP6sifpRrfRmy5uJrQ18RKZzjEHdAzFnn0wotB1CsNV2VlxRCk6H0jc29kozqMbXDULHtznYSd7jvmvxRs1njL4GeGqkroM9H', '2020-04-20 07:17:22', '2020-06-06 21:27:52'),
+(90, '102337005034649318765', NULL, 3, 1, 'hai tran', 'tranvietthanhhaiit@gmail.com', NULL, NULL, '2020-06-01 04:29:39', '2020-06-02 00:10:25');
 
 -- --------------------------------------------------------
 
@@ -483,16 +472,16 @@ CREATE TABLE `video` (
 --
 
 INSERT INTO `video` (`id`, `id_topic`, `id_creator`, `hot_news`, `id_status`, `image`, `video`, `tag`, `caption`, `subtitle`, `created_at`, `updated_at`) VALUES
-(1, 4, 1, 1, 1, '1590852113_5ed27a11bca90.jpg', '1590893215_5ed31a9f40c81.mp4', 'FUNNY', 'Watch Liam Neeson', 'A small river named Duden flows by their place and supplies it with the necessary', '2020-04-09 20:48:54', '2020-05-31 02:46:55'),
-(2, 4, 1, 0, 0, '1590595161_5ece8e599714e.jpg', '3.mp4', 'FUNNY', 'Watch Liam Neeson', 'A small river named Duden flows by their place and supplies it with the necessary', '2020-04-09 20:50:14', '2020-05-30 13:45:10'),
-(3, 1, 1, 1, 1, '1590793200_5ed193f0e76f5.jpg', '2.mp4', 'FUNNYyyyyyyyyyyyyy', 'Watch Liam Neeson', 'A small river named Duden flows by their place and supplies it with the necessary', '2020-04-09 20:50:14', '2020-05-30 18:41:23'),
+(1, 4, 1, 1, 1, '1591496897_5edc50c1b0a6b.jpg', '1591497161_5edc51c94e4fe.mp4', 'FUNNYyyyyyyyyy', 'Watch Liam Neeson', 'A small river named Duden flows by their place and supplies it with the necessary', '2020-04-09 20:48:54', '2020-06-07 02:32:41'),
+(2, 4, 1, 1, 1, '1590595161_5ece8e599714e.jpg', '3.mp4', 'FUNNY', 'Watch Liam Neeson', 'A small river named Duden flows by their place and supplies it with the necessary', '2020-04-09 20:50:14', '2020-06-06 19:52:25'),
+(3, 1, 1, 1, 1, '1590793200_5ed193f0e76f5.jpg', '2.mp4', 'FUNNYyyyyyyyyyyyyy', 'Watch Liam Neeson', 'A small river named Duden flows by their place and supplies it with the necessary', '2020-04-09 20:50:14', '2020-06-06 20:02:32'),
 (4, 4, 1, 1, 1, '1590595485_5ece8f9dcd4a6.jpg', '2.mp4', 'FUNNY', 'Watch Liam Neeson', 'A small river named Duden flows by their place and supplies it with the necessary', '2020-04-09 20:50:14', '2020-05-27 16:04:45'),
-(5, 4, 1, 0, 1, '1588820803_5eb37b43237fc.jpg', '3.mp4', 'FUNNY', 'Watch Liam Neeson', 'A small river named Duden flows by their place and supplies it with the necessary', '2020-04-09 20:50:15', '2020-05-07 03:06:43'),
+(5, 4, 1, 0, 1, '1588820803_5eb37b43237fc.jpg', '3.mp4', 'FUNNYyyyyyyy', 'Watch Liam Neeson', 'A small river named Duden flows by their place and supplies it with the necessary', '2020-04-09 20:50:15', '2020-06-07 02:05:29'),
 (6, 4, 1, 0, 1, '1588820807_5eb37b47b8594.jpg', '1.mp4', 'FUNNY', 'Watch Liam Neeson', 'A small river named Duden flows by their place and supplies it with the necessary', '2020-04-09 20:50:15', '2020-05-07 03:06:47'),
 (7, 1, 1, 0, 1, '1590593838_5ece892e53b5c.jpg', '1.mp4', 'FUNNY', 'Watch Liam Neeson', 'A small river named Duden flows by their place and supplies it with the necessary', '2020-04-10 09:01:42', '2020-05-27 15:37:18'),
 (8, 1, 1, 0, 1, '1590594601_5ece8c2918429.jpg', '3.mp4', 'FUNNY', 'Watch Liam Neeson', 'A small river named Duden flows by their place and supplies it with the necessary', '2020-04-10 09:01:42', '2020-05-27 15:50:01'),
-(9, 2, 1, 0, 1, '1590594796_5ece8cece3971.jpg', '2.mp4', 'FUNNY', 'Watch Liam Neeson', 'A small river named Duden flows by their place and supplies it with the necessary', '2020-04-10 09:01:42', '2020-05-27 15:53:16'),
-(10, 1, 1, 0, 1, '1590845880_5ed261b8b55fe.jpg', '2.mp4', 'FUNNY', 'Watch Liam Neeson', 'A small river named Duden flows by their place and supplies it with the necessary', '2020-04-10 09:01:42', '2020-05-30 13:38:00'),
+(9, 2, 1, 0, 1, '1590594796_5ece8cece3971.jpg', '2.mp4', 'FUNNYy', 'Watch Liam Neeson', 'A small river named Duden flows by their place and supplies it with the necessary', '2020-04-10 09:01:42', '2020-06-06 20:15:40'),
+(10, 1, 1, 0, 1, '1590845880_5ed261b8b55fe.jpg', '2.mp4', 'FUNNYyyyyyyyyyy', 'Watch Liam Neeson', 'A small river named Duden flows by their place and supplies it with the necessary', '2020-04-10 09:01:42', '2020-06-07 02:02:45'),
 (11, 4, 1, 0, 1, '1588820881_5eb37b9128d08.jpeg', '3.mp4', 'FUNNY', 'Watch Liam Neeson', 'A small river named Duden flows by their place and supplies it with the necessary', '2020-04-10 09:01:42', '2020-05-07 03:08:01'),
 (12, 2, 1, 0, 1, '1589277576_5eba738875f75.jpg', '1.mp4', 'FUNNY', 'Watch Liam Neeson', 'A small river named Duden flows by their place and supplies it with the necessary', '2020-04-10 09:01:42', '2020-05-12 09:59:36'),
 (13, 4, 1, 0, 1, '1589277585_5eba73910830a.jpg', '1.mp4', 'FUNNY', 'Watch Liam Neeson', 'A small river named Duden flows by their place and supplies it with the necessary', '2020-04-10 09:01:43', '2020-05-12 09:59:45'),
@@ -536,7 +525,9 @@ INSERT INTO `video` (`id`, `id_topic`, `id_creator`, `hot_news`, `id_status`, `i
 (54, 4, 1, 0, 1, '1590846035_5ed26253d4dcf.jpg', NULL, 'tag', 'cap', 'sub', '2020-05-30 13:40:35', '2020-05-30 13:40:35'),
 (55, 1, 1, 0, 1, '1590864097_5ed2a8e12c0df.jpg', NULL, 'tag', 'cap', 'sub', '2020-05-30 18:41:37', '2020-05-30 18:41:37'),
 (56, 4, 1, 0, 1, '1590889643_5ed30cabe650b.jpg', NULL, 'tag new', 'cap', 'sub', '2020-05-31 01:47:23', '2020-05-31 01:47:23'),
-(57, 4, 1, 0, 1, '1590895860_5ed324f4ca7f4.jpg', '1590895860_5ed324f4caf69.mp4', 'tag sport', 'cap sport', 'sub sport', '2020-05-31 03:31:00', '2020-05-31 03:31:00');
+(57, 4, 1, 0, 1, '1590895860_5ed324f4ca7f4.jpg', '1590895860_5ed324f4caf69.mp4', 'tag sport', 'cap sport', 'sub sport', '2020-05-31 03:31:00', '2020-05-31 03:31:00'),
+(58, 3, 90, 0, 1, '1591011974_5ed4ea86bee00.jpg', '1591012079_5ed4eaefa10ff.mp4', 'tag', 'cap', 'sub', '2020-06-01 11:46:14', '2020-06-01 11:47:59'),
+(59, 1, 1, 0, 1, '1591496013_5edc4d4daf88d.jpg', '1591496013_5edc4d4dafebc.mp4', 'tag', 'cap', 'sub', '2020-06-07 02:13:33', '2020-06-07 02:13:33');
 
 --
 -- Indexes for dumped tables
@@ -623,7 +614,7 @@ ALTER TABLE `video`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -635,7 +626,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=386;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=390;
 
 --
 -- AUTO_INCREMENT for table `receive_news`
@@ -665,13 +656,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `video`
 --
 ALTER TABLE `video`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
