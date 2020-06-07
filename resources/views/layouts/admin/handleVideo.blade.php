@@ -51,8 +51,8 @@ $("body").delegate("button.update_video", "click", function(event) {
         alertify.notify('Update successfully', 'success', 3);
 
         if( $("div.dataTables_paginate span a").length == 1) {
-          if( $("div[data=employee] a").hasClass("active") ) {
-            $("div[data=employee] a.active").click();
+          if( $("div[data=video] a").hasClass("active") ) {
+            $("div[data=video] a.active").click();
           }
         } else {
           if ( $("div.dataTables_paginate a.previous").hasClass("disabled") ) {
@@ -314,8 +314,8 @@ $("body").delegate("form#form-insert-video", "submit", function(event) {
         sendNews();
       }
       if( $("div.dataTables_paginate span a").length == 1) {
-          if( $("div[data=employee] a").hasClass("active") ) {
-            $("div[data=employee] a.active").click();
+          if( $("div[data=video] a").hasClass("active") ) {
+            $("div[data=video] a.active").click();
           }
         } else {
           if ( $("div.dataTables_paginate a.previous").hasClass("disabled") ) {
@@ -376,8 +376,8 @@ $("body").delegate("#remove_video", "click", function(event) {
               'success'
             )
             if( $("div.dataTables_paginate span a").length == 1) {
-              if( $("div[data=employee] a").hasClass("active") ) {
-                $("div[data=employee] a.active").click();
+              if( $("div[data=video] a").hasClass("active") ) {
+                $("div[data=video] a.active").click();
               }
             } else {
               if ( $("div.dataTables_paginate a.previous").hasClass("disabled") ) {
