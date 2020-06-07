@@ -212,6 +212,28 @@ $("body").delegate("#status_video", "click", function(event) {
   });
 });
 
+$("body").delegate("#image-video", "click", function() {
+  let table = $('#dataTable').DataTable();
+  $tr = $(this).closest('tr');
+  if ($($tr).hasClass('child')) {
+    $tr = $tr.prev('.parent');
+  };
+
+  let data = table.row($tr).data();
+  $("input[name=id_video_hide]").attr('value', data['id']);
+  $("img#show-image-video").attr("src", '');
+  let linkImage = 'images/' + data['image'];
+  $("img#show-image-video").attr("src", linkImage);
+  $("button#update_image_video").remove();
+
+  $("video#show-video").attr("src", '');
+  let linkVideo = 'videos/' + data['video'];
+  $("video#show-video").attr("src", linkVideo);
+  $("button#update_video_video").remove();
+
+  $("#editImageVideo").modal('show');
+});
+
 $("body").delegate("form#form-image-video", "submit", function(event) {
   event.preventDefault();
   let table = $('#dataTable').DataTable();
@@ -311,7 +333,6 @@ $("body").delegate("form#form-insert-video", "submit", function(event) {
       if (response.error == false) {
         $("#insertModalVideo").modal('hide');
         alertify.notify('Create successfully', 'success', 3);
-        sendNews();
       }
       if( $("div.dataTables_paginate span a").length == 1) {
           if( $("div[data=video] a").hasClass("active") ) {
