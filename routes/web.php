@@ -237,45 +237,23 @@ Route::group(["namespace" => "VideoController"], function() {
             ]);
 
             Route::put("update_hot_video", [
-                "as" => "news.updateHotVideo",
-                "uses" => "VideoController@newsUpdateHotVideo"
+                "as" => "video.updateHotVideo",
+                "uses" => "VideoController@videoUpdateHotVideo"
             ]);
-
-            // Route::put("update_hot_video_yes", [
-            //     "as" => "news.updateHotVideoYes",
-            //     "uses" => "VideoController@newsUpdateHotVideoYes"
-            // ]);
-
-            
-
-            // Route::put("update_hot_video_no", [
-            //     "as" => "news.updateHotVideoNo",
-            //     "uses" => "VideoController@newsUpdateHotVideoNo"
-            // ]);
 
             Route::put("update_status_video", [
-                "as" => "news.updateStatusVideo",
-                "uses" => "VideoController@newsUpdateStatusVideo"
-            ]);
-
-            Route::put("update_status_video_yes", [
-                "as" => "news.updateStatusVideoYes",
-                "uses" => "VideoController@newsUpdateStatusVideoYes"
-            ]);
-
-            Route::put("update_status_video_no", [
-                "as" => "news.updateStatusVideoNo",
-                "uses" => "VideoController@newsUpdateStatusVideoNo"
+                "as" => "video.updateStatusVideo",
+                "uses" => "VideoController@videoUpdateStatusVideo"
             ]);
 
             Route::post("update_image_video", [
-                "as" => "news.update_image_video",
-                "uses" => "VideoController@newsUpdateImageVideo"
+                "as" => "video.update_image_video",
+                "uses" => "VideoController@videoUpdateImageVideo"
             ]);
 
             Route::post("update_video_video", [
-                "as" => "news.update_video_video",
-                "uses" => "VideoController@newsUpdateVideoVideo"
+                "as" => "video.update_video_video",
+                "uses" => "VideoController@videoUpdateVideoVideo"
             ]);
         });
     });

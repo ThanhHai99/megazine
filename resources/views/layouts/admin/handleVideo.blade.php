@@ -92,7 +92,7 @@ $("body").delegate("#hot_video", "click", function(event) {
   let hot_news = data['hot_news'];
   $('meta[name=row-index]').attr('content', id);
   $.ajax({
-    url: `{{route('news.updateHotVideo')}}`,
+    url: `{{route('video.updateHotVideo')}}`,
     method: "PUT",
     data: {
       id: id,
@@ -158,7 +158,7 @@ $("body").delegate("#status_video", "click", function(event) {
   let id_status = data['id_status'];
   $('meta[name=row-index]').attr('content', id);
   $.ajax({
-    url: `{{route('news.updateStatusVideo')}}`,
+    url: `{{route('video.updateStatusVideo')}}`,
     method: "PUT",
     data: {
       id: id,
@@ -243,7 +243,7 @@ $("body").delegate("form#form-image-video", "submit", function(event) {
   };
   let data = table.row($tr).data();
   $.ajax({
-    url: `{{route('news.update_image_video')}}`,
+    url: `{{route('video.update_image_video')}}`,
     method: 'POST',
     data: new FormData(this),
     contentType: false,
@@ -281,7 +281,7 @@ $("body").delegate("form#form-video-video", "submit", function(event) {
   };
   let data = table.row($tr).data();
   $.ajax({
-    url: `{{route('news.update_video_video')}}`,
+    url: `{{route('video.update_video_video')}}`,
     method: 'POST',
     data: new FormData(this),
     contentType: false,

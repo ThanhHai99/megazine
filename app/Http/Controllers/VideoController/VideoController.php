@@ -208,7 +208,7 @@ class VideoController extends CreatorController
     };
   }
 
-  public function newsUpdateHotVideo(Request $request) {
+  public function videoUpdateHotVideo(Request $request) {
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
@@ -232,7 +232,7 @@ class VideoController extends CreatorController
 
   }
 
-  public function newsUpdateStatusVideo(Request $request) {
+  public function videoUpdateStatusVideo(Request $request) {
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $this->validate($request, [
         'id' => 'required'
@@ -256,47 +256,7 @@ class VideoController extends CreatorController
 
   }
 
-  public function newsUpdateStatusVideoYes(Request $request) {
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      $this->validate($request, [
-        'id' => 'required'
-      ]);
-  
-      $input = $request->all();
-      $tmp = Video::find($input['id']);
-      $tmp->id_status = 1;
-      $tmp->save();
-  
-      return response()->json([
-          'error' => false,
-          // 'task'  => $tmp,
-      ], 200);
-
-    };
-
-  }
-
-  public function newsUpdateStatusVideoNo(Request $request) {
-    if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
-      $this->validate($request, [
-        'id' => 'required'
-      ]);
-  
-      $input = $request->all();
-      $tmp = Video::find($input['id']);
-      $tmp->id_status = 0;
-      $tmp->save();
-  
-      return response()->json([
-          'error' => false,
-          // 'task'  => $tmp,
-      ], 200);
-
-    };
-
-  }
-
-  public function newsUpdateImageVideo(Request $request) {
+  public function videoUpdateImageVideo(Request $request) {
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $input = $request->all();
       $tmp = Video::find($input['id_video_hide']);    
@@ -323,7 +283,7 @@ class VideoController extends CreatorController
 
   }
 
-  public function newsUpdateVideoVideo(Request $request) {
+  public function videoUpdateVideoVideo(Request $request) {
     if(Auth::user()->id_role == 2 || Auth::user()->id_role == 1 || Auth::user()->id_role == 0) {
       $input = $request->all();
       $tmp = Video::find($input['id_video_hide']);    
