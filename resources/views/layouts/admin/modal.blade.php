@@ -296,7 +296,7 @@
 
           <div class="form-group">
             <label>Video</label>
-            <input type="file" id="video_video_preview" name="video_video">
+            <input type="file" id="video_video_preview" name="video_video" class="form-control" placeholder="Video">
           </div>
 
           

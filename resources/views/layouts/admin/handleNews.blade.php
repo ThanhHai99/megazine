@@ -50,10 +50,17 @@ $("body").delegate("a#insert_news", "click", function() {
     $("div#insertModalNews div[id=news_id_topic]").hide();
   }
 
+  $("div#insertModalNews input[name=news_image]").css("border-color", "");
+
+  $("div#insertModalNews textarea[name=news_tag]").css("border-color", "");
+
+  $("div#insertModalNews textarea[name=news_caption]").css("border-color", "");
+
+  $("div#insertModalNews textarea[name=news_subtitle]").css("border-color", "");
+
   $("#insertModalNews img").attr("src", "");
   // $("#insertModalNews input[name=news_image]").empty();
   $("#insertModalNews textarea").val("");
-
   $("#insertModalNews").modal('show');
 });
 
@@ -249,6 +256,35 @@ $("body").delegate("button.update_news", "click", function(event) {
 $("body").delegate("form#form-insert-news", "submit", function(event) {
   event.preventDefault();
   let table = $('#dataTable').DataTable();
+
+  if ( $("div#insertModalNews input[name=news_image]").get(0).files.length == 0 ) {
+    $("div#insertModalNews input[name=news_image]").css("border-color", "red");
+    return false;
+  } else {
+    $("div#insertModalNews input[name=news_image]").css("border-color", "");
+  }
+
+  if ($("div#insertModalNews textarea[name=news_tag]").val() == "") {
+    $("div#insertModalNews textarea[name=news_tag]").css("border-color", "red");
+    return false;
+  } else {
+    $("div#insertModalNews textarea[name=news_tag]").css("border-color", "");
+  }
+
+  if ($("div#insertModalNews textarea[name=news_caption]").val() == "") {
+    $("div#insertModalNews textarea[name=news_caption]").css("border-color", "red");
+    return false;
+  } else {
+    $("div#insertModalNews textarea[name=news_caption]").css("border-color", "");
+  }
+
+  if ($("div#insertModalNews textarea[name=news_subtitle]").val() == "") {
+    $("div#insertModalNews textarea[name=news_subtitle]").css("border-color", "red");
+    return false;
+  }   else {
+    $("div#insertModalNews textarea[name=news_subtitle]").css("border-color", "");
+  }
+
   $.ajax({
     url: `{{route('news.insert')}}`,
     method: 'POST',

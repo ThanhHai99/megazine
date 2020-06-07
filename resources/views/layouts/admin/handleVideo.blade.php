@@ -321,12 +321,52 @@ $("body").delegate("a#insert_video", "click", function() {
   $("#insertModalVideo input").empty();
   $("#insertModalVideo textarea").val("");
 
+  $("div#insertModalVideo input[name=video_image]").css("border-color", "");
+  $("div#insertModalVideo input[name=video_video]").css("border-color", "");
+
+  $("div#insertModalVideo textarea[name=video_caption]").css("border-color", "");
+
+  $("div#insertModalVideo textarea[name=video_subtitle]").css("border-color", "");
+
+  $("div#insertModalVideo textarea[name=video_tag]").css("border-color", "");
+
   $("#insertModalVideo").modal('show');
 });
 
 $("body").delegate("form#form-insert-video", "submit", function(event) {
   event.preventDefault();
   let table = $('#dataTable').DataTable();
+
+  if ( $("div#insertModalVideo input[name=video_image]").get(0).files.length == 0 ) {
+    $("div#insertModalVideo input[name=video_image]").css("border-color", "red");
+    return false;
+  } else {
+    $("div#insertModalVideo input[name=video_image]").css("border-color", "");
+  }
+
+  if ( $("div#insertModalVideo input[name=video_video]").get(0).files.length == 0 ) {
+    $("div#insertModalVideo input[name=video_video]").css("border-color", "red");
+    return false;
+  } else {
+    $("div#insertModalVideo input[name=video_video]").css("border-color", "");
+  }
+
+  
+
+  if ($("div#insertModalVideo textarea[name=video_tag]").val() == "") {
+    $("div#insertModalVideo textarea[name=video_tag]").css("border-color", "red");
+    return false;
+  } else {
+    $("div#insertModalVideo textarea[name=video_tag]").css("border-color", "");
+  }
+
+  if ($("div#insertModalVideo textarea[name=video_caption]").val() == "") {
+    $("div#insertModalVideo textarea[name=video_caption]").css("border-color", "red");
+    return false;
+  } else {
+    $("div#insertModalVideo textarea[name=video_caption]").css("border-color", "");
+  }
+
   $.ajax({
     url: `{{route('video.insert')}}`,
     method: 'POST',

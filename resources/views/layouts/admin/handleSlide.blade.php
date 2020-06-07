@@ -37,6 +37,14 @@ $("body").delegate("a#insert_slide", "click", function() {
   // $("#insertModalSlide input").empty();
   $("#insertModalSlide textarea").val("");
 
+  $("div#insertModalSlide input[name=image]").css("border-color", "");
+
+  $("div#insertModalSlide textarea[name=caption]").css("border-color", "");
+
+  $("div#insertModalSlide textarea[name=subtitle]").css("border-color", "");
+
+  $("div#insertModalSlide textarea[name=tag]").css("border-color", "");
+
   $("#insertModalSlide").modal("show");
 });
 
@@ -185,6 +193,35 @@ $("body").delegate("#remove_slide", "click", function(event) {
 $("form#form_insert_slide").on("submit", function(event) {
   event.preventDefault();
   let table = $('#dataTable').DataTable();
+  
+  if ( $("div#insertModalSlide input[name=image]").get(0).files.length == 0 ) {
+    $("div#insertModalSlide input[name=image]").css("border-color", "red");
+    return false;
+  } else {
+    $("div#insertModalSlide input[name=image]").css("border-color", "");
+  }
+
+  if ($("div#insertModalSlide textarea[name=tag]").val() == "") {
+    $("div#insertModalSlide textarea[name=tag]").css("border-color", "red");
+    return false;
+  } else {
+    $("div#insertModalSlide textarea[name=tag]").css("border-color", "");
+  }
+
+  if ($("div#insertModalSlide textarea[name=caption]").val() == "") {
+    $("div#insertModalSlide textarea[name=caption]").css("border-color", "red");
+    return false;
+  } else {
+    $("div#insertModalSlide textarea[name=caption]").css("border-color", "");
+  }
+
+  if ($("div#insertModalSlide textarea[name=subtitle]").val() == "") {
+    $("div#insertModalSlide textarea[name=subtitle]").css("border-color", "red");
+    return false;
+  } else {
+    $("div#insertModalSlide textarea[name=subtitle]").css("border-color", "");
+  }
+
   $.ajax({
     url: `{{route('slide.insert')}}`,
     method: 'POST',
