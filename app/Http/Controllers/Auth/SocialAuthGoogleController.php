@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\User;
 use Socialite;
 use Auth;
@@ -14,18 +15,21 @@ use Session;
 
 use Illuminate\Support\Facades\Validator;
 
-class SocialAuthFacebookController extends Controller
+class SocialAuthGoogleController extends Controller
 {
     public function redirect() {
-        return Socialite::driver("facebook")->redirect();
+        return Socialite::driver("google")->redirect();
     }
 
     public function callback() {
         try {
-            $facebookUser = Socialite::driver("facebook")->user();
-            $existsUser = User::where("facebook_id", $facebookUser->id)->first();
+            $googleUser = Socialite::driver("google")->user();
+            $existsUser = User::where("google_id", $googleUser->id)
+                                ->first();
+            
+            if ($existsUser) {
 
-            if ($existsUser) { 
+
                 $infos = $existsUser->toArray();
                 for ($i=0; $i < count(array_keys($infos)); $i++) { 
                     $infos_keys[$i] = 'user_' . array_keys($infos)[$i];
@@ -37,10 +41,11 @@ class SocialAuthFacebookController extends Controller
                 Auth::loginUsingId($existsUser->id);
             } else {
                 $user = new User;
-                $user->name = $facebookUser->name;
-                $user->facebook_id = $facebookUser->id;
+                $user->name = $googleUser->name;
+                $user->email = $googleUser->email;
+                $user->google_id = $googleUser->id;
                 $user->save();
-
+                
                 $infos = $user->toArray();
                 for ($i=0; $i < count(array_keys($infos)); $i++) { 
                     $infos_keys[$i] = 'user_' . array_keys($infos)[$i];
@@ -51,8 +56,8 @@ class SocialAuthFacebookController extends Controller
                 }
                 Auth::loginUsingId($user->id);
             }
-
-            $existsUser = User::where("facebook_id", $facebookUser->id)->first();
+            
+            $existsUser = User::where("google_id", $googleUser->id)->first();
             if ($existsUser->id_role == 2 || $existsUser->id_role == 1 || $existsUser->id_role == 0) {
                 return redirect("dashboard/index");
             } else if ($existsUser->id_role == 3) {

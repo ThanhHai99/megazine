@@ -16,25 +16,7 @@ Auth::routes();
 use App\Mail\ResetPasswordMail;
 use Illuminate\Support\Facades\Mail;
 
-Route::get("auth/google", [
-    "as" => "auth.google",
-    "uses" => "SocialAuthGoogleController@redirect"
-]);
 
-Route::get("auth/google/callback", [
-    "as" => "auth.google.callback",
-    "uses" => "SocialAuthGoogleController@callback"
-]);
-
-Route::get("auth/facebook", [
-    "as" => "auth.facebook",
-    "uses" => "SocialAuthFacebookController@redirect"
-]);
-
-Route::get("auth/facebook/callback", [
-    "as" => "auth.facebook.callback",
-    "uses" => "SocialAuthFacebookController@callback"
-]);
 
 Route::group(["namespace" => "Admin"], function() {  
     Route::group(["prefix" => "dashboard"], function () {
@@ -135,13 +117,36 @@ Route::group(["namespace" => "Auth"], function() {
         Route::get("login", [
             "as" => "dashboard.login",
             "uses" => "AuthenticateController@getLogin"
-        ]);
-
+            ]);
+            
         Route::get("logout", [
             "as" => "dashboard.logout",
             "uses" => "AuthenticateController@getLogout"
+            ]);
+        });
+            
+    Route::group(["prefix" => "auth"], function () {
+        Route::get("google", [
+            "as" => "auth.google",
+            "uses" => "SocialAuthGoogleController@redirect"
+        ]);
+        
+        Route::get("google/callback", [
+            "as" => "auth.google.callback",
+            "uses" => "SocialAuthGoogleController@callback"
+        ]);
+        
+        Route::get("facebook", [
+            "as" => "auth.facebook",
+            "uses" => "SocialAuthFacebookController@redirect"
+        ]);
+        
+        Route::get("facebook/callback", [
+            "as" => "auth.facebook.callback",
+            "uses" => "SocialAuthFacebookController@callback"
         ]);
     });
+
 });
 
 Route::group(["namespace" => "EmployeeController"], function() {
