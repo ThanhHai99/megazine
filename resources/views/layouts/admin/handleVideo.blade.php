@@ -316,6 +316,11 @@ $("body").delegate("a#insert_video", "click", function() {
   } else {
     $("div#insertModalVideo div[id=video_id_topic]").hide();
   }
+  $("#insertModalVideo img").attr("src", "");
+  $("#insertModalVideo video").attr("src", "");
+  $("#insertModalVideo input").empty();
+  $("#insertModalVideo textarea").val("");
+
   $("#insertModalVideo").modal('show');
 });
 

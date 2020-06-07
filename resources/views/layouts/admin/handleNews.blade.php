@@ -49,6 +49,11 @@ $("body").delegate("a#insert_news", "click", function() {
   } else {
     $("div#insertModalNews div[id=news_id_topic]").hide();
   }
+
+  $("#insertModalNews img").attr("src", "");
+  // $("#insertModalNews input[name=news_image]").empty();
+  $("#insertModalNews textarea").val("");
+
   $("#insertModalNews").modal('show');
 });
 

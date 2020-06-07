@@ -33,6 +33,10 @@ $("body").delegate("img#image-slide", "click", function() {
 
 // open modal add slide
 $("body").delegate("a#insert_slide", "click", function() {
+  $("#insertModalSlide img").attr("src", "");
+  // $("#insertModalSlide input").empty();
+  $("#insertModalSlide textarea").val("");
+
   $("#insertModalSlide").modal("show");
 });
 
