@@ -18,7 +18,8 @@ use App\Role;
 
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
+use Illuminate\
+Support\Facades\File;
 
 
 class EmployeeController extends StaffManagerController {
