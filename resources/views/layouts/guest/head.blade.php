@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<base href="/public/">
+<base href="/megazine/public/">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Megazine</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +8,7 @@
 <meta name="author" content="" />
 <meta name="csrf-token" content="{{ csrf_token() }}"> <!--pass ajax -->
 
-<!-- Facebook and Twitter integration -->
+<!-- Facebook and Twitter integration --> 
 <meta property="og:title" content=""/>
 <meta property="og:image" content=""/>
 <meta property="og:url" content=""/>
